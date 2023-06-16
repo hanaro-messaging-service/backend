@@ -26,6 +26,6 @@
         <param-value>gkskfh1!</param-value>
     </context-param>
     <welcome-file-list>
-        <welcome-file>basic/form_servlet.html</welcome-file>
+        <welcome-file>pages/main/mainpage.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
