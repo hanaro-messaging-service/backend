@@ -34,8 +34,6 @@ public class JDBConnect {
         }
     }
 
-
-
     // 연결 해제(자원 반납)
     public void close() {
         try {

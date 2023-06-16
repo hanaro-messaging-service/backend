@@ -5,6 +5,7 @@ public class MemberDTO {
     private String pass;
     private String name;
     private String regidate;
+
     public String getId() {
         return id;
     }
