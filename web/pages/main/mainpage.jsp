@@ -1,9 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import = "DTO.MemberDTO" %>
+<%@ page import="DAO.MemberDAO" %>
+
+<%
+    MemberDAO dao = new MemberDAO(application);
+    MemberDTO memberDTO = dao.getMemberDTO();
+
+%>
 <html>
 <head>
     <link rel="stylesheet" href="/pages/main/mainpage.css">
 </head>
 <body>
+
 <header>
     <a href="/">
         메세지 관리
@@ -33,11 +42,11 @@
             <div class="partition4 flex1 align-center justify-center">개인정보동의</div>
             <div class="partition6 flex1 align-center justify-evenly">
                 <div class="flex align-center">
-                    <input type="radio" name="개인정보" value="Y" class="flex align-center">
+                    <input type="checkbox" name="개인정보" value="Y" class="flex align-center">
                     <div>동의</div>
                 </div>
                 <div class="flex align-center">
-                    <input type="radio" name="개인정보" value="N">
+                    <input onclick=""type="checkbox" name="개인정보" value="N">
                     <div>비동의</div>
                 </div>
             </div>
@@ -46,11 +55,11 @@
             <div class="partition4 flex align-center justify-center">성별</div>
             <div class="partition6 flex align-center justify-evenly">
                 <div class="flex align-center">
-                    <input type="radio" name="성별" value="M" class="flex align-center">
+                    <input type="checkbox" name="성별" value="M" class="flex align-center">
                     <div>남자</div>
                 </div>
                 <div class="flex align-center">
-                    <input type="radio" name="성별" value="F">
+                    <input type="checkbox" name="성별" value="F">
                     <div>여자</div>
                 </div>
             </div>
@@ -58,15 +67,21 @@
         <div class="partition3 flex">
             <div class="partition4 flex align-center justify-center" >나이</div>
             <div class="partition6 flex align-center justify-evenly">
-                <div class="flex align-center justify-center">
-                    <input type="text" class="input30">
-                    <div>세</div>
-                </div>
-                <div>~</div>
-                <div class="flex align-center justify-center">
-                    <input type="text" class="input30">
-                    <div>세</div>
-                </div>
+                    <select name="age" id="age">
+                        <option value="전체">전체</option>
+                        <option value="20대">20대</option>
+                        <option value="30대">30대</option>
+                        <option value="40대">40대</option>
+                        <option value="50대">50데</option>
+                        <option value="60대">60데</option>
+                        <option value="70대 이상">70대 이상</option>
+                    </select>
+                <select name="agepart" id="agepart">
+                    <option value="전체">전체</option>
+                    <option value="초반">초반</option>
+                    <option value="중반">중반</option>
+                    <option value="후반">후반</option>
+                </select>
 
             </div>
         </div>
@@ -75,45 +90,39 @@
         <div class="partition3 flex1">
             <div class="partition4 flex1 align-center justify-center">직업</div>
             <div class="partition6 flex1 align-center justify-evenly">
-                <select name="languages" id="lang">
-                    <option value="javascript">JavaScript</option>
-                    <option value="php">PHP</option>
-                    <option value="java">Java</option>
-                    <option value="golang">Golang</option>
-                    <option value="python">Python</option>
-                    <option value="c#">C#</option>
-                    <option value="C++">C++</option>
-                    <option value="erlang">Erlang</option>
+                <select name="job" id="job">
+                    <option value="전체">전체</option>
+                    <option value="학생">학생</option>
+                    <option value="공무원">공무원</option>
+                    <option value="전문직">전문직</option>
+                    <option value="무직">무직</option>
+                    <option value="주부">주부</option>
                 </select>
             </div>
         </div>
         <div class="partition3 flex ">
             <div class="partition4 flex align-center justify-center">고객등급</div>
             <div class="partition6 flex align-center justify-evenly">
-                <select name="languages" id="lang">
-                    <option value="javascript">JavaScript</option>
-                    <option value="php">PHP</option>
-                    <option value="java">Java</option>
-                    <option value="golang">Golang</option>
-                    <option value="python">Python</option>
-                    <option value="c#">C#</option>
-                    <option value="C++">C++</option>
-                    <option value="erlang">Erlang</option>
+                <select name="private" id="private">
+                    <option value="전체">전체</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                 </select>
             </div>
         </div>
         <div class="partition3 flex">
             <div class="partition4 flex align-center justify-center" >자산</div>
             <div class="partition6 flex align-center justify-evenly">
-                <div class="flex align-center justify-center">
-                    <input type="text" class="input30">
-                    <div>세</div>
-                </div>
-                <div>~</div>
-                <div class="flex align-center justify-center">
-                    <input type="text" class="input30">
-                    <div>세</div>
-                </div>
+                <select name="asset" id="asset">
+                    <option value="javascript">전체</option>
+                    <option value="0-1000000">100만원 이하</option>
+                    <option value="1000000-10000000">100만원~1000만원</option>
+                    <option value="10000000-30000000">1000만원-3000만원</option>
+                    <option value="3000000이상">3000만원 이상</option>
+                </select>
 
             </div>
         </div>
@@ -122,30 +131,24 @@
         <div class="partition3 flex1">
             <div class="partition4 flex1 align-center justify-center">어플 접속일</div>
             <div class="partition6 flex1 align-center justify-evenly">
-                <select name="languages" id="lang">
-                    <option value="javascript">JavaScript</option>
-                    <option value="php">PHP</option>
-                    <option value="java">Java</option>
-                    <option value="golang">Golang</option>
-                    <option value="python">Python</option>
-                    <option value="c#">C#</option>
-                    <option value="C++">C++</option>
-                    <option value="erlang">Erlang</option>
+                <select name="app" id="app">
+                    <option value="전체">전체</option>
+                    <option value="1개월 이내">1개월 이내</option>
+                    <option value="1개월-3개월">1개월-3개월</option>
+                    <option value="3개월 이상">3개월</option>
                 </select>
             </div>
         </div>
         <div class="partition3 flex ">
             <div class="partition4 flex align-center justify-center">가입 기간</div>
             <div class="partition6 flex align-center justify-evenly">
-                <select name="languages" id="lang">
-                    <option value="javascript">JavaScript</option>
-                    <option value="php">PHP</option>
-                    <option value="java">Java</option>
-                    <option value="golang">Golang</option>
-                    <option value="python">Python</option>
-                    <option value="c#">C#</option>
-                    <option value="C++">C++</option>
-                    <option value="erlang">Erlang</option>
+                <select name="period" id="period">
+                    <option value="전체">전체</option>
+                    <option value="1년 미만">1년 미만</option>
+                    <option value="1년-3년">1년-3년</option>
+                    <option value="3년-5년">3년-5년</option>
+                    <option value="5년-10년">5년-10년</option>
+                    <option value="10년 이상">10년 이상</option>
                 </select>
             </div>
         </div>
@@ -153,11 +156,11 @@
             <div class="partition4 flex align-center justify-center" >연체 여부</div>
             <div class="partition6 flex align-center justify-evenly">
                 <div class="flex align-center">
-                    <input type="radio" name="money_exp" value="Y" class="flex align-center">
+                    <input type="checkbox" name="money_exp" value="Y" class="flex align-center">
                     <div>있음</div>
                 </div>
                 <div class="flex align-center">
-                    <input type="radio" name="money_exp" value="N">
+                    <input type="checkbox" name="money_exp" value="N">
                     <div>없음</div>
                 </div>
 

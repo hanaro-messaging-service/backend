@@ -5,13 +5,7 @@ public class MemberDTO {
     private String pass;
     private String name;
     private String regidate;
-    public static MemberDTO jdbc1;
-    public static MemberDTO getJdbc1() {
-        if (jdbc1 == null) {
-            jdbc1 = new MemberDTO();
-        }
-        return jdbc1;
-    }
+
     public String getId() {
         return id;
     }
