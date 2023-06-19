@@ -29,12 +29,12 @@
 </header>
 <main>
     <div class="flex1 bt mt_50">
-       <div>
-           <span>이름</span>
-           <input>
-       </div>
         <div>
-           버튼
+            <span>이름</span>
+            <input>
+        </div>
+        <div>
+            버튼
         </div>
     </div>
     <div class="flex1">
@@ -50,7 +50,7 @@
                     <div>비동의</div>
                 </div>
             </div>
-            </div>
+        </div>
         <div class="partition3 flex ">
             <div class="partition4 flex align-center justify-center">성별</div>
             <div class="partition6 flex align-center justify-evenly">
@@ -67,15 +67,15 @@
         <div class="partition3 flex">
             <div class="partition4 flex align-center justify-center" >나이</div>
             <div class="partition6 flex align-center justify-evenly">
-                    <select name="age" id="age" onchange="sendValueToServlet(this.value)">
-                        <option value="전체">전체</option>
-                        <option value="20대">20대</option>
-                        <option value="30대">30대</option>
-                        <option value="40대">40대</option>
-                        <option value="50대">50대</option>
-                        <option value="60대">60대</option>
-                        <option value="70대 이상">70대 이상</option>
-                    </select>
+                <select name="age" id="age" onchange="sendValueToServlet(this.value)">
+                    <option value="전체">전체</option>
+                    <option value="20대">20대</option>
+                    <option value="30대">30대</option>
+                    <option value="40대">40대</option>
+                    <option value="50대">50대</option>
+                    <option value="60대">60대</option>
+                    <option value="70대 이상">70대 이상</option>
+                </select>
                 <select name="agepart" id="agepart" onchange="sendValueToServlet(this.value)">
                     <option value="전체">전체</option>
                     <option value="초반">초반</option>
@@ -180,21 +180,21 @@
         <div class="partiton1_6 flex justify-center bg_grey  align-center bd_black_left">전화번호</div>
         <div class="partiton1_6 flex justify-center bg_grey align-center bd_black_left bd_black_right">고객등급</div>
     </div>
-<%--    <div class="flex2 bt">--%>
-<%--        <div class="partiton0_9 flex justify-center align-center bd_black_all "> <input type="checkbox" id="scales" name="scales" checked></div>--%>
-<%--        <div class="partiton1_6 flex justify-center align-center bd_black_all">AABB110109105</div>--%>
-<%--        <div class="partiton0_9 flex justify-center align-center bd_black_all">홍길동</div>--%>
-<%--        <div class="partiton0_9 flex justify-center align-center bd_black_all">21세</div>--%>
-<%--        <div class="partiton1_6 flex justify-center align-center bd_black_all">서울특별시</div>--%>
-<%--        <div class="partiton0_9 flex justify-center align-center bd_black_all">공무원</div>--%>
-<%--        <div class="partiton1_6 flex justify-center align-center bd_black_all">010-1234-5678</div>--%>
-<%--        <div class="partiton1_6 flex justify-center align-center bd_black_all bd_black_right">5</div>--%>
-<%--    </div>--%>
+    <%--    <div class="flex2 bt">--%>
+    <%--        <div class="partiton0_9 flex justify-center align-center bd_black_all "> <input type="checkbox" id="scales" name="scales" checked></div>--%>
+    <%--        <div class="partiton1_6 flex justify-center align-center bd_black_all">AABB110109105</div>--%>
+    <%--        <div class="partiton0_9 flex justify-center align-center bd_black_all">홍길동</div>--%>
+    <%--        <div class="partiton0_9 flex justify-center align-center bd_black_all">21세</div>--%>
+    <%--        <div class="partiton1_6 flex justify-center align-center bd_black_all">서울특별시</div>--%>
+    <%--        <div class="partiton0_9 flex justify-center align-center bd_black_all">공무원</div>--%>
+    <%--        <div class="partiton1_6 flex justify-center align-center bd_black_all">010-1234-5678</div>--%>
+    <%--        <div class="partiton1_6 flex justify-center align-center bd_black_all bd_black_right">5</div>--%>
+    <%--    </div>--%>
     <div id="resultContainer">
         <%
             List<MemberDTO> custInfos = (List<MemberDTO>) request.getAttribute("custInfos");
             if (custInfos != null) {
-            for (MemberDTO custInfo : custInfos) { %>
+                for (MemberDTO custInfo : custInfos) { %>
         <div class="flex2 bt">
             <div class="partiton0_9 flex justify-center align-center bd_black_all ">
                 <input type="checkbox" id="" name="scales" checked>
