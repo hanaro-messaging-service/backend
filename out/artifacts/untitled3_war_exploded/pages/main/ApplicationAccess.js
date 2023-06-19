@@ -1,0 +1,58 @@
+function sendValueToServlet() {
+    var selectedAppValue = document.getElementById("app").value;
+    var selectedAssetValue = document.getElementById("asset").value;
+    var selectedCheckBoxManValue = document.getElementById("man");
+    var selectedCheckBoxWomanValue = document.getElementById("woman");
+    var selectedCheckBoxPrivacyYes = document.getElementById("privacyYes");
+    var selectedCheckBoxPrivacyNo = document.getElementById("privacyNo");
+    var selectedJobValue = document.getElementById("job").value;
+    var selectedPrivateValue = document.getElementById("private").value;
+    var selectedAgeValue = document.getElementById("age").value;
+    var selectedAgePartValue = document.getElementById("agepart").value;
+    var selectedPeriodValue = document.getElementById('period').value;
+    var selectedCheckBoxMoneyExpYes = document.getElementById('moneyExpYes');
+    var selectedCheckBoxMoneyExpNo = document.getElementById('moneyExpNo');
+    let sentence = "";
+    console.log(selectedPeriodValue);
+    sentence += selectedCheckBoxManValue.checked ? "&selectedManValue=" + encodeURIComponent("M") : "";
+    sentence += selectedCheckBoxWomanValue.checked ? "&selectedWomanValue="+ encodeURIComponent("F") : "";
+    sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("Y") : "";
+    sentence += selectedCheckBoxPrivacyNo.checked ? "&selectedPrivacyNoValue=" + encodeURIComponent("N") : "";
+    sentence += selectedJobValue !== "전체" ? "&selectedJobValue=" + encodeURIComponent(selectedJobValue) : "";
+    sentence += selectedPrivateValue !=="전체" ? "&selectedPrivateValue=" + encodeURIComponent(selectedPrivateValue) : "";
+    sentence += selectedAgeValue !== "전체" ? "&selectedAgeValue=" + encodeURIComponent(selectedAgeValue) : "";
+    sentence += selectedAgePartValue !== "전체"? "&selectedAgePartValue=" + encodeURIComponent(selectedAgePartValue) : "";
+    sentence += selectedPeriodValue !== "전체"? "&selectedPeriodValue=" + encodeURIComponent(selectedPeriodValue) : "";
+    sentence += selectedCheckBoxMoneyExpYes.checked ? "&selectedMoneyExpYesValue=" + encodeURIComponent("Y") : "";
+    sentence += selectedCheckBoxMoneyExpNo.checked? "&selectedMoneyExpNoValue=" + encodeURIComponent("N") : "";
+    console.log(sentence)
+    if (selectedAppValue === "") {
+        selectedAppValue = "전체";
+    }
+    if (selectedAssetValue === "") {
+        selectedAssetValue = "전체";
+    }
+
+
+    // AJAX 요청을 사용하여 서블릿에 값 전달
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/annoMapping", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var parser = new DOMParser();
+            var responseDoc = parser.parseFromString(xhr.responseText, "text/html");
+            var elementValue = responseDoc.getElementById("resultContainer").innerHTML;
+
+            // 가져온 값으로 특정 영역 업데이트
+            document.getElementById("resultContainer").innerHTML = elementValue;
+        }
+    };
+
+    // 전송할 데이터를 조합하여 한 번에 전송
+    var requestData = "selectedAppValue=" + encodeURIComponent(selectedAppValue) +
+        "&selectedAssetValue=" + encodeURIComponent(selectedAssetValue) +
+        sentence;
+
+    xhr.send(requestData);
+}

@@ -75,7 +75,6 @@ section {
 }
 .bd_black_all{
     border-left: 2px solid black;
-    border-top: 2px solid black;
     border-bottom: 2px solid black;
 }
 .bd_black_left {
@@ -83,6 +82,12 @@ section {
 }
 .bd_black_right{
     border-right: 2px solid black;
+}
+.bd_black_bottom{
+    border-bottom: 2px solid black;
+}
+.bd_black_top{
+    border-top: 2px solid black;
 }
 .bg_grey{
     background-color: #d5c9c9;
