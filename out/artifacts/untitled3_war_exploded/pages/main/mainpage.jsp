@@ -31,7 +31,7 @@
     <div class="flex1 bt mt_50">
         <div>
             <span>이름</span>
-            <input>
+            <input value="" type="text" id="name" oninput="sendValueToServlet(event.target.value)">
         </div>
         <div>
             버튼
@@ -180,16 +180,7 @@
         <div class="partiton1_6 flex justify-center bg_grey  align-center bd_black_left">전화번호</div>
         <div class="partiton1_6 flex justify-center bg_grey align-center bd_black_left bd_black_right">고객등급</div>
     </div>
-    <%--    <div class="flex2 bt">--%>
-    <%--        <div class="partiton0_9 flex justify-center align-center bd_black_all "> <input type="checkbox" id="scales" name="scales" checked></div>--%>
-    <%--        <div class="partiton1_6 flex justify-center align-center bd_black_all">AABB110109105</div>--%>
-    <%--        <div class="partiton0_9 flex justify-center align-center bd_black_all">홍길동</div>--%>
-    <%--        <div class="partiton0_9 flex justify-center align-center bd_black_all">21세</div>--%>
-    <%--        <div class="partiton1_6 flex justify-center align-center bd_black_all">서울특별시</div>--%>
-    <%--        <div class="partiton0_9 flex justify-center align-center bd_black_all">공무원</div>--%>
-    <%--        <div class="partiton1_6 flex justify-center align-center bd_black_all">010-1234-5678</div>--%>
-    <%--        <div class="partiton1_6 flex justify-center align-center bd_black_all bd_black_right">5</div>--%>
-    <%--    </div>--%>
+
     <div id="resultContainer">
         <%
             List<MemberDTO> custInfos = (List<MemberDTO>) request.getAttribute("custInfos");
