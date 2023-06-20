@@ -174,7 +174,6 @@
          <div class="listComponent-topbar-elementBig">개인정보동의</div>
           <div class="listComponent-topbar-elementBig">어플접속일</div>
         </div>
-
         <div id="resultContainer">
             <%
                 List<productPromotionMessageDTO> custInfos = (List<productPromotionMessageDTO>) request.getAttribute("custInfos");
