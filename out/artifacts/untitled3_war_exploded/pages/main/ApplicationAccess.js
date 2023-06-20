@@ -1,9 +1,5 @@
 
-
-
 var debounceTimer;
-
-
 function debounce(func, delay) {
     clearTimeout(debounceTimer); // 타이머를 초기화
 
@@ -37,7 +33,7 @@ function sendValueToServlet() {
     sentence += selectedPeriodValue !== "전체"? "&selectedPeriodValue=" + encodeURIComponent(selectedPeriodValue) : "";
     sentence += selectedCheckBoxMoneyExpYes.checked ? "&selectedMoneyExpYesValue=" + encodeURIComponent("Y") : "";
     sentence += selectedCheckBoxMoneyExpNo.checked? "&selectedMoneyExpNoValue=" + encodeURIComponent("N") : "";
-    sentence += selectedNameValue ? ""
+    sentence += selectedNameValue ? "&selectedNameValue=" + encodeURIComponent(selectedNameValue) : "";
     console.log(sentence)
     if (selectedAppValue === "") {
         selectedAppValue = "전체";
@@ -48,6 +44,7 @@ function sendValueToServlet() {
 
 
     // AJAX 요청을 사용하여 서블릿에 값 전달
+
     debounce(function(){
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "/annoMapping", true);
@@ -57,6 +54,17 @@ function sendValueToServlet() {
                 var parser = new DOMParser();
                 var responseDoc = parser.parseFromString(xhr.responseText, "text/html");
                 var elementValue = responseDoc.getElementById("resultContainer").innerHTML;
+// 모든 <input> 요소를 활성화
+                var inputElements = document.getElementsByTagName("input");
+                for (var i = 0; i < inputElements.length; i++) {
+                    inputElements[i].disabled = false;
+                }
+
+// 모든 <select> 요소를 활성화
+                var selectElements = document.getElementsByTagName("select");
+                for (var i = 0; i < selectElements.length; i++) {
+                    selectElements[i].disabled = false;
+                }
 
                 // 가져온 값으로 특정 영역 업데이트
                 document.getElementById("resultContainer").innerHTML = elementValue;
@@ -67,8 +75,19 @@ function sendValueToServlet() {
         var requestData = "selectedAppValue=" + encodeURIComponent(selectedAppValue) +
             "&selectedAssetValue=" + encodeURIComponent(selectedAssetValue) +
             sentence;
+// 모든 <input> 요소를 비활성화
+        var inputElements = document.getElementsByTagName("input");
+        for (var i = 0; i < inputElements.length; i++) {
+            inputElements[i].disabled = true;
+        }
+
+// 모든 <select> 요소를 비활성화
+        var selectElements = document.getElementsByTagName("select");
+        for (var i = 0; i < selectElements.length; i++) {
+            selectElements[i].disabled = true;
+        }
 
         xhr.send(requestData);
-    },1000)
+    },1000);
 
 }
