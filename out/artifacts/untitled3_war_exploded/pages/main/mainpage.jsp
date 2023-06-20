@@ -1,8 +1,10 @@
 
+
 <%@ page import="customer.MemberDTO" %>
 <%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <% response.setCharacterEncoding("utf-8"); %>
+
 
 <html>
 <head>
@@ -33,7 +35,9 @@
     <div class="flex1 bt mt_50">
         <div>
             <span>이름</span>
+
             <input value="" type="text" id="name" oninput="sendValueToServlet(event.target.value)">
+
         </div>
         <div>
             버튼

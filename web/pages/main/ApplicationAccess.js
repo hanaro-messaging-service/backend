@@ -1,4 +1,3 @@
-
 var debounceTimer;
 function debounce(func, delay) {
     clearTimeout(debounceTimer); // 타이머를 초기화

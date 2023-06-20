@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 var debounceTimer;
 function debounce(func, delay) {
@@ -7,6 +8,9 @@ function debounce(func, delay) {
 };
 function sendValueToServlet() {
     var selectedNameValue = document.getElementById('name').value;
+=======
+function sendValueToServlet() {
+>>>>>>> main
     var selectedAppValue = document.getElementById("app").value;
     var selectedAssetValue = document.getElementById("asset").value;
     var selectedCheckBoxManValue = document.getElementById("man");
@@ -21,7 +25,11 @@ function sendValueToServlet() {
     var selectedCheckBoxMoneyExpYes = document.getElementById('moneyExpYes');
     var selectedCheckBoxMoneyExpNo = document.getElementById('moneyExpNo');
     let sentence = "";
+<<<<<<< HEAD
     console.log(selectedNameValue);
+=======
+    console.log(selectedPeriodValue);
+>>>>>>> main
     sentence += selectedCheckBoxManValue.checked ? "&selectedManValue=" + encodeURIComponent("M") : "";
     sentence += selectedCheckBoxWomanValue.checked ? "&selectedWomanValue="+ encodeURIComponent("F") : "";
     sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("Y") : "";
@@ -33,7 +41,10 @@ function sendValueToServlet() {
     sentence += selectedPeriodValue !== "전체"? "&selectedPeriodValue=" + encodeURIComponent(selectedPeriodValue) : "";
     sentence += selectedCheckBoxMoneyExpYes.checked ? "&selectedMoneyExpYesValue=" + encodeURIComponent("Y") : "";
     sentence += selectedCheckBoxMoneyExpNo.checked? "&selectedMoneyExpNoValue=" + encodeURIComponent("N") : "";
+<<<<<<< HEAD
     sentence += selectedNameValue ? "&selectedNameValue=" + encodeURIComponent(selectedNameValue) : "";
+=======
+>>>>>>> main
     console.log(sentence)
     if (selectedAppValue === "") {
         selectedAppValue = "전체";
@@ -44,6 +55,7 @@ function sendValueToServlet() {
 
 
     // AJAX 요청을 사용하여 서블릿에 값 전달
+<<<<<<< HEAD
 
     debounce(function(){
         var xhr = new XMLHttpRequest();
@@ -90,4 +102,26 @@ function sendValueToServlet() {
         xhr.send(requestData);
     },1000);
 
+=======
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/annoMapping", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var parser = new DOMParser();
+            var responseDoc = parser.parseFromString(xhr.responseText, "text/html");
+            var elementValue = responseDoc.getElementById("resultContainer").innerHTML;
+
+            // 가져온 값으로 특정 영역 업데이트
+            document.getElementById("resultContainer").innerHTML = elementValue;
+        }
+    };
+
+    // 전송할 데이터를 조합하여 한 번에 전송
+    var requestData = "selectedAppValue=" + encodeURIComponent(selectedAppValue) +
+        "&selectedAssetValue=" + encodeURIComponent(selectedAssetValue) +
+        sentence;
+
+    xhr.send(requestData);
+>>>>>>> main
 }

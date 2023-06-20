@@ -40,6 +40,7 @@ public class AnnoMapping extends HttpServlet {
         // DAO를 사용하여 데이터 조회
         MemberDAO memberDAO = new MemberDAO();
         Map<String, Object> map = new HashMap<>();
+
         map.put("name",selectedNameValue);
         map.put("asset",selectedAssetValue);
         map.put("dateRange", selectedAppValue);

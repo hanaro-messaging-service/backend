@@ -51,9 +51,11 @@ public class MemberDAO extends DBConnPool {
             System.out.println("고객 정보 조회 중 예외 발생");
             e.printStackTrace();
         }
+
         finally{
 
         }
+
 
         return custInfos;
     }
