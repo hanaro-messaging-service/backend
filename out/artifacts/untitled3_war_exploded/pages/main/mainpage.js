@@ -14,6 +14,11 @@ numberInput.addEventListener("input", function() {
             var responseHtml = xhr.responseText;
             document.getElementById("resultContainer").innerHTML = responseHtml;
 =======
+<<<<<<< HEAD
+            var responseHtml = xhr.responseText;
+            document.getElementById("resultContainer").innerHTML = responseHtml;
+=======
+>>>>>>> main
 >>>>>>> main
         }
     };

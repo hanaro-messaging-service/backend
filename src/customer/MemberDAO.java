@@ -46,10 +46,16 @@ public class MemberDAO extends DBConnPool {
             }
             rs.close();
             pstmt.close();
+            con.close();
         } catch (Exception e) {
             System.out.println("고객 정보 조회 중 예외 발생");
             e.printStackTrace();
         }
+
+        finally{
+
+        }
+
 
         return custInfos;
     }

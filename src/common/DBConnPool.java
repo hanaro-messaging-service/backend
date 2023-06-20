@@ -37,10 +37,10 @@ public class DBConnPool {
     // 연결 해제(자원 반납)
     public void close() {
         try {
-            if (rs != null) rs.close();
-            if (stmt != null) stmt.close();
-            if (psmt != null) psmt.close();
-            if (con != null) con.close();  // 자동으로 커넥션 풀로 반납됨
+            if(rs!=null)rs.close();
+            if(stmt!=null)stmt.close();
+            if(psmt!=null)psmt.close();
+            if(con!=null) con.close();  // 자동으로 커넥션 풀로 반납됨
 
             System.out.println("DB 커넥션 풀 자원 반납");
         }

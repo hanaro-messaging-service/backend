@@ -21,6 +21,7 @@ public class AnnoMapping extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        String selectedNameValue = request.getParameter("selectedNameValue");
         String selectedAppValue = request.getParameter("selectedAppValue");
         String selectedAssetValue = request.getParameter("selectedAssetValue");
         String selectedCheckBoxManValue = request.getParameter("selectedManValue");
@@ -39,6 +40,8 @@ public class AnnoMapping extends HttpServlet {
         // DAO를 사용하여 데이터 조회
         MemberDAO memberDAO = new MemberDAO();
         Map<String, Object> map = new HashMap<>();
+
+        map.put("name",selectedNameValue);
         map.put("asset",selectedAssetValue);
         map.put("dateRange", selectedAppValue);
         map.put("man", selectedCheckBoxManValue);

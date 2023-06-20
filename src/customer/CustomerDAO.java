@@ -159,6 +159,11 @@ public class CustomerDAO extends DBConnPool {
                     break;
             }
         }
+        String name = (String) map.get("name");
+        System.out.println("name"+name);
+        if (name != null && !name.isEmpty()) {
+            query += " AND custNm LIKE '%"+map.get("name")+"%'";
+        }
         System.out.println(9);
         System.out.println("man"+man);
         System.out.println("woman"+woman);
