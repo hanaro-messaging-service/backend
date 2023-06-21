@@ -1,24 +1,25 @@
 package servlet;
 
-import customer.MemberDTO;
+import messageCust.MessageCustoimizeDTO;
+import messageCust.MessageCustomizeDAO;
 
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.List;
+@WebServlet("/ProductPromotionWrite")
+public class ProductPromotionWriteServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+    }
 
-import productPromotionPackage.productPromotionMessageDTO;
-import productPromotionPackage.productPromotionMessageDAO;
-@WebServlet("/productPromotionServlet")
-public class ProductPromotionServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Retrieve the data sent from the JavaScript function
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String selectedManValue = request.getParameter("selectedManValue");
@@ -33,8 +34,6 @@ public class ProductPromotionServlet extends HttpServlet {
         String selectedAssetValue = request.getParameter("selectedAssetValue");
         String selectedLocationValue = request.getParameter("selectedLocationValue");
         String selectedBranchValue = request.getParameter("selectedBranchValue");
-        System.out.println(selectedPrivateValue);
-        // Process the data as required
         Map<String, Object> map = new HashMap<>();
         map.put("custNm", selectedNameValue);
         map.put("recLoginDate", selectedAppValue);
@@ -48,10 +47,12 @@ public class ProductPromotionServlet extends HttpServlet {
         map.put("period", selectedPeriodValue);
         map.put("branch",selectedBranchValue);
         map.put("address",selectedLocationValue);
-        // Set the response content type and encoding
-        productPromotionMessageDAO dao = new productPromotionMessageDAO();
-        List<productPromotionMessageDTO> custInfos = dao.selectMessage(map);
-        request.setAttribute("custInfos", custInfos);
-        request.getRequestDispatcher("/pages/sendMessage/productPromotionMessage.jsp").forward(request,response);
+
+
+//        for (Map.Entry<String, Object> entry : map.entrySet()) {
+//            System.out.println(entry.getKey() + ": " + entry.getValue());
+//        }
+
+        response.sendRedirect("/");
     }
 }

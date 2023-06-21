@@ -5,21 +5,34 @@
 <html>
 <head>
     <title>하나로 메세지</title>
-    <link rel="stylesheet" href="pages/sendMessage/productPromotionMessage.css" >
-    <script src="/pages/sendMessage/productPromotionMessage.js"></script>
+    <link rel="stylesheet" href="./productPromotionMessage.css" >
+    <script src="./productPromotionMessage.js"></script>
 </head>
 <body>
-<header>
-헤더입니다
-</header>
+
+
 <main>
     <section class="sidebar">
-    사이드바
+        <div class="sidebar-main">
+            메시지
+        </div>
+        <div class="sidebar-submain">전송</div>
+        <div class="sidebar-content"><li>전체 안내 메시지 전송</li></div>
+        <div class="sidebar-content"><li>보이스피싱 예방 안내 메시지 잔성</li></div>
+        <div class="sidebar-content"><li>수신 상품 프로모션 메시지 전송</li></div>
+        <div class="sidebar-content"><li>어플 프로모션 메시지 전송</li></div>
+        <div class="sidebar-content"><li>상황 관리 안내 메시지 전송</li></div>
+        <div class="sidebar-submain">관리</div>
+        <div class="sidebar-content"><li>전체 안내 메시지 관리</li></div>
+        <div class="sidebar-content"><li>보이스피싱 예방 안내 메시지 관리</li></div>
+        <div class="sidebar-content"><li>수신 상품 프로모션 메시지 관리</li></div>
+        <div class="sidebar-content"><li>어플 프로모션 메시지 관리</li></div>
+        <div class="sidebar-content"><li>상황 관리 안내 메시지 관리</li></div>
     </section>
     <section class="mainComponent">
     <div class="searchComponent">
     <div class="searchComponent-topBar">
-        <div class="searchComponent-topBar-left">메세지 관리</div>
+        <div class="searchComponent-topBar-left">메세지 전송</div>
         <div class="searchComponent-topBar-right">메세지 전송</div>
     </div>
     <div class="searchComponent-titleBar">수신 상품 프로모션 메시지</div>

@@ -26,6 +26,6 @@
         <param-value>gkskfh1!</param-value>
     </context-param>
     <welcome-file-list>
-        <welcome-file>pages/sendMessage/productPromotionMessage.jsp</welcome-file>
+        <welcome-file>pages/manageMessage/productPromotionManage/productPromotionManage.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
