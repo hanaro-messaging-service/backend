@@ -1,3 +1,4 @@
+
 var debounceTimer;
 function debounce(func, delay) {
     clearTimeout(debounceTimer); // 타이머를 초기화
@@ -6,47 +7,42 @@ function debounce(func, delay) {
 };
 function sendValueToServlet() {
     var selectedNameValue = document.getElementById('name').value;
-    var selectedAppValue = document.getElementById("app").value;
     var selectedAssetValue = document.getElementById("asset").value;
     var selectedCheckBoxManValue = document.getElementById("man");
     var selectedCheckBoxWomanValue = document.getElementById("woman");
     var selectedCheckBoxPrivacyYes = document.getElementById("privacyYes");
-    var selectedCheckBoxPrivacyNo = document.getElementById("privacyNo");
-    var selectedJobValue = document.getElementById("job").value;
     var selectedPrivateValue = document.getElementById("private").value;
     var selectedAgeValue = document.getElementById("age").value;
-    var selectedAgePartValue = document.getElementById("agepart").value;
     var selectedPeriodValue = document.getElementById('period').value;
-    var selectedCheckBoxMoneyExpYes = document.getElementById('moneyExpYes');
-    var selectedCheckBoxMoneyExpNo = document.getElementById('moneyExpNo');
+    var selectedLocationValue = document.getElementById('location').value;
+    var selectedBranchValue = document.getElementById('branch').value;
+    var selectedCreditValue = document.getElementById("credit").value;
+    var selectedCheckBoxOverdueYes = document.getElementById("overdueYes");
+    var selectedCheckBoxOverdueNo = document.getElementById("overdueNo");
+
     let sentence = "";
     console.log(selectedNameValue);
     sentence += selectedCheckBoxManValue.checked ? "&selectedManValue=" + encodeURIComponent("M") : "";
     sentence += selectedCheckBoxWomanValue.checked ? "&selectedWomanValue="+ encodeURIComponent("F") : "";
+
     sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("Y") : "";
-    sentence += selectedCheckBoxPrivacyNo.checked ? "&selectedPrivacyNoValue=" + encodeURIComponent("N") : "";
-    sentence += selectedJobValue !== "전체" ? "&selectedJobValue=" + encodeURIComponent(selectedJobValue) : "";
     sentence += selectedPrivateValue !=="전체" ? "&selectedPrivateValue=" + encodeURIComponent(selectedPrivateValue) : "";
     sentence += selectedAgeValue !== "전체" ? "&selectedAgeValue=" + encodeURIComponent(selectedAgeValue) : "";
-    sentence += selectedAgePartValue !== "전체"? "&selectedAgePartValue=" + encodeURIComponent(selectedAgePartValue) : "";
     sentence += selectedPeriodValue !== "전체"? "&selectedPeriodValue=" + encodeURIComponent(selectedPeriodValue) : "";
-    sentence += selectedCheckBoxMoneyExpYes.checked ? "&selectedMoneyExpYesValue=" + encodeURIComponent("Y") : "";
-    sentence += selectedCheckBoxMoneyExpNo.checked? "&selectedMoneyExpNoValue=" + encodeURIComponent("N") : "";
     sentence += selectedNameValue ? "&selectedNameValue=" + encodeURIComponent(selectedNameValue) : "";
-    console.log(sentence)
-    if (selectedAppValue === "") {
-        selectedAppValue = "전체";
-    }
-    if (selectedAssetValue === "") {
-        selectedAssetValue = "전체";
-    }
+    sentence += selectedAssetValue ? "&selectedAssetValue=" + encodeURIComponent(selectedAssetValue) : "";
+    sentence += selectedLocationValue ? "&selectedLocationValue=" + encodeURIComponent(selectedLocationValue) : "";
+    sentence += selectedBranchValue ? "&selectedBranchValue=" + encodeURIComponent(selectedBranchValue) : "";
+    sentence += selectedCreditValue !=="전체" ? "&selectedCreditValue=" + encodeURIComponent(selectedCreditValue) : "";
 
+    sentence += selectedCheckBoxOverdueYes.checked ? "&selectedOverdueYes=" + encodeURIComponent("O") : "";
+    sentence += selectedCheckBoxOverdueNo.checked ? "&selectedOverdueNo=" + encodeURIComponent("X") : "";
 
     // AJAX 요청을 사용하여 서블릿에 값 전달
 
     debounce(function(){
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/annoMapping", true);
+        xhr.open("POST", "/OverdueNotificationServlet", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
@@ -71,9 +67,7 @@ function sendValueToServlet() {
         };
 
         // 전송할 데이터를 조합하여 한 번에 전송
-        var requestData = "selectedAppValue=" + encodeURIComponent(selectedAppValue) +
-            "&selectedAssetValue=" + encodeURIComponent(selectedAssetValue) +
-            sentence;
+        var requestData = "selectedTotalValue=" + encodeURIComponent("total")+sentence;
 // 모든 <input> 요소를 비활성화
         var inputElements = document.getElementsByTagName("input");
         for (var i = 0; i < inputElements.length; i++) {
