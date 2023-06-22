@@ -26,6 +26,7 @@
         <param-value>gkskfh1!</param-value>
     </context-param>
     <welcome-file-list>
-        <welcome-file>pages/sendMessage/productPromotionMessage.jsp</welcome-file>
+        <welcome-file>pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp</welcome-file>
+<!--        <welcome-file>pages/sendMessage/productPromotionMessage.jsp</welcome-file>-->
     </welcome-file-list>
 </web-app>
