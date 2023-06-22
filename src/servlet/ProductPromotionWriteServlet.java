@@ -2,6 +2,8 @@ package servlet;
 
 import messageCust.MessageCustoimizeDTO;
 import messageCust.MessageCustomizeDAO;
+import productPromotionPackage.productPromotionWriteDAO;
+import productPromotionPackage.productPromotionWriteDTO;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -22,18 +24,20 @@ public class ProductPromotionWriteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        String selectedManValue = request.getParameter("selectedManValue");
-        String selectedWomanValue = request.getParameter("selectedWomanValue");
-        String selectedPrivacyYesValue = request.getParameter("selectedPrivacyYesValue");
-        String selectedJobValue = request.getParameter("selectedJobValue");
-        String selectedPrivateValue = request.getParameter("selectedPrivateValue");
-        String selectedAgeValue = request.getParameter("selectedAgeValue");
-        String selectedPeriodValue = request.getParameter("selectedPeriodValue");
-        String selectedNameValue = request.getParameter("selectedNameValue");
-        String selectedAppValue = request.getParameter("selectedAppValue");
-        String selectedAssetValue = request.getParameter("selectedAssetValue");
-        String selectedLocationValue = request.getParameter("selectedLocationValue");
-        String selectedBranchValue = request.getParameter("selectedBranchValue");
+        String selectedManValue = request.getParameter("man");
+        String selectedWomanValue = request.getParameter("woman");
+        String selectedPrivacyYesValue = request.getParameter("privacyYes");
+        String selectedJobValue = request.getParameter("job");
+        String selectedPrivateValue = request.getParameter("private");
+        String selectedAgeValue = request.getParameter("age");
+        String selectedPeriodValue = request.getParameter("period");
+        String selectedNameValue = request.getParameter("name");
+        String selectedAppValue = request.getParameter("app");
+        String selectedAssetValue = request.getParameter("asset");
+        String selectedLocationValue = request.getParameter("location");
+        String selectedBranchValue = request.getParameter("branch");
+        String prodNmValue = request.getParameter("prodNm");
+        String mContentsValue = request.getParameter("mContents");
         Map<String, Object> map = new HashMap<>();
         map.put("custNm", selectedNameValue);
         map.put("recLoginDate", selectedAppValue);
@@ -47,12 +51,13 @@ public class ProductPromotionWriteServlet extends HttpServlet {
         map.put("period", selectedPeriodValue);
         map.put("branch",selectedBranchValue);
         map.put("address",selectedLocationValue);
+        map.put("prodNm", prodNmValue);
+        map.put("mContents", mContentsValue);
+
+        productPromotionWriteDAO dao = new productPromotionWriteDAO();
+        dao.selectMessage(map);
 
 
-//        for (Map.Entry<String, Object> entry : map.entrySet()) {
-//            System.out.println(entry.getKey() + ": " + entry.getValue());
-//        }
-
-        response.sendRedirect("/");
+        response.sendRedirect("/pages/manageMessage/productPromotionManage/productPromotionManage.jsp");
     }
 }

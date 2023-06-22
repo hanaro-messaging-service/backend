@@ -17,7 +17,7 @@
         <div class="sidebar-submain">전송</div>
         <div class="sidebar-content"><li>전체 안내 메시지 전송</li></div>
         <div class="sidebar-content"><li>보이스피싱 예방 안내 메시지 잔성</li></div>
-        <div class="sidebar-content"><li>수신 상품 프로모션 메시지 전송</li></div>
+        <div class="sidebar-content"><li><a href="/">수신 상품 프로모션 메시지 전송</a></li></div>
         <div class="sidebar-content"><li>어플 프로모션 메시지 전송</li></div>
         <div class="sidebar-content"><li>상황 관리 안내 메시지 전송</li></div>
         <div class="sidebar-submain">관리</div>
@@ -30,7 +30,7 @@
     <section class="mainComponent">
         <div class="mainComponent-header">
             <div class="mainComponent-header-text">수신상품 메시지 관리</div>
-            <div class="mainComponent-header-button"><a href="pages/manageMessage/productPromotionManage/productPromotionWrite.jsp">새로 만들기</a></div>
+            <div class="mainComponent-header-button"><a href="./productPromotionWrite.jsp">새로 만들기</a></div>
         </div>
         <div class="mainComponent-messageList">
             <div class="mainComponent-messageList-title">제목: 프로모션_하나원큐_에너지챌린지</div>

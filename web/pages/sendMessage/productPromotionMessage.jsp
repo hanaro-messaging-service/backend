@@ -5,8 +5,8 @@
 <html>
 <head>
     <title>하나로 메세지</title>
-    <link rel="stylesheet" href="./productPromotionMessage.css" >
-    <script src="./productPromotionMessage.js"></script>
+    <link rel="stylesheet" href="/pages/sendMessage/productPromotionMessage.css" >
+    <script src="/pages/sendMessage/productPromotionMessage.js"></script>
 </head>
 <body>
 
@@ -25,7 +25,7 @@
         <div class="sidebar-submain">관리</div>
         <div class="sidebar-content"><li>전체 안내 메시지 관리</li></div>
         <div class="sidebar-content"><li>보이스피싱 예방 안내 메시지 관리</li></div>
-        <div class="sidebar-content"><li>수신 상품 프로모션 메시지 관리</li></div>
+        <div class="sidebar-content"><li><a href="pages/manageMessage/productPromotionManage/productPromotionManage.jsp">수신 상품 프로모션 메시지 관리</a></li></div>
         <div class="sidebar-content"><li>어플 프로모션 메시지 관리</li></div>
         <div class="sidebar-content"><li>상황 관리 안내 메시지 관리</li></div>
     </section>
