@@ -19,6 +19,7 @@ import productPromotionPackage.productPromotionMessageDAO;
 public class ProductPromotionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Retrieve the data sent from the JavaScript function
+        System.out.println("hi");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String selectedManValue = request.getParameter("selectedManValue");
@@ -52,6 +53,6 @@ public class ProductPromotionServlet extends HttpServlet {
         productPromotionMessageDAO dao = new productPromotionMessageDAO();
         List<productPromotionMessageDTO> custInfos = dao.selectMessage(map);
         request.setAttribute("custInfos", custInfos);
-        request.getRequestDispatcher("/").forward(request,response);
+        request.getRequestDispatcher("/pages/sendMessage/productPromotionMessage.jsp").forward(request,response);
     }
 }

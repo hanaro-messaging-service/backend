@@ -5,54 +5,43 @@
 <html>
 <head>
     <title>하나로 메세지</title>
-    <link rel="stylesheet" href="/pages/sendMessage/productPromotionMessage.css" >
-    <script src="/pages/sendMessage/productPromotionMessage.js"></script>
+
+    <link rel="stylesheet" href="/pages/manageMessage/productPromotionManage/productPromotionWrite.css" >
+<%--    <script src="/pages/manageMessage/productPromotionManage/productPromotionWrite.js"></script>--%>
 </head>
 <body>
 
 
 <main>
-    <section class="sidebar">
-        <div class="sidebar-main">
-            메시지
-        </div>
-        <div class="sidebar-submain">전송</div>
-        <div class="sidebar-content"><li>전체 안내 메시지 전송</li></div>
-        <div class="sidebar-content"><li>보이스피싱 예방 안내 메시지 잔성</li></div>
-        <div class="sidebar-content"><li>수신 상품 프로모션 메시지 전송</li></div>
-        <div class="sidebar-content"><li>어플 프로모션 메시지 전송</li></div>
-        <div class="sidebar-content"><li>상황 관리 안내 메시지 전송</li></div>
-        <div class="sidebar-submain">관리</div>
-        <div class="sidebar-content"><li>전체 안내 메시지 관리</li></div>
-        <div class="sidebar-content"><li>보이스피싱 예방 안내 메시지 관리</li></div>
-        <div class="sidebar-content"><li><a href="pages/manageMessage/productPromotionManage/productPromotionManage.jsp">수신 상품 프로모션 메시지 관리</a></li></div>
-        <div class="sidebar-content"><li>어플 프로모션 메시지 관리</li></div>
-        <div class="sidebar-content"><li>상황 관리 안내 메시지 관리</li></div>
-    </section>
+    <form action="/ProductPromotionWrite" method="POST" >
     <section class="mainComponent">
         <div class="searchComponent">
             <div class="searchComponent-topBar">
-                <div class="searchComponent-topBar-left">메세지 전송</div>
-                <div class="searchComponent-topBar-right">메세지 전송</div>
+                <div class="searchComponent-topBar-left">
+                    수신 상품 프로모션 메시지 추가
+                </div>
+
             </div>
+
             <div class="searchComponent-titleBar">수신 상품 프로모션 메시지</div>
+
             <div class="searchComponent-searchBar">
                 <div class="searchComponent-searchBar-list">
                     <div class="searchComponent-searchBar-list-key">성별</div>
                     <div class="searchComponent-searchBar-list-value">
                         <div class="checkbox">
-                            <input onchange="sendValueToServlet(this)" type="checkbox" name="성별" value="M" class="flex align-center" id="man">
+                            <input onchange="sendValueToServlet(this)" type="checkbox" name="man" value="M" class="flex align-center" id="man">
                             <div>남자</div>
                         </div>
                         <div class="checkbox">
-                            <input onchange="sendValueToServlet(this)" type="checkbox" name="성별" value="F" id="woman">
+                            <input onchange="sendValueToServlet(this)" type="checkbox" name="woman" value="F" id="woman">
                             <div>여자</div>
                         </div>
                     </div>
                     <div class="searchComponent-searchBar-list-key">개인정보동의여부</div>
                     <div class="searchComponent-searchBar-list-value">
                         <div class="checkbox">
-                            <input  onclick="sendValueToServlet(this)" type="checkbox" name="개인정보" value="Y" class="flex align-center" id="privacyYes">
+                            <input  onclick="sendValueToServlet(this)" type="checkbox" name="privacyYes" value="Y" class="flex align-center" id="privacyYes">
                             <div>동의</div>
                         </div>
                     </div>
@@ -142,7 +131,7 @@
                     </div>
                     <div class="searchComponent-searchBar-list-key">개설지점</div>
                     <div class="searchComponent-searchBar-list-value">
-                        <input value="" type="text" id="branch" oninput="sendValueToServlet(event.target.value)">
+                        <input name="branch" value="" type="text" id="branch" oninput="sendValueToServlet(event.target.value)">
                     </div>
                 </div>
                 <div class="searchComponent-searchBar-list">
@@ -162,80 +151,23 @@
                         </select>
                     </div>
                 </div>
-                <div class="searchComponent-searchBar-list">
-                    <div class="searchComponent-searchBar-list-key">메세지 내용</div>
-                    <div class="searchComponent-searchBar-list-value"></div>
-                    <div class="searchComponent-searchBar-list-key"></div>
-                    <div class="searchComponent-searchBar-list-value"></div>
-                </div>
 
             </div>
 
         </div>
-        <div class="listComponent">
-            <div class="listComponent-topbar">
-                <div class="listComponent-topbar-element">선택</div>
-                <div class="listComponent-topbar-element">이름</div>
-                <div class="listComponent-topbar-element">성별</div>
-                <div class="listComponent-topbar-element">나이</div>
-                <div class="listComponent-topbar-elementMedium">직업</div>
-                <div class="listComponent-topbar-elementMedium">거주지</div>
-                <div class="listComponent-topbar-elementBig">고객등급</div>
-                <div class="listComponent-topbar-elementBig">개설지점</div>
-                <div class="listComponent-topbar-elementBig">가입기간</div>
-                <div class="listComponent-topbar-elementBig">자산</div>
-                <div class="listComponent-topbar-elementBig">개인정보동의</div>
-                <div class="listComponent-topbar-elementBig">어플접속일</div>
-            </div>
-            <div id="resultContainer">
-                <%
-                    List<productPromotionMessageDTO> custInfos = (List<productPromotionMessageDTO>) request.getAttribute("custInfos");
-                    if (custInfos != null) {
-                        for (productPromotionMessageDTO custInfo : custInfos) { %>
-                <div class="listComponent-listbar">
-                    <div class="listComponent-topbar-element bg-white">
-                        <input type="checkbox" checked>
-                    </div>
-                    <div class="listComponent-topbar-element bg-white">
-                        <%= custInfo.getCustNm() %>
-                    </div>
-                    <div class="listComponent-topbar-element bg-white">
-                        <%= custInfo.getGender() %>
-                    </div>
-                    <div class="listComponent-topbar-element bg-white">
-                        <%= custInfo.getAge() %>
-                    </div>
-                    <div class="listComponent-topbar-elementMedium bg-white">
-                        <%= custInfo.getJob()%>
-                    </div>
-                    <div class="listComponent-topbar-elementMedium bg-white">
-                        <%= custInfo.getAddress()%>
-                    </div>
-                    <div class="listComponent-topbar-elementBig bg-white">
-                        <%= custInfo.getCustGrade()%>
-                    </div>
-                    <div class="listComponent-topbar-elementBig bg-white">
-                        <%= custInfo.getBranch() %>
-                    </div>
-                    <div class="listComponent-topbar-elementBig bg-white">
-                        <%= custInfo.getSubTerm()%>
-                    </div>
-                    <div class="listComponent-topbar-elementBig bg-white">
-                        <%= custInfo.getAsset()%>
-                    </div>
-                    <div class="listComponent-topbar-elementBig bg-white">
-                        <%= custInfo.getPrivacy()%>
-                    </div>
-                    <div class="listComponent-topbar-elementBig bg-white">
-                        <%= custInfo.getRecLoginDate()%>
-                    </div>
-                </div>
-                <% } } %>
 
-            </div>
-
+    </section>
+    <section class="textComponent">
+        <div class="searchComponent-topBar-right">메세지 제목</div>
+        <input name="prodNm" class="textComponent-messageInput">
+        <div class="searchComponent-topBar-right">메세지 내용</div>
+        <textarea name="mContents" class="textComponent-titleInput"></textarea>
+        <div class="buttonList">
+            <button class="submitButton" type="submit">저장</button>
+            <a class="cancelButton" href="/">취소</a>
         </div>
     </section>
+        </form>
 </main>
 </body>
 </html>
