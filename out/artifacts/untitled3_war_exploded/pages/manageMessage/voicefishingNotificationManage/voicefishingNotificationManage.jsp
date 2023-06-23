@@ -5,8 +5,8 @@
 <html>
 <head>
     <title>하나로 메세지</title>
-    <link rel="stylesheet" href="/pages/manageMessage/productPromotionManage/productPromotionManage.css" >
-    <script src="/pages/sendMessage/productPromotionMessage.js"></script>
+    <link rel="stylesheet" href="./voicefishingNotificationManage.css" >
+    <script src="./voicefishingNotificationManage.js"></script>
 </head>
 <body>
 
@@ -39,7 +39,7 @@
             List<productPromotionCustomizeDTO> custInfos = dao.selectMessage();
             if (custInfos != null) {
                 for (productPromotionCustomizeDTO custInfo : custInfos)
-             { %>
+                { %>
         <div class="mainComponent-messageList" onclick="modifyMessage([
                 '<%=custInfo.getId() %>',
                 '<%=custInfo.getCustNm() %>',
@@ -61,20 +61,20 @@
             <div class="mainComponent-messageList-title">
                 제목:
                 <%=
-                    custInfo.getProdNm()
+                custInfo.getProdNm()
                 %>
             </div>
             <div class="mainComponent-messageList-content">
                 내용:
                 <%=
-                    custInfo.getMContents()
+                custInfo.getMContents()
                 %>
             </div>
             <input hidden ="" value="<%=custInfo.getId()%>">
         </div>
 
         <%
-            }}
+                }}
         %>
     </section>
 </main>

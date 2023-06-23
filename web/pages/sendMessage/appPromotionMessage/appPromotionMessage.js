@@ -7,18 +7,37 @@ function debounce(func, delay) {
 };
 function sendValueToServlet() {
     var selectedNameValue = document.getElementById('name').value;
+    var selectedAppValue = document.getElementById("app").value;
+    var selectedAssetValue = document.getElementById("asset").value;
+    var selectedCheckBoxManValue = document.getElementById("man");
+    var selectedCheckBoxWomanValue = document.getElementById("woman");
     var selectedCheckBoxPrivacyYes = document.getElementById("privacyYes");
+    var selectedJobValue = document.getElementById("job").value;
+    var selectedPrivateValue = document.getElementById("private").value;
     var selectedAgeValue = document.getElementById("age").value;
+    var selectedPeriodValue = document.getElementById('period').value;
+    console.log(selectedCheckBoxManValue);
+    // var selectedLocationValue = document.getElementById('location').value;
+    // var selectedBranchValue = document.getElementById('branch').value;
     let sentence = "";
     console.log(selectedNameValue);
+    sentence += selectedCheckBoxManValue.checked ? "&selectedManValue=" + encodeURIComponent("M") : "";
+    sentence += selectedCheckBoxWomanValue.checked ? "&selectedWomanValue="+ encodeURIComponent("F") : "";
     sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("Y") : "";
+    sentence += selectedJobValue !== "전체" ? "&selectedJobValue=" + encodeURIComponent(selectedJobValue) : "";
+    sentence += selectedPrivateValue !=="전체" ? "&selectedPrivateValue=" + encodeURIComponent(selectedPrivateValue) : "";
     sentence += selectedAgeValue !== "전체" ? "&selectedAgeValue=" + encodeURIComponent(selectedAgeValue) : "";
+    sentence += selectedPeriodValue !== "전체"? "&selectedPeriodValue=" + encodeURIComponent(selectedPeriodValue) : "";
     sentence += selectedNameValue ? "&selectedNameValue=" + encodeURIComponent(selectedNameValue) : "";
+    sentence += selectedAppValue ? "&selectedAppValue=" + encodeURIComponent(selectedAppValue) : "";
+    sentence += selectedAssetValue ? "&selectedAssetValue=" + encodeURIComponent(selectedAssetValue) : "";
+    // sentence += selectedLocationValue ? "&selectedLocationValue=" + encodeURIComponent(selectedLocationValue) : "";
+    // sentence += selectedBranchValue ? "&selectedBranchValue=" + encodeURIComponent(selectedBranchValue) : "";
     // AJAX 요청을 사용하여 서블릿에 값 전달
 
     debounce(function(){
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/VoiceNotificationServlet", true);
+        xhr.open("POST", "/appPromotionServlet", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {

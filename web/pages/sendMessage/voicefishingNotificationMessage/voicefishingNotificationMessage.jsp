@@ -4,8 +4,8 @@
 <html>
 <head>
     <title>하나로 메세지</title>
-    <link rel="stylesheet" href="pages/sendMessage/voiceNoticeMessage/voiceNoticeMessage.css" >
-    <script src="/pages/sendMessage/voiceNoticeMessage/voiceNoticeMessage.js"></script>
+    <link rel="stylesheet" href="/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.css" >
+    <script src="/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.js"></script>
 </head>
 <body>
 <header>
@@ -13,7 +13,21 @@
 </header>
 <main>
     <section class="sidebar">
-        사이드바
+        <div class="sidebar-main">
+            메시지
+        </div>
+        <div class="sidebar-submain">전송</div>
+        <div class="sidebar-content"><li>전체 안내 메시지 전송</li></div>
+        <div class="sidebar-content"><li><a href="/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.jsp">보이스피싱 예방 안내 메시지 잔성</a></li></div>
+        <div class="sidebar-content"><li><a href="/">수신 상품 프로모션 메시지 전송</a></li></div>
+        <div class="sidebar-content"><li><a href="/pages/sendMessage/appPromotionMessage/appPromotionMessage.jsp">어플 프로모션 메시지 전송</a></li></div>
+        <div class="sidebar-content"><li><a href="/pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp">상황 관리 안내 메시지 전송</a></li></div>
+        <div class="sidebar-submain">관리</div>
+        <div class="sidebar-content"><li>전체 안내 메시지 관리</li></div>
+        <div class="sidebar-content"><li><a href="/pages/manageMessage/voicefishingNotificationManage/voicefishingNotificationManage.jsp"> 보이스피싱 예방 안내 메시지 관리</a></li></div>
+        <div class="sidebar-content"><li><a href="/pages/manageMessage/productPromotionManage/productPromotionManage.jsp">수신 상품 프로모션 메시지 관리</a></li></div>
+        <div class="sidebar-content"><li><a href="/pages/manageMessage/appPromotionManage/appPromotionManage.jsp">어플 프로모션 메시지 관리</a></li></div>
+        <div class="sidebar-content"><li ><a href="/pages/manageMessage/overdueNotificationManage/overdueNotificationManage.jsp">상황 관리 안내 메시지 관리</a></li></div>
     </section>
     <section class="mainComponent">
         <div class="searchComponent">

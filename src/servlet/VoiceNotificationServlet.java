@@ -37,6 +37,6 @@ public class VoiceNotificationServlet extends HttpServlet {
         voicefishingNotificationDAO dao = new voicefishingNotificationDAO();
         List<voicefishingNotificationDTO> custInfos = dao.selectMessage(map);
         request.setAttribute("custInfos", custInfos);
-        request.getRequestDispatcher("/").forward(request,response);
+        request.getRequestDispatcher("/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.jsp").forward(request,response);
     }
 }

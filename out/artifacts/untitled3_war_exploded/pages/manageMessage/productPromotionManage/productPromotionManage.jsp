@@ -18,16 +18,16 @@
         </div>
         <div class="sidebar-submain">전송</div>
         <div class="sidebar-content"><li>전체 안내 메시지 전송</li></div>
-        <div class="sidebar-content"><li>보이스피싱 예방 안내 메시지 잔성</li></div>
+        <div class="sidebar-content"><li><a href="/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.jsp">보이스피싱 예방 안내 메시지 잔성</a></li></div>
         <div class="sidebar-content"><li><a href="/">수신 상품 프로모션 메시지 전송</a></li></div>
-        <div class="sidebar-content"><li>어플 프로모션 메시지 전송</li></div>
-        <div class="sidebar-content"><li>상황 관리 안내 메시지 전송</li></div>
+        <div class="sidebar-content"><li><a href="/pages/sendMessage/appPromotionMessage/appPromotionMessage.jsp">어플 프로모션 메시지 전송</a></li></div>
+        <div class="sidebar-content"><li><a href="/pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp">상황 관리 안내 메시지 전송</a></li></div>
         <div class="sidebar-submain">관리</div>
         <div class="sidebar-content"><li>전체 안내 메시지 관리</li></div>
-        <div class="sidebar-content"><li>보이스피싱 예방 안내 메시지 관리</li></div>
-        <div class="sidebar-content"><li>수신 상품 프로모션 메시지 관리</li></div>
-        <div class="sidebar-content"><li>어플 프로모션 메시지 관리</li></div>
-        <div class="sidebar-content"><li>상황 관리 안내 메시지 관리</li></div>
+        <div class="sidebar-content"><li><a href="/pages/manageMessage/voicefishingNotificationManage/voicefishingNotificationManage.jsp"> 보이스피싱 예방 안내 메시지 관리</a></li></div>
+        <div class="sidebar-content"><li><a href="/pages/manageMessage/productPromotionManage/productPromotionManage.jsp">수신 상품 프로모션 메시지 관리</a></li></div>
+        <div class="sidebar-content"><li><a href="/pages/manageMessage/appPromotionManage/appPromotionManage.jsp">어플 프로모션 메시지 관리</a></li></div>
+        <div class="sidebar-content"><li ><a href="/pages/manageMessage/overdueNotificationManage/overdueNotificationManage.jsp">상황 관리 안내 메시지 관리</a></li></div>
     </section>
     <section class="mainComponent">
         <div class="mainComponent-header">

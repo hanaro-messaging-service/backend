@@ -144,7 +144,6 @@ main {
 }
 .listComponent{
     margin-top: 3vh;
-    /*margin-right: 10vw;*/
     width:95%;
     height:65vh;
     display: flex;
@@ -168,7 +167,7 @@ main {
     align-items: center;
     justify-content: center;
     color:white;
-    width:6%;
+    width:9%;
     background-color: #008485;
     height:3vh;
     font-size: 0.7rem;
@@ -190,7 +189,7 @@ main {
     align-items: center;
     justify-content: center;
     color:white;
-    width:14%;
+    width:11%;
     background-color: #008485;
     height:3vh;
     font-size: 0.7rem;
