@@ -16,6 +16,7 @@ function sendValueToServlet() {
     var selectedPrivateValue = document.getElementById("private").value;
     var selectedAgeValue = document.getElementById("age").value;
     var selectedPeriodValue = document.getElementById('period').value;
+    console.log(selectedCheckBoxManValue);
     // var selectedLocationValue = document.getElementById('location').value;
     // var selectedBranchValue = document.getElementById('branch').value;
     let sentence = "";
