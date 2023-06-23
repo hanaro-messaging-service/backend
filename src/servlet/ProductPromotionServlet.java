@@ -19,6 +19,7 @@ import productPromotionPackage.productPromotionMessageDAO;
 public class ProductPromotionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Retrieve the data sent from the JavaScript function
+        System.out.println("hi");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String selectedManValue = request.getParameter("selectedManValue");

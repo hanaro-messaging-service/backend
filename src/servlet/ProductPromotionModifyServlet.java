@@ -1,20 +1,17 @@
 package servlet;
 
-import messageCust.MessageCustoimizeDTO;
-import messageCust.MessageCustomizeDAO;
+import productPromotionPackage.productPromotionModifyDAO;
 import productPromotionPackage.productPromotionWriteDAO;
-import productPromotionPackage.productPromotionWriteDTO;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.List;
-@WebServlet("/ProductPromotionWrite")
-public class ProductPromotionWriteServlet extends HttpServlet {
+
+@WebServlet("/productPromotionModifyServlet")
+public class ProductPromotionModifyServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -31,13 +28,15 @@ public class ProductPromotionWriteServlet extends HttpServlet {
         String selectedPrivateValue = request.getParameter("private");
         String selectedAgeValue = request.getParameter("age");
         String selectedPeriodValue = request.getParameter("period");
-        String selectedNameValue = request.getParameter("name");
+        String selectedNameValue = request.getParameter("custNm");
         String selectedAppValue = request.getParameter("app");
         String selectedAssetValue = request.getParameter("asset");
         String selectedLocationValue = request.getParameter("location");
         String selectedBranchValue = request.getParameter("branch");
         String prodNmValue = request.getParameter("prodNm");
         String mContentsValue = request.getParameter("mContents");
+        String tableId = request.getParameter("tableId");
+        System.out.println("servlet"+tableId);
         Map<String, Object> map = new HashMap<>();
         map.put("custNm", selectedNameValue);
         map.put("recLoginDate", selectedAppValue);
@@ -53,12 +52,10 @@ public class ProductPromotionWriteServlet extends HttpServlet {
         map.put("address",selectedLocationValue);
         map.put("prodNm", prodNmValue);
         map.put("mContents", mContentsValue);
-
-        productPromotionWriteDAO dao = new productPromotionWriteDAO();
+        map.put("tableId", tableId);
+        productPromotionModifyDAO dao = new productPromotionModifyDAO();
         dao.selectMessage(map);
-
-
-        response.sendRedirect("/pages/manageMessage/productPromotionManage/productPromotionManage.jsp");
-
+//        request.getRequestDispatcher("/pages/manageMessage/productPromotionManage/productPromotionModify.jsp").forward(request,response);
+//        response.sendRedirect("/pages/manageMessage/productPromotionManage/productPromotionModify.jsp");
     }
 }

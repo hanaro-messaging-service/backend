@@ -3,11 +3,10 @@ package productPromotionPackage;
 import common.DBConnPool;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.Map;
 
-public class productPromotionWriteDAO extends DBConnPool {
-    public productPromotionWriteDAO() {
+public class productPromotionModifyDAO extends DBConnPool {
+    public productPromotionModifyDAO() {
         super();
     }
 
@@ -29,9 +28,11 @@ public class productPromotionWriteDAO extends DBConnPool {
         String recLoginDate = (String) map.get("recLoginDate");
         String prodNm = (String)map.get("prodNm");
         String mContents = (String)map.get("mContents");
-        System.out.println(mContents);
-        String query = "INSERT INTO prod_promo_message (custNm, gender, age, job, address, custGrade, branch, subTerm, asset, privacy, recLoginDate,prodNm,mContents) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String tableId = (String)map.get("tableId");
+        System.out.println("DAO"+tableId);
+        String query = "UPDATE prod_promo_message SET custNm = ?, gender = ?, age = ?, job = ?, address = ?," +
+                "custGrade = ?, branch = ?, subTerm = ?, asset = ?, privacy = ?, recLoginDate = ?," +
+                "prodNm = ?, mContents = ? WHERE id = ?";
 
         try (PreparedStatement pstmt = con.prepareStatement(query)) {
             pstmt.setString(1, custNm);
@@ -47,7 +48,8 @@ public class productPromotionWriteDAO extends DBConnPool {
             pstmt.setString(11, recLoginDate);
             pstmt.setString(12,prodNm);
             pstmt.setString(13,mContents);
-
+            pstmt.setString(14,tableId);
+            System.out.println(pstmt);
             pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

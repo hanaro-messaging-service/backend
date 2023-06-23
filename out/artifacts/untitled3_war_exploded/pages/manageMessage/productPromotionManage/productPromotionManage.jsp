@@ -1,5 +1,7 @@
+<%@ page import="productPromotionPackage.productPromotionCustomizeDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
+<%@ page import="productPromotionPackage.productPromotionCustomizeDAO" %>
 <html>
 <head>
     <title>하나로 메세지</title>
@@ -32,35 +34,87 @@
             <div class="mainComponent-header-text">수신상품 메시지 관리</div>
             <div class="mainComponent-header-button"><a href="./productPromotionWrite.jsp">새로 만들기</a></div>
         </div>
-        <div class="mainComponent-messageList">
-            <div class="mainComponent-messageList-title">제목: 프로모션_하나원큐_에너지챌린지</div>
+        <%
+            productPromotionCustomizeDAO dao = new productPromotionCustomizeDAO();
+            List<productPromotionCustomizeDTO> custInfos = dao.selectMessage();
+            if (custInfos != null) {
+                for (productPromotionCustomizeDTO custInfo : custInfos)
+             { %>
+        <div class="mainComponent-messageList" onclick="modifyMessage([
+                '<%=custInfo.getId() %>',
+                '<%=custInfo.getCustNm() %>',
+                '<%=custInfo.getGender() %>',
+                '<%=custInfo.getAge() %>',
+                '<%=custInfo.getJob() %>',
+                '<%=custInfo.getAddress() %>',
+                '<%=custInfo.getCustGrade() %>',
+                '<%=custInfo.getBranch() %>',
+                '<%=custInfo.getSubTerm() %>',
+                '<%=custInfo.getAsset() %>',
+                '<%=custInfo.getPrivacy() %>',
+                '<%=custInfo.getRecLoginDate() %>',
+                '<%=custInfo.getProdNm() %>',
+                '<%=custInfo.getMContents() %>',
+                '<%=custInfo.getId()%>'
+                ])">
+
+            <div class="mainComponent-messageList-title">
+                제목:
+                <%=
+                    custInfo.getProdNm()
+                %>
+            </div>
             <div class="mainComponent-messageList-content">
-                내용:모든 국민은 건강하고 쾌적한 환경에서 생활할 권리를 가지며, 국가와 국민은 환경보전을 위하여 노력하여야 한다. 비상계엄이 선포된 때에는 법률이 정하는 바에 의하여 영장제도, 언론·출판·집회·결사의 자유, 정부나 법원의 권한에 관하여 특별한 조치를 할 수 있다.
-
-                국회의원은 그 지위를 남용하여 국가·공공단체 또는 기업체와의 계약이나 그 처분에 의하여 재산상의 권리·이익 또는 직위를 취득하거나 타인을 위하여 그 취득을 알선할 수 없다.모든 국민은 건강하고 쾌적한 환경에서 생활할 권리를 가지며, 국가와 국민은 환경보전을 위하여 노력하여야 한다. 비상계엄이 선포된 때에는 법률이 정하는 바에 의하여 영장제도, 언론·출판·집회·결사의 자유, 정부나 법원의 권한에 관하여 특별한 조치를 할 수 있다.
-
-                국회의원은 그 지위를 남용하여 국가·공공단체 또는 기업체와의 계약이나 그 처분에 의하여 재산상의 권리·이익 또는 직위를 취득하거나 타인을 위하여 그 취득을 알선할 수 없다.</div>
-        </div>
-        <div class="mainComponent-messageList">
-            <div class="mainComponent-messageList-title">제목: 프로모션_하나원큐_에너지챌린지</div>
-            <div class="mainComponent-messageList-content">
-                내용:모든 국민은 건강하고 쾌적한 환경에서 생활할 권리를 가지며, 국가와 국민은 환경보전을 위하여 노력하여야 한다. 비상계엄이 선포된 때에는 법률이 정하는 바에 의하여 영장제도, 언론·출판·집회·결사의 자유, 정부나 법원의 권한에 관하여 특별한 조치를 할 수 있다.
-
-                국회의원은 그 지위를 남용하여 국가·공공단체 또는 기업체와의 계약이나 그 처분에 의하여 재산상의 권리·이익 또는 직위를 취득하거나 타인을 위하여 그 취득을 알선할 수 없다.모든 국민은 건강하고 쾌적한 환경에서 생활할 권리를 가지며, 국가와 국민은 환경보전을 위하여 노력하여야 한다. 비상계엄이 선포된 때에는 법률이 정하는 바에 의하여 영장제도, 언론·출판·집회·결사의 자유, 정부나 법원의 권한에 관하여 특별한 조치를 할 수 있다.
-
-                국회의원은 그 지위를 남용하여 국가·공공단체 또는 기업체와의 계약이나 그 처분에 의하여 재산상의 권리·이익 또는 직위를 취득하거나 타인을 위하여 그 취득을 알선할 수 없다.</div>
-        </div>
-        <div class="mainComponent-messageList">
-            <div class="mainComponent-messageList-title">제목: 프로모션_하나원큐_에너지챌린지</div>
-            <div class="mainComponent-messageList-content">
-                내용:모든 국민은 건강하고 쾌적한 환경에서 생활할 권리를 가지며, 국가와 국민은 환경보전을 위하여 노력하여야 한다. 비상계엄이 선포된 때에는 법률이 정하는 바에 의하여 영장제도, 언론·출판·집회·결사의 자유, 정부나 법원의 권한에 관하여 특별한 조치를 할 수 있다.
-
-                국회의원은 그 지위를 남용하여 국가·공공단체 또는 기업체와의 계약이나 그 처분에 의하여 재산상의 권리·이익 또는 직위를 취득하거나 타인을 위하여 그 취득을 알선할 수 없다.모든 국민은 건강하고 쾌적한 환경에서 생활할 권리를 가지며, 국가와 국민은 환경보전을 위하여 노력하여야 한다. 비상계엄이 선포된 때에는 법률이 정하는 바에 의하여 영장제도, 언론·출판·집회·결사의 자유, 정부나 법원의 권한에 관하여 특별한 조치를 할 수 있다.
-
-                국회의원은 그 지위를 남용하여 국가·공공단체 또는 기업체와의 계약이나 그 처분에 의하여 재산상의 권리·이익 또는 직위를 취득하거나 타인을 위하여 그 취득을 알선할 수 없다.</div>
+                내용:
+                <%=
+                    custInfo.getMContents()
+                %>
+            </div>
+            <input hidden ="" value="<%=custInfo.getId()%>">
         </div>
 
+        <%
+            }}
+        %>
     </section>
 </main>
+<script>
+    function modifyMessage(custInfo) {
+        // AJAX 요청을 사용하여 JSP로 데이터 전송
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/productPromotionModifyServlet', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        // 전송할 데이터를 쿼리스트링 형식으로 만듭니다.
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    window.location.href = "/pages/manageMessage/productPromotionManage/productPromotionModify.jsp?id=" + encodeURIComponent(custInfo[0]) +
+                        "&custNm=" + encodeURIComponent(custInfo[1]) +
+                        "&gender=" + encodeURIComponent(custInfo[2]) +
+                        "&age=" + encodeURIComponent(custInfo[3]) +
+                        "&job=" + encodeURIComponent(custInfo[4]) +
+                        "&location=" + encodeURIComponent(custInfo[5]) +
+                        "&custGrade=" + encodeURIComponent(custInfo[6]) +
+                        "&branch=" + encodeURIComponent(custInfo[7]) +
+                        "&period=" + encodeURIComponent(custInfo[8]) +
+                        "&asset=" + encodeURIComponent(custInfo[9]) +
+                        "&privacyYes=" + encodeURIComponent(custInfo[10]) +
+                        "&app=" + encodeURIComponent(custInfo[11]) +
+                        "&prodNm=" + encodeURIComponent(custInfo[12]) +
+                        "&mContents=" + encodeURIComponent(custInfo[13]) +
+                        "&id=" + encodeURIComponent(custInfo[14]);
+                } else {
+
+                }
+            }
+        };
+        // 데이터를 전송합니다.
+        xhr.send();
+        // 페이지 리디렉션
+
+    }
+</script>
 </body>
 </html>
