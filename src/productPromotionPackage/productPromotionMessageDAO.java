@@ -72,31 +72,25 @@ public class productPromotionMessageDAO extends DBConnPool {
         String man = (String) map.get("man");
         String woman = (String) map.get("woman");
         query = gender.addGenderCondition(query, man, woman);
-        System.out.println(("age들어가니"));
         String age = (String) map.get("age");
         query = ageFilter.addAgeFilterCondition(query,age);
-        System.out.println(("age들어가니2"));
         String job = (String) map.get("job");
         query = jobFilter.addJobCondition(query,job);
         String address =(String) map.get("address");
-        System.out.println("address"+address);
         query = addressFilter.addAddressFilterCondition(query,address);
         String custGrade = (String) map.get("private");
-        System.out.println(custGrade+"custGrade");
         query = privateRate.addPrivateRateCondition(query,custGrade);
         String branch = (String) map.get("branch");
         query = branchFilter.addBranchFilterCondition(query,branch);
         String subTerm = (String) map.get("period");
         query = periodFilter.addPeriodFilterCondition(query,subTerm);
         String asset = (String) map.get("asset");
-        System.out.println(asset);
         query = assetFilter.addAssetFilterCondition(query,asset);
         String privacy = (String) map.get("privacy");
         query = privacyFilter.addPrivacyFilterCondition(query,privacy);
         String recLoginDate = (String) map.get("recLoginDate");
         query = recLogindateFilter.addDateRangeFilterCondition(query,recLoginDate);
 
-        System.out.println(query);
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
             ResultSet rs = pstmt.executeQuery();

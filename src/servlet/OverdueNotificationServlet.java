@@ -63,6 +63,6 @@ public class OverdueNotificationServlet extends HttpServlet {
         overdueNotificationDAO dao = new overdueNotificationDAO();
         List<overdueNotificationDTO> custInfos = dao.selectMessage(map);
         request.setAttribute("custInfos", custInfos);
-        request.getRequestDispatcher("/").forward(request,response); // 상대주소로 변경 완료
+        request.getRequestDispatcher("pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp").forward(request,response); // 상대주소로 변경 완료
     }
 }
