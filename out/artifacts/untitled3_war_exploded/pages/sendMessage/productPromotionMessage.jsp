@@ -166,9 +166,9 @@
                 </div>
                 <div class="searchComponent-searchBar-list">
                     <div class="searchComponent-searchBar-list-key">메세지 내용</div>
-                    <div class="searchComponent-searchBar-list-value"><textarea id="mContents">
+                    <div class="searchComponent-searchBar-list-value"><input type="text" id="mContents">
 
-                    </textarea></div>
+                </div>
                     <div class="searchComponent-searchBar-list-key"></div>
                     <div class="searchComponent-searchBar-list-value"></div>
                 </div>
@@ -176,6 +176,42 @@
             </div>
 
         </div>
+        <form method="post" action="/pages/email/sendEmail.jsp">
+            <table border=1>
+                <tr>
+                    <td>
+                        보내는 사람 : <input type="text" name="from" value="hanaromessage@naver.com" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        받는 사람 : <input type="text" name="to" value="hanaromessage@naver.com" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        제목 : <input type="text" name="subject" size="50" value="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        형식 :
+                        <input type="radio" name="format" value="text" checked />Text
+                        <input type="radio" name="format" value="html" />HTML
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea name="content" cols="60" rows="10"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit">전송하기</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
         <div class="myMessage">
             <div>마이메세지</div>
 

@@ -22,5 +22,7 @@
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="library" name="mysql-connector-j-8.0.33" level="project" />
     <orderEntry type="library" name="gson-2.8.6" level="project" />
+    <orderEntry type="library" name="activation-1.1.1" level="project" />
+    <orderEntry type="library" name="mail-1.4.7" level="project" />
   </component>
 </module>
