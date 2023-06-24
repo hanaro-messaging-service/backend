@@ -137,7 +137,7 @@
                 <div class="searchComponent-searchBar-list">
                     <div class="searchComponent-searchBar-list-key">이름</div>
                     <div class="searchComponent-searchBar-list-value">
-                        <input value="" type="text" id="name" oninput="sendValueToServlet(event.target.value)">
+                        <input value="" type="text" name="name" id="name" oninput="sendValueToServlet(event.target.value)">
                     </div>
                     <div class="searchComponent-searchBar-list-key">상품명</div>
                     <div class="searchComponent-searchBar-list-value">

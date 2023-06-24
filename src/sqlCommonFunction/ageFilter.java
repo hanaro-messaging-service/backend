@@ -39,7 +39,7 @@ public class ageFilter {
             }
 
             if (upperBound / 10 < 1) {
-                query += " AND (SUBSTRING(cust_info.residentNo, 1, 2) >= '95' AND SUBSTRING(cust_info.residentNo, 1, 2) <= '99') OR (SUBSTRING(cust_info.residentNo, 1, 2) >= '00' AND SUBSTRING(cust_info.residentNo, 1, 2) <= '04')";
+                query += " AND (SUBSTRING(cust_info.residentNo, 1, 2) >= '95' AND SUBSTRING(cust_info.residentNo, 1, 2) <= '99' OR (SUBSTRING(cust_info.residentNo, 1, 2) >= '00' AND SUBSTRING(cust_info.residentNo, 1, 2) <= '04'))";
             } else {
                 query += " AND SUBSTRING(cust_info.residentNo, 1, 2) >= '" + String.format("%02d", lowerBound) + "' AND SUBSTRING(cust_info.residentNo, 1, 2) <= '" + String.format("%02d", upperBound) + "'";
             }
