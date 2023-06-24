@@ -109,6 +109,6 @@ function modifyMessage(values) {
     document.getElementById("branch").value = branch;
     document.getElementById("name").value = custNm;
     document.getElementById("mContents" ).value = mContents;
-    
+
     sendValueToServlet()
 }
