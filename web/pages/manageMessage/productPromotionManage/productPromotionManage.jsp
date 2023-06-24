@@ -86,7 +86,6 @@
 <script>
     function modifyMessage(custInfo) {
         // AJAX 요청을 사용하여 JSP로 데이터 전송
-        e.stopImmediatePropagation();
         var xhr = new XMLHttpRequest();
         xhr.open('POST', '/productPromotionModifyServlet', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
