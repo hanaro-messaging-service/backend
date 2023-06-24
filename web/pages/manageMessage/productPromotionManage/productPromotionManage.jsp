@@ -40,7 +40,11 @@
             if (custInfos != null) {
                 for (productPromotionCustomizeDTO custInfo : custInfos)
              { %>
-        <div class="mainComponent-messageList" onclick="modifyMessage([
+        <form  style="z-index:999999; position: relative; top: 6%; right: -40%;" method="POST" action="/productPromotionDeleteServlet">
+            <input name="tableId"  hidden="" value="<%=custInfo.getId()%>">
+            <button style="width:100px;height:30px"style="width:100px;height:20%" type="submit">삭제</button>
+        </form>
+        <div class="mainComponent-messageList" style="position:relative" onclick="modifyMessage([
                 '<%=custInfo.getId() %>',
                 '<%=custInfo.getCustNm() %>',
                 '<%=custInfo.getGender() %>',
@@ -70,7 +74,8 @@
                     custInfo.getMContents()
                 %>
             </div>
-            <input hidden ="" value="<%=custInfo.getId()%>">
+
+
         </div>
 
         <%
@@ -81,6 +86,7 @@
 <script>
     function modifyMessage(custInfo) {
         // AJAX 요청을 사용하여 JSP로 데이터 전송
+        e.stopImmediatePropagation();
         var xhr = new XMLHttpRequest();
         xhr.open('POST', '/productPromotionModifyServlet', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
