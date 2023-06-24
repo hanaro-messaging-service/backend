@@ -2,6 +2,8 @@
 <%@ page import="productPromotionPackage.productPromotionMessageDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
+<%@ page import="productPromotionPackage.productPromotionCustomizeDAO" %>
+<%@ page import="productPromotionPackage.productPromotionCustomizeDTO" %>
 <html>
 <head>
     <title>하나로 메세지</title>
@@ -164,13 +166,57 @@
                 </div>
                 <div class="searchComponent-searchBar-list">
                     <div class="searchComponent-searchBar-list-key">메세지 내용</div>
-                    <div class="searchComponent-searchBar-list-value"></div>
+                    <div class="searchComponent-searchBar-list-value"><textarea id="mContents">
+
+                    </textarea></div>
                     <div class="searchComponent-searchBar-list-key"></div>
                     <div class="searchComponent-searchBar-list-value"></div>
                 </div>
 
             </div>
 
+        </div>
+        <div class="myMessage">
+            <div>마이메세지</div>
+
+            <div class="myMessage-list">
+                <%
+                    productPromotionCustomizeDAO dao = new productPromotionCustomizeDAO();
+                    List<productPromotionCustomizeDTO> infos = dao.selectMessage();
+                    if (infos != null) {
+                        for (productPromotionCustomizeDTO custInfo : infos)
+                        { %>
+                <div class="myMessage-list-element" style="position:relative" onclick="modifyMessage([
+                        '<%=custInfo.getId() %>',
+                        '<%=custInfo.getCustNm() %>',
+                        '<%=custInfo.getGender() %>',
+                        '<%=custInfo.getAge() %>',
+                        '<%=custInfo.getJob() %>',
+                        '<%=custInfo.getAddress() %>',
+                        '<%=custInfo.getCustGrade() %>',
+                        '<%=custInfo.getBranch() %>',
+                        '<%=custInfo.getSubTerm() %>',
+                        '<%=custInfo.getAsset() %>',
+                        '<%=custInfo.getPrivacy() %>',
+                        '<%=custInfo.getRecLoginDate() %>',
+                        '<%=custInfo.getProdNm() %>',
+                        '<%=custInfo.getMContents() %>',
+                        '<%=custInfo.getId()%>'
+                        ])">
+
+                    <div class="mainComponent-messageList-title">
+                        제목:
+                        <%=
+                        custInfo.getProdNm()
+                        %>
+                    </div>
+
+                </div>
+
+                <%
+                        }}
+                %>
+            </div>
         </div>
         <div class="listComponent">
             <div class="listComponent-topbar">
@@ -237,5 +283,9 @@
         </div>
     </section>
 </main>
+<script>
+
+
+</script>
 </body>
 </html>
