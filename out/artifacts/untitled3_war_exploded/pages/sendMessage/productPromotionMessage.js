@@ -22,7 +22,7 @@ function sendValueToServlet() {
     console.log(selectedNameValue);
     sentence += selectedCheckBoxManValue.checked ? "&selectedManValue=" + encodeURIComponent("M") : "";
     sentence += selectedCheckBoxWomanValue.checked ? "&selectedWomanValue="+ encodeURIComponent("F") : "";
-    sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("Y") : "";
+    sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("O") : "";
     sentence += selectedJobValue !== "전체" ? "&selectedJobValue=" + encodeURIComponent(selectedJobValue) : "";
     sentence += selectedPrivateValue !=="전체" ? "&selectedPrivateValue=" + encodeURIComponent(selectedPrivateValue) : "";
     sentence += selectedAgeValue !== "전체" ? "&selectedAgeValue=" + encodeURIComponent(selectedAgeValue) : "";
@@ -98,7 +98,7 @@ function modifyMessage(values) {
     // 각 요소에 값 설정
     document.getElementById("man").checked = gender[0] === "M";
     document.getElementById("woman").checked = gender[1] === "F";
-    document.getElementById("privacyYes").checked = privacy === "Y";
+    document.getElementById("privacyYes").checked = privacy === "O";
     document.getElementById("age").value = age;
     document.getElementById("job").value = job;
     document.getElementById("private").value = custGrade;

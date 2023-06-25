@@ -11,7 +11,7 @@ function sendValueToServlet() {
     var selectedAgeValue = document.getElementById("age").value;
     let sentence = "";
     console.log(selectedNameValue);
-    sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("Y") : "";
+    sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("O") : "";
     sentence += selectedAgeValue !== "전체" ? "&selectedAgeValue=" + encodeURIComponent(selectedAgeValue) : "";
     sentence += selectedNameValue ? "&selectedNameValue=" + encodeURIComponent(selectedNameValue) : "";
     // AJAX 요청을 사용하여 서블릿에 값 전달
