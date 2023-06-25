@@ -13,6 +13,9 @@ public class addressFilter {
                 case "충청도":
                     query += " AND cust_info.address = '충청도'";
                     break;
+                case "경상도":
+                    query += " AND cust_info.address = '경상도'";
+                    break;
                 case "전라도":
                     query += " AND cust_info.address = '전라도'";
                     break;

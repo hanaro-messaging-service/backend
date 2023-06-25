@@ -35,11 +35,11 @@
         <div class="partition4 flex1 align-center justify-center">개인정보동의</div>
         <div class="partition6 flex1 align-center justify-evenly">
           <div class="flex align-center">
-            <input name="privacyYes" onclick="sendValueToServlet(this)" type="checkbox" name="개인정보" value="Y" class="flex align-center" id="privacyYes">
+            <input name="privacyYes" onclick="sendValueToServlet(this)" type="checkbox" name="개인정보" value="O" class="flex align-center" id="privacyYes">
             <div>동의</div>
           </div>
           <div class="flex align-center">
-            <input name="privacyNo" onclick="sendValueToServlet(this)" type="checkbox" name="개인정보" value="N" id="privacyNo">
+            <input name="privacyNo" onclick="sendValueToServlet(this)" type="checkbox" name="개인정보" value="X" id="privacyNo">
             <div>비동의</div>
           </div>
         </div>
@@ -149,11 +149,11 @@
         <div class="partition4 flex align-center justify-center" >연체 여부</div>
         <div class="partition6 flex align-center justify-evenly">
           <div class="flex align-center">
-            <input name="moneyExpYes" id="moneyExpYes" onclick="sendValueToServlet(this)" type="checkbox" name="money_exp" value="Y" class="flex align-center">
+            <input name="moneyExpYes" id="moneyExpYes" onclick="sendValueToServlet(this)" type="checkbox" name="money_exp" value="O" class="flex align-center">
             <div>있음</div>
           </div>
           <div class="flex align-center">
-            <input name="moneyExpNo" id="moneyExpNo" onclick="sendValueToServlet(this)" type="checkbox" name="money_exp" value="N">
+            <input name="moneyExpNo" id="moneyExpNo" onclick="sendValueToServlet(this)" type="checkbox" name="money_exp" value="X">
             <div>없음</div>
           </div>
 

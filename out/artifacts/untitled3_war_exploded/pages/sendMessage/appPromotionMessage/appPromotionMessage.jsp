@@ -26,7 +26,7 @@
     </div>
     <div class="sidebar-submain">전송</div>
     <div class="sidebar-content"><li>전체 안내 메시지 전송</li></div>
-    <div class="sidebar-content"><li><a href="/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.jsp">보이스피싱 예방 안내 메시지 잔성</a></li></div>
+    <div class="sidebar-content"><li><a href="/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.jsp">보이스피싱 예방 안내 메시지 전송</a></li></div>
     <div class="sidebar-content"><li><a href="/">수신 상품 프로모션 메시지 전송</a></li></div>
     <div class="sidebar-content"><li><a href="/pages/sendMessage/appPromotionMessage/appPromotionMessage.jsp">어플 프로모션 메시지 전송</a></li></div>
     <div class="sidebar-content"><li><a href="/pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp">상황 관리 안내 메시지 전송</a></li></div>
@@ -43,7 +43,7 @@
         <div class="searchComponent-topBar-left">메세지 관리</div>
         <div class="searchComponent-topBar-right">메세지 전송</div>
       </div>
-      <div class="searchComponent-titleBar">수신 상품 프로모션 메시지</div>
+      <div class="searchComponent-titleBar">어플 프로모션 메시지</div>
       <div class="searchComponent-searchBar">
         <div class="searchComponent-searchBar-list">
           <div class="searchComponent-searchBar-list-key">성별</div>
@@ -60,7 +60,7 @@
           <div class="searchComponent-searchBar-list-key">개인정보동의여부</div>
           <div class="searchComponent-searchBar-list-value">
             <div class="checkbox">
-              <input  onclick="sendValueToServlet(this)" type="checkbox" name="개인정보" value="Y" class="flex align-center" id="privacyYes">
+              <input  onclick="sendValueToServlet(this)" type="checkbox" name="개인정보" value="O" class="flex align-center" id="privacyYes">
               <div>동의</div>
             </div>
           </div>

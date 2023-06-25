@@ -29,8 +29,8 @@ public class ageFilter {
                     upperBound = Integer.parseInt(getResidentNoFromAge(60).substring(0, 2));
                     break;
                 case "70대 이상":
-                    lowerBound = Integer.parseInt(getResidentNoFromAge(Integer.MAX_VALUE).substring(0, 2));
-                    upperBound = 70;
+                    lowerBound = Integer.parseInt(getResidentNoFromAge(99).substring(0, 2));
+                    upperBound = Integer.parseInt(getResidentNoFromAge(70).substring(0, 2));
                     break;
                 default:
                     lowerBound = 0;

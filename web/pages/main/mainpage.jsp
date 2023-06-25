@@ -48,11 +48,11 @@
             <div class="partition4 flex1 align-center justify-center">개인정보동의</div>
             <div class="partition6 flex1 align-center justify-evenly">
                 <div class="flex align-center">
-                    <input  onclick="sendValueToServlet(this)" type="checkbox" name="개인정보" value="Y" class="flex align-center" id="privacyYes">
+                    <input  onclick="sendValueToServlet(this)" type="checkbox" name="개인정보" value="O" class="flex align-center" id="privacyYes">
                     <div>동의</div>
                 </div>
                 <div class="flex align-center">
-                    <input onclick="sendValueToServlet(this)" type="checkbox" name="개인정보" value="N" id="privacyNo">
+                    <input onclick="sendValueToServlet(this)" type="checkbox" name="개인정보" value="X" id="privacyNo">
                     <div>비동의</div>
                 </div>
             </div>
