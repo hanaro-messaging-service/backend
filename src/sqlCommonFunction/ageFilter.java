@@ -29,8 +29,8 @@ public class ageFilter {
                     upperBound = Integer.parseInt(getResidentNoFromAge(60).substring(0, 2));
                     break;
                 case "70대 이상":
-                    lowerBound = Integer.parseInt(getResidentNoFromAge(Integer.MAX_VALUE).substring(0, 2));
-                    upperBound = 70;
+                    lowerBound = Integer.parseInt(getResidentNoFromAge(99).substring(0, 2));
+                    upperBound = Integer.parseInt(getResidentNoFromAge(70).substring(0, 2));
                     break;
                 default:
                     lowerBound = 0;
@@ -39,7 +39,7 @@ public class ageFilter {
             }
 
             if (upperBound / 10 < 1) {
-                query += " AND (SUBSTRING(cust_info.residentNo, 1, 2) >= '95' AND SUBSTRING(cust_info.residentNo, 1, 2) <= '99') OR (SUBSTRING(cust_info.residentNo, 1, 2) >= '00' AND SUBSTRING(cust_info.residentNo, 1, 2) <= '04')";
+                query += " AND (SUBSTRING(cust_info.residentNo, 1, 2) >= '95' AND SUBSTRING(cust_info.residentNo, 1, 2) <= '99' OR (SUBSTRING(cust_info.residentNo, 1, 2) >= '00' AND SUBSTRING(cust_info.residentNo, 1, 2) <= '04'))";
             } else {
                 query += " AND SUBSTRING(cust_info.residentNo, 1, 2) >= '" + String.format("%02d", lowerBound) + "' AND SUBSTRING(cust_info.residentNo, 1, 2) <= '" + String.format("%02d", upperBound) + "'";
             }

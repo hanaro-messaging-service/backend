@@ -18,7 +18,7 @@
         </div>
         <div class="sidebar-submain">전송</div>
         <div class="sidebar-content"><li>전체 안내 메시지 전송</li></div>
-        <div class="sidebar-content"><li><a href="/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.jsp">보이스피싱 예방 안내 메시지 잔성</a></li></div>
+        <div class="sidebar-content"><li><a href="/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.jsp">보이스피싱 예방 안내 메시지 전송</a></li></div>
         <div class="sidebar-content"><li><a href="/">수신 상품 프로모션 메시지 전송</a></li></div>
         <div class="sidebar-content"><li><a href="/pages/sendMessage/appPromotionMessage/appPromotionMessage.jsp">어플 프로모션 메시지 전송</a></li></div>
         <div class="sidebar-content"><li><a href="/pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp">상황 관리 안내 메시지 전송</a></li></div>
@@ -40,7 +40,11 @@
             if (custInfos != null) {
                 for (productPromotionCustomizeDTO custInfo : custInfos)
              { %>
-        <div class="mainComponent-messageList" onclick="modifyMessage([
+        <form  style="z-index:999999; position: relative; top: 6%; right: -40%;" method="POST" action="/productPromotionDeleteServlet">
+            <input name="tableId"  hidden="" value="<%=custInfo.getId()%>">
+            <button style="width:100px;height:30px"style="width:100px;height:20%" type="submit">삭제</button>
+        </form>
+        <div class="mainComponent-messageList" style="position:relative" onclick="modifyMessage([
                 '<%=custInfo.getId() %>',
                 '<%=custInfo.getCustNm() %>',
                 '<%=custInfo.getGender() %>',
@@ -70,7 +74,8 @@
                     custInfo.getMContents()
                 %>
             </div>
-            <input hidden ="" value="<%=custInfo.getId()%>">
+
+
         </div>
 
         <%

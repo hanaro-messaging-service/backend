@@ -56,6 +56,6 @@ public class ProductPromotionModifyServlet extends HttpServlet {
         productPromotionModifyDAO dao = new productPromotionModifyDAO();
         dao.selectMessage(map);
 //        request.getRequestDispatcher("/pages/manageMessage/productPromotionManage/productPromotionModify.jsp").forward(request,response);
-//        response.sendRedirect("/pages/manageMessage/productPromotionManage/productPromotionModify.jsp");
+        response.sendRedirect("/pages/manageMessage/productPromotionManage/productPromotionManage.jsp");
     }
 }

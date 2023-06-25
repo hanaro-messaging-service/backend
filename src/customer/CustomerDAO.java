@@ -101,15 +101,15 @@ public class CustomerDAO extends DBConnPool {
 
         System.out.println(6);
         String privacyNo = (String) map.get("privacyNo");
-        if(privacyYes!=null&&privacyYes.equals("Y")&&privacyNo!=null&&privacyNo.equals("N")) {
+        if(privacyYes!=null&&privacyYes.equals("O")&&privacyNo!=null&&privacyNo.equals("X")) {
 
         }
         else {
-            if(privacyYes!=null&&privacyYes.equals("Y")) {
-                query += " AND privacy = 'y'";
+            if(privacyYes!=null&&privacyYes.equals("O")) {
+                query += " AND privacy = 'O'";
             }
-            if (privacyNo!=null&&privacyNo.equals("N")) {
-                query += " AND privacy = 'n'";
+            if (privacyNo!=null&&privacyNo.equals("X")) {
+                query += " AND privacy = 'X'";
             }
         }
 

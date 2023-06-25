@@ -41,7 +41,7 @@
                     <div class="searchComponent-searchBar-list-key">개인정보동의여부</div>
                     <div class="searchComponent-searchBar-list-value">
                         <div class="checkbox">
-                            <input  onclick="sendValueToServlet(this)" type="checkbox" name="privacyYes" value="Y" class="flex align-center" id="privacyYes">
+                            <input  onclick="sendValueToServlet(this)" type="checkbox" name="privacyYes" value="O" class="flex align-center" id="privacyYes">
                             <div>동의</div>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
                 <div class="searchComponent-searchBar-list">
                     <div class="searchComponent-searchBar-list-key">이름</div>
                     <div class="searchComponent-searchBar-list-value">
-                        <input value="" type="text" id="name" oninput="sendValueToServlet(event.target.value)">
+                        <input value="" type="text" name="name" id="name" oninput="sendValueToServlet(event.target.value)">
                     </div>
                     <div class="searchComponent-searchBar-list-key">상품명</div>
                     <div class="searchComponent-searchBar-list-value">

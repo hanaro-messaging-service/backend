@@ -12,7 +12,10 @@
         <param-name>MySQLDriver</param-name>
         <param-value>com.mysql.cj.jdbc.Driver</param-value>
     </context-param>
-
+    <context-param>
+        <param-name>mail.smtp.ssl.enable</param-name>
+        <param-value>true</param-value>
+    </context-param>
     <context-param>
         <param-name>MySQLURL</param-name>
         <param-value>jdbc:mysql://hanaromessage.c0p4ufgutplk.ap-northeast-2.rds.amazonaws.com:3306/hanaro</param-value>

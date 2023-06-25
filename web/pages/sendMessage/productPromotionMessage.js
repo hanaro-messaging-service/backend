@@ -22,7 +22,7 @@ function sendValueToServlet() {
     console.log(selectedNameValue);
     sentence += selectedCheckBoxManValue.checked ? "&selectedManValue=" + encodeURIComponent("M") : "";
     sentence += selectedCheckBoxWomanValue.checked ? "&selectedWomanValue="+ encodeURIComponent("F") : "";
-    sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("Y") : "";
+    sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("O") : "";
     sentence += selectedJobValue !== "전체" ? "&selectedJobValue=" + encodeURIComponent(selectedJobValue) : "";
     sentence += selectedPrivateValue !=="전체" ? "&selectedPrivateValue=" + encodeURIComponent(selectedPrivateValue) : "";
     sentence += selectedAgeValue !== "전체" ? "&selectedAgeValue=" + encodeURIComponent(selectedAgeValue) : "";
@@ -77,4 +77,38 @@ function sendValueToServlet() {
         xhr.send(requestData);
     },1000);
 
+}
+
+function modifyMessage(values) {
+    // 값을 읽어와서 변수에 할당
+    var id = values[0];
+    var custNm = values[1];
+    var gender = values[2];
+    var age = values[3];
+    var job = values[4];
+    var address = values[5];
+    var custGrade = values[6];
+    var branch = values[7];
+    var subTerm = values[8];
+    var asset = values[9];
+    var privacy = values[10];
+    var recLoginDate = values[11];
+    var mContents = values[13];
+    console.log(values)
+    // 각 요소에 값 설정
+    document.getElementById("man").checked = gender[0] === "M";
+    document.getElementById("woman").checked = gender[1] === "F";
+    document.getElementById("privacyYes").checked = privacy === "O";
+    document.getElementById("age").value = age;
+    document.getElementById("job").value = job;
+    document.getElementById("private").value = custGrade;
+    document.getElementById("asset").value = asset;
+    document.getElementById("app").value = recLoginDate;
+    document.getElementById("period").value = subTerm;
+    document.getElementById("location").value = address;
+    document.getElementById("branch").value = branch;
+    document.getElementById("name").value = custNm;
+    document.getElementById("mContents" ).value = mContents;
+
+    sendValueToServlet()
 }

@@ -23,15 +23,15 @@ function sendValueToServlet() {
     console.log(selectedNameValue);
     sentence += selectedCheckBoxManValue.checked ? "&selectedManValue=" + encodeURIComponent("M") : "";
     sentence += selectedCheckBoxWomanValue.checked ? "&selectedWomanValue="+ encodeURIComponent("F") : "";
-    sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("Y") : "";
-    sentence += selectedCheckBoxPrivacyNo.checked ? "&selectedPrivacyNoValue=" + encodeURIComponent("N") : "";
+    sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("O") : "";
+    sentence += selectedCheckBoxPrivacyNo.checked ? "&selectedPrivacyNoValue=" + encodeURIComponent("X") : "";
     sentence += selectedJobValue !== "전체" ? "&selectedJobValue=" + encodeURIComponent(selectedJobValue) : "";
     sentence += selectedPrivateValue !=="전체" ? "&selectedPrivateValue=" + encodeURIComponent(selectedPrivateValue) : "";
     sentence += selectedAgeValue !== "전체" ? "&selectedAgeValue=" + encodeURIComponent(selectedAgeValue) : "";
     sentence += selectedAgePartValue !== "전체"? "&selectedAgePartValue=" + encodeURIComponent(selectedAgePartValue) : "";
     sentence += selectedPeriodValue !== "전체"? "&selectedPeriodValue=" + encodeURIComponent(selectedPeriodValue) : "";
-    sentence += selectedCheckBoxMoneyExpYes.checked ? "&selectedMoneyExpYesValue=" + encodeURIComponent("Y") : "";
-    sentence += selectedCheckBoxMoneyExpNo.checked? "&selectedMoneyExpNoValue=" + encodeURIComponent("N") : "";
+    sentence += selectedCheckBoxMoneyExpYes.checked ? "&selectedMoneyExpYesValue=" + encodeURIComponent("O") : "";
+    sentence += selectedCheckBoxMoneyExpNo.checked? "&selectedMoneyExpNoValue=" + encodeURIComponent("X") : "";
     sentence += selectedNameValue ? "&selectedNameValue=" + encodeURIComponent(selectedNameValue) : "";
     console.log(sentence)
     if (selectedAppValue === "") {

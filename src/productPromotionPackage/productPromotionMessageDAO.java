@@ -90,7 +90,7 @@ public class productPromotionMessageDAO extends DBConnPool {
         query = privacyFilter.addPrivacyFilterCondition(query,privacy);
         String recLoginDate = (String) map.get("recLoginDate");
         query = recLogindateFilter.addDateRangeFilterCondition(query,recLoginDate);
-
+        System.out.println(query);
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
             ResultSet rs = pstmt.executeQuery();
