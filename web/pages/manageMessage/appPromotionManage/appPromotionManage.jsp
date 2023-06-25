@@ -90,7 +90,7 @@
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
-          window.location.href = "/pages/manageMessage/productPromotionManage/productPromotionModify.jsp?id=" + encodeURIComponent(custInfo[0]) +
+          window.location.href = "/pages/manageMessage/productPromotionManage/overdueNotificationModify.jsp?id=" + encodeURIComponent(custInfo[0]) +
                   "&custNm=" + encodeURIComponent(custInfo[1]) +
                   "&gender=" + encodeURIComponent(custInfo[2]) +
                   "&age=" + encodeURIComponent(custInfo[3]) +
