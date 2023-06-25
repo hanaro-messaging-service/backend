@@ -23,6 +23,7 @@
   String content = request.getParameter("content");  // 내용
   System.out.println(content);
   String format = request.getParameter("format");    // 메일 포맷(text 혹은 html)
+  System.out.println("format"+format);
   if (format.equals("text")) {
     // 텍스트 포맷일 때는 그대로 저장
     emailInfo.put("content", content);
@@ -35,7 +36,7 @@
     String htmlContent = ""; // HTML용으로 변환된 내용을 담을 변수
     try {
       // HTML 메일용 템플릿 파일 읽기
-      String templatePath = application.getRealPath("/16EmailSend/MailForm.html");
+      String templatePath = application.getRealPath("/pages/email/emailTemplate.html");
       BufferedReader br = new BufferedReader(new FileReader(templatePath));
 
       // 한 줄씩 읽어 htmlContent 변수에 저장
