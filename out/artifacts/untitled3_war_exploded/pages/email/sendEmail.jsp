@@ -2,7 +2,10 @@
 <%@ page import="java.io.FileReader"%>
 <%@ page import="java.util.HashMap"%>
 <%@ page import="java.util.Map"%>
+<%@ page import="java.util.List" %>
 <%@ page import="email.emailSMTP"%>
+<%@ page import="messageHistory.messageHistoryDAO" %>
+<%@ page import="messageHistory.messageHistoryDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%
@@ -21,9 +24,9 @@
   System.setProperty("jdk.tls.client.protocols", "TLSv1.2");
 // 내용은 메일 포맷에 따라 다르게 처리
   String content = request.getParameter("content");  // 내용
-  System.out.println(content);
+//  System.out.println(content);
   String format = request.getParameter("format");    // 메일 포맷(text 혹은 html)
-  System.out.println("format"+format);
+//  System.out.println("format"+format);
   if (format.equals("text")) {
     // 텍스트 포맷일 때는 그대로 저장
     emailInfo.put("content", content);
@@ -56,12 +59,33 @@
     emailInfo.put("content", htmlContent);
     emailInfo.put("format", "text/html;charset=UTF-8");
   }
+  String category = request.getParameter("category");
+  String contents = request.getParameter("content");
+  String title = request.getParameter("subject");
+  String time =request.getParameter("date");
 
+  Map<String, Object> map = new HashMap<>();
+  map.put("category",category);
+  map.put("contents",contents);
+  map.put("title",title);
+  map.put("time",time);
+  String counts = request.getParameter("counts");
+  int countValue = 0;
+  if (counts != null) {
+    countValue = Integer.parseInt(counts);
+  }
+  map.put("counts", countValue);
+
+
+  System.out.println("counts"+counts);
   try {
     emailSMTP smtpServer = new emailSMTP();  // 메일 전송 클래스 생성
     smtpServer.emailSending(emailInfo);      // 전송
-    out.print("<script>window.alert('이메일 전송 성공'); window.location.href='/pages/sendMessage/productPromotionMessage.jsp'</script>");
-//    response.sendRedirect("/pages/sendMessage/productPromotionMessage.jsp"); // 리다이렉트
+    messageHistoryDAO dao = new messageHistoryDAO();
+    dao.selectMessage(map);
+
+    out.print("<script>window.alert('이메일 전송 성공'); </script>");
+    response.sendRedirect("/pages/messageList/messageList.jsp"); // 리다이렉트
   }
   catch (Exception e) {
     out.print("<script>window.alert('이메일 전송 실패'); window.location.href='/pages/sendMessage/productPromotionMessage.jsp'</script>");
