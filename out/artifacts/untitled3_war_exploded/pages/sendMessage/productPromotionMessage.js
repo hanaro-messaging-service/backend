@@ -74,6 +74,7 @@ function sendValueToServlet() {
                 document.getElementById('getLocation').value =  selectedLocationValue ;
                 document.getElementById('getBranch').value = selectedBranchValue ;
 ;
+
             }
         };
 

@@ -5,9 +5,7 @@ public class appPromotionMessageDTO {
     private String gender;
     private String age;
     private String job;
-//    private String address;
     private int custGrade;
-//    private String branch;
     private String subTerm;
     private String asset;
     private String privacy;
@@ -47,13 +45,6 @@ public class appPromotionMessageDTO {
         this.job = job;
     }
 
-//    public String getAddress() {
-//        return address;
-//    }
-//
-//    public void setAddress(String address) {
-//        this.address = address;
-//    }
     public int getCustGrade() {
         return custGrade;
 
@@ -61,16 +52,6 @@ public class appPromotionMessageDTO {
     public void setCustGrade(int custGrade) {
         this.custGrade = custGrade;
     }
-
-
-
-//    public String getBranch() {
-//        return branch;
-//    }
-//
-//    public void setBranch(String branch) {
-//        this.branch = branch;
-//    }
 
     public String getSubTerm() {
         return subTerm;
