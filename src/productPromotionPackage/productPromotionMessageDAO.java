@@ -57,6 +57,7 @@ public class productPromotionMessageDAO extends DBConnPool {
                 "cust_info.custGrade, " +
                 "cust_info.address, " +
                 "cust_info.residentNo, " +
+                "cust_info.email, " +
                 "com_acc_info.balance, " +
                 "com_acc_info.branchinfo, " +
                 "com_acc_info.openingDate, " +
@@ -98,6 +99,7 @@ public class productPromotionMessageDAO extends DBConnPool {
                 productPromotionMessageDTO member = new productPromotionMessageDTO();
                 member.setCustNm(rs.getString("custNm"));
                 member.setGender(rs.getString("gender"));
+                member.setEmail(rs.getString("email"));
                 String residentNo = rs.getString("residentNo");
                 String custAge = getAgeFromResidentNo(residentNo);
                 member.setAge(custAge);
