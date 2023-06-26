@@ -79,3 +79,37 @@ function sendValueToServlet() {
     },1000);
 
 }
+function modifyMessage(custInfo) {
+    // AJAX 요청을 사용하여 JSP로 데이터 전송
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/appPromotionModifyServlet', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    // 전송할 데이터를 쿼리스트링 형식으로 만듭니다.
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                window.location.href = "/pages/manageMessage/appPromotionManage/appPromotionManage.jsp?id=" + encodeURIComponent(custInfo[0]) +
+                    "&custNm=" + encodeURIComponent(custInfo[1]) +
+                    "&gender=" + encodeURIComponent(custInfo[2]) +
+                    "&age=" + encodeURIComponent(custInfo[3]) +
+                    "&job=" + encodeURIComponent(custInfo[4]) +
+                    "&custGrade=" + encodeURIComponent(custInfo[5]) +
+                    "&period=" + encodeURIComponent(custInfo[6]) +
+                    "&asset=" + encodeURIComponent(custInfo[7]) +
+                    "&privacyYes=" + encodeURIComponent(custInfo[8]) +
+                    "&app=" + encodeURIComponent(custInfo[9]) +
+                    "&prodNm=" + encodeURIComponent(custInfo[10]) +
+                    "&mContents=" + encodeURIComponent(custInfo[11]) +
+                    "&id=" + encodeURIComponent(custInfo[12]);
+            } else {
+
+            }
+        }
+    };
+    // 데이터를 전송합니다.
+    xhr.send();
+    // 페이지 리디렉션
+
+}
