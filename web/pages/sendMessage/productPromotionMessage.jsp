@@ -4,6 +4,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="productPromotionPackage.productPromotionCustomizeDAO" %>
 <%@ page import="productPromotionPackage.productPromotionCustomizeDTO" %>
+<%@ page import="java.lang.reflect.Array" %>
 <html>
 <head>
     <title>하나로 메세지</title>
@@ -32,6 +33,11 @@
         <div class="sidebar-content"><li ><a href="/pages/manageMessage/overdueNotificationManage/overdueNotificationManage.jsp">상황 관리 안내 메시지 관리</a></li></div>
     </section>
     <section class="mainComponent">
+        <%
+            productPromotionCustomizeDAO dao = new productPromotionCustomizeDAO();
+            List<productPromotionCustomizeDTO> infos = dao.selectMessage();
+
+        %>
         <div class="searchComponent">
             <div class="searchComponent-topBar">
                 <div class="searchComponent-topBar-left">메세지 전송</div>
@@ -176,7 +182,65 @@
             </div>
 
         </div>
-        <form method="post" action="/pages/email/sendEmail.jsp">
+
+        <div class="myMessage">
+            <div>마이메세지</div>
+
+            <div class="myMessage-list">
+
+                <%
+
+                    if (infos != null) {
+
+
+                        for (productPromotionCustomizeDTO custInfo : infos)
+                        { %>
+                <div class="myMessage-list-element" style="position:relative" onclick="modifyMessage([
+                        '<%=custInfo.getId() %>',
+                        '<%=custInfo.getCustNm() %>',
+                        '<%=custInfo.getGender() %>',
+                        '<%=custInfo.getAge() %>',
+                        '<%=custInfo.getJob() %>',
+                        '<%=custInfo.getAddress() %>',
+                        '<%=custInfo.getCustGrade() %>',
+                        '<%=custInfo.getBranch() %>',
+                        '<%=custInfo.getSubTerm() %>',
+                        '<%=custInfo.getAsset() %>',
+                        '<%=custInfo.getPrivacy() %>',
+                        '<%=custInfo.getRecLoginDate() %>',
+                        '<%=custInfo.getProdNm() %>',
+                        '<%=custInfo.getMContents() %>',
+                        '<%=custInfo.getId()%>'
+                        ])">
+
+                    <div class="mainComponent-messageList-title">
+                        제목:
+                        <%=
+                        custInfo.getProdNm()
+                        %>
+                    </div>
+
+                </div>
+
+                <%
+                    }}
+                %>
+            </div>
+        </div>
+        <div id="resultContainer" class="listComponent">
+        <form method="post" action="/pages/email/sendEmail.jsp" >
+
+            <%  int count = 0;
+                List<productPromotionMessageDTO> custInfos = (List<productPromotionMessageDTO>) request.getAttribute("custInfos");
+                java.util.Date currentDate = new java.util.Date();
+                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String formattedDate = sdf.format(currentDate);
+            %>
+            <input hidden="" value="수신 상품 프로모션" name="category">
+
+
+
+            <input hidden="" value="<%= formattedDate %>" name="date">
             <table border=1>
                 <tr>
                     <td>
@@ -211,49 +275,7 @@
                     </td>
                 </tr>
             </table>
-        </form>
-        <div class="myMessage">
-            <div>마이메세지</div>
 
-            <div class="myMessage-list">
-                <%
-                    productPromotionCustomizeDAO dao = new productPromotionCustomizeDAO();
-                    List<productPromotionCustomizeDTO> infos = dao.selectMessage();
-                    if (infos != null) {
-                        for (productPromotionCustomizeDTO custInfo : infos)
-                        { %>
-                <div class="myMessage-list-element" style="position:relative" onclick="modifyMessage([
-                        '<%=custInfo.getId() %>',
-                        '<%=custInfo.getCustNm() %>',
-                        '<%=custInfo.getGender() %>',
-                        '<%=custInfo.getAge() %>',
-                        '<%=custInfo.getJob() %>',
-                        '<%=custInfo.getAddress() %>',
-                        '<%=custInfo.getCustGrade() %>',
-                        '<%=custInfo.getBranch() %>',
-                        '<%=custInfo.getSubTerm() %>',
-                        '<%=custInfo.getAsset() %>',
-                        '<%=custInfo.getPrivacy() %>',
-                        '<%=custInfo.getRecLoginDate() %>',
-                        '<%=custInfo.getProdNm() %>',
-                        '<%=custInfo.getMContents() %>',
-                        '<%=custInfo.getId()%>'
-                        ])">
-
-                    <div class="mainComponent-messageList-title">
-                        제목:
-                        <%=
-                        custInfo.getProdNm()
-                        %>
-                    </div>
-
-                </div>
-
-                <%
-                        }}
-                %>
-            </div>
-        </div>
         <div class="listComponent">
             <div class="listComponent-topbar">
                 <div class="listComponent-topbar-element">선택</div>
@@ -269,11 +291,15 @@
                 <div class="listComponent-topbar-elementBig">개인정보동의</div>
                 <div class="listComponent-topbar-elementBig">어플접속일</div>
             </div>
-            <div id="resultContainer">
+
+
                 <%
-                    List<productPromotionMessageDTO> custInfos = (List<productPromotionMessageDTO>) request.getAttribute("custInfos");
+
                     if (custInfos != null) {
-                        for (productPromotionMessageDTO custInfo : custInfos) { %>
+                        for (productPromotionMessageDTO custInfo : custInfos) {
+                count++;
+                System.out.println(count);
+                %>
                 <div class="listComponent-listbar">
                     <div class="listComponent-topbar-element bg-white">
                         <input type="checkbox" checked>
@@ -313,9 +339,9 @@
                     </div>
                 </div>
                 <% } } %>
-
+            <input hidden="" value="<%=count%>" name="counts">
             </div>
-
+        </form>
         </div>
     </section>
 </main>
