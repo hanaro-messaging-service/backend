@@ -30,7 +30,7 @@ public class productPromotionWriteDAO extends DBConnPool {
         String prodNm = (String)map.get("prodNm");
         String mContents = (String)map.get("mContents");
         System.out.println(mContents);
-        String query = "INSERT INTO prod_promo_message (custNm, gender, age, job, address, custGrade, branch, subTerm, asset, privacy, recLoginDate,prodNm,mContents) " +
+        String query = "INSERT INTO prod_promo_message () " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement pstmt = con.prepareStatement(query)) {

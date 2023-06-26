@@ -61,6 +61,19 @@ function sendValueToServlet() {
                 document.getElementById("resultContainer").innerHTML = elementValue;
                 document.getElementById("prodNm").value = prodNmValue;
                 document.getElementById("mContents" ).value = mContentsValue;
+                document.getElementById('getName').value = selectedNameValue;
+                document.getElementById("getApp").value = selectedAppValue ;
+                document.getElementById("getAsset").value = selectedAssetValue ;
+                document.getElementById("getMan").value =  selectedCheckBoxManValue.checked ? "M" : "N";
+                document.getElementById("getWoman").value = selectedCheckBoxWomanValue.checked ? "F" : "N";
+                document.getElementById("getPrivacyYes").value = selectedCheckBoxPrivacyYes.checked ? "O" : "X";
+                document.getElementById("getJob").value = selectedJobValue;
+                document.getElementById("getPrivate").value = selectedPrivateValue;
+                document.getElementById("getAge").value = selectedAgeValue;
+                document.getElementById('getPeriod').value = selectedPeriodValue ;
+                document.getElementById('getLocation').value =  selectedLocationValue ;
+                document.getElementById('getBranch').value = selectedBranchValue ;
+;
             }
         };
 

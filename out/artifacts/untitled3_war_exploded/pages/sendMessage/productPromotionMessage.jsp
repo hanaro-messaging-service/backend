@@ -223,7 +223,7 @@
             </div>
         </div>
         <div id="resultContainer" class="listComponent">
-        <form method="post" action="/pages/email/sendEmail.jsp" >
+        <form method="post" action="/pages/email/productPromotionSendEmail.jsp" >
 
             <%  int count = 0;
                 List<productPromotionMessageDTO> custInfos = (List<productPromotionMessageDTO>) request.getAttribute("custInfos");
@@ -302,14 +302,11 @@
                 <div class="listComponent-topbar-elementBig">개인정보동의</div>
                 <div class="listComponent-topbar-elementBig">어플접속일</div>
             </div>
-
-
                 <%
 
                     if (custInfos != null) {
                         for (productPromotionMessageDTO custInfo : custInfos) {
                 count++;
-                System.out.println(count);
                 %>
                 <div class="listComponent-listbar">
                     <div class="listComponent-topbar-element bg-white">
@@ -351,6 +348,19 @@
                 </div>
                 <% } } %>
             <input hidden="" value="<%=count%>" name="counts">
+            <input hidden="" id="getName"  name="name">
+            <input hidden="" id="getApp"   name="app">
+            <input hidden="" id="getAsset"  name="asset">
+            <input hidden="" id="getMan"  name="man">
+            <input hidden="" id="getWoman"  name="woman">
+            <input hidden="" id="getPrivacyYes"  name="privacyYes">
+            <input hidden="" id="getJob"  name="job">
+            <input hidden="" id="getPrivate"  name="private">
+            <input hidden="" id="getAge"  name="age">
+            <input hidden="" id="getPeriod"  name="period">
+            <input hidden="" id="getLocation"  name="location">
+            <input hidden="" id="getBranch"  name="branch">
+
             </div>
         </form>
         </div>
