@@ -14,56 +14,6 @@
 <body>
 
 <main>
-<<<<<<< HEAD
-  <section class="sidebar">
-    <div class="sidebar-main">
-      메시지
-    </div>
-    <div class="sidebar-submain">전송</div>
-    <div class="sidebar-content"><li>전체 안내 메시지 전송</li></div>
-    <div class="sidebar-content"><li><a href="/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.jsp">보이스피싱 예방 안내 메시지 전송</a></li></div>
-    <div class="sidebar-content"><li><a href="/pages/sendMessage/productPromotionMessage.jsp">수신 상품 프로모션 메시지 전송</a></li></div>
-    <div class="sidebar-content"><li><a href="/pages/sendMessage/appPromotionMessage/appPromotionMessage.jsp">어플 프로모션 메시지 전송</a></li></div>
-    <div class="sidebar-content"><li><a href="/pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp">상황 관리 안내 메시지 전송</a></li></div>
-    <div class="sidebar-submain">관리</div>
-    <div class="sidebar-content"><li>전체 안내 메시지 관리</li></div>
-    <div class="sidebar-content"><li><a href="/pages/manageMessage/voicefishingNotificationManage/voicefishingNotificationManage.jsp"> 보이스피싱 예방 안내 메시지 관리</a></li></div>
-    <div class="sidebar-content"><li><a href="/pages/manageMessage/productPromotionManage/productPromotionManage.jsp">수신 상품 프로모션 메시지 관리</a></li></div>
-    <div class="sidebar-content"><li><a href="/pages/manageMessage/appPromotionManage/appPromotionManage.jsp">어플 프로모션 메시지 관리</a></li></div>
-    <div class="sidebar-content"><li ><a href="/pages/manageMessage/overdueNotificationManage/overdueNotificationManage.jsp">상황 관리 안내 메시지 관리</a></li></div>
-    <div class="sidebar-submain"><a href="/pages/messageList/messageList.jsp">메시지 발송내역</a></div>
-    <div class="sidebar-submain"><a href="/pages/main/mainpage.jsp">메인페이지</a></div>
-
-  </section>
-  <section class="mainComponent">
-    <div class="mainComponent-header">
-      <div class="mainComponent-header-text">수신상품 메시지 관리</div>
-      <div class="mainComponent-header-button"><a href="./productPromotionWrite.jsp">새로 만들기</a></div>
-    </div>
-    <%
-      productPromotionCustomizeDAO dao = new productPromotionCustomizeDAO();
-      List<productPromotionCustomizeDTO> custInfos = dao.selectMessage();
-      if (custInfos != null) {
-        for (productPromotionCustomizeDTO custInfo : custInfos)
-        { %>
-    <div class="mainComponent-messageList" onclick="modifyMessage([
-            '<%=custInfo.getId() %>',
-            '<%=custInfo.getCustNm() %>',
-            '<%=custInfo.getGender() %>',
-            '<%=custInfo.getAge() %>',
-            '<%=custInfo.getJob() %>',
-            '<%=custInfo.getAddress() %>',
-            '<%=custInfo.getCustGrade() %>',
-            '<%=custInfo.getBranch() %>',
-            '<%=custInfo.getSubTerm() %>',
-            '<%=custInfo.getAsset() %>',
-            '<%=custInfo.getPrivacy() %>',
-            '<%=custInfo.getRecLoginDate() %>',
-            '<%=custInfo.getProdNm() %>',
-            '<%=custInfo.getMContents() %>',
-            '<%=custInfo.getId()%>'
-            ])">
-=======
     <section class="sidebar">
         <div class="sidebar-main">
             메시지
@@ -91,7 +41,6 @@
             appPromotionCustomizeDAO dao = new appPromotionCustomizeDAO();
             System.out.println("gg");
             List<appPromotionCustomizeDTO> custInfos = dao.selectMessage();
->>>>>>> main
 
             if (custInfos != null) {
                 for (appPromotionCustomizeDTO custInfo : custInfos)

@@ -43,9 +43,9 @@
             if (custInfos != null) {
                 for (productPromotionCustomizeDTO custInfo : custInfos)
              { %>
-        <form  style="z-index:999999; position: relative; top: 6%; right: -40%;" method="POST" action="/productPromotionDeleteServlet">
+        <form  style="z-index:999999; position: relative; top: 6%; right: -43%;" method="POST" action="/productPromotionDeleteServlet">
             <input name="tableId"  hidden="" value="<%=custInfo.getId()%>">
-            <button style="width:100px;height:30px"style="width:100px;height:20%" type="submit">삭제</button>
+            <button  style=" cursor:pointer; width:100px;height:20%;font-size:20px; background-color:transparent; border:none;" type="submit">X</button>
         </form>
         <div class="mainComponent-messageList" style="position:relative" onclick="modifyMessage([
                 '<%=custInfo.getId() %>',
@@ -66,13 +66,13 @@
                 ])">
 
             <div class="mainComponent-messageList-title">
-                제목:
+
                 <%=
                     custInfo.getProdNm()
                 %>
             </div>
             <div class="mainComponent-messageList-content">
-                내용:
+
                 <%=
                     custInfo.getMContents()
                 %>

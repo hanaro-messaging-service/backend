@@ -44,7 +44,7 @@
         <div class="searchComponent">
             <div class="searchComponent-topBar">
                 <div class="searchComponent-topBar-left">메세지 전송</div>
-                <div class="searchComponent-topBar-right">메세지 전송</div>
+
             </div>
             <div class="searchComponent-titleBar">수신 상품 프로모션 메시지</div>
             <div class="searchComponent-searchBar">
@@ -173,21 +173,14 @@
                         </select>
                     </div>
                 </div>
-                <div class="searchComponent-searchBar-list">
-                    <div class="searchComponent-searchBar-list-key">메세지 내용</div>
-                    <div class="searchComponent-searchBar-list-value"><input type="text" id="mContents">
-
-                </div>
-                    <div class="searchComponent-searchBar-list-key"></div>
-                    <div class="searchComponent-searchBar-list-value"></div>
-                </div>
 
             </div>
 
         </div>
 
         <div class="myMessage">
-            <div>마이메세지</div>
+            <div style="margin-left:1.5vw; margin-right:1vw; width:120px;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
+                            align-items:center; color:white;">마이메세지</div>
 
             <div class="myMessage-list">
 
@@ -217,7 +210,6 @@
                         ])">
 
                     <div class="mainComponent-messageList-title">
-                        제목:
                         <%=
                         custInfo.getProdNm()
                         %>
@@ -240,41 +232,57 @@
                 String formattedDate = sdf.format(currentDate);
             %>
             <input hidden="" value="수신 상품 프로모션" name="category">
+<%--            value값 수정--%>
 
 
 
             <input hidden="" value="<%= formattedDate %>" name="date">
-            <table border=1>
-                <tr>
-                    <td>
+            <table style="display:flex;justify-content: center; width: 100%;" >
+                <tr  hidden="">
+
+                    <td hidden="">
                         보내는 사람 : <input type="text" name="from" value="hanaromessage@naver.com" />
                     </td>
                 </tr>
-                <tr>
-                    <td>
+                <tr hidden="">
+                    <td hidden="">
                         받는 사람 : <input type="text" name="to" value="hanaromessage@naver.com" />
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        제목 : <input type="text" name="subject" size="50" value="" />
+                <tr style=" display:flex; width:100%; justify-content: center;">
+                    <td style="width:100%; display:flex; align-items: center; justify-content: space-between;">
+                        <div style="margin-right:1vw; width:127px;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
+                            align-items:center; color:white;
+                         ">메시지제목</div>
+                        <input style=" width:110%; height:4vh; border: 2px solid #008485;" type="text" name="subject" id="prodNm"  value="" />
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        형식 :
-                        <input type="radio" name="format" value="text" checked />Text
-                        <input type="radio" name="format" value="html" />HTML
+                <tr style=" display:flex; width:100%; justify-content: center; margin-top:1vh;">
+                    <td style="width:100%; display:flex; align-items: center; ">
+                        <div style="margin-right:1vw; width:100px;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
+                            align-items:center; color:white;
+                         ">
+                            메세지 형식
+                        </div>
+                        <div>
+                            <input  type="radio" name="format" value="text" checked />Text
+                            <input type="radio" name="format" value="html" />HTML
+                        </div>
+
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <textarea name="content" cols="60" rows="10"></textarea>
+                <tr style=" display:flex; width:100%; justify-content: center; margin-top:1vh;">
+                    <td style="width:100%; display:flex;  justify-content: space-between;">
+                        <div style="margin-right:1vw; width:100px;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
+                            align-items:center; color:white;
+                         ">메세지 내용</div>
+                        <textarea style=" width:60vw; height:20vh; border: 2px solid #008485;" name="content" id="mContents" cols="60" rows="10"></textarea>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <button type="submit">전송하기</button>
+                <tr style=" display:flex; width:100%; justify-content: center; margin-top:1vh;">
+                    <td style="width:100%; display:flex;justify-content: flex-end;">
+                        <button style="width:15%; height:4vh; background:white; border:1px solid #cccccc;" type="submit">전송하기</button>
+
                     </td>
                 </tr>
             </table>
