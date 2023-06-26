@@ -4,6 +4,7 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/web/pages/main/mainpage.jsp" value="file://$PROJECT_DIR$/web/pages/main" />
+        <entry key="file://$PROJECT_DIR$/web/pages/manageMessage/allNotificationManage/allNotificationWrite.jsp" value="file://$PROJECT_DIR$/web/pages/manageMessage/allNotificationManage" />
       </map>
     </option>
   </component>

@@ -40,6 +40,10 @@
             if (custInfos != null) {
                 for (overdueNotificationCustomizeDTO custInfo : custInfos)
                 { %>
+        <form  style="z-index:999999; position: relative; top: 6%; right: -40%;" method="POST" action="/overdueNotificationDeleteServlet">
+            <input name="tableId"  hidden="" value="<%=custInfo.getId()%>">
+            <button style="width:100px;height:30px"style="width:100px;height:20%" type="submit">삭제</button>
+        </form>
         <div class="mainComponent-messageList" onclick="modifyMessage([
                 '<%=custInfo.getId() %>',
                 '<%=custInfo.getCustNm() %>',

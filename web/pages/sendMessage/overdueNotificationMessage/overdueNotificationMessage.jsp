@@ -18,7 +18,7 @@
             메시지
         </div>
         <div class="sidebar-submain">전송</div>
-        <div class="sidebar-content"><li>전체 안내 메시지 전송</li></div>
+        <div class="sidebar-content"><li><a a href="/pages/sendMessage/allNotificationMessage/allNotificationMessage.jsp">전체 안내 메시지 전송</a></li></div>
         <div class="sidebar-content"><li><a href="/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.jsp">보이스피싱 예방 안내 메시지 전송</a></li></div>
         <div class="sidebar-content"><li><a href="/">수신 상품 프로모션 메시지 전송</a></li></div>
         <div class="sidebar-content"><li><a href="/pages/sendMessage/appPromotionMessage/appPromotionMessage.jsp">어플 프로모션 메시지 전송</a></li></div>
