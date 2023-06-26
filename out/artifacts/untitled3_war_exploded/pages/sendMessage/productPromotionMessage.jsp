@@ -4,6 +4,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="productPromotionPackage.productPromotionCustomizeDAO" %>
 <%@ page import="productPromotionPackage.productPromotionCustomizeDTO" %>
+<%@ page import="email.emailPromotionDAO" %>
 <%@ page import="java.lang.reflect.Array" %>
 <html>
 <head>
@@ -13,28 +14,11 @@
 </head>
 <body>
 
+<%
 
+%>
 <main>
-    <section class="sidebar">
-        <div class="sidebar-main">
-            메시지
-        </div>
-        <div class="sidebar-submain">전송</div>
-        <div class="sidebar-content"><li>전체 안내 메시지 전송</li></div>
-        <div class="sidebar-content"><li><a href="/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.jsp">보이스피싱 예방 안내 메시지 전송</a></li></div>
-        <div class="sidebar-content"><li><a href="/pages/sendMessage/productPromotionMessage.jsp">수신 상품 프로모션 메시지 전송</a></li></div>
-        <div class="sidebar-content"><li><a href="/pages/sendMessage/appPromotionMessage/appPromotionMessage.jsp">어플 프로모션 메시지 전송</a></li></div>
-        <div class="sidebar-content"><li><a href="/pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp">상황 관리 안내 메시지 전송</a></li></div>
-        <div class="sidebar-submain">관리</div>
-        <div class="sidebar-content"><li>전체 안내 메시지 관리</li></div>
-        <div class="sidebar-content"><li><a href="/pages/manageMessage/voicefishingNotificationManage/voicefishingNotificationManage.jsp"> 보이스피싱 예방 안내 메시지 관리</a></li></div>
-        <div class="sidebar-content"><li><a href="/pages/manageMessage/productPromotionManage/productPromotionManage.jsp">수신 상품 프로모션 메시지 관리</a></li></div>
-        <div class="sidebar-content"><li><a href="/pages/manageMessage/appPromotionManage/appPromotionManage.jsp">어플 프로모션 메시지 관리</a></li></div>
-        <div class="sidebar-content"><li ><a href="/pages/manageMessage/overdueNotificationManage/overdueNotificationManage.jsp">상황 관리 안내 메시지 관리</a></li></div>
-        <div class="sidebar-submain"><a href="/pages/messageList/messageList.jsp">메시지 발송내역</a></div>
-        <div class="sidebar-submain"><a href="/pages/main/mainpage.jsp">메인페이지</a></div>
-
-    </section>
+    <jsp:include page="/components/sidebar.jsp" />
     <section class="mainComponent">
         <%
             productPromotionCustomizeDAO dao = new productPromotionCustomizeDAO();
@@ -179,7 +163,7 @@
         </div>
 
         <div class="myMessage">
-            <div style="margin-left:1.5vw; margin-right:1vw; width:120px;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
+            <div style="width:15%;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
                             align-items:center; color:white;">마이메세지</div>
 
             <div class="myMessage-list">
@@ -191,7 +175,7 @@
 
                         for (productPromotionCustomizeDTO custInfo : infos)
                         { %>
-                <div class="myMessage-list-element" style="position:relative" onclick="modifyMessage([
+                <div class="myMessage-list-element" style="" onclick="modifyMessage([
                         '<%=custInfo.getId() %>',
                         '<%=custInfo.getCustNm() %>',
                         '<%=custInfo.getGender() %>',
@@ -209,12 +193,10 @@
                         '<%=custInfo.getId()%>'
                         ])">
 
-                    <div class="mainComponent-messageList-title">
+
                         <%=
                         custInfo.getProdNm()
                         %>
-                    </div>
-
                 </div>
 
                 <%
@@ -222,8 +204,8 @@
                 %>
             </div>
         </div>
-        <div id="resultContainer" class="listComponent">
-        <form method="post" action="/pages/email/productPromotionSendEmail.jsp" >
+        <div id="resultContainer" class="listComponent2">
+        <form method="post" action="/pages/email/sendEmail.jsp" style="width:100%; display:flex; flex-direction: column; justify-content: center; align-items: center;" >
 
             <%  int count = 0;
                 List<productPromotionMessageDTO> custInfos = (List<productPromotionMessageDTO>) request.getAttribute("custInfos");
@@ -237,7 +219,7 @@
 
 
             <input hidden="" value="<%= formattedDate %>" name="date">
-            <table style="display:flex;justify-content: center; width: 100%;" >
+            <table style="display:flex;justify-content: space-between; width: 90%; background: red;" >
                 <tr  hidden="">
 
                     <td hidden="">
@@ -249,42 +231,39 @@
                         받는 사람 : <input type="text" name="to" value="hanaromessage@naver.com" />
                     </td>
                 </tr>
-                <tr style=" display:flex; width:100%; justify-content: center;">
-                    <td style="width:100%; display:flex; align-items: center; justify-content: space-between;">
-                        <div style="margin-right:1vw; width:127px;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
+                <div style=" display:flex; width:90%; justify-content: space-between;">
+
+                        <div style=" width:15%;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
                             align-items:center; color:white;
                          ">메시지제목</div>
-                        <input style=" width:110%; height:4vh; border: 2px solid #008485;" type="text" name="subject" id="prodNm"  value="" />
-                    </td>
-                </tr>
-                <tr style=" display:flex; width:100%; justify-content: center; margin-top:1vh;">
-                    <td style="width:100%; display:flex; align-items: center; ">
-                        <div style="margin-right:1vw; width:100px;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
+                        <input style=" width:80%; height:4vh; border: 2px solid #008485;" type="text" name="subject" id="prodNm"  value="" />
+
+                </div>
+                <div style=" display:flex; width:90%; align-items: center; justify-content: space-between;  margin-top:1vh;">
+
+                        <div style=" width:15%;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
                             align-items:center; color:white;
                          ">
                             메세지 형식
                         </div>
-                        <div>
+                        <div style=" width:80%; height:4vh;display:flex; align-items: center; ">
                             <input  type="radio" name="format" value="text" checked />Text
                             <input type="radio" name="format" value="html" />HTML
                         </div>
 
-                    </td>
-                </tr>
-                <tr style=" display:flex; width:100%; justify-content: center; margin-top:1vh;">
-                    <td style="width:100%; display:flex;  justify-content: space-between;">
-                        <div style="margin-right:1vw; width:100px;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
+
+                </div>
+                <div style=" display:flex; width:90%; justify-content: space-between; margin-top:1vh;">
+
+                        <div style=" width:15%; height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
                             align-items:center; color:white;
                          ">메세지 내용</div>
-                        <textarea style=" width:60vw; height:20vh; border: 2px solid #008485;" name="content" id="mContents" cols="60" rows="10"></textarea>
-                    </td>
-                </tr>
-                <tr style=" display:flex; width:100%; justify-content: center; margin-top:1vh;">
-                    <td style="width:100%; display:flex;justify-content: flex-end;">
-                        <button style="width:15%; height:4vh; background:white; border:1px solid #cccccc;" type="submit">전송하기</button>
+                        <textarea style=" width:80%; height:20vh; border: 2px solid #008485;" name="content" id="mContents" cols="60" rows="10"></textarea>
 
-                    </td>
-                </tr>
+                </div>
+                <div style="display:flex; width:90%; justify-content: flex-end; margin-top:1vh;">
+                        <button style="width:15%; height:4vh; background:white; border:1px solid #cccccc;" type="submit">전송하기</button>
+                </div>
             </table>
 
         <div class="listComponent">

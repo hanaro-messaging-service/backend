@@ -32,5 +32,20 @@ public class emailPromotionDAO extends DBConnPool {
         }
         return viewCount;
     }
+    public int showChart(){
+        String selectQuery = "SELECT views FROM chart_list WHERE id = 'promotion'";
+        int viewCount=0;
+        try (PreparedStatement pstmt = con.prepareStatement(selectQuery)) {
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                viewCount = rs.getInt("views");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close();
+        }
+        return viewCount;
+    }
 
 }

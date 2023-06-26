@@ -13,26 +13,7 @@
 헤더입니다
 </header>
 <main>
-    <section class="sidebar">
-        <div class="sidebar-main">
-            메시지
-        </div>
-        <div class="sidebar-submain">전송</div>
-        <div class="sidebar-content"><li>전체 안내 메시지 전송</li></div>
-        <div class="sidebar-content"><li><a href="/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.jsp">보이스피싱 예방 안내 메시지 전송</a></li></div>
-        <div class="sidebar-content"><li><a href="/pages/sendMessage/productPromotionMessage.jsp">수신 상품 프로모션 메시지 전송</a></li></div>
-        <div class="sidebar-content"><li><a href="/pages/sendMessage/appPromotionMessage/appPromotionMessage.jsp">어플 프로모션 메시지 전송</a></li></div>
-        <div class="sidebar-content"><li><a href="/pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp">상황 관리 안내 메시지 전송</a></li></div>
-        <div class="sidebar-submain">관리</div>
-        <div class="sidebar-content"><li>전체 안내 메시지 관리</li></div>
-        <div class="sidebar-content"><li><a href="/pages/manageMessage/voicefishingNotificationManage/voicefishingNotificationManage.jsp"> 보이스피싱 예방 안내 메시지 관리</a></li></div>
-        <div class="sidebar-content"><li><a href="/pages/manageMessage/productPromotionManage/productPromotionManage.jsp">수신 상품 프로모션 메시지 관리</a></li></div>
-        <div class="sidebar-content"><li><a href="/pages/manageMessage/appPromotionManage/appPromotionManage.jsp">어플 프로모션 메시지 관리</a></li></div>
-        <div class="sidebar-content"><li ><a href="/pages/manageMessage/overdueNotificationManage/overdueNotificationManage.jsp">상황 관리 안내 메시지 관리</a></li></div>
-        <div class="sidebar-submain"><a href="/pages/messageList/messageList.jsp">메시지 발송내역</a></div>
-        <div class="sidebar-submain"><a href="/pages/main/mainpage.jsp">메인페이지</a></div>
-
-    </section>
+    <jsp:include page="/components/sidebar.jsp" />
     <section class="mainComponent">
     <div class="searchComponent">
     <div class="searchComponent-topBar">
