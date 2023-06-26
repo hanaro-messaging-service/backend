@@ -20,12 +20,12 @@
             <div class="searchComponent">
                 <div class="searchComponent-topBar">
                     <div class="searchComponent-topBar-left">
-                        수신 상품 프로모션 메시지 추가
+                         앱 광고 메시지 추가
                     </div>
 
                 </div>
 
-                <div class="searchComponent-titleBar">수신 상품 프로모션 메시지</div>
+                <div class="searchComponent-titleBar">앱 광고 메시지</div>
 
                 <div class="searchComponent-searchBar">
                     <div class="searchComponent-searchBar-list">
