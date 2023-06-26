@@ -65,12 +65,36 @@
   String contents = request.getParameter("content");
   String title = request.getParameter("subject");
   String time =request.getParameter("date");
-
+  String selectedManValue = request.getParameter("man");
+  String selectedWomanValue = request.getParameter("woman");
+  String selectedPrivacyYesValue = request.getParameter("privacyYes");
+  String selectedJobValue = request.getParameter("job");
+  String selectedPrivateValue = request.getParameter("private");
+  String selectedAgeValue = request.getParameter("age");
+  String selectedPeriodValue = request.getParameter("period");
+  String selectedNameValue = request.getParameter("name");
+  String selectedAppValue = request.getParameter("app");
+  String selectedAssetValue = request.getParameter("asset");
+  String selectedLocationValue = request.getParameter("location");
+  String selectedBranchValue = request.getParameter("branch");
   Map<String, Object> map = new HashMap<>();
   map.put("category",category);
   map.put("contents",contents);
   map.put("title",title);
   map.put("time",time);
+  map.put("custNm", selectedNameValue);
+  System.out.println("custNm"+selectedNameValue);
+  map.put("recLoginDate", selectedAppValue);
+  map.put("asset", selectedAssetValue);
+  map.put("man", selectedManValue);
+  map.put("woman", selectedWomanValue);
+  map.put("age", selectedAgeValue);
+  map.put("privacy", selectedPrivacyYesValue);
+  map.put("job", selectedJobValue);
+  map.put("private", selectedPrivateValue);
+  map.put("period", selectedPeriodValue);
+  map.put("branch",selectedBranchValue);
+  map.put("address",selectedLocationValue);
   String counts = request.getParameter("counts");
   int countValue = 0;
   if (counts != null) {

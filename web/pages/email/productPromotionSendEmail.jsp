@@ -4,8 +4,8 @@
 <%@ page import="java.util.Map"%>
 <%@ page import="java.util.List" %>
 <%@ page import="email.emailSMTP"%>
-<%@ page import="messageHistory.messageHistoryDAO" %>
-<%@ page import="messageHistory.messageHistoryDTO" %>
+<%@ page import="productPromotionMessageHistory.messageHistoryDAO" %>
+<%@ page import="productPromotionMessageHistory.messageHistoryDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%

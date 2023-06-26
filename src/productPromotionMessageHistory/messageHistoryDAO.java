@@ -1,7 +1,8 @@
-package messageHistory;
+package productPromotionMessageHistory;
+
 
 import common.DBConnPool;
-import productPromotionPackage.productPromotionCustomizeDTO;
+import productPromotionMessageHistory.messageHistoryDTO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -60,42 +61,42 @@ public class messageHistoryDAO extends DBConnPool {
         } catch (Exception e) {
             e.printStackTrace();
         }
-         finally {
+        finally {
             close();
         }
     }
-   public List<messageHistoryDTO> readMessage () {
-       String selectQuery = "SELECT * FROM prod_send_message_list";
-       List<messageHistoryDTO> messageInfos = new ArrayList<>();
-       try(PreparedStatement pstmt = con.prepareStatement(selectQuery)){
-           ResultSet rs = pstmt.executeQuery();
-           while (rs.next()) {
-               messageHistoryDTO member = new messageHistoryDTO();
-               member.setCategory(rs.getString("category"));
-               member.setContents(rs.getString("contents"));
-               member.setTitle(rs.getString("title"));
-               member.setCounts(rs.getInt("counts"));
-               member.setTime(rs.getString("time"));
-               member.setPrivacy(rs.getString("privacy"));
-               member.setAge(rs.getString("age"));
-               member.setGender(rs.getString("gender"));
-               member.setJob(rs.getString("job"));
-               member.setCustGrade(rs.getString("custGrade"));
-               member.setAsset(rs.getString("asset"));
-               member.setRecLoginDate(rs.getString("recLoginDate"));
-               member.setSubTerm(rs.getString("subTerm"));
-               member.setAddress(rs.getString("address"));
-               member.setBranch(rs.getString("branch"));
-               member.setCustNm(rs.getString("custNm"));
-               messageInfos.add(member);
-           }
-       }
-       catch(Exception e) {
+    public List<productPromotionMessageHistory.messageHistoryDTO> readMessage () {
+        String selectQuery = "SELECT * FROM prod_send_message_list";
+        List<productPromotionMessageHistory.messageHistoryDTO> messageInfos = new ArrayList<>();
+        try(PreparedStatement pstmt = con.prepareStatement(selectQuery)){
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                productPromotionMessageHistory.messageHistoryDTO member = new messageHistoryDTO();
+                member.setCategory(rs.getString("category"));
+                member.setContents(rs.getString("contents"));
+                member.setTitle(rs.getString("title"));
+                member.setCounts(rs.getInt("counts"));
+                member.setTime(rs.getString("time"));
+                member.setPrivacy(rs.getString("privacy"));
+                member.setAge(rs.getString("age"));
+                member.setGender(rs.getString("gender"));
+                member.setJob(rs.getString("job"));
+                member.setCustGrade(rs.getString("custGrade"));
+                member.setAsset(rs.getString("asset"));
+                member.setRecLoginDate(rs.getString("recLoginDate"));
+                member.setSubTerm(rs.getString("subTerm"));
+                member.setAddress(rs.getString("address"));
+                member.setBranch(rs.getString("branch"));
+                member.setCustNm(rs.getString("custNm"));
+                messageInfos.add(member);
+            }
+        }
+        catch(Exception e) {
 
-       }
-       finally{
-           close();
-       }
-       return messageInfos;
-   }
+        }
+        finally{
+            close();
+        }
+        return messageInfos;
+    }
 }
