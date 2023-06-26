@@ -59,6 +59,8 @@
     emailInfo.put("content", htmlContent);
     emailInfo.put("format", "text/html;charset=UTF-8");
   }
+  //  여기까지는 이메일 보내는 로직
+  // 이후가 db쌓는 로직
   String category = request.getParameter("category");
   String contents = request.getParameter("content");
   String title = request.getParameter("subject");
