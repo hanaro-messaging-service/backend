@@ -16,6 +16,8 @@ function sendValueToServlet() {
     var selectedPrivateValue = document.getElementById("private").value;
     var selectedAgeValue = document.getElementById("age").value;
     var selectedPeriodValue = document.getElementById('period').value;
+    var prodNmValue = document.getElementById('prodNm').value;
+    var mContentsValue = document.getElementById('mContents').value;
     console.log(selectedCheckBoxManValue);
     // var selectedLocationValue = document.getElementById('location').value;
     // var selectedBranchValue = document.getElementById('branch').value;
@@ -58,6 +60,8 @@ function sendValueToServlet() {
 
                 // 가져온 값으로 특정 영역 업데이트
                 document.getElementById("resultContainer").innerHTML = elementValue;
+                document.getElementById("prodNm").value = prodNmValue;
+                document.getElementById("mContents" ).value = mContentsValue;
             }
         };
 
@@ -79,37 +83,34 @@ function sendValueToServlet() {
     },1000);
 
 }
-function modifyMessage(custInfo) {
-    // AJAX 요청을 사용하여 JSP로 데이터 전송
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/appPromotionModifyServlet', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+function modifyMessage(values) {
+    // 값을 읽어와서 변수에 할당
+    var id = values[0];
+    var custNm = values[1];
+    var gender = values[2];
+    var age = values[3];
+    var job = values[4];
+    var custGrade = values[5];
+    var subTerm = values[6];
+    var asset = values[7];
+    var privacy = values[8];
+    var recLoginDate = values[9];
+    var prodNm = values[10];
+    var mContents = values[11];
+    console.log(values[12])
+    // 각 요소에 값 설정
+    document.getElementById("man").checked = gender[0] === "M";
+    document.getElementById("woman").checked = gender[1] === "F";
+    document.getElementById("privacyYes").checked = privacy === "O";
+    document.getElementById("age").value = age;
+    document.getElementById("job").value = job;
+    document.getElementById("private").value = custGrade;
+    document.getElementById("asset").value = asset;
+    document.getElementById("app").value = recLoginDate;
+    document.getElementById("period").value = subTerm;
+    document.getElementById("name").value = custNm;
+    document.getElementById("prodNm").value = prodNm;
+    document.getElementById("mContents" ).value = mContents;
 
-    // 전송할 데이터를 쿼리스트링 형식으로 만듭니다.
-
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                window.location.href = "/pages/manageMessage/appPromotionManage/appPromotionManage.jsp?id=" + encodeURIComponent(custInfo[0]) +
-                    "&custNm=" + encodeURIComponent(custInfo[1]) +
-                    "&gender=" + encodeURIComponent(custInfo[2]) +
-                    "&age=" + encodeURIComponent(custInfo[3]) +
-                    "&job=" + encodeURIComponent(custInfo[4]) +
-                    "&custGrade=" + encodeURIComponent(custInfo[5]) +
-                    "&period=" + encodeURIComponent(custInfo[6]) +
-                    "&asset=" + encodeURIComponent(custInfo[7]) +
-                    "&privacyYes=" + encodeURIComponent(custInfo[8]) +
-                    "&app=" + encodeURIComponent(custInfo[9]) +
-                    "&prodNm=" + encodeURIComponent(custInfo[10]) +
-                    "&mContents=" + encodeURIComponent(custInfo[11]) +
-                    "&id=" + encodeURIComponent(custInfo[12]);
-            } else {
-
-            }
-        }
-    };
-    // 데이터를 전송합니다.
-    xhr.send();
-    // 페이지 리디렉션
-
+    sendValueToServlet()
 }

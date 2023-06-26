@@ -33,7 +33,7 @@
     </section>
     <section class="mainComponent">
         <div class="mainComponent-header">
-            <div class="mainComponent-header-text">어플프로모션상품 메시지 관리</div>
+            <div class="mainComponent-header-text">앱 광고 메시지 관리</div>
             <div class="mainComponent-header-button"><a href="./appPromotionWrite.jsp">새로 만들기</a></div>
         </div>
         <%
