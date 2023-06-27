@@ -107,7 +107,7 @@
             </div>
         </div>
         <div id="resultContainer" class="listComponent2">
-            <form method="post" action="/pages/email/sendEmail.jsp" style="width:100%; display:flex; flex-direction: column; justify-content: center; align-items: center;" >
+            <form method="post" action="/pages/email/voicefishingNotificationEmail/voicefishingNotificationSendEmail.jsp" style="width:100%; display:flex; flex-direction: column; justify-content: center; align-items: center;" >
 
                     <%  int count = 0;
                 List<voicefishingNotificationDTO> custInfos = (List<voicefishingNotificationDTO>) request.getAttribute("custInfos");
