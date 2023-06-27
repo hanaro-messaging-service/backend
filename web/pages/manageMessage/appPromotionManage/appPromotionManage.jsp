@@ -78,6 +78,27 @@
 
         // 전송할 데이터를 쿼리스트링 형식으로 만듭니다.
 
+<<<<<<< HEAD
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          window.location.href = "/pages/manageMessage/productPromotionManage/overdueNotificationModify.jsp?id=" + encodeURIComponent(custInfo[0]) +
+                  "&custNm=" + encodeURIComponent(custInfo[1]) +
+                  "&gender=" + encodeURIComponent(custInfo[2]) +
+                  "&age=" + encodeURIComponent(custInfo[3]) +
+                  "&job=" + encodeURIComponent(custInfo[4]) +
+                  "&location=" + encodeURIComponent(custInfo[5]) +
+                  "&custGrade=" + encodeURIComponent(custInfo[6]) +
+                  "&branch=" + encodeURIComponent(custInfo[7]) +
+                  "&period=" + encodeURIComponent(custInfo[8]) +
+                  "&asset=" + encodeURIComponent(custInfo[9]) +
+                  "&privacyYes=" + encodeURIComponent(custInfo[10]) +
+                  "&app=" + encodeURIComponent(custInfo[11]) +
+                  "&prodNm=" + encodeURIComponent(custInfo[12]) +
+                  "&mContents=" + encodeURIComponent(custInfo[13]) +
+                  "&id=" + encodeURIComponent(custInfo[14]);
+        } else {
+=======
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
@@ -95,6 +116,7 @@
                         "&mContents=" + encodeURIComponent(custInfo[11]) +
                         "&id=" + encodeURIComponent(custInfo[12]);
                 } else {
+>>>>>>> 9ac7324dc1d967f9602006343fd9ae0d085e83a6
 
                 }
             }
