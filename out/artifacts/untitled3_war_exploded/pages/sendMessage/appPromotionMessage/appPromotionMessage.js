@@ -18,9 +18,6 @@ function sendValueToServlet() {
     var selectedPeriodValue = document.getElementById('period').value;
     var prodNmValue = document.getElementById('prodNm').value;
     var mContentsValue = document.getElementById('mContents').value;
-    console.log(selectedCheckBoxManValue);
-    // var selectedLocationValue = document.getElementById('location').value;
-    // var selectedBranchValue = document.getElementById('branch').value;
     let sentence = "";
     console.log(selectedNameValue);
     sentence += selectedCheckBoxManValue.checked ? "&selectedManValue=" + encodeURIComponent("M") : "";
@@ -33,8 +30,6 @@ function sendValueToServlet() {
     sentence += selectedNameValue ? "&selectedNameValue=" + encodeURIComponent(selectedNameValue) : "";
     sentence += selectedAppValue ? "&selectedAppValue=" + encodeURIComponent(selectedAppValue) : "";
     sentence += selectedAssetValue ? "&selectedAssetValue=" + encodeURIComponent(selectedAssetValue) : "";
-    // sentence += selectedLocationValue ? "&selectedLocationValue=" + encodeURIComponent(selectedLocationValue) : "";
-    // sentence += selectedBranchValue ? "&selectedBranchValue=" + encodeURIComponent(selectedBranchValue) : "";
     // AJAX 요청을 사용하여 서블릿에 값 전달
 
     debounce(function(){
@@ -62,6 +57,17 @@ function sendValueToServlet() {
                 document.getElementById("resultContainer").innerHTML = elementValue;
                 document.getElementById("prodNm").value = prodNmValue;
                 document.getElementById("mContents" ).value = mContentsValue;
+                document.getElementById('getName').value = selectedNameValue;
+                document.getElementById("getApp").value = selectedAppValue ;
+                document.getElementById("getAsset").value = selectedAssetValue ;
+                document.getElementById("getMan").value =  selectedCheckBoxManValue.checked ? "M" : "N";
+                document.getElementById("getWoman").value = selectedCheckBoxWomanValue.checked ? "F" : "N";
+                document.getElementById("getPrivacyYes").value = selectedCheckBoxPrivacyYes.checked ? "O" : "X";
+                document.getElementById("getJob").value = selectedJobValue;
+                document.getElementById("getPrivate").value = selectedPrivateValue;
+                document.getElementById("getAge").value = selectedAgeValue;
+                document.getElementById('getPeriod').value = selectedPeriodValue ;
+                ;
             }
         };
 
@@ -83,6 +89,7 @@ function sendValueToServlet() {
     },1000);
 
 }
+
 function modifyMessage(values) {
     // 값을 읽어와서 변수에 할당
     var id = values[0];

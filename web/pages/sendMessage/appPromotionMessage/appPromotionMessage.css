@@ -103,16 +103,7 @@ main {
     color:white;
     border-radius:5px;
 }
-.mainComponent-messageList-title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 100%;
-}
 
-.mainComponent-messageList-title::after {
-    content: "...";
-}
 .searchComponent-searchBar{
     width:90%;
     height: auto;
@@ -157,6 +148,15 @@ main {
     margin-right:0.5vw;
 }
 .listComponent{
+    margin-top:1vh;
+    width:90%;
+    height:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.listComponent2{
     margin-top:1vh;
     width:100%;
     height:auto;
@@ -227,22 +227,38 @@ main {
     border:1px solid darkgray;
 }
 .myMessage{
-    margin-top:1vh;
+    margin-top:2vh;
     display:flex;
     width:90%;
+    height:4vh;
     align-items:center;
+    justify-content: space-between;
 }
 .myMessage-list {
-    width: 100%;
+    width: 80%;
+    height:100%;
     display: flex;
-    align-items: center;
-    overflow-x: scroll;
-    white-space: nowrap;
 }
 
-.myMessage-list-element{
-    width:15%;
+.myMessage-list-element {
+    display: flex;
+    align-items: center;
+    width: auto;
+    border: 2px solid #008485;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+
+.mainComponent-messageList-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
     height:4vh;
+
     background-color: white;
     border: 1px solid #008485;
     margin-right:5%;
@@ -252,4 +268,7 @@ main {
     align-items: center;
     cursor:pointer;
 }
-.mainComponent
+
+.mainComponent-messageList-title::after {
+    content: "...";
+}
