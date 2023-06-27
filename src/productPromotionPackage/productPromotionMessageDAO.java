@@ -56,6 +56,7 @@ public class productPromotionMessageDAO extends DBConnPool {
                 "JOIN app_info ON cust_info.custNo = app_info.custNo " +
                 "WHERE " +
                 "1=1";
+
         String custNm = (String) map.get("custNm");
         query = nameFilter.addNameFilterCondition(query,custNm);
         String man = (String) map.get("man");

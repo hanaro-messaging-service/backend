@@ -73,6 +73,7 @@
   <div class="sidebar-content"><li><a href="/pages/manageMessage/appPromotionManage/appPromotionManage.jsp">어플 프로모션 메시지 관리</a></li></div>
   <div class="sidebar-content"><li ><a href="/pages/manageMessage/overdueNotificationManage/overdueNotificationManage.jsp">상황 관리 안내 메시지 관리</a></li></div>
   <div class="sidebar-submain"><a href="/pages/messageList/messageList.jsp">메시지 발송내역</a></div>
+  <div class="sidebar-content"><li ><a href="/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageList.jsp">보이스피싱 예방 안내 발송내역</a></li></div>
   <div class="sidebar-content"><li ><a href="/pages/messageList/productPromotionMessageList/prodMessageList.jsp">수신 상품 프로모션 발송내역</a></li></div>
   <div class="sidebar-submain"><a href="/pages/main/mainpage.jsp">메인페이지</a></div>
 
