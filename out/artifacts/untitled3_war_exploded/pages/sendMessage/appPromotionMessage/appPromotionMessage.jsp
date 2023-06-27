@@ -1,13 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 2023-06-21
-  Time: 오후 5:08
-  To change this template use File | Settings | File Templates.
---%>
 
 <%@ page import="appPromotionMessagePackage.appPromotionMessageDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="appPromotionMessagePackage.appPromotionCustomizeDTO" %>
+<%@ page import="appPromotionMessagePackage.appPromotionCustomizeDAO" %>
 <%@ page import="java.util.List" %>
 <html>
 <head>
@@ -20,28 +15,16 @@
   헤더입니다
 </header>
 <main>
-  <section class="sidebar">
-    <div class="sidebar-main">
-      메시지
-    </div>
-    <div class="sidebar-submain">전송</div>
-    <div class="sidebar-content"><li>전체 안내 메시지 전송</li></div>
-    <div class="sidebar-content"><li><a href="/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.jsp">보이스피싱 예방 안내 메시지 전송</a></li></div>
-    <div class="sidebar-content"><li><a href="/">수신 상품 프로모션 메시지 전송</a></li></div>
-    <div class="sidebar-content"><li><a href="/pages/sendMessage/appPromotionMessage/appPromotionMessage.jsp">어플 프로모션 메시지 전송</a></li></div>
-    <div class="sidebar-content"><li><a href="/pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp">상황 관리 안내 메시지 전송</a></li></div>
-    <div class="sidebar-submain">관리</div>
-    <div class="sidebar-content"><li>전체 안내 메시지 관리</li></div>
-    <div class="sidebar-content"><li><a href="/pages/manageMessage/voicefishingNotificationManage/voicefishingNotificationManage.jsp"> 보이스피싱 예방 안내 메시지 관리</a></li></div>
-    <div class="sidebar-content"><li><a href="/pages/manageMessage/productPromotionManage/productPromotionManage.jsp">수신 상품 프로모션 메시지 관리</a></li></div>
-    <div class="sidebar-content"><li><a href="/pages/manageMessage/appPromotionManage/appPromotionManage.jsp">어플 프로모션 메시지 관리</a></li></div>
-    <div class="sidebar-content"><li ><a href="/pages/manageMessage/overdueNotificationManage/overdueNotificationManage.jsp">상황 관리 안내 메시지 관리</a></li></div>
-  </section>
+  <jsp:include page="/components/sidebar.jsp" />
   <section class="mainComponent">
+    <%
+      appPromotionCustomizeDAO dao = new appPromotionCustomizeDAO();
+      List<appPromotionCustomizeDTO> infos = dao.selectMessage();
+
+    %>
     <div class="searchComponent">
       <div class="searchComponent-topBar">
-        <div class="searchComponent-topBar-left">메세지 관리</div>
-        <div class="searchComponent-topBar-right">메세지 전송</div>
+        <div class="searchComponent-topBar-left">메세지 전송</div>
       </div>
       <div class="searchComponent-titleBar">어플 프로모션 메시지</div>
       <div class="searchComponent-searchBar">
@@ -135,24 +118,6 @@
             </select>
           </div>
         </div>
-<%--        <div class="searchComponent-searchBar-list">--%>
-<%--          <div class="searchComponent-searchBar-list-key">거주지</div>--%>
-<%--          <div class="searchComponent-searchBar-list-value">--%>
-<%--            <select name="location" id="location" onchange="sendValueToServlet(this.value)" >--%>
-<%--              <option value="전체">전체</option>--%>
-<%--              <option value="서울특별시">서울특별시</option>--%>
-<%--              <option value="경기도">경기도</option>--%>
-<%--              <option value="경상도">경상도</option>--%>
-<%--              <option value="강원도">강원도</option>--%>
-<%--              <option value="충청도">충청도</option>--%>
-<%--              <option value="전라도">전라도</option>--%>
-<%--            </select>--%>
-<%--          </div>--%>
-<%--          <div class="searchComponent-searchBar-list-key">개설지점</div>--%>
-<%--          <div class="searchComponent-searchBar-list-value">--%>
-<%--            <input value="" type="text" id="branch" oninput="sendValueToServlet(event.target.value)">--%>
-<%--          </div>--%>
-<%--        </div>--%>
         <div class="searchComponent-searchBar-list">
           <div class="searchComponent-searchBar-list-key">이름</div>
           <div class="searchComponent-searchBar-list-value">
@@ -170,80 +135,175 @@
             </select>
           </div>
         </div>
-        <div class="searchComponent-searchBar-list">
-          <div class="searchComponent-searchBar-list-key">메세지 내용</div>
-          <div class="searchComponent-searchBar-list-value"></div>
-          <div class="searchComponent-searchBar-list-key"></div>
-          <div class="searchComponent-searchBar-list-value"></div>
-        </div>
-
       </div>
-
     </div>
-    <div class="listComponent">
-      <div class="listComponent-topbar">
-        <div class="listComponent-topbar-element">선택</div>
-        <div class="listComponent-topbar-element">이름</div>
-        <div class="listComponent-topbar-element">성별</div>
-        <div class="listComponent-topbar-element">나이</div>
-        <div class="listComponent-topbar-elementMedium">직업</div>
-<%--        <div class="listComponent-topbar-elementMedium">거주지</div>--%>
-        <div class="listComponent-topbar-elementBig">고객등급</div>
-<%--        <div class="listComponent-topbar-elementBig">개설지점</div>--%>
-        <div class="listComponent-topbar-elementBig">가입기간</div>
-        <div class="listComponent-topbar-elementBig">자산</div>
-        <div class="listComponent-topbar-elementBig">개인정보동의</div>
-        <div class="listComponent-topbar-elementBig">어플접속일</div>
-      </div>
-      <div id="resultContainer">
+    <div class="myMessage">
+      <div style="margin-left:1.5vw; margin-right:1vw; width:120px;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
+                            align-items:center; color:white;">마이메세지</div>
+
+      <div class="myMessage-list">
+
         <%
-          List<appPromotionMessageDTO> custInfos = (List<appPromotionMessageDTO>) request.getAttribute("custInfos");
-          if (custInfos != null) {
-            for (appPromotionMessageDTO custInfo : custInfos) { %>
-        <div class="listComponent-listbar">
-          <div class="listComponent-topbar-element bg-white">
-            <input type="checkbox" checked>
+
+          if (infos != null) {
+
+
+            for (appPromotionCustomizeDTO custInfo : infos)
+            { %>
+        <div class="myMessage-list-element" style="position:relative" onclick="modifyMessage([
+                '<%=custInfo.getId() %>',
+                '<%=custInfo.getCustNm() %>',
+                '<%=custInfo.getGender() %>',
+                '<%=custInfo.getAge() %>',
+                '<%=custInfo.getJob() %>',
+                '<%=custInfo.getCustGrade() %>',
+                '<%=custInfo.getSubTerm() %>',
+                '<%=custInfo.getAsset() %>',
+                '<%=custInfo.getPrivacy() %>',
+                '<%=custInfo.getRecLoginDate() %>',
+                '<%=custInfo.getProdNm() %>',
+                '<%=custInfo.getMContents() %>',
+                '<%=custInfo.getId()%>'
+                ])">
+
+          <div class="mainComponent-messageList-title">
+            <%=
+            custInfo.getProdNm()
+            %>
           </div>
-          <div class="listComponent-topbar-element bg-white">
-            <%= custInfo.getCustNm() %>
-          </div>
-          <div class="listComponent-topbar-element bg-white">
-            <%= custInfo.getGender() %>
-          </div>
-          <div class="listComponent-topbar-element bg-white">
-            <%= custInfo.getAge() %>
-          </div>
-          <div class="listComponent-topbar-elementMedium bg-white">
-            <%= custInfo.getJob()%>
-          </div>
-<%--          <div class="listComponent-topbar-elementMedium bg-white">--%>
-<%--            <%= custInfo.getAddress()%>--%>
-<%--          </div>--%>
-          <div class="listComponent-topbar-elementBig bg-white">
-            <%= custInfo.getCustGrade()%>
-          </div>
-<%--          <div class="listComponent-topbar-elementBig bg-white">--%>
-<%--            <%= custInfo.getBranch() %>--%>
-<%--          </div>--%>
-          <div class="listComponent-topbar-elementBig bg-white">
-            <%= custInfo.getSubTerm()%>
-          </div>
-          <div class="listComponent-topbar-elementBig bg-white">
-            <%= custInfo.getAsset()%>
-          </div>
-          <div class="listComponent-topbar-elementBig bg-white">
-            <%= custInfo.getPrivacy()%>
-          </div>
-          <div class="listComponent-topbar-elementBig bg-white">
-            <%= custInfo.getRecLoginDate()%>
-          </div>
+
         </div>
-        <% } } %>
 
+        <%
+            }}
+        %>
       </div>
+    </div>
+    <div id="resultContainer" class="listComponent">
+      <form method="post" action="/pages/email/sendEmail.jsp" >
 
+          <%  int count = 0;
+                List<appPromotionMessageDTO> custInfos = (List<appPromotionMessageDTO>) request.getAttribute("custInfos");
+                java.util.Date currentDate = new java.util.Date();
+                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String formattedDate = sdf.format(currentDate);
+            %>
+        <input hidden="" value="어플 프로모션" name="category">
+        <%--            value값 수정--%>
+
+
+
+        <input hidden="" value="<%= formattedDate %>" name="date">
+        <table style="display:flex;justify-content: center; width: 100%;" >
+          <tr  hidden="">
+
+            <td hidden="">
+              보내는 사람 : <input type="text" name="from" value="hanaromessage@naver.com" />
+            </td>
+          </tr>
+          <tr hidden="">
+            <td hidden="">
+              받는 사람 : <input type="text" name="to" value="hanaromessage@naver.com" />
+            </td>
+          </tr>
+          <tr style=" display:flex; width:100%; justify-content: center;">
+            <td style="width:100%; display:flex; align-items: center; justify-content: space-between;">
+              <div style="margin-right:1vw; width:127px;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
+                            align-items:center; color:white;
+                         ">메시지제목</div>
+              <input style=" width:110%; height:4vh; border: 2px solid #008485;" type="text" name="subject" id="prodNm"  value="" />
+            </td>
+          </tr>
+          <tr style=" display:flex; width:100%; justify-content: center; margin-top:1vh;">
+            <td style="width:100%; display:flex; align-items: center; ">
+              <div style="margin-right:1vw; width:100px;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
+                            align-items:center; color:white;
+                         ">
+                메세지 형식
+              </div>
+              <div>
+                <input  type="radio" name="format" value="text" checked />Text
+                <input type="radio" name="format" value="html" />HTML
+              </div>
+
+            </td>
+          </tr>
+          <tr style=" display:flex; width:100%; justify-content: center; margin-top:1vh;">
+            <td style="width:100%; display:flex;  justify-content: space-between;">
+              <div style="margin-right:1vw; width:100px;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
+                            align-items:center; color:white;
+                         ">메세지 내용</div>
+              <textarea style=" width:60vw; height:20vh; border: 2px solid #008485;" name="content" id="mContents" cols="60" rows="10"></textarea>
+            </td>
+          </tr>
+          <tr style=" display:flex; width:100%; justify-content: center; margin-top:1vh;">
+            <td style="width:100%; display:flex;justify-content: flex-end;">
+              <button style="width:15%; height:4vh; background:white; border:1px solid #cccccc;" type="submit">전송하기</button>
+
+            </td>
+          </tr>
+        </table>
+        <div class="listComponent">
+          <div class="listComponent-topbar">
+            <div class="listComponent-topbar-element">선택</div>
+            <div class="listComponent-topbar-element">이름</div>
+            <div class="listComponent-topbar-element">성별</div>
+            <div class="listComponent-topbar-element">나이</div>
+            <div class="listComponent-topbar-elementMedium">직업</div>
+            <div class="listComponent-topbar-elementBig">고객등급</div>
+            <div class="listComponent-topbar-elementBig">가입기간</div>
+            <div class="listComponent-topbar-elementBig">자산</div>
+            <div class="listComponent-topbar-elementBig">개인정보동의</div>
+            <div class="listComponent-topbar-elementBig">어플접속일</div>
+          </div>
+
+
+          <%
+
+            if (custInfos != null) {
+              for (appPromotionMessageDTO custInfo : custInfos) {
+                count++;
+                System.out.println(count);
+          %>
+          <div class="listComponent-listbar">
+            <div class="listComponent-topbar-element bg-white">
+              <input type="checkbox" checked>
+            </div>
+            <div class="listComponent-topbar-element bg-white">
+              <%= custInfo.getCustNm() %>
+            </div>
+            <div class="listComponent-topbar-element bg-white">
+              <%= custInfo.getGender() %>
+            </div>
+            <div class="listComponent-topbar-element bg-white">
+              <%= custInfo.getAge() %>
+            </div>
+            <div class="listComponent-topbar-elementMedium bg-white">
+              <%= custInfo.getJob()%>
+            </div>
+            <div class="listComponent-topbar-elementBig bg-white">
+              <%= custInfo.getCustGrade()%>
+            </div>
+            <div class="listComponent-topbar-elementBig bg-white">
+              <%= custInfo.getSubTerm()%>
+            </div>
+            <div class="listComponent-topbar-elementBig bg-white">
+              <%= custInfo.getAsset()%>
+            </div>
+            <div class="listComponent-topbar-elementBig bg-white">
+              <%= custInfo.getPrivacy()%>
+            </div>
+            <div class="listComponent-topbar-elementBig bg-white">
+              <%= custInfo.getRecLoginDate()%>
+            </div>
+          </div>
+          <% } } %>
+          <input hidden="" value="<%=count%>" name="counts">
+        </div>
+      </form>
     </div>
   </section>
 </main>
+
 </body>
 </html>

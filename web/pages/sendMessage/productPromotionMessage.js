@@ -18,6 +18,8 @@ function sendValueToServlet() {
     var selectedPeriodValue = document.getElementById('period').value;
     var selectedLocationValue = document.getElementById('location').value;
     var selectedBranchValue = document.getElementById('branch').value;
+    var prodNmValue = document.getElementById('prodNm').value;
+    var mContentsValue = document.getElementById('mContents').value;
     let sentence = "";
     console.log(selectedNameValue);
     sentence += selectedCheckBoxManValue.checked ? "&selectedManValue=" + encodeURIComponent("M") : "";
@@ -57,6 +59,21 @@ function sendValueToServlet() {
 
                 // 가져온 값으로 특정 영역 업데이트
                 document.getElementById("resultContainer").innerHTML = elementValue;
+                document.getElementById("prodNm").value = prodNmValue;
+                document.getElementById("mContents" ).value = mContentsValue;
+                document.getElementById('getName').value = selectedNameValue;
+                document.getElementById("getApp").value = selectedAppValue ;
+                document.getElementById("getAsset").value = selectedAssetValue ;
+                document.getElementById("getMan").value =  selectedCheckBoxManValue.checked ? "M" : "N";
+                document.getElementById("getWoman").value = selectedCheckBoxWomanValue.checked ? "F" : "N";
+                document.getElementById("getPrivacyYes").value = selectedCheckBoxPrivacyYes.checked ? "O" : "X";
+                document.getElementById("getJob").value = selectedJobValue;
+                document.getElementById("getPrivate").value = selectedPrivateValue;
+                document.getElementById("getAge").value = selectedAgeValue;
+                document.getElementById('getPeriod').value = selectedPeriodValue ;
+                document.getElementById('getLocation').value =  selectedLocationValue ;
+                document.getElementById('getBranch').value = selectedBranchValue ;
+;
             }
         };
 
@@ -93,8 +110,9 @@ function modifyMessage(values) {
     var asset = values[9];
     var privacy = values[10];
     var recLoginDate = values[11];
+    var prodNm = values[12];
     var mContents = values[13];
-    console.log(values)
+    console.log(values[13])
     // 각 요소에 값 설정
     document.getElementById("man").checked = gender[0] === "M";
     document.getElementById("woman").checked = gender[1] === "F";
@@ -108,6 +126,7 @@ function modifyMessage(values) {
     document.getElementById("location").value = address;
     document.getElementById("branch").value = branch;
     document.getElementById("name").value = custNm;
+    document.getElementById("prodNm").value = prodNm;
     document.getElementById("mContents" ).value = mContents;
 
     sendValueToServlet()

@@ -1,6 +1,6 @@
 package productPromotionPackage;
 
-public class productPromotionWriteDTO {
+    public class productPromotionWriteDTO {
     private String custNm;
     private String gender;
     private String age;

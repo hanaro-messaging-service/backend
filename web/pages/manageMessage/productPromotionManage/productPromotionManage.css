@@ -2,6 +2,10 @@
     margin:0;
     padding:0;
 }
+a{
+    text-decoration: none;
+
+}
 header {
     width:100%;
     height: 7vh;
@@ -109,7 +113,7 @@ main {
     max-height:9.5vh;
     height:9.5vh;
     width:96%;
-    padding-left: 2%;
+    padding-left: 3%;
     padding-top:1%;
     display: -webkit-box; /* 브라우저 호환성을 위한 접두사 사용 */
     -webkit-line-clamp: 4; /* 표시할 줄 수 */
