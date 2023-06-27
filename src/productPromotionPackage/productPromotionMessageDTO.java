@@ -13,7 +13,7 @@ public class productPromotionMessageDTO {
     private String asset;
     private String privacy;
     private String recLoginDate;
-
+    private String email;
 
 
     public String getCustNm() {
@@ -100,6 +100,13 @@ public class productPromotionMessageDTO {
 
     public void setRecLoginDate(String recLoginDate) {
         this.recLoginDate = recLoginDate;
+    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }
