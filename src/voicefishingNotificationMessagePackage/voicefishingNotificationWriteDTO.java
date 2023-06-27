@@ -5,6 +5,24 @@ public class voicefishingNotificationWriteDTO {
     private String age;
     private String privacy;
 
+    private String prodNm;
+    private String mContents;
+
+    public String getProdNm() {
+        return prodNm;
+    }
+
+    public void setProdNm(String prodNm) {
+        this.prodNm = prodNm;
+    }
+
+    public String getmContents() {
+        return mContents;
+    }
+
+    public void setmContents(String mContents) {
+        this.mContents = mContents;
+    }
 
 
     public String getCustNm() {

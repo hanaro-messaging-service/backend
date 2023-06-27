@@ -4,7 +4,6 @@ public class voicefishingNotificationCustomizeDTO {
     private String custNm;
     private String age;
     private String privacy;
-
     private String address;
     private String asset;
     private String prodNm;

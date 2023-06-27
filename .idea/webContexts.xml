@@ -5,6 +5,7 @@
       <map>
         <entry key="file://$PROJECT_DIR$/web/pages/main/mainpage.jsp" value="file://$PROJECT_DIR$/web/pages/main" />
         <entry key="file://$PROJECT_DIR$/web/pages/sendMessage/productPromotionMessage.jsp" value="file://$PROJECT_DIR$/web/pages/sendMessage" />
+        <entry key="file://$PROJECT_DIR$/web/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.jsp" value="file://$PROJECT_DIR$/web/pages/sendMessage/voicefishingNotificationMessage" />
       </map>
     </option>
   </component>
