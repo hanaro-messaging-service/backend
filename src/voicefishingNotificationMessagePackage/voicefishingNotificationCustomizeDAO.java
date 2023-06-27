@@ -22,6 +22,7 @@ public class voicefishingNotificationCustomizeDAO extends DBConnPool {
                 voicefishingNotificationCustomizeDTO member = new voicefishingNotificationCustomizeDTO();
                 member.setPrivacy(rs.getString("privacy"));
                 member.setAge(rs.getString("age"));
+                member.setAsset(rs.getString("asset"));
                 member.setCustNm(rs.getString("custNm"));
                 member.setMContents(rs.getString("mContents"));
                 member.setId(rs.getString("id"));

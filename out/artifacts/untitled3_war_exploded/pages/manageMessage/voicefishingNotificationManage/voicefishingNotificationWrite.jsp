@@ -1,4 +1,3 @@
-
 <%@ page import="voicefishingNotificationMessagePackage.voicefishingNotificationCustomizeDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
@@ -13,7 +12,7 @@
 
 
 <main>
-    <form action="/voicefishingNotificationWrite" method="POST" >
+    <form action="/VoicefishingNotificationWrite" method="POST" >
         <section class="mainComponent">
             <div class="searchComponent">
                 <div class="searchComponent-topBar">

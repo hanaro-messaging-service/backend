@@ -48,7 +48,7 @@ public class emailSMTP {
     }
 
     // 주어진 메일 내용을 네이버 SMTP 서버를 통해 전송합니다.
-    public void emailSending(Map<String, String> mailInfo) throws MessagingException {
+    public void emailSending(Map<String, String> mailInfo, Map<String,String[]> toInfo) throws MessagingException {
         Properties props = new Properties();
         props.put("mail.smtp.ssl.enable", "true");
 
@@ -64,8 +64,14 @@ public class emailSMTP {
         // 2. 메시지 작성
         MimeMessage msg = new MimeMessage(session);
         msg.setFrom(new InternetAddress(mailInfo.get("from")));     // 보내는 사람
-        msg.addRecipient(Message.RecipientType.TO,
-                new InternetAddress(mailInfo.get("to")));  // 받는 사람
+
+        String[] addr = toInfo.get("to");
+        InternetAddress[] toAddr = new InternetAddress[addr.length];
+        for(int i = 0; i < addr.length; i++) {
+            toAddr[i] = new InternetAddress(addr[i]);
+        }
+        msg.addRecipients(Message.RecipientType.TO,
+                toAddr);  // 받는 사람
         msg.setSubject(mailInfo.get("subject"));                    // 제목
         msg.setContent(mailInfo.get("content"), mailInfo.get("format"));  // 내용
 

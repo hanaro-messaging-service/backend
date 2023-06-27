@@ -172,7 +172,6 @@
 
                     if (infos != null) {
 
-
                         for (productPromotionCustomizeDTO custInfo : infos)
                         { %>
                 <div class="myMessage-list-element" style="" onclick="modifyMessage([
@@ -205,10 +204,14 @@
             </div>
         </div>
         <div id="resultContainer" class="listComponent2">
-        <form method="post" action="/pages/email/sendEmail.jsp" style="width:100%; display:flex; flex-direction: column; justify-content: center; align-items: center;" >
+        <form method="post" action="/pages/email/productPromotionSendEmail.jsp" style="width:100%; display:flex; flex-direction: column; justify-content: center; align-items: center;" >
 
             <%  int count = 0;
-                List<productPromotionMessageDTO> custInfos = (List<productPromotionMessageDTO>) request.getAttribute("custInfos");
+                if(request.getAttribute("custInfos")!=null) {
+                    int custInfos = (int) request.getAttribute("custInfos");
+                }
+
+//                System.out.println(custInfos);
                 java.util.Date currentDate = new java.util.Date();
                 java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String formattedDate = sdf.format(currentDate);
@@ -226,11 +229,7 @@
                         보내는 사람 : <input type="text" name="from" value="hanaromessage@naver.com" />
                     </td>
                 </tr>
-                <tr hidden="">
-                    <td hidden="">
-                        받는 사람 : <input type="text" name="to" value="hanaromessage@naver.com" />
-                    </td>
-                </tr>
+
                 <div style=" display:flex; width:90%; justify-content: space-between;">
 
                         <div style=" width:15%;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
@@ -268,29 +267,30 @@
 
         <div class="listComponent">
             <div class="listComponent-topbar">
-                <div class="listComponent-topbar-element">선택</div>
                 <div class="listComponent-topbar-element">이름</div>
                 <div class="listComponent-topbar-element">성별</div>
                 <div class="listComponent-topbar-element">나이</div>
                 <div class="listComponent-topbar-elementMedium">직업</div>
                 <div class="listComponent-topbar-elementMedium">거주지</div>
-                <div class="listComponent-topbar-elementBig">고객등급</div>
+                <div class="listComponent-topbar-element">고객등급</div>
                 <div class="listComponent-topbar-elementBig">개설지점</div>
-                <div class="listComponent-topbar-elementBig">가입기간</div>
-                <div class="listComponent-topbar-elementBig">자산</div>
-                <div class="listComponent-topbar-elementBig">개인정보동의</div>
+                <div class="listComponent-topbar-elementMedium">가입기간</div>
+                <div class="listComponent-topbar-elementMedium">자산</div>
+                <div class="listComponent-topbar-elementMedium">개인정보동의</div>
                 <div class="listComponent-topbar-elementBig">어플접속일</div>
+                <div class="listComponent-topbar-elementVeryBig">이메일</div>
             </div>
-                <%
-
-                    if (custInfos != null) {
-                        for (productPromotionMessageDTO custInfo : custInfos) {
-                count++;
-                %>
+            <%
+                List<productPromotionMessageDTO> pageInfos = (List<productPromotionMessageDTO>) request.getAttribute("pageInfos");
+                if (pageInfos != null) {
+                    for (productPromotionMessageDTO custInfo : pageInfos) {
+                        count++;
+            %>
                 <div class="listComponent-listbar">
-                    <div class="listComponent-topbar-element bg-white">
-                        <input type="checkbox" checked>
-                    </div>
+
+
+                        <input hidden="" type="text" name="to" value="<%=custInfo.getEmail()%>" />
+
                     <div class="listComponent-topbar-element bg-white">
                         <%= custInfo.getCustNm() %>
                     </div>
@@ -306,27 +306,59 @@
                     <div class="listComponent-topbar-elementMedium bg-white">
                         <%= custInfo.getAddress()%>
                     </div>
-                    <div class="listComponent-topbar-elementBig bg-white">
+                    <div class="listComponent-topbar-element bg-white">
                         <%= custInfo.getCustGrade()%>
                     </div>
                     <div class="listComponent-topbar-elementBig bg-white">
                         <%= custInfo.getBranch() %>
                     </div>
-                    <div class="listComponent-topbar-elementBig bg-white">
+                    <div class="listComponent-topbar-elementMedium bg-white">
                         <%= custInfo.getSubTerm()%>
                     </div>
-                    <div class="listComponent-topbar-elementBig bg-white">
+                    <div class="listComponent-topbar-elementMedium bg-white">
                         <%= custInfo.getAsset()%>
                     </div>
-                    <div class="listComponent-topbar-elementBig bg-white">
+                    <div class="listComponent-topbar-elementMedium bg-white">
                         <%= custInfo.getPrivacy()%>
                     </div>
                     <div class="listComponent-topbar-elementBig bg-white">
                         <%= custInfo.getRecLoginDate()%>
                     </div>
+                    <div class="listComponent-topbar-elementVeryBig bg-white">
+                        <%= custInfo.getEmail()%>
+                    </div>
+
                 </div>
-                <% } } %>
-            <input hidden="" value="<%=count%>" name="counts">
+
+                <%  } %>
+            <div style="display:flex">
+                <%  if(request.getAttribute("custInfos")!=null) {
+                    int custInfos = (int) request.getAttribute("custInfos");
+                    int pageCount = 0;
+                    int pageLength = custInfos/10+1;
+
+                    for (int i = 0; i<pageLength; i++) {
+
+                %>
+                <div onclick="sendPageValueToServlet(<%=(pageCount)*10%>,<%=10%>)">
+                    <%= pageCount+1%>
+                </div>
+                <%
+                            pageCount++;
+                        }
+                    }
+                %>
+            </div>
+                <%
+                    }
+                %>
+            <%
+
+            %>
+            <div>
+
+            </div>
+            <input hidden="" value="" name="counts">
             <input hidden="" id="getName"  name="name">
             <input hidden="" id="getApp"   name="app">
             <input hidden="" id="getAsset"  name="asset">
@@ -345,9 +377,11 @@
         </div>
     </section>
 </main>
-<script>
 
+    <script>
 
 </script>
+
+
 </body>
 </html>

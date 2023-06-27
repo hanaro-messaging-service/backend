@@ -1,5 +1,5 @@
 
-<%@ page import="voicefishingNotificationMessagePackage.voicefishingNotificationCustomizeDTO" %>
+<%@ page import="voicefishingNotificationMessagePackage.voicefishingNotificationDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 
@@ -11,11 +11,11 @@
 
 
 </head>
-<body>
+<body>s
 
 
 <main>
-    <form action="/voicefishingNotificationModifyServlet" method="POST" >
+    <form action="/VoicefishingNotificationModifyServlet" method="POST" >
         <section class="mainComponent">
             <div class="searchComponent">
                 <div class="searchComponent-topBar">
@@ -77,7 +77,7 @@
         </section>
         <section class="textComponent">
             <div class="searchComponent-topBar-right">메세지 제목</div>
-            <input name="mContents" value="<%= request.getParameter("mContents") %>" class="textComponent-messageInput">
+            <input name="prodNm" value="<%= request.getParameter("prodNm") %>" class="textComponent-messageInput">
             <div class="searchComponent-topBar-right">메세지 내용</div>
             <textarea name="mContents" class="textComponent-titleInput"><%= request.getParameter("mContents") %></textarea>
             <div class="buttonList">
