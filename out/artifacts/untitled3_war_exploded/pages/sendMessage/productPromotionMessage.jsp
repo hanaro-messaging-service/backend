@@ -172,7 +172,6 @@
 
                     if (infos != null) {
 
-
                         for (productPromotionCustomizeDTO custInfo : infos)
                         { %>
                 <div class="myMessage-list-element" style="" onclick="modifyMessage([
@@ -208,7 +207,11 @@
         <form method="post" action="/pages/email/productPromotionSendEmail.jsp" style="width:100%; display:flex; flex-direction: column; justify-content: center; align-items: center;" >
 
             <%  int count = 0;
-                List<productPromotionMessageDTO> custInfos = (List<productPromotionMessageDTO>) request.getAttribute("custInfos");
+                if(request.getAttribute("custInfos")!=null) {
+                    int custInfos = (int) request.getAttribute("custInfos");
+                }
+
+//                System.out.println(custInfos);
                 java.util.Date currentDate = new java.util.Date();
                 java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String formattedDate = sdf.format(currentDate);
@@ -278,15 +281,13 @@
                 <div class="listComponent-topbar-elementVeryBig">이메일</div>
             </div>
             <%
-                if (custInfos != null) {
-                    String[] emailArray = new String[custInfos.size()]; // 스트링을 원소로 가진 배열 선언
-
-                    int index = 0;
-                    for (productPromotionMessageDTO custInfo : custInfos) {
+                List<productPromotionMessageDTO> pageInfos = (List<productPromotionMessageDTO>) request.getAttribute("pageInfos");
+                if (pageInfos != null) {
+                    for (productPromotionMessageDTO custInfo : pageInfos) {
                         count++;
             %>
                 <div class="listComponent-listbar">
-               
+
 
                         <input hidden="" type="text" name="to" value="<%=custInfo.getEmail()%>" />
 
@@ -328,15 +329,36 @@
                     </div>
 
                 </div>
-            <% emailArray[index] = custInfo.getEmail(); %>
-                <% index++; } %>
-                <%
 
-                    }
+                <%  } %>
+            <div style="display:flex">
+                <%  if(request.getAttribute("custInfos")!=null) {
+                    int custInfos = (int) request.getAttribute("custInfos");
+                    int pageCount = 0;
+                    int pageLength = custInfos/10+1;
+
+                    for (int i = 0; i<pageLength; i++) {
 
                 %>
+                <div onclick="sendPageValueToServlet(<%=(pageCount)*10%>,<%=10%>)">
+                    <%= pageCount+1%>
+                </div>
+                <%
+                            pageCount++;
+                        }
+                    }
+                %>
+            </div>
+                <%
+                    }
+                %>
+            <%
 
-            <input hidden="" value="<%=count%>" name="counts">
+            %>
+            <div>
+
+            </div>
+            <input hidden="" value="" name="counts">
             <input hidden="" id="getName"  name="name">
             <input hidden="" id="getApp"   name="app">
             <input hidden="" id="getAsset"  name="asset">
@@ -357,16 +379,7 @@
 </main>
 
     <script>
-        const emailCheck = document.getElementById("emailCheck");
-        const toInput = document.querySelector("input[name='to']");
 
-        emailCheck.addEventListener("change", function() {
-        if (this.checked) {
-        toInput.removeAttribute("disabled");
-    } else {
-        toInput.setAttribute("disabled", "disabled");
-    }
-    });
 </script>
 
 

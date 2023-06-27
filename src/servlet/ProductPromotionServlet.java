@@ -34,9 +34,12 @@ public class ProductPromotionServlet extends HttpServlet {
         String selectedAssetValue = request.getParameter("selectedAssetValue");
         String selectedLocationValue = request.getParameter("selectedLocationValue");
         String selectedBranchValue = request.getParameter("selectedBranchValue");
+        String selectedStartValue = request.getParameter("selectedStartValue");
+        String selectedLastValue = request.getParameter("selectedLastValue");
         System.out.println(selectedPrivateValue);
         // Process the data as required
         Map<String, Object> map = new HashMap<>();
+        Map<String, Object> pageMap = new HashMap<>();
         map.put("custNm", selectedNameValue);
         map.put("recLoginDate", selectedAppValue);
         map.put("asset", selectedAssetValue);
@@ -49,10 +52,32 @@ public class ProductPromotionServlet extends HttpServlet {
         map.put("period", selectedPeriodValue);
         map.put("branch",selectedBranchValue);
         map.put("address",selectedLocationValue);
+        map.put("start",selectedStartValue);
+        map.put("last",selectedLastValue);
+
+        pageMap.put("custNm", selectedNameValue);
+        pageMap.put("recLoginDate", selectedAppValue);
+        pageMap.put("asset", selectedAssetValue);
+        pageMap.put("man", selectedManValue);
+        pageMap.put("woman", selectedWomanValue);
+        pageMap.put("age", selectedAgeValue);
+        pageMap.put("privacy", selectedPrivacyYesValue);
+        pageMap.put("job", selectedJobValue);
+        pageMap.put("private", selectedPrivateValue);
+        pageMap.put("period", selectedPeriodValue);
+        pageMap.put("branch",selectedBranchValue);
+        pageMap.put("address",selectedLocationValue);
+        pageMap.put("start",selectedStartValue);
+        pageMap.put("last",selectedLastValue);
+        System.out.println("start"+selectedStartValue);
+        System.out.println("last"+selectedLastValue);
         // Set the response content type and encoding
         productPromotionMessageDAO dao = new productPromotionMessageDAO();
-        List<productPromotionMessageDTO> custInfos = dao.selectMessage(map);
+        int custInfos = dao.selectMessage(map);
+        productPromotionMessageDAO pageDao = new productPromotionMessageDAO();
+        List<productPromotionMessageDTO> pageInfos = pageDao.selectPaginatedMessage(pageMap);
         request.setAttribute("custInfos", custInfos);
+        request.setAttribute("pageInfos", pageInfos);
         request.getRequestDispatcher("/pages/sendMessage/productPromotionMessage.jsp").forward(request,response);
     }
 }
