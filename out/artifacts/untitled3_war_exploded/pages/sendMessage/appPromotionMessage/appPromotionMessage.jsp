@@ -17,7 +17,6 @@
 <main>
 
   <jsp:include page="/components/sidebar.jsp" />
-
   <section class="mainComponent">
     <%
       appPromotionCustomizeDAO dao = new appPromotionCustomizeDAO();

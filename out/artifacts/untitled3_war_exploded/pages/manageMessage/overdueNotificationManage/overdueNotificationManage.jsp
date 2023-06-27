@@ -1,4 +1,3 @@
-
 <%@ page import="overdueNotificationMessage.overdueNotificationCustomizeDTO" %>
 <%@ page import="overdueNotificationMessage.overdueNotificationCustomizeDAO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -13,6 +12,7 @@
 
 
 <main>
+
     <jsp:include page="/components/sidebar.jsp" />
     <section class="mainComponent">
         <div class="mainComponent-header">
@@ -25,6 +25,10 @@
             if (custInfos != null) {
                 for (overdueNotificationCustomizeDTO custInfo : custInfos)
                 { %>
+        <form  style="z-index:999999; position: relative; top: 6%; right: -40%;" method="POST" action="/overdueNotificationDeleteServlet">
+            <input name="tableId"  hidden="" value="<%=custInfo.getId()%>">
+            <button style="width:100px;height:30px"style="width:100px;height:20%" type="submit">삭제</button>
+        </form>
         <div class="mainComponent-messageList" onclick="modifyMessage([
                 '<%=custInfo.getId() %>',
                 '<%=custInfo.getCustNm() %>',
@@ -86,18 +90,18 @@
                         "&mTitle=" + encodeURIComponent(custInfo[11]) +
                         "&id=" + encodeURIComponent(custInfo[12]);
 
-                        // "&age=" + encodeURIComponent(custInfo[3]) +
-                        // "&job=" + encodeURIComponent(custInfo[4]) +
-                        // "&location=" + encodeURIComponent(custInfo[5]) +
-                        // "&custGrade=" + encodeURIComponent(custInfo[6]) +
-                        // "&branch=" + encodeURIComponent(custInfo[7]) +
-                        // "&period=" + encodeURIComponent(custInfo[8]) +
-                        // "&asset=" + encodeURIComponent(custInfo[9]) +
-                        // "&privacyYes=" + encodeURIComponent(custInfo[10]) +
-                        // "&app=" + encodeURIComponent(custInfo[11]) +
-                        // "&prodNm=" + encodeURIComponent(custInfo[12]) +
-                        // "&mContents=" + encodeURIComponent(custInfo[13]) +
-                        // "&id=" + encodeURIComponent(custInfo[14]);
+                    // "&age=" + encodeURIComponent(custInfo[3]) +
+                    // "&job=" + encodeURIComponent(custInfo[4]) +
+                    // "&location=" + encodeURIComponent(custInfo[5]) +
+                    // "&custGrade=" + encodeURIComponent(custInfo[6]) +
+                    // "&branch=" + encodeURIComponent(custInfo[7]) +
+                    // "&period=" + encodeURIComponent(custInfo[8]) +
+                    // "&asset=" + encodeURIComponent(custInfo[9]) +
+                    // "&privacyYes=" + encodeURIComponent(custInfo[10]) +
+                    // "&app=" + encodeURIComponent(custInfo[11]) +
+                    // "&prodNm=" + encodeURIComponent(custInfo[12]) +
+                    // "&mContents=" + encodeURIComponent(custInfo[13]) +
+                    // "&id=" + encodeURIComponent(custInfo[14]);
                 } else {
 
                 }
@@ -111,4 +115,3 @@
 </script>
 </body>
 </html>
-
