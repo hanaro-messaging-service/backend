@@ -6,49 +6,26 @@
 <head>
     <title>하나로 메세지</title>
 
-    <link rel="stylesheet" href="/pages/manageMessage/overdueNotificationManage/overdueNotificationWrite.css" >
+    <link rel="stylesheet" href="/pages/manageMessage/allNotificationManage/allNotificationWrite.css" >
     <%--    <script src="/pages/manageMessage/productPromotionManage/productPromotionWrite.js"></script>--%>
 </head>
 <body>
 
 
 <main>
-    <form action="/overdueNotificationWrite" method="POST" >
+    <form action="/allNotificationWrite" method="POST" >
         <section class="mainComponent">
             <div class="searchComponent">
                 <div class="searchComponent-topBar">
                     <div class="searchComponent-topBar-left">
-                        상환관리 메시지 추가
+                        전체 전송 메시지 추가
                     </div>
 
                 </div>
 
-                <div class="searchComponent-titleBar">상환관리 메시지</div>
+                <div class="searchComponent-titleBar">전체 전송 메시지</div>
 
                 <div class="searchComponent-searchBar">
-                    <div class="searchComponent-searchBar-list">
-                        <div class="searchComponent-searchBar-list-key">성별</div>
-                        <div class="searchComponent-searchBar-list-value">
-                            <div class="checkbox">
-                                <input onchange="sendValueToServlet(this)" type="checkbox" name="man" value="M" class="flex align-center" id="man">
-                                <div>남자</div>
-                            </div>
-                            <div class="checkbox">
-                                <input onchange="sendValueToServlet(this)" type="checkbox" name="woman" value="F" id="woman">
-                                <div>여자</div>
-                            </div>
-                        </div>
-
-                        <div class="searchComponent-searchBar-list-key">개인정보동의여부</div>
-                        <div class="searchComponent-searchBar-list-value">
-                            <div class="checkbox">
-                                <input onclick="sendValueToServlet(this)" type="checkbox" name="privacyYes" value="Y" class="flex align-center" id="privacyYes">
-                                <div>동의</div>
-                            </div>
-                        </div>
-                    </div>
-
-
                     <div class="searchComponent-searchBar-list">
                         <div class="searchComponent-searchBar-list-key">나이</div>
                         <div class="searchComponent-searchBar-list-value">
@@ -62,64 +39,30 @@
                                 <option value="70대 이상">70대 이상</option>
                             </select>
                         </div>
-                        <div class="searchComponent-searchBar-list-key">연체여부</div>
+
+                        <div class="searchComponent-searchBar-list-key">개인정보동의여부</div>
                         <div class="searchComponent-searchBar-list-value">
                             <div class="checkbox">
-                                <input onchange="sendValueToServlet(this)" type="checkbox" name="overdueYes" value="Y" class="flex align-center" id="overdueYes">
-                                <div>연체</div>
-                            </div>
-                            <div class="checkbox">
-                                <input onchange="sendValueToServlet(this)" type="checkbox" name="overdueNo" value="N" id="overdueNo">
-                                <div>미연체</div>
+                                <input onclick="sendValueToServlet(this)" type="checkbox" name="privacyYes" value="Y" class="flex align-center" id="privacyYes">
+                                <div>동의</div>
                             </div>
                         </div>
                     </div>
+
                     <div class="searchComponent-searchBar-list">
-                        <div class="searchComponent-searchBar-list-key">고객등급</div>
+                        <div class="searchComponent-searchBar-list-key">거주지</div>
                         <div class="searchComponent-searchBar-list-value">
-                            <select name="custGrade" id="custGrade" onchange="sendValueToServlet(this.value)">
+                            <select name="location" id="location" onchange="sendValueToServlet(this.value)" >
                                 <option value="전체">전체</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
+                                <option value="서울특별시">서울특별시</option>
+                                <option value="경기도">경기도</option>
+                                <option value="경상도">경상도</option>
+                                <option value="강원도">강원도</option>
+                                <option value="충청도">충청도</option>
+                                <option value="전라도">전라도</option>
                             </select>
                         </div>
-                        <div class="searchComponent-searchBar-list-key">자산</div>
-                        <div class="searchComponent-searchBar-list-value">
-                            <select name="asset" id="asset" onchange="sendValueToServlet(this.value)">
-                                <option value="전체">전체</option>
-                                <option value="100만원 이하">100만원 이하</option>
-                                <option value="100만원에서 1000만원">100만원~1000만원</option>
-                                <option value="1000만원에서 3000만원">1000만원-3000만원</option>
-                                <option value="3000만원 이상">3000만원 이상</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="searchComponent-searchBar-list">
-                        <div class="searchComponent-searchBar-list-key">신용등급</div>
-                        <div class="searchComponent-searchBar-list-value">
-                            <div class="searchComponent-searchBar-list-value">
-                                <select name="creditRating" id="creditRating" onchange="sendValueToServlet(this.value)">
-                                    <option value="전체">전체</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="searchComponent-searchBar-list-key">이름</div>
-                        <div class="searchComponent-searchBar-list-value">
-                            <input value="" type="text" id="name" oninput="sendValueToServlet(event.target.value)">
-                        </div>
+
                     </div>
                 </div>
 

@@ -17,13 +17,13 @@
             메시지
         </div>
         <div class="sidebar-submain">전송</div>
-        <div class="sidebar-content"><li><a href="/pages/sendMessage/allNotificationMessage/allNotificationMessage.jsp">전체 안내 </a>  메시지 전송</li></div>
+        <div class="sidebar-content"><li><a href="/pages/sendMessage/allNotificationMessage/allNotificationMessage.jsp">전체 안내 메시지 전송</a></li></div>
         <div class="sidebar-content"><li><a href="/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.jsp">보이스피싱 예방 안내 메시지 전송</a></li></div>
-        <div class="sidebar-content"><li><a href="/">수신 상품 프로모션 메시지 전송</a></li></div>
+        <div class="sidebar-content"><li><a href="/pages/sendMessage/productPromotionMessage.jsp">수신 상품 프로모션 메시지 전송</a></li></div>
         <div class="sidebar-content"><li><a href="/pages/sendMessage/appPromotionMessage/appPromotionMessage.jsp">어플 프로모션 메시지 전송</a></li></div>
         <div class="sidebar-content"><li><a href="/pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp">상황 관리 안내 메시지 전송</a></li></div>
         <div class="sidebar-submain">관리</div>
-        <div class="sidebar-content"><li><a href="/pages/manageMessage/allNotificationManage/allNotificationManage.jsp"></a>  전체 안내 메시지 관리</li></div>
+        <div class="sidebar-content"><li><a href="/pages/manageMessage/allNotificationManage/allNotificationManage.jsp">전체 안내 메시지 관리</a></li></div>
         <div class="sidebar-content"><li><a href="/pages/manageMessage/voicefishingNotificationManage/voicefishingNotificationManage.jsp"> 보이스피싱 예방 안내 메시지 관리</a></li></div>
         <div class="sidebar-content"><li><a href="/pages/manageMessage/productPromotionManage/productPromotionManage.jsp">수신 상품 프로모션 메시지 관리</a></li></div>
         <div class="sidebar-content"><li><a href="/pages/manageMessage/appPromotionManage/appPromotionManage.jsp">어플 프로모션 메시지 관리</a></li></div>
@@ -40,6 +40,10 @@
             if (custInfos != null) {
                 for (allNoticeCustomizeDTO custInfo : custInfos)
                 { %>
+        <form  style="z-index:999999; position: relative; top: 6%; right: -40%;" method="POST" action="/allNotificationDeleteServlet">
+            <input name="tableId"  hidden="" value="<%=custInfo.getId()%>">
+            <button style="width:100px;height:30px"style="width:100px;height:20%" type="submit">삭제</button>
+        </form>
         <div class="mainComponent-messageList" onclick="modifyMessage([
                 // 해당 값 가져옴
                 '<%=custInfo.getId() %>',
