@@ -2,6 +2,8 @@
 <%@ page import="overdueNotificationMessage.overdueNotificationDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
+<%@ page import="overdueNotificationMessage.overdueNotificationCustomizeDAO" %>
+<%@ page import="overdueNotificationMessage.overdueNotificationCustomizeDTO" %>
 <html>
 <head>
     <title>하나로 메세지</title>
@@ -13,7 +15,27 @@
 헤더입니다
 </header>
 <main>
+<<<<<<< HEAD
+    <section class="sidebar">
+        <div class="sidebar-main">
+            메시지
+        </div>
+        <div class="sidebar-submain">전송</div>
+        <div class="sidebar-content"><li><a href="/pages/sendMessage/allNotificationMessage/allNotificationMessage.jsp">전체 안내 메시지 전송</a></li></div>
+        <div class="sidebar-content"><li><a href="/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.jsp">보이스피싱 예방 안내 메시지 전송</a></li></div>
+        <div class="sidebar-content"><li><a href="/pages/sendMessage/productPromotionMessage.jsp">수신 상품 프로모션 메시지 전송</a></li></div>
+        <div class="sidebar-content"><li><a href="/pages/sendMessage/appPromotionMessage/appPromotionMessage.jsp">어플 프로모션 메시지 전송</a></li></div>
+        <div class="sidebar-content"><li><a href="/pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp">상황 관리 안내 메시지 전송</a></li></div>
+        <div class="sidebar-submain">관리</div>
+        <div class="sidebar-content"><li><a href="/pages/manageMessage/allNotificationManage/allNotificationManage.jsp">전체 안내 메시지 관리</a></li></div>
+        <div class="sidebar-content"><li><a href="/pages/manageMessage/voicefishingNotificationManage/voicefishingNotificationManage.jsp"> 보이스피싱 예방 안내 메시지 관리</a></li></div>
+        <div class="sidebar-content"><li><a href="/pages/manageMessage/productPromotionManage/productPromotionManage.jsp">수신 상품 프로모션 메시지 관리</a></li></div>
+        <div class="sidebar-content"><li><a href="/pages/manageMessage/appPromotionManage/appPromotionManage.jsp">어플 프로모션 메시지 관리</a></li></div>
+        <div class="sidebar-content"><li ><a href="/pages/manageMessage/overdueNotificationManage/overdueNotificationManage.jsp">상황 관리 안내 메시지 관리</a></li></div>
+    </section>
+=======
     <jsp:include page="/components/sidebar.jsp" />
+>>>>>>> 9ac7324dc1d967f9602006343fd9ae0d085e83a6
     <section class="mainComponent">
     <div class="searchComponent">
     <div class="searchComponent-topBar">
@@ -166,6 +188,81 @@
     </div>
 
     </div>
+        <form method="post" action="/pages/email/sendEmail.jsp">
+            <table border=1>
+                <tr>
+                    <td>
+                        보내는 사람 : <input type="text" name="from" value="hanaromessage@naver.com" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        받는 사람 : <input type="text" name="to" value="hanaromessage@naver.com" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        제목 : <input type="text" name="subject" size="50" value="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        형식 :
+                        <input type="radio" name="format" value="text" checked />Text
+                        <input type="radio" name="format" value="html" />HTML
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea name="content" cols="60" rows="10"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit">전송하기</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div class="myMessage">
+            <div>마이메세지</div>
+
+            <div class="myMessage-list">
+                <%
+                    overdueNotificationCustomizeDAO dao = new overdueNotificationCustomizeDAO();
+                    List<overdueNotificationCustomizeDTO> infos = dao.selectMessage();
+                    if (infos != null) {
+                        for (overdueNotificationCustomizeDTO custInfo : infos)
+                        { %>
+                <div class="myMessage-list-element" style="position:relative" onclick="modifyMessage([
+                        '<%=custInfo.getId() %>',
+                        '<%=custInfo.getCustNm() %>',
+                        '<%=custInfo.getGender() %>',
+                        '<%=custInfo.getCustGrade() %>',
+                        '<%=custInfo.getCreditRating() %>',
+                        '<%=custInfo.getAge() %>',
+                        '<%=custInfo.getSubTerm() %>',
+                        '<%=custInfo.getAsset() %>',
+                        '<%=custInfo.getPrivacy() %>',
+                        '<%=custInfo.getOverdue() %>',
+                        '<%=custInfo.getMContents() %>',
+                        '<%=custInfo.getMTitle() %>'
+                        ])">
+
+                    <div class="mainComponent-messageList-title">
+                        제목:
+                        <%=
+                        custInfo.getMTitle()
+                        %>
+                    </div>
+
+                </div>
+
+                <%
+                        }}
+                %>
+            </div>
+        </div>
     <div class="listComponent">
          <div class="listComponent-topbar">
              <div class="listComponent-topbar-element" >선택</div>
@@ -226,9 +323,9 @@
             </div>
             <% } } %>
 
-        </div>
+            </div>
 
-    </div>
+        </div>
     </section>
 </main>
 </body>
