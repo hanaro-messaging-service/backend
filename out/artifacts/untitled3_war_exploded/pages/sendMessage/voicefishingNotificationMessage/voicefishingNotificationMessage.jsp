@@ -12,7 +12,9 @@
     헤더입니다
 </header>
 <main>
+
     <jsp:include page="/components/sidebar.jsp" />
+
     <section class="mainComponent">
         <div class="searchComponent">
             <div class="searchComponent-topBar">

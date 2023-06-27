@@ -2,6 +2,8 @@
 <%@ page import="overdueNotificationMessage.overdueNotificationDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
+<%@ page import="overdueNotificationMessage.overdueNotificationCustomizeDAO" %>
+<%@ page import="overdueNotificationMessage.overdueNotificationCustomizeDTO" %>
 <html>
 <head>
     <title>하나로 메세지</title>
@@ -13,6 +15,7 @@
 헤더입니다
 </header>
 <main>
+
     <jsp:include page="/components/sidebar.jsp" />
     <section class="mainComponent">
     <div class="searchComponent">
@@ -166,6 +169,81 @@
     </div>
 
     </div>
+        <form method="post" action="/pages/email/sendEmail.jsp">
+            <table border=1>
+                <tr>
+                    <td>
+                        보내는 사람 : <input type="text" name="from" value="hanaromessage@naver.com" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        받는 사람 : <input type="text" name="to" value="hanaromessage@naver.com" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        제목 : <input type="text" name="subject" size="50" value="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        형식 :
+                        <input type="radio" name="format" value="text" checked />Text
+                        <input type="radio" name="format" value="html" />HTML
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea name="content" cols="60" rows="10"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit">전송하기</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div class="myMessage">
+            <div>마이메세지</div>
+
+            <div class="myMessage-list">
+                <%
+                    overdueNotificationCustomizeDAO dao = new overdueNotificationCustomizeDAO();
+                    List<overdueNotificationCustomizeDTO> infos = dao.selectMessage();
+                    if (infos != null) {
+                        for (overdueNotificationCustomizeDTO custInfo : infos)
+                        { %>
+                <div class="myMessage-list-element" style="position:relative" onclick="modifyMessage([
+                        '<%=custInfo.getId() %>',
+                        '<%=custInfo.getCustNm() %>',
+                        '<%=custInfo.getGender() %>',
+                        '<%=custInfo.getCustGrade() %>',
+                        '<%=custInfo.getCreditRating() %>',
+                        '<%=custInfo.getAge() %>',
+                        '<%=custInfo.getSubTerm() %>',
+                        '<%=custInfo.getAsset() %>',
+                        '<%=custInfo.getPrivacy() %>',
+                        '<%=custInfo.getOverdue() %>',
+                        '<%=custInfo.getMContents() %>',
+                        '<%=custInfo.getMTitle() %>'
+                        ])">
+
+                    <div class="mainComponent-messageList-title">
+                        제목:
+                        <%=
+                        custInfo.getMTitle()
+                        %>
+                    </div>
+
+                </div>
+
+                <%
+                        }}
+                %>
+            </div>
+        </div>
     <div class="listComponent">
          <div class="listComponent-topbar">
              <div class="listComponent-topbar-element" >선택</div>
@@ -226,9 +304,9 @@
             </div>
             <% } } %>
 
-        </div>
+            </div>
 
-    </div>
+        </div>
     </section>
 </main>
 </body>
