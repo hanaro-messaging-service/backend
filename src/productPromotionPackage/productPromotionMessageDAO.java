@@ -47,20 +47,9 @@ public class productPromotionMessageDAO extends DBConnPool {
 
         return residentNo;
     }
-    public List<productPromotionMessageDTO> selectMessage(Map<String, Object> map){
-        List<productPromotionMessageDTO> custInfos = new ArrayList<>();
+    public int selectMessage(Map<String, Object> map){
         String query = "SELECT " +
-                "cust_info.custNm, " +
-                "cust_info.gender, " +
-                "cust_info.privacy, " +
-                "cust_info.job, " +
-                "cust_info.custGrade, " +
-                "cust_info.address, " +
-                "cust_info.residentNo, " +
-                "com_acc_info.balance, " +
-                "com_acc_info.branchinfo, " +
-                "com_acc_info.openingDate, " +
-                "app_info.recLoginDate " +
+                "count(*) AS total_count " +
                 "FROM " +
                 "cust_info " +
                 "JOIN com_acc_info ON cust_info.custNo = com_acc_info.custNo " +
@@ -91,13 +80,99 @@ public class productPromotionMessageDAO extends DBConnPool {
         String recLoginDate = (String) map.get("recLoginDate");
         query = recLogindateFilter.addDateRangeFilterCondition(query,recLoginDate);
         System.out.println(query);
+        int totalCount = 0;
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
+                totalCount = rs.getInt("total_count");
+            }
+        } catch (Exception e) {
+            System.out.println("고객 정보 조회 중 예외 발생");
+            e.printStackTrace();
+        }
+        finally{
+
+        }
+
+        return totalCount;
+    }
+    public List<productPromotionMessageDTO> selectPaginatedMessage(Map<String, Object> map) {
+        System.out.println("뭐임");
+        List<productPromotionMessageDTO> paginatedData = new ArrayList<>();
+        String query = "SELECT " +
+                "cust_info.custNm, " +
+                "cust_info.gender, " +
+                "cust_info.privacy, " +
+                "cust_info.job, " +
+                "cust_info.custGrade, " +
+                "cust_info.address, " +
+                "cust_info.residentNo, " +
+                "cust_info.email, " +
+                "com_acc_info.balance, " +
+                "com_acc_info.branchinfo, " +
+                "com_acc_info.openingDate, " +
+                "app_info.recLoginDate " +
+                "FROM " +
+                "cust_info " +
+                "JOIN com_acc_info ON cust_info.custNo = com_acc_info.custNo " +
+                "JOIN app_info ON cust_info.custNo = app_info.custNo " +
+                "WHERE " +
+                "1=1";
+        String custNm = (String) map.get("custNm");
+        System.out.println("custNm"+custNm);
+        query = nameFilter.addNameFilterCondition(query, custNm);
+        System.out.println("custNm"+custNm);
+        String man = (String) map.get("man");
+        String woman = (String) map.get("woman");
+        query = gender.addGenderCondition(query, man, woman);
+        String age = (String) map.get("age");
+        query = ageFilter.addAgeFilterCondition(query, age);
+        String job = (String) map.get("job");
+        query = jobFilter.addJobCondition(query, job);
+        String address = (String) map.get("address");
+        System.out.println("address"+address);
+        query = addressFilter.addAddressFilterCondition(query, address);
+        String custGrade = (String) map.get("private");
+        query = privateRate.addPrivateRateCondition(query, custGrade);
+        String branch = (String) map.get("branch");
+        query = branchFilter.addBranchFilterCondition(query, branch);
+        String subTerm = (String) map.get("period");
+        query = periodFilter.addPeriodFilterCondition(query, subTerm);
+        String asset = (String) map.get("asset");
+        System.out.println("address"+address);
+        query = assetFilter.addAssetFilterCondition(query, asset);
+        String privacy = (String) map.get("privacy");
+        query = privacyFilter.addPrivacyFilterCondition(query, privacy);
+        System.out.println("address"+address);
+        String recLoginDate = (String) map.get("recLoginDate");
+        query = recLogindateFilter.addDateRangeFilterCondition(query, recLoginDate);
+        System.out.println(query);
+
+        // 페이지네이션을 적용하여 데이터 조회
+        query += " LIMIT ?, ?";
+        int start = 0;
+        int last = 0;
+        try {
+            start = Integer.parseInt(map.get("start").toString());
+            last = Integer.parseInt(map.get("last").toString());
+            System.out.println("STARTLLAST"+start+last);
+        } catch (NumberFormatException e) {
+            // 유효한 정수로 변환할 수 없는 경우 처리할 내용을 작성합니다.
+            e.printStackTrace();
+        }
+        System.out.println("start"+start+"last"+last);
+        try {
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setInt(1,start);
+            pstmt.setInt(2,last);
+            ResultSet rs = pstmt.executeQuery();
+            System.out.println("뭐가문제니");
+            while (rs.next()) {
                 productPromotionMessageDTO member = new productPromotionMessageDTO();
                 member.setCustNm(rs.getString("custNm"));
                 member.setGender(rs.getString("gender"));
+                member.setEmail(rs.getString("email"));
                 String residentNo = rs.getString("residentNo");
                 String custAge = getAgeFromResidentNo(residentNo);
                 member.setAge(custAge);
@@ -109,17 +184,17 @@ public class productPromotionMessageDAO extends DBConnPool {
                 member.setAsset(rs.getString("balance"));
                 member.setPrivacy(rs.getString("privacy"));
                 member.setRecLoginDate(rs.getString("recLoginDate"));
-                custInfos.add(member);
+                paginatedData.add(member);
+                System.out.println("뭐가문제야3");
             }
         } catch (Exception e) {
             System.out.println("고객 정보 조회 중 예외 발생");
             e.printStackTrace();
-        }
-        finally{
-          close();
+        } finally {
+            close();
         }
 
-        return custInfos;
+        return paginatedData;
     }
 
 }

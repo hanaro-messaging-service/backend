@@ -16,6 +16,9 @@
 </header>
 <main>
 <<<<<<< HEAD
+    <jsp:include page="/components/sidebar.jsp" />
+=======
+<<<<<<< HEAD
     <section class="sidebar">
         <div class="sidebar-main">
             메시지
@@ -36,6 +39,7 @@
 =======
     <jsp:include page="/components/sidebar.jsp" />
 >>>>>>> 9ac7324dc1d967f9602006343fd9ae0d085e83a6
+>>>>>>> main
     <section class="mainComponent">
     <div class="searchComponent">
     <div class="searchComponent-topBar">

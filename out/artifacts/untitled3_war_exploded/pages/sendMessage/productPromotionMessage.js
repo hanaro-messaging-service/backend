@@ -73,7 +73,7 @@ function sendValueToServlet() {
                 document.getElementById('getPeriod').value = selectedPeriodValue ;
                 document.getElementById('getLocation').value =  selectedLocationValue ;
                 document.getElementById('getBranch').value = selectedBranchValue ;
-;
+                ;
             }
         };
 
