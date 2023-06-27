@@ -16,7 +16,9 @@
 
 %>
 <main>
+
     <jsp:include page="/components/sidebar.jsp" />
+
     <section class="mainComponent">
         <%
             voicefishingNotificationCustomizeDAO dao = new voicefishingNotificationCustomizeDAO();
