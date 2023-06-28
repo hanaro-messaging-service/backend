@@ -93,6 +93,7 @@
   <div class="sidebar-submain"><a href="/pages/messageList/messageList.jsp">메시지 발송내역</a></div>
   <div class="sidebar-content"><li ><a href="/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageList.jsp">보이스피싱 예방 안내 발송내역</a></li></div>
   <div class="sidebar-content"><li ><a href="/pages/messageList/productPromotionMessageList/prodMessageList.jsp">수신 상품 프로모션 발송내역</a></li></div>
+  <div class="sidebar-content"><li ><a href="/pages/messageList/appPromotionMessageList/appPromotionMessageList.jsp">어플 프로모션 발송내역</a></li></div>
 
 </section>
 </body>
