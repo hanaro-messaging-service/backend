@@ -45,7 +45,7 @@
             <div class="searchComponent-searchBar-list-key">개인정보동의여부</div>
             <div class="searchComponent-searchBar-list-value">
               <div class="checkbox">
-                <input  type="checkbox" name="privacyYes" value="Y" class="flex align-center" id="privacyYes" <%= "Y".equals(request.getParameter("privacyYes")) ? "checked" : "" %>>
+                <input  type="checkbox" name="privacyYes" value="Y" class="flex align-center" id="privacyYes" <%= "O".equals(request.getParameter("privacyYes")) ? "checked" : "" %>>
                 <div>동의</div>
               </div>
             </div>
@@ -76,11 +76,11 @@
             <div class="searchComponent-searchBar-list-key">연체여부</div>
             <div class="searchComponent-searchBar-list-value">
               <div class="checkbox">
-                <input type="checkbox" name="overdue" value="O" class="flex align-center" id="overdueYes" <%= request.getParameter("overdue") != null && request.getParameter("overdue").length() > 1 && request.getParameter("overdue").charAt(0) == 'Y' ? "checked" : "" %>>
+                <input type="checkbox" name="overdueYes" value="O" class="flex align-center" id="overdueYes" <%= request.getParameter("overdue") != null && request.getParameter("overdue").length() > 1 && request.getParameter("overdue").charAt(0) == 'O' ? "checked" : "" %>>
                 <div>연체</div>
               </div>
               <div class="checkbox">
-                <input type="checkbox" name="overdue" value="X" id="overdueNo" <%= request.getParameter("overdue") != null && request.getParameter("overdue").length() > 1 && request.getParameter("overdue").charAt(1) == 'N' ? "checked" : "" %>>
+                <input type="checkbox" name="overdueNo" value="X" id="overdueNo" <%= request.getParameter("overdue") != null && request.getParameter("overdue").length() > 1 && request.getParameter("overdue").charAt(1) == 'X' ? "checked" : "" %>>
                 <div>미연체</div>
               </div>
             </div>

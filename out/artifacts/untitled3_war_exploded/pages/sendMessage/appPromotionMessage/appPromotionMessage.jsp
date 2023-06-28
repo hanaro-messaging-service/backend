@@ -12,8 +12,11 @@
 </head>
 <body>
 
+<<<<<<< HEAD
+=======
 
 <main>
+>>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5
   <jsp:include page="/components/sidebar.jsp" />
   <section class="mainComponent">
     <%
