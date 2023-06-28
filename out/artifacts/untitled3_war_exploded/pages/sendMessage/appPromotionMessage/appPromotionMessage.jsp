@@ -13,9 +13,6 @@
 <body>
 
 
-<%
-
-%>
 <main>
   <jsp:include page="/components/sidebar.jsp" />
   <section class="mainComponent">
