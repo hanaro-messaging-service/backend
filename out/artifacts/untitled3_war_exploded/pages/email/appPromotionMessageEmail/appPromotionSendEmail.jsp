@@ -9,13 +9,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%
+  System.out.println("센드이메일 들왔냐");
   // 폼값(이메일 내용) 저장
   request.setCharacterEncoding("UTF-8");
   response.setCharacterEncoding("UTF-8");
   Map<String, String> emailInfo = new HashMap<String, String>();
+  Map<String, String[]> toInfo = new HashMap<>();
   System.out.println("인코딩"+request.getParameter("content"));
   emailInfo.put("from", request.getParameter("from"));  // 보내는 사람
-  emailInfo.put("to", request.getParameter("to"));      // 받는 사람
+  // 받는 사람들의 이메일 배열
+  String[] toEmails = request.getParameterValues("to");
+  toInfo.put("to", toEmails);
   emailInfo.put("subject", request.getParameter("subject"));  // 제목
   System.setProperty("https.protocols", "TLSv1,TLSv1.1,TLSv1.2");
 
@@ -39,7 +43,7 @@
     String htmlContent = ""; // HTML용으로 변환된 내용을 담을 변수
     try {
       // HTML 메일용 템플릿 파일 읽기
-      String templatePath = application.getRealPath("/pages/email/emailTemplate.html");
+      String templatePath = application.getRealPath("/pages/email/appPromotionMessageEmail/appPromotionMessageEmail.html");
       BufferedReader br = new BufferedReader(new FileReader(templatePath));
 
       // 한 줄씩 읽어 htmlContent 변수에 저장
@@ -67,7 +71,6 @@
   String time =request.getParameter("date");
   String selectedManValue = request.getParameter("man");
   String selectedWomanValue = request.getParameter("woman");
-  System.out.print(request.getParameter("woman")+"123");
   String selectedPrivacyYesValue = request.getParameter("privacyYes");
   String selectedJobValue = request.getParameter("job");
   String selectedPrivateValue = request.getParameter("private");
@@ -76,14 +79,12 @@
   String selectedNameValue = request.getParameter("name");
   String selectedAppValue = request.getParameter("app");
   String selectedAssetValue = request.getParameter("asset");
-  System.out.println(request.getParameter("man")+555);
   Map<String, Object> map = new HashMap<>();
   map.put("category",category);
   map.put("contents",contents);
   map.put("title",title);
   map.put("time",time);
   map.put("custNm", selectedNameValue);
-  System.out.println("custNm"+selectedNameValue);
   map.put("recLoginDate", selectedAppValue);
   map.put("asset", selectedAssetValue);
   map.put("man", selectedManValue);
@@ -104,7 +105,7 @@
   System.out.println("counts"+counts);
   try {
     emailSMTP smtpServer = new emailSMTP();  // 메일 전송 클래스 생성
-    smtpServer.emailSending(emailInfo);      // 전송
+    smtpServer.emailSending(emailInfo,toInfo);      // 전송
     appPromotionMessageHistoryDAO dao = new appPromotionMessageHistoryDAO();
     dao.selectMessage(map);
 
@@ -112,7 +113,7 @@
     response.sendRedirect("/pages/messageList/appPromotionMessageList/appPromotionMessageList.jsp"); // 리다이렉트
   }
   catch (Exception e) {
-    out.print("<script>window.alert('이메일 전송 실패'); window.location.href='/pages/sendMessage/appPromotionMessage/appPromotionMessage.jsp'</script>");
+    out.print("<script>window.alert('이메일 전송 실패'); window.location.href='/pages/sendMessage/appPromotionMessageList/appPromotionMessageList.jsp'</script>");
     e.printStackTrace();
   }
 %>
