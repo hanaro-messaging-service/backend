@@ -4,7 +4,6 @@ public class voicefishingNotificationWriteDTO {
     private String custNm;
     private String age;
     private String privacy;
-
     private String prodNm;
     private String mContents;
 

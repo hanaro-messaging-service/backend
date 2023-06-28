@@ -70,7 +70,7 @@
         </section>
         <section class="textComponent">
             <div class="searchComponent-topBar-right">메세지 제목</div>
-            <input name="mContents" class="textComponent-messageInput">
+            <input name="prodNm" class="textComponent-messageInput">
             <div class="searchComponent-topBar-right">메세지 내용</div>
             <textarea name="mContents" class="textComponent-titleInput"></textarea>
             <div class="buttonList">
