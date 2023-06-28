@@ -7,7 +7,7 @@ public class overdueNotificationDTO {
     private String age;
     private String job;
     private String privacy;
-    private int credit;
+    private int creditRating;
     private String overdue;
     private int custGrade;
     private String asset;
@@ -62,8 +62,8 @@ public class overdueNotificationDTO {
         this.privacy = privacy;
     }
 
-    public int getCredit(){return credit;}
-    public void setCredit(int credit){ this.credit = credit;}
+    public int getCreditRating(){return creditRating;}
+    public void setCreditRating(int creditRating){ this.creditRating = creditRating;}
 
     public String getOverdue(){return overdue;}
     public void setOverdue(String overdue){ this.overdue = overdue;}

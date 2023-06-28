@@ -84,7 +84,7 @@ public class overdueNotificationDAO extends DBConnPool {
 //        System.out.println("address"+address);
 //        query = addressFilter.addAddressFilterCondition(query,address);
 
-        String custGrade = (String) map.get("private");
+        String custGrade = (String) map.get("custGrade");
         System.out.println(custGrade+"custGrade");
         query = privateRate.addPrivateRateCondition(query,custGrade);
 
@@ -95,16 +95,16 @@ public class overdueNotificationDAO extends DBConnPool {
         System.out.println(asset);
         query = assetFilter.addAssetFilterCondition(query,asset);
 
-        String privacy = (String) map.get("privacy");
+        String privacy = (String) map.get("privacyYes");
         query = privacyFilter.addPrivacyFilterCondition(query,privacy);
 
         System.out.println("신용등급 체크");
-        String credit = (String) map.get("credit");
+        String credit = (String) map.get("creditRating");
         query = creditFilter.addCreditRateCondition(query, credit);
 
         System.out.println("연체여부 체크");
-        String overdueYes = (String) map.get("overdue"); // 연체여부 추가
-        String overdueNo = (String) map.get("non_overdue");
+        String overdueYes = (String) map.get("overdueYes"); // 연체여부 추가
+        String overdueNo = (String) map.get("overdueNo");
         System.out.println(overdueYes + overdueNo);
         query = overdueFilter.addOverdueFilterCondition(query, overdueYes, overdueNo);
 
@@ -123,10 +123,11 @@ public class overdueNotificationDAO extends DBConnPool {
                 member.setCustGrade(rs.getInt("custGrade")); // 고객등급
                 member.setAsset(rs.getString("balance"));
                 member.setPrivacy(rs.getString("privacy"));
-                member.setCredit(rs.getInt("creditRating"));  // 신용등급
+                member.setCreditRating(rs.getInt("creditRating"));  // 신용등급
                 member.setOverdue(rs.getString("overdue")); // 연체여부
                 member.setPhoneNum(rs.getString("phoneNo"));
                 member.setEmail(rs.getString("email"));
+                System.out.println(member.getEmail());
                 custInfos.add(member);
             }
 
