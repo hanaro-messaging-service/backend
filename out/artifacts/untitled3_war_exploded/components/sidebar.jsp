@@ -10,6 +10,23 @@
 <head>
     <title>Title</title>
     <style>
+
+      a {
+        text-decoration: none;
+        color: white;
+        list-style: none;
+      }
+
+      a:hover {
+        text-decoration: none;
+        color: white;
+        list-style: none;
+      }
+
+      .sidebar-content > li {
+        list-style: none;
+      }
+
       .sidebar{
 
         width:20%;
@@ -58,8 +75,9 @@
 <body>
 <section class="sidebar">
   <div class="sidebar-main">
-    메시지
+    <a href="/pages/main/mainpage.jsp">메시지</a>
   </div>
+  <div class="sidebar-submain"><a href="/pages/main/mainpage.jsp">메인 페이지</a></div>
   <div class="sidebar-submain">전송</div>
   <div class="sidebar-content"><li>전체 안내 메시지 전송</li></div>
   <div class="sidebar-content"><li><a href="/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.jsp">보이스피싱 예방 안내 메시지 전송</a></li></div>
@@ -76,7 +94,6 @@
   <div class="sidebar-content"><li ><a href="/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageList.jsp">보이스피싱 예방 안내 발송내역</a></li></div>
   <div class="sidebar-content"><li ><a href="/pages/messageList/productPromotionMessageList/prodMessageList.jsp">수신 상품 프로모션 발송내역</a></li></div>
   <div class="sidebar-content"><li ><a href="/pages/messageList/appPromotionMessageList/appPromotionMessageList.jsp">어플 프로모션 발송내역</a></li></div>
-  <div class="sidebar-submain"><a href="/pages/main/mainpage.jsp">메인페이지</a></div>
 
 </section>
 </body>
