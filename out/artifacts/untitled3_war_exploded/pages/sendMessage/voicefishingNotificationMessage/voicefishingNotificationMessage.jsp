@@ -1,3 +1,4 @@
+
 <%@ page import="voicefishingNotificationMessagePackage.voicefishingNotificationDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
@@ -12,11 +13,11 @@
     <script src="/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.js"></script>
 </head>
 <body>
+
 <%
 
 %>
 <main>
-  
     <jsp:include page="/components/sidebar.jsp" />
     <section class="mainComponent">
         <%
@@ -26,11 +27,21 @@
         %>
         <div class="searchComponent">
             <div class="searchComponent-topBar">
-                <div class="searchComponent-topBar-right">메세지 전송</div>
+                <div class="searchComponent-topBar-left">메세지 전송</div>
+
             </div>
             <div class="searchComponent-titleBar">보이스피싱 예방 안내 메시지</div>
             <div class="searchComponent-searchBar">
                 <div class="searchComponent-searchBar-list">
+
+                    <div class="searchComponent-searchBar-list-key">개인정보동의여부</div>
+                    <div class="searchComponent-searchBar-list-value">
+                        <div class="checkbox">
+                            <input  onclick="sendValueToServlet(this)" type="checkbox" name="개인정보" value="O" class="flex align-center" id="privacyYes">
+                            <div>동의</div>
+                        </div>
+                    </div>
+
                     <div class="searchComponent-searchBar-list-key">나이</div>
                     <div class="searchComponent-searchBar-list-value">
                         <select name="age" id="age" onchange="sendValueToServlet(this.value)">
@@ -43,28 +54,18 @@
                             <option value="70대 이상">70대 이상</option>
                         </select>
                     </div>
-                    <div class="searchComponent-searchBar-list-key">개인정보동의여부</div>
-                    <div class="searchComponent-searchBar-list-value">
-                        <div class="checkbox">
-                            <input  onclick="sendValueToServlet(this)" type="checkbox" name="개인정보" value="O" class="flex align-center" id="privacyYes">
-                            <div>동의</div>
-                        </div>
-                    </div>
-
                 </div>
+
                 <div class="searchComponent-searchBar-list">
                     <div class="searchComponent-searchBar-list-key">이름</div>
                     <div class="searchComponent-searchBar-list-value">
                         <input value="" type="text" id="name" oninput="sendValueToServlet(event.target.value)">
                     </div>
+
                     <div class="searchComponent-searchBar-list-key"></div>
-                    <div class="searchComponent-searchBar-list-value"></div>
-                </div>
-                <div class="searchComponent-searchBar-list">
-                    <div class="searchComponent-searchBar-list-key">메세지 내용</div>
-                    <div class="searchComponent-searchBar-list-value"></div>
-                    <div class="searchComponent-searchBar-list-key"></div>
-                    <div class="searchComponent-searchBar-list-value"></div>
+                    <div class="searchComponent-searchBar-list-value">
+                    </div>
+
                 </div>
 
             </div>
@@ -72,7 +73,7 @@
         </div>
 
         <div class="myMessage">
-            <div style="margin-left:1.5vw; margin-right:1vw; width:120px;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
+            <div style="width:15%;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
                             align-items:center; color:white;">마이메세지</div>
 
             <div class="myMessage-list">
@@ -80,7 +81,6 @@
                 <%
 
                     if (infos != null) {
-
 
                         for (voicefishingNotificationCustomizeDTO custInfo : infos)
                         { %>
@@ -108,15 +108,19 @@
             </div>
         </div>
         <div id="resultContainer" class="listComponent2">
-            <form method="post" action="/pages/email/sendEmail.jsp" style="width:100%; display:flex; flex-direction: column; justify-content: center; align-items: center;" >
+            <form method="post" action="/pages/email/voicefishingNotificationEmail/voicefishingNotificationSendEmail.jsp" style="width:100%; display:flex; flex-direction: column; justify-content: center; align-items: center;" >
 
-                    <%  int count = 0;
-                List<voicefishingNotificationDTO> custInfos = (List<voicefishingNotificationDTO>) request.getAttribute("custInfos");
-                java.util.Date currentDate = new java.util.Date();
-                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String formattedDate = sdf.format(currentDate);
-            %>
-                <input hidden="" value="보이스피싱 예방 안내 프로모션" name="category">
+                <%  int count = 0;
+                    if(request.getAttribute("custInfos")!=null) {
+                        int custInfos = (int) request.getAttribute("custInfos");
+                    }
+
+//                System.out.println(custInfos);
+                    java.util.Date currentDate = new java.util.Date();
+                    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    String formattedDate = sdf.format(currentDate);
+                %>
+                <input hidden="" value="보이스피싱 예방 안내" name="category">
                 <%--            value값 수정--%>
 
 
@@ -129,16 +133,12 @@
                             보내는 사람 : <input type="text" name="from" value="hanaromessage@naver.com" />
                         </td>
                     </tr>
-                    <tr hidden="">
-                        <td hidden="">
-                            받는 사람 : <input type="text" name="to" value="hanaromessage@naver.com" />
-                        </td>
-                    </tr>
+
                     <div style=" display:flex; width:90%; justify-content: space-between;">
 
                         <div style=" width:15%;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
                             align-items:center; color:white;
-                         ">메시지 제목</div>
+                         ">메시지제목</div>
                         <input style=" width:80%; height:4vh; border: 2px solid #008485;" type="text" name="subject" id="prodNm"  value="" />
 
                     </div>
@@ -169,70 +169,93 @@
                     </div>
                 </table>
 
-        <div class="listComponent">
-            <div class="listComponent-topbar">
-                <div class="listComponent-topbar-elementMedium">선택</div>
-                <div class="listComponent-topbar-elementBig">고객코드</div>
-                <div class="listComponent-topbar-elementBig">이름</div>
-                <div class="listComponent-topbar-elementBig">나이</div>
-                <div class="listComponent-topbar-elementBig">자산</div>
-                <div class="listComponent-topbar-elementBig">거주지</div>
-                <div class="listComponent-topbar-elementBig">개인정보동의</div>
-                <div class="listComponent-topbar-elementBig">전화번호</div>
-                <div class="listComponent-topbar-elementBig">이메일</div>
-            </div>
-            <%
+                <div class="listComponent">
+                    <div class="listComponent-topbar">
+                        <div class="listComponent-topbar-elementVeryBig">이름</div>
+                        <div class="listComponent-topbar-elementVeryBig">나이</div>
+                        <div class="listComponent-topbar-elementVeryBig">거주지</div>
+                        <div class="listComponent-topbar-elementVeryBig">자산</div>
+                        <div class="listComponent-topbar-elementVeryBig">개인정보동의</div>
+                        <div class="listComponent-topbar-elementVeryBig">이메일</div>
+                    </div>
+                    <%
+                        List<voicefishingNotificationDTO> pageInfos = (List<voicefishingNotificationDTO>) request.getAttribute("pageInfos");
+                        if (pageInfos != null) {
+                            for (voicefishingNotificationDTO custInfo : pageInfos) {
+                                count++;
+                    %>
+                    <div class="listComponent-listbar">
 
-                if (custInfos != null) {
-                    for (voicefishingNotificationDTO custInfo : custInfos) {
-                        count++;
-            %>
-             <div class="listComponent-listbar">
-                    <div class="listComponent-topbar-elementMedium bg-white">
-                        <input type="checkbox" checked>
+
+                        <input hidden="" type="text" name="to" value="<%=custInfo.getEmail()%>" />
+
+                        <div class="listComponent-topbar-elementVeryBig bg-white">
+                            <%= custInfo.getCustNm() %>
+                        </div>
+                        <div class="listComponent-topbar-elementVeryBig bg-white">
+                            <%= custInfo.getAge() %>
+                        </div>
+                        <div class="listComponent-topbar-elementVeryBig bg-white">
+                            <%= custInfo.getAddress()%>
+                        </div>
+                        <div class="listComponent-topbar-elementVeryBig bg-white">
+                            <%= custInfo.getAsset()%>
+                        </div>
+                        <div class="listComponent-topbar-elementVeryBig bg-white">
+                            <%= custInfo.getPrivacy()%>
+                        </div>
+                        <div class="listComponent-topbar-elementVeryBig bg-white">
+                            <%= custInfo.getEmail()%>
+                        </div>
+
                     </div>
-                    <div class="listComponent-topbar-elementBig bg-white">
-                        <%= custInfo.getCustNo() %>
+
+                    <%  } %>
+                    <div style="display:flex">
+                        <%  if(request.getAttribute("custInfos")!=null) {
+                            int custInfos = (int) request.getAttribute("custInfos");
+                            int pageCount = 0;
+                            int pageLength = custInfos/10+1;
+
+                            for (int i = 0; i<pageLength; i++) {
+
+                        %>
+                        <div onclick="sendPageValueToServlet(<%=(pageCount)*10%>,<%=10%>)">
+                            <%= pageCount+1%>
+                        </div>
+                        <%
+                                    pageCount++;
+                                }
+                            }
+                        %>
                     </div>
-                    <div class="listComponent-topbar-elementBig bg-white">
-                        <%= custInfo.getCustNm() %>
+                    <input hidden="" value="<%=pageInfos.size()%>" name="counts">
+                    <%
+                        }
+                    %>
+                    <%
+
+                    %>
+                    <div>
+
                     </div>
-                    <div class="listComponent-topbar-elementBig bg-white">
-                        <%= custInfo.getAge() %>
-                    </div>
-                    <div class="listComponent-topbar-elementBig bg-white">
-                        <%= custInfo.getAsset() %>
-                    </div>
-                    <div class="listComponent-topbar-elementBig bg-white">
-                        <%= custInfo.getAddress() %>
-                    </div>
-                    <div class="listComponent-topbar-elementBig bg-white">
-                        <%= custInfo.getPrivacy()%>
-                    </div>
-                    <div class="listComponent-topbar-elementBig bg-white">
-                        <%= custInfo.getPhoneNo() %>
-                    </div>
-                    <div class="listComponent-topbar-elementBig bg-white">
-                        <%= custInfo.getEmail() %>
-                    </div>
+
+                    <input hidden="" id="getName"  name="name">
+                    <input hidden="" id="getAsset"  name="asset">
+                    <input hidden="" id="getPrivacyYes"  name="privacyYes">
+                    <input hidden="" id="getAge"  name="age">
+                    <input hidden="" id="getLocation"  name="location">
+
                 </div>
-                <% } } %>
-
-            <input hidden="" value="<%=count%>" name="counts">
-            <input hidden="" id="getName"  name="name">
-            <input hidden="" id="getAsset"  name="asset">
-            <input hidden="" id="getPrivacyYes"  name="privacyYes">
-            <input hidden="" id="getAge"  name="age">
-            <input hidden="" id="getLocation"  name="location">
-
-            </div>
             </form>
         </div>
     </section>
 </main>
+
 <script>
 
-
 </script>
+
+
 </body>
 </html>

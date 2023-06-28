@@ -23,12 +23,14 @@ public class VoicefishingNotificationWriteServlet extends HttpServlet {
         String selectedPrivacyYesValue = request.getParameter("privacyYes");
         String selectedAgeValue = request.getParameter("age");
         String selectedNameValue = request.getParameter("name");
+        String prodNmValue = request.getParameter("prodNm");
         String mContentsValue = request.getParameter("mContents");
         Map<String, Object> map = new HashMap<>();
         System.out.println(selectedNameValue);
         map.put("custNm", selectedNameValue);
         map.put("age", selectedAgeValue);
         map.put("privacy", selectedPrivacyYesValue);
+        map.put("prodNm", prodNmValue);
         map.put("mContents", mContentsValue);
 
         voicefishingNotificationWriteDAO dao = new voicefishingNotificationWriteDAO();

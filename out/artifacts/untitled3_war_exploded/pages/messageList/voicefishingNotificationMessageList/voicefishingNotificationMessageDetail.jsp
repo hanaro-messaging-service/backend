@@ -53,8 +53,7 @@
                                 <div>동의</div>
                             </div>
                         </div>
-                    </div>
-                    <div class="searchComponent-searchBar-list">
+
                         <div class="searchComponent-searchBar-list-key">나이</div>
                         <div class="searchComponent-searchBar-list-value" id="ageContainer">
                             <%
@@ -75,54 +74,18 @@
                                 }
                             %>
                         </div>
-
-                    </div>
-                    <div class="searchComponent-searchBar-list">
-
-                        <div class="searchComponent-searchBar-list-key">자산</div>
-                        <div class="searchComponent-searchBar-list-value">
-                            <!-- 자산 -->
-                            <select name="asset" id="asset" >
-                                <option value="전체" <%= "전체".equals(request.getParameter("asset")) ? "selected" : "" %>>전체</option>
-                                <option value="100만원 이하" <%= "100만원 이하".equals(request.getParameter("asset")) ? "selected" : "" %>>100만원 이하</option>
-                                <option value="100만원에서 1000만원" <%= "100만원에서 1000만원".equals(request.getParameter("asset")) ? "selected" : "" %>>100만원~1000만원</option>
-                                <option value="1000만원에서 3000만원" <%= "1000만원에서 3000만원".equals(request.getParameter("asset")) ? "selected" : "" %>>1000만원-3000만원</option>
-                                <option value="3000만원 이상" <%= "3000만원 이상".equals(request.getParameter("asset")) ? "selected" : "" %>>3000만원 이상</option>
-                            </select>
-
-                        </div>
                     </div>
 
-                    <div class="searchComponent-searchBar-list">
-                        <div class="searchComponent-searchBar-list-key">거주지</div>
-                        <div class="searchComponent-searchBar-list-value">
-                            <!-- 거주지 -->
-                            <%
-                                System.out.println(request.getParameter("location"));
-                            %>
-                            <select name="location" id="location">
-                                <option value="전체" <%= "전체".equals(request.getParameter("location")) ? "selected" : "" %>>전체</option>
-                                <option value="서울특별시" <%= "서울특별시".equals(request.getParameter("location")) ? "selected" : "" %>>서울특별시</option>
-                                <option value="경기도" <%= "경기도".equals(request.getParameter("location")) ? "selected" : "" %>>경기도</option>
-                                <option value="경상도" <%= "경상도".equals(request.getParameter("location")) ? "selected" : "" %>>경상도</option>
-                                <option value="강원도" <%= "강원도".equals(request.getParameter("location")) ? "selected" : "" %>>강원도</option>
-                                <option value="충청도" <%= "충청도".equals(request.getParameter("location")) ? "selected" : "" %>>충청도</option>
-                                <option value="전라도" <%= "전라도".equals(request.getParameter("location")) ? "selected" : "" %>>전라도</option>
-                            </select>
-
-                        </div>
-
-                    </div>
                     <div class="searchComponent-searchBar-list">
                         <div class="searchComponent-searchBar-list-key">이름</div>
                         <div class="searchComponent-searchBar-list-value">
                             <input value="<%= request.getParameter("custNm") %>" type="text" id="name" name="custNm">
                         </div>
 
-                        <div class="searchComponent-searchBar-list-key">조회수</div>
-                        <div class="searchComponent-searchBar-list-value" id="view">
-                            <%= viewCount%>
+                        <div class="searchComponent-searchBar-list-key"></div>
+                        <div class="searchComponent-searchBar-list-value">
                         </div>
+
                     </div>
                     <div class="searchComponent-searchBar-list">
                         <div class="searchComponent-searchBar-list-key">메세지 발송수</div>
@@ -151,9 +114,6 @@
                 <input name="tableId" hidden="" value="<%= request.getParameter("id") %>" >
             </div>
             <div>
-                <div class="container">
-                    <canvas id="myChart"></canvas>
-                </div>
 
                 <!-- 부트스트랩 -->
                 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -165,60 +125,7 @@
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
                         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
                         crossorigin="anonymous"></script>
-                <!-- 차트 -->
-                <script>
-                    // <input> 요소에 disabled 속성 적용
-                    var inputElements = document.querySelectorAll("input");
-                    for (var i = 0; i < inputElements.length; i++) {
-                        inputElements[i].disabled = true;
-                    }
 
-                    // <select> 요소에 disabled 속성 적용
-                    var selectElements = document.querySelectorAll("select");
-                    for (var i = 0; i < selectElements.length; i++) {
-                        selectElements[i].disabled = true;
-                    }
-                    // <textarea> 요소에 disabled 속성 적용
-                    var textareaElements = document.querySelectorAll("textarea");
-                    for (var i = 0; i < textareaElements.length; i++) {
-                        textareaElements[i].disabled = true;
-                    }
-
-                    var ctx = document.getElementById('myChart');
-                    var time =document.getElementById('time').innerHTML;
-                    var counts = document.getElementById('counts').innerHTML;
-                    var view = document.getElementById('view').innerHTML;
-                    console.log(counts)
-                    var myChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: [`메세지`, '응답'],
-                            datasets: [{
-                                label: '메세지/응답',
-                                data: [counts, view],
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                ],
-                                borderColor: [
-                                    'rgba(255, 99, 132, 1)',
-                                    'rgba(54, 162, 235, 1)',
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true
-                                    }
-                                }]
-                            }
-                        }
-                    });
-
-                </script>
             </div>
             <div class="buttonList">
                 <a class="cancelButton" href="/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageList.jsp">목록</a>

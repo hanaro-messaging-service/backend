@@ -4,6 +4,7 @@
 <%@ page import="java.util.Map"%>
 <%@ page import="java.util.List" %>
 <%@ page import="email.emailSMTP"%>
+<%@ page import="java.lang.reflect.Array" %>
 <%@ page import="messageHistory.voicefishingNotificationHistory.voicefishingNotificationHistoryDAO" %>
 <%@ page import="messageHistory.voicefishingNotificationHistory.voicefishingNotificationHistoryDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -13,9 +14,13 @@
   request.setCharacterEncoding("UTF-8");
   response.setCharacterEncoding("UTF-8");
   Map<String, String> emailInfo = new HashMap<String, String>();
+  Map<String, String[]> toInfo = new HashMap<>();
   System.out.println("인코딩"+request.getParameter("content"));
   emailInfo.put("from", request.getParameter("from"));  // 보내는 사람
-  emailInfo.put("to", request.getParameter("to"));      // 받는 사람
+  // 받는 사람들의 이메일 배열
+  String[] toEmails = request.getParameterValues("to");
+  System.out.println(toEmails[1]);
+  toInfo.put("to", toEmails);
   emailInfo.put("subject", request.getParameter("subject"));  // 제목
   System.setProperty("https.protocols", "TLSv1,TLSv1.1,TLSv1.2");
 
@@ -68,6 +73,7 @@
   String selectedPrivacyYesValue = request.getParameter("privacyYes");
   String selectedAgeValue = request.getParameter("age");
   String selectedNameValue = request.getParameter("name");
+  String selectedAppValue = request.getParameter("app");
   String selectedAssetValue = request.getParameter("asset");
   String selectedLocationValue = request.getParameter("location");
   Map<String, Object> map = new HashMap<>();
@@ -76,7 +82,7 @@
   map.put("title",title);
   map.put("time",time);
   map.put("custNm", selectedNameValue);
-  System.out.println("custNm"+selectedNameValue);
+  map.put("recLoginDate", selectedAppValue);
   map.put("asset", selectedAssetValue);
   map.put("age", selectedAgeValue);
   map.put("privacy", selectedPrivacyYesValue);
@@ -92,7 +98,7 @@
   System.out.println("counts"+counts);
   try {
     emailSMTP smtpServer = new emailSMTP();  // 메일 전송 클래스 생성
-    smtpServer.emailSending(emailInfo);      // 전송
+    smtpServer.emailSending(emailInfo,toInfo);      // 전송
     voicefishingNotificationHistoryDAO dao = new voicefishingNotificationHistoryDAO();
     dao.selectMessage(map);
 
