@@ -11,17 +11,16 @@
     <script src="./overdueNotificationMessage.js"></script>
 </head>
 <body>
-<header>
-헤더입니다
-</header>
+<%
+
+%>
 <main>
 
     <jsp:include page="/components/sidebar.jsp" />
     <section class="mainComponent">
     <div class="searchComponent">
     <div class="searchComponent-topBar">
-        <div class="searchComponent-topBar-left">메세지 관리</div>
-        <div class="searchComponent-topBar-right">메세지 전송</div>
+        <div class="searchComponent-topBar-left">메세지 전송</div>
     </div>
     <div class="searchComponent-titleBar">상환 관리 안내 메시지</div>
     <div class="searchComponent-searchBar">

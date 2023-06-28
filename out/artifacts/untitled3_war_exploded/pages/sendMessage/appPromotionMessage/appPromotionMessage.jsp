@@ -11,9 +11,9 @@
   <script src="/pages/sendMessage/appPromotionMessage/appPromotionMessage.js"></script>
 </head>
 <body>
-<header>
-  헤더입니다
-</header>
+<%
+
+%>
 <main>
 
   <jsp:include page="/components/sidebar.jsp" />
