@@ -23,6 +23,7 @@ public class VoicefishingNotificationModifyServlet extends HttpServlet {
         String selectedPrivacyYesValue = request.getParameter("privacyYes");
         String selectedAgeValue = request.getParameter("age");
         String selectedNameValue = request.getParameter("custNm");
+        String prodNmValue = request.getParameter("prodNm");
         String mContentsValue = request.getParameter("mContents");
         String tableId = request.getParameter("tableId");
         System.out.println("servlet"+tableId);
@@ -30,6 +31,7 @@ public class VoicefishingNotificationModifyServlet extends HttpServlet {
         map.put("custNm", selectedNameValue);
         map.put("age", selectedAgeValue);
         map.put("privacy", selectedPrivacyYesValue);
+        map.put("prodNm", prodNmValue);
         map.put("mContents", mContentsValue);
         map.put("tableId", tableId);
         voicefishingNotificationModifyDAO dao = new voicefishingNotificationModifyDAO();
