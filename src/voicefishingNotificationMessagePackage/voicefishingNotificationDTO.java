@@ -6,7 +6,7 @@ public class voicefishingNotificationDTO {
     private String custNo;
     private String age;
     private String privacy;
-    private int asset;
+    private String asset;
     private String address;
     private String phoneNo;
     private String email;
@@ -15,9 +15,9 @@ public class voicefishingNotificationDTO {
     public String getCustNo() { return custNo; }
     public void setCustNo(String custNo) { this.custNo = custNo; }
 
-    public int getAsset() { return asset; }
+    public String getAsset() { return asset; }
 
-    public void setAsset(int asset) { this.asset = asset; }
+    public void setAsset(String asset) { this.asset = asset; }
 
     public String getAddress() { return address; }
 

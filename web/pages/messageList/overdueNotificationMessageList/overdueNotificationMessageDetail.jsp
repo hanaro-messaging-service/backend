@@ -65,8 +65,7 @@
                                 <div>동의</div>
                             </div>
                         </div>
-                    </div>
-                    <div class="searchComponent-searchBar-list">
+
                         <div class="searchComponent-searchBar-list-key">나이</div>
                         <div class="searchComponent-searchBar-list-value" id="ageContainer">
                             <%
@@ -87,6 +86,7 @@
                                 }
                             %>
                         </div>
+<<<<<<< HEAD:web/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageDetail.jsp
                         <div class="searchComponent-searchBar-list-key">연체여부</div>
                         <div class="searchComponent-searchBar-list-value">
                             <div class="checkbox">
@@ -126,8 +126,11 @@
                             </select>
 
                         </div>
+=======
+>>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5:out/artifacts/untitled3_war_exploded/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageDetail.jsp
                     </div>
                     <div class="searchComponent-searchBar-list">
+<<<<<<< HEAD:web/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageDetail.jsp
                         <div class="searchComponent-searchBar-list-key">신용등급</div>
                         <div class="searchComponent-searchBar-list-value">
                             <!-- 거주지 -->
@@ -149,11 +152,20 @@
                             </select>
 
                         </div>
+=======
+>>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5:out/artifacts/untitled3_war_exploded/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageDetail.jsp
                         <div class="searchComponent-searchBar-list-key">이름</div>
                         <div class="searchComponent-searchBar-list-value">
                             <input value="<%= request.getParameter("custNm") %>" type="text" id="name" name="custNm">
                         </div>
 
+<<<<<<< HEAD:web/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageDetail.jsp
+=======
+                        <div class="searchComponent-searchBar-list-key"></div>
+                        <div class="searchComponent-searchBar-list-value">
+                        </div>
+
+>>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5:out/artifacts/untitled3_war_exploded/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageDetail.jsp
                     </div>
                     <div class="searchComponent-searchBar-list">
                         <div class="searchComponent-searchBar-list-key">메세지 발송수</div>
@@ -189,6 +201,10 @@
                 <input name="tableId" hidden="" value="<%= request.getParameter("id") %>" >
             </div>
             <div>
+<<<<<<< HEAD:web/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageDetail.jsp
+=======
+
+>>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5:out/artifacts/untitled3_war_exploded/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageDetail.jsp
                 <!-- 부트스트랩 -->
                 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
                         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -199,60 +215,7 @@
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
                         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
                         crossorigin="anonymous"></script>
-                <!-- 차트 -->
-                <script>
-                    // <input> 요소에 disabled 속성 적용
-                    var inputElements = document.querySelectorAll("input");
-                    for (var i = 0; i < inputElements.length; i++) {
-                        inputElements[i].disabled = true;
-                    }
 
-                    // <select> 요소에 disabled 속성 적용
-                    var selectElements = document.querySelectorAll("select");
-                    for (var i = 0; i < selectElements.length; i++) {
-                        selectElements[i].disabled = true;
-                    }
-                    // <textarea> 요소에 disabled 속성 적용
-                    var textareaElements = document.querySelectorAll("textarea");
-                    for (var i = 0; i < textareaElements.length; i++) {
-                        textareaElements[i].disabled = true;
-                    }
-
-                    var ctx = document.getElementById('myChart');
-                    var time =document.getElementById('time').innerHTML;
-                    var counts = document.getElementById('counts').innerHTML;
-                    var view = document.getElementById('view').innerHTML;
-                    console.log(counts)
-                    var myChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: [`메세지`, '응답'],
-                            datasets: [{
-                                label: '메세지/응답',
-                                data: [counts, view],
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                ],
-                                borderColor: [
-                                    'rgba(255, 99, 132, 1)',
-                                    'rgba(54, 162, 235, 1)',
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true
-                                    }
-                                }]
-                            }
-                        }
-                    });
-
-                </script>
             </div>
             <div class="buttonList">
                 <a class="cancelButton" href="/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageList.jsp">목록</a>

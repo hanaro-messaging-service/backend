@@ -3,10 +3,15 @@
   <component name="WebContextManager">
     <option name="state">
       <map>
+<<<<<<< HEAD
         <entry key="file://$PROJECT_DIR$/web/pages/email/overdueNotificationSendEmail/overdueNotificationSendEmail.jsp" value="file://$PROJECT_DIR$/web/pages/email/overdueNotificationSendEmail" />
         <entry key="file://$PROJECT_DIR$/web/pages/main/mainpage.jsp" value="file://$PROJECT_DIR$/web/pages/main" />
         <entry key="file://$PROJECT_DIR$/web/pages/manageMessage/overdueNotificationManage/overdueNotificationManage.jsp" value="file://$PROJECT_DIR$/web/pages/manageMessage/overdueNotificationManage" />
         <entry key="file://$PROJECT_DIR$/web/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageDetail.jsp" value="file://$PROJECT_DIR$/web/pages/messageList/overdueNotificationMessageList" />
+=======
+        <entry key="file://$PROJECT_DIR$/web/pages/main/mainpage.jsp" value="file://$PROJECT_DIR$/web/pages/main" />
+        <entry key="file://$PROJECT_DIR$/web/pages/sendMessage/appPromotionMessage/appPromotionMessage.jsp" value="file://$PROJECT_DIR$/web/pages/sendMessage/appPromotionMessage" />
+>>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5
         <entry key="file://$PROJECT_DIR$/web/pages/sendMessage/productPromotionMessage.jsp" value="file://$PROJECT_DIR$/web/pages/sendMessage" />
       </map>
     </option>

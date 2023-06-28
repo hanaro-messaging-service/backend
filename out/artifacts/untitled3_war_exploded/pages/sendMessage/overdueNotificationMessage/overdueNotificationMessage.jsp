@@ -11,12 +11,13 @@
     <script src="./overdueNotificationMessage.js?ver=1"></script>
 </head>
 <body>
-<header>
-헤더입니다
-</header>
+<%
+
+%>
 <main>
     <jsp:include page="/components/sidebar.jsp" />
     <section class="mainComponent">
+<<<<<<< HEAD
         <%
             overdueNotificationCustomizeDAO dao = new overdueNotificationCustomizeDAO();
             List<overdueNotificationCustomizeDTO> infos = dao.selectMessage();
@@ -26,6 +27,12 @@
             <div class="searchComponent-topBar">
                 <div class="searchComponent-topBar-left">메세지 전송</div>
             </div>
+=======
+    <div class="searchComponent">
+    <div class="searchComponent-topBar">
+        <div class="searchComponent-topBar-left">메세지 전송</div>
+    </div>
+>>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5
     <div class="searchComponent-titleBar">상환 관리 안내 메시지</div>
     <div class="searchComponent-searchBar">
         <div class="searchComponent-searchBar-list">
