@@ -1,19 +1,58 @@
-package appPromotionMessagePackage;
-
-public class appPromotionMessageDTO {
+package appPromotionMessageHistory;
+public class appPromotionMessageHistoryDTO {
+    private String category;
+    private String contents;
+    private String title;
+    private int counts;
+    private String time;
     private String custNm;
     private String gender;
     private String age;
     private String job;
-    private int custGrade;
+    private String custGrade;
     private String subTerm;
     private String asset;
     private String privacy;
     private String recLoginDate;
-    private String email;
+    public String getCategory() {
+        return category;
+    }
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
+    public String getContents() {
+        return contents;
+    }
 
+    public void setContents(String contents) {
+        this.contents = contents;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getCounts() {
+        return counts;
+    }
+
+    public void setCounts(int counts) {
+        this.counts = counts;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
     public String getCustNm() {
         return custNm;
     }
@@ -46,11 +85,11 @@ public class appPromotionMessageDTO {
         this.job = job;
     }
 
-    public int getCustGrade() {
+    public String getCustGrade() {
         return custGrade;
 
     }
-    public void setCustGrade(int custGrade) {
+    public void setCustGrade(String custGrade) {
         this.custGrade = custGrade;
     }
 
@@ -81,13 +120,5 @@ public class appPromotionMessageDTO {
 
     public void setRecLoginDate(String recLoginDate) {
         this.recLoginDate = recLoginDate;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

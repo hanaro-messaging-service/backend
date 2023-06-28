@@ -11,11 +11,11 @@
   <script src="/pages/sendMessage/appPromotionMessage/appPromotionMessage.js"></script>
 </head>
 <body>
-<header>
-  헤더입니다
-</header>
-<main>
 
+<%
+
+%>
+<main>
   <jsp:include page="/components/sidebar.jsp" />
   <section class="mainComponent">
     <%
@@ -26,8 +26,9 @@
     <div class="searchComponent">
       <div class="searchComponent-topBar">
         <div class="searchComponent-topBar-left">메세지 전송</div>
+
       </div>
-      <div class="searchComponent-titleBar">어플 프로모션 메시지</div>
+      <div class="searchComponent-titleBar">수신 상품 프로모션 메시지</div>
       <div class="searchComponent-searchBar">
         <div class="searchComponent-searchBar-list">
           <div class="searchComponent-searchBar-list-key">성별</div>
@@ -136,10 +137,13 @@
             </select>
           </div>
         </div>
+
       </div>
+
     </div>
+
     <div class="myMessage">
-      <div style="margin-left:1.5vw; margin-right:1vw; width:120px;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
+      <div style="width:15%;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
                             align-items:center; color:white;">마이메세지</div>
 
       <div class="myMessage-list">
@@ -148,10 +152,9 @@
 
           if (infos != null) {
 
-
             for (appPromotionCustomizeDTO custInfo : infos)
             { %>
-        <div class="myMessage-list-element" style="position:relative" onclick="modifyMessage([
+        <div class="myMessage-list-element" style="" onclick="modifyMessage([
                 '<%=custInfo.getId() %>',
                 '<%=custInfo.getCustNm() %>',
                 '<%=custInfo.getGender() %>',
@@ -167,12 +170,10 @@
                 '<%=custInfo.getId()%>'
                 ])">
 
-          <div class="mainComponent-messageList-title">
-            <%=
-            custInfo.getProdNm()
-            %>
-          </div>
 
+          <%=
+          custInfo.getProdNm()
+          %>
         </div>
 
         <%
@@ -180,96 +181,92 @@
         %>
       </div>
     </div>
-    <div id="resultContainer" class="listComponent">
-      <form method="post" action="/pages/email/sendEmail.jsp" >
+    <div id="resultContainer" class="listComponent2">
+      <form method="post" action="/pages/email/appPromotionMessageEmail/appPromotionSendEmail.jsp" style="width:100%; display:flex; flex-direction: column; justify-content: center; align-items: center;" >
 
-          <%  int count = 0;
-                List<appPromotionMessageDTO> custInfos = (List<appPromotionMessageDTO>) request.getAttribute("custInfos");
-                java.util.Date currentDate = new java.util.Date();
-                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String formattedDate = sdf.format(currentDate);
-            %>
+        <%  int count = 0;
+          if(request.getAttribute("custInfos")!=null) {
+            int custInfos = (int) request.getAttribute("custInfos");
+          }
+
+//                System.out.println(custInfos);
+          java.util.Date currentDate = new java.util.Date();
+          java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+          String formattedDate = sdf.format(currentDate);
+        %>
         <input hidden="" value="어플 프로모션" name="category">
         <%--            value값 수정--%>
 
 
 
         <input hidden="" value="<%= formattedDate %>" name="date">
-        <table style="display:flex;justify-content: center; width: 100%;" >
+        <table style="display:flex;justify-content: space-between; width: 90%; background: red;" >
           <tr  hidden="">
 
             <td hidden="">
               보내는 사람 : <input type="text" name="from" value="hanaromessage@naver.com" />
             </td>
           </tr>
-          <tr hidden="">
-            <td hidden="">
-              받는 사람 : <input type="text" name="to" value="hanaromessage@naver.com" />
-            </td>
-          </tr>
-          <tr style=" display:flex; width:100%; justify-content: center;">
-            <td style="width:100%; display:flex; align-items: center; justify-content: space-between;">
-              <div style="margin-right:1vw; width:127px;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
+
+          <div style=" display:flex; width:90%; justify-content: space-between;">
+
+            <div style=" width:15%;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
                             align-items:center; color:white;
                          ">메시지제목</div>
-              <input style=" width:110%; height:4vh; border: 2px solid #008485;" type="text" name="subject" id="prodNm"  value="" />
-            </td>
-          </tr>
-          <tr style=" display:flex; width:100%; justify-content: center; margin-top:1vh;">
-            <td style="width:100%; display:flex; align-items: center; ">
-              <div style="margin-right:1vw; width:100px;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
+            <input style=" width:80%; height:4vh; border: 2px solid #008485;" type="text" name="subject" id="prodNm"  value="" />
+
+          </div>
+          <div style=" display:flex; width:90%; align-items: center; justify-content: space-between;  margin-top:1vh;">
+
+            <div style=" width:15%;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
                             align-items:center; color:white;
                          ">
-                메세지 형식
-              </div>
-              <div>
-                <input  type="radio" name="format" value="text" checked />Text
-                <input type="radio" name="format" value="html" />HTML
-              </div>
+              메세지 형식
+            </div>
+            <div style=" width:80%; height:4vh;display:flex; align-items: center; ">
+              <input  type="radio" name="format" value="text" checked />Text
+              <input type="radio" name="format" value="html" />HTML
+            </div>
 
-            </td>
-          </tr>
-          <tr style=" display:flex; width:100%; justify-content: center; margin-top:1vh;">
-            <td style="width:100%; display:flex;  justify-content: space-between;">
-              <div style="margin-right:1vw; width:100px;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
+
+          </div>
+          <div style=" display:flex; width:90%; justify-content: space-between; margin-top:1vh;">
+
+            <div style=" width:15%; height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
                             align-items:center; color:white;
                          ">메세지 내용</div>
-              <textarea style=" width:60vw; height:20vh; border: 2px solid #008485;" name="content" id="mContents" cols="60" rows="10"></textarea>
-            </td>
-          </tr>
-          <tr style=" display:flex; width:100%; justify-content: center; margin-top:1vh;">
-            <td style="width:100%; display:flex;justify-content: flex-end;">
-              <button style="width:15%; height:4vh; background:white; border:1px solid #cccccc;" type="submit">전송하기</button>
+            <textarea style=" width:80%; height:20vh; border: 2px solid #008485;" name="content" id="mContents" cols="60" rows="10"></textarea>
 
-            </td>
-          </tr>
+          </div>
+          <div style="display:flex; width:90%; justify-content: flex-end; margin-top:1vh;">
+            <button style="width:15%; height:4vh; background:white; border:1px solid #cccccc;" type="submit">전송하기</button>
+          </div>
         </table>
+
         <div class="listComponent">
           <div class="listComponent-topbar">
-            <div class="listComponent-topbar-element">선택</div>
             <div class="listComponent-topbar-element">이름</div>
             <div class="listComponent-topbar-element">성별</div>
             <div class="listComponent-topbar-element">나이</div>
             <div class="listComponent-topbar-elementMedium">직업</div>
-            <div class="listComponent-topbar-elementBig">고객등급</div>
-            <div class="listComponent-topbar-elementBig">가입기간</div>
-            <div class="listComponent-topbar-elementBig">자산</div>
-            <div class="listComponent-topbar-elementBig">개인정보동의</div>
+            <div class="listComponent-topbar-element">고객등급</div>
+            <div class="listComponent-topbar-elementMedium">가입기간</div>
+            <div class="listComponent-topbar-elementMedium">자산</div>
+            <div class="listComponent-topbar-elementMedium">개인정보동의</div>
             <div class="listComponent-topbar-elementBig">어플접속일</div>
+            <div class="listComponent-topbar-elementVeryBig">이메일</div>
           </div>
-
-
           <%
-
-            if (custInfos != null) {
-              for (appPromotionMessageDTO custInfo : custInfos) {
+            List<appPromotionMessageDTO> pageInfos = (List<appPromotionMessageDTO>) request.getAttribute("pageInfos");
+            if (pageInfos != null) {
+              for (appPromotionMessageDTO custInfo : pageInfos) {
                 count++;
-                System.out.println(count);
           %>
           <div class="listComponent-listbar">
-            <div class="listComponent-topbar-element bg-white">
-              <input type="checkbox" checked>
-            </div>
+
+
+            <input hidden="" type="text" name="to" value="<%=custInfo.getEmail()%>" />
+
             <div class="listComponent-topbar-element bg-white">
               <%= custInfo.getCustNm() %>
             </div>
@@ -282,29 +279,81 @@
             <div class="listComponent-topbar-elementMedium bg-white">
               <%= custInfo.getJob()%>
             </div>
-            <div class="listComponent-topbar-elementBig bg-white">
+            <div class="listComponent-topbar-element bg-white">
               <%= custInfo.getCustGrade()%>
             </div>
-            <div class="listComponent-topbar-elementBig bg-white">
+            <div class="listComponent-topbar-elementMedium bg-white">
               <%= custInfo.getSubTerm()%>
             </div>
-            <div class="listComponent-topbar-elementBig bg-white">
+            <div class="listComponent-topbar-elementMedium bg-white">
               <%= custInfo.getAsset()%>
             </div>
-            <div class="listComponent-topbar-elementBig bg-white">
+            <div class="listComponent-topbar-elementMedium bg-white">
               <%= custInfo.getPrivacy()%>
             </div>
             <div class="listComponent-topbar-elementBig bg-white">
               <%= custInfo.getRecLoginDate()%>
             </div>
+            <div class="listComponent-topbar-elementVeryBig bg-white">
+              <%= custInfo.getEmail()%>
+            </div>
+
           </div>
-          <% } } %>
-          <input hidden="" value="<%=count%>" name="counts">
+
+          <%  } %>
+          <div style="display:flex">
+            <%  if(request.getAttribute("custInfos")!=null) {
+              int custInfos = (int) request.getAttribute("custInfos");
+              int pageCount = 0;
+              int pageLength = custInfos/10+1;
+
+
+              for (int i = 0; i<pageLength; i++) {
+
+            %>
+            <div onclick="sendPageValueToServlet(<%=(pageCount)*10%>,<%=10%>)">
+              <%= pageCount+1%>
+            </div>
+            <%
+                  pageCount++;
+                }
+              }
+            %>
+          </div>
+          <input hidden="" value="<%=pageInfos.size()%>" name="counts">
+          <%
+            }
+          %>
+          <%
+
+          %>
+          <div>
+
+
+          </div>
+
+          <input hidden="" id="getName"  name="name">
+          <input hidden="" id="getApp"   name="app">
+          <input hidden="" id="getAsset"  name="asset">
+          <input hidden="" id="getMan"  name="man">
+          <input hidden="" id="getWoman"  name="woman">
+          <input hidden="" id="getPrivacyYes"  name="privacyYes">
+          <input hidden="" id="getJob"  name="job">
+          <input hidden="" id="getPrivate"  name="private">
+          <input hidden="" id="getAge"  name="age">
+          <input hidden="" id="getPeriod"  name="period">
+
+
         </div>
       </form>
     </div>
   </section>
 </main>
+
+<script>
+
+</script>
+
 
 </body>
 </html>
