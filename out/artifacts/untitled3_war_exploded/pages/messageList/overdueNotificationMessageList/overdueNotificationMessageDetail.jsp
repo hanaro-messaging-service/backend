@@ -86,7 +86,7 @@
                                 }
                             %>
                         </div>
-<<<<<<< HEAD:out/artifacts/untitled3_war_exploded/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageDetail.jsp
+<<<<<<< HEAD:web/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageDetail.jsp
                         <div class="searchComponent-searchBar-list-key">연체여부</div>
                         <div class="searchComponent-searchBar-list-value">
                             <div class="checkbox">
@@ -127,10 +127,10 @@
 
                         </div>
 =======
->>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5:web/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageDetail.jsp
+>>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5:out/artifacts/untitled3_war_exploded/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageDetail.jsp
                     </div>
                     <div class="searchComponent-searchBar-list">
-<<<<<<< HEAD:out/artifacts/untitled3_war_exploded/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageDetail.jsp
+<<<<<<< HEAD:web/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageDetail.jsp
                         <div class="searchComponent-searchBar-list-key">신용등급</div>
                         <div class="searchComponent-searchBar-list-value">
                             <!-- 거주지 -->
@@ -153,19 +153,19 @@
 
                         </div>
 =======
->>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5:web/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageDetail.jsp
+>>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5:out/artifacts/untitled3_war_exploded/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageDetail.jsp
                         <div class="searchComponent-searchBar-list-key">이름</div>
                         <div class="searchComponent-searchBar-list-value">
                             <input value="<%= request.getParameter("custNm") %>" type="text" id="name" name="custNm">
                         </div>
 
-<<<<<<< HEAD:out/artifacts/untitled3_war_exploded/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageDetail.jsp
+<<<<<<< HEAD:web/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageDetail.jsp
 =======
                         <div class="searchComponent-searchBar-list-key"></div>
                         <div class="searchComponent-searchBar-list-value">
                         </div>
 
->>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5:web/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageDetail.jsp
+>>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5:out/artifacts/untitled3_war_exploded/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageDetail.jsp
                     </div>
                     <div class="searchComponent-searchBar-list">
                         <div class="searchComponent-searchBar-list-key">메세지 발송수</div>
@@ -201,10 +201,10 @@
                 <input name="tableId" hidden="" value="<%= request.getParameter("id") %>" >
             </div>
             <div>
-<<<<<<< HEAD:out/artifacts/untitled3_war_exploded/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageDetail.jsp
+<<<<<<< HEAD:web/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageDetail.jsp
 =======
 
->>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5:web/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageDetail.jsp
+>>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5:out/artifacts/untitled3_war_exploded/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageDetail.jsp
                 <!-- 부트스트랩 -->
                 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
                         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

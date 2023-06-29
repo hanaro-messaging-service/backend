@@ -93,13 +93,10 @@
   <div class="sidebar-submain"><a href="/pages/messageList/messageList.jsp">메시지 발송내역</a></div>
   <div class="sidebar-content"><li ><a href="/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageList.jsp">보이스피싱 예방 안내 발송내역</a></li></div>
   <div class="sidebar-content"><li ><a href="/pages/messageList/productPromotionMessageList/prodMessageList.jsp">수신 상품 프로모션 발송내역</a></li></div>
-<<<<<<< HEAD
-  <div class="sidebar-content"><li ><a href="/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageList.jsp">상환 관리 안내 발송내역</a></li></div>
-  <div class="sidebar-submain"><a href="/pages/main/mainpage.jsp">메인페이지</a></div>
-=======
   <div class="sidebar-content"><li ><a href="/pages/messageList/appPromotionMessageList/appPromotionMessageList.jsp">어플 프로모션 발송내역</a></li></div>
+  <div class="sidebar-content"><li ><a href="/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageList.jsp">상환 관리 안내 발송내역</a></li></div>
 
->>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5
+
 
 </section>
 </body>
