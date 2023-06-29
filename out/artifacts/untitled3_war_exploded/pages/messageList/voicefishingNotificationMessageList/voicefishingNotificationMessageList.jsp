@@ -14,7 +14,7 @@
     <jsp:include page="/components/sidebar.jsp" />
     <section class="mainComponent">
         <div class="mainComponent-header">
-            <div class="mainComponent-header-text">메세지 발송내역</div>
+            <div class="mainComponent-header-text">메시지 발송내역</div>
         </div>
         <div class="messageComponent">
             <div class="messageComponent-topbar">

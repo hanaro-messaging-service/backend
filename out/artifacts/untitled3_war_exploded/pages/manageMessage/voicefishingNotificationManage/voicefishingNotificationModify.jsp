@@ -11,7 +11,7 @@
 
 
 </head>
-<body>s
+<body>
 
 
 <main>
@@ -20,7 +20,7 @@
             <div class="searchComponent">
                 <div class="searchComponent-topBar">
                     <div class="searchComponent-topBar-left">
-                        보이스피싱 예방 안내 메시지 추가
+                        보이스피싱 예방 안내 메시지 수정
                     </div>
 
                 </div>

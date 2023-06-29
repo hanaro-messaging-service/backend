@@ -23,10 +23,12 @@ public class AllNotificationModifyServlet extends HttpServlet{
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String tableId = request.getParameter("tableId");
-        String selectedPrivacyYesValue = request.getParameter("selectedPrivacyYesValue");
-        String selectedAgeValue = request.getParameter("selectedAgeValue");
-        String selectedNameValue = request.getParameter("selectedNameValue");
-        String selectedLocationValue = request.getParameter("selectedLocationValue");
+        String selectedPrivacyYesValue = request.getParameter("privacyYes");
+        String selectedAgeValue = request.getParameter("age");
+        String selectedNameValue = request.getParameter("custNm");
+        String selectedLocationValue = request.getParameter("location");
+        String mContentsValue = request.getParameter("mContents");
+        String mTitleValue = request.getParameter("mTitle");
         System.out.println(selectedPrivacyYesValue + selectedAgeValue + selectedNameValue + tableId);
 
         // Process the data as required
@@ -35,6 +37,8 @@ public class AllNotificationModifyServlet extends HttpServlet{
         map.put("privacy", selectedPrivacyYesValue);
         map.put("age", selectedAgeValue);
         map.put("location", selectedLocationValue);
+        map.put("mContents", mContentsValue);
+        map.put("mTitle", mTitleValue);
         map.put("tableId", tableId);
 
         // Set the response content type and encoding

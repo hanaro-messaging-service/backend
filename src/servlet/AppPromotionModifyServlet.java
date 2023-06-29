@@ -20,7 +20,6 @@ public class AppPromotionModifyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        System.out.print("모디파이 잘 들오나");
         String selectedManValue = request.getParameter("man");
         String selectedWomanValue = request.getParameter("woman");
         String selectedPrivacyYesValue = request.getParameter("privacyYes");

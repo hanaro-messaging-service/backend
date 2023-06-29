@@ -17,6 +17,7 @@ public class appPromotionModifyDAO extends DBConnPool {
         if(man==null) man = "N";
         if(woman==null) woman="N";
         String gender = man+woman;
+        System.out.println(gender);
         String age = (String) map.get("age");
         String job = (String) map.get("job");
         String custGrade = (String) map.get("private");

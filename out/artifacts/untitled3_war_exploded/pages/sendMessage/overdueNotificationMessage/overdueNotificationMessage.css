@@ -215,9 +215,12 @@ main {
     border:1px solid darkgray;
 }
 .myMessage{
-
+    margin-top:2vh;
+    display:flex;
     width:90%;
-    margin-top:2%;
+    height:4vh;
+    align-items:center;
+    justify-content: space-between;
 }
 .myMessage-list{
     width:100%;
@@ -226,11 +229,12 @@ main {
     flex-wrap:wrap;
 }
 .myMessage-list-element{
-    width:20%;
-    height:3vh;
-    background-color: #3ed55f;
-    margin-right:5%;
-    margin-top:1%;
-    margin-bottom: 1%;
-    cursor:pointer;
+    display: flex;
+    align-items: center;
+    width: auto;
+    border: 2px solid #008485;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

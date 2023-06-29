@@ -62,16 +62,7 @@ public class OverdueNotificationModifyServlet extends HttpServlet {
         map.put("tableId", tableId);
         overdueNotificationModifyDAO dao = new overdueNotificationModifyDAO();
         dao.selectMessage(map);
-//        map.put("recLoginDate", selectedAppValue);
-//        map.put("job", selectedJobValue);
-//        map.put("private", selectedPrivateValue);
-//        map.put("period", selectedPeriodValue);
-//        map.put("branch",selectedBranchValue);
-//        map.put("address",selectedLocationValue);
-//        map.put("prodNm", prodNmValue);
 
-//        request.getRequestDispatcher("/pages/manageMessage/overdueNotificationManage/overdueNotificationModify.jsp").forward(request,response);
-//        request.setAttribute("request", "requestValue");
         System.out.println("작업 완료");
         response.sendRedirect("/pages/manageMessage/overdueNotificationManage/overdueNotificationManage.jsp");
     }
