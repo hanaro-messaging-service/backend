@@ -5,6 +5,9 @@
 <%@ page import="java.util.HashMap"%>
 <%@ page import="java.util.Map"%>
 <%@ page import="java.util.List" %>
+<%@ page import="productPromotionMessageHistory.messageHistoryDAO"%>
+<%@ page import="productPromotionMessageHistory.messageHistoryDTO"%>
+<%@ page import="java.util.Arrays" %>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,65 +22,37 @@
 
 <main>
     <jsp:include page="/components/sidebar.jsp" />
+    <%
+        messageHistoryDAO promoDao = new messageHistoryDAO();
+        List<messageHistoryDTO> promoInfos = promoDao.readMessage();
+    %>
+    <% if (promoInfos != null) { %>
+    <% for (messageHistoryDTO promoInfo : promoInfos) { %>
+    <div hidden="" class="promoDate"><%=promoInfo.getTime()%></div>
+    <div hidden="" class="promoCount"><%=promoInfo.getCounts()%></div>
+    <%
+        }}
+    %>
     <section class="mainComponent">
 
         <div class="titleComponent">메인페이지</div>
 
         <div class="topComponent">
-            <div class="topComponent-element">
-                <div>관리자 총 인원</div>
-                <div>10명</div>
-            </div>
-            <div class="topComponent-element">
-                <div>금일 총 작업량</div>
-                <div>300건</div>
-            </div>
-            <div class="topComponent-element">
-                <div>금일 상품페이지 조회량</div>
-                <div>10회</div>
-            </div>
+
 
         </div>
         <div class="contentComponent">
             <div class="contentComponent-element">
-                <div>
-                    <canvas id = "myChart"></canvas>
-                </div>
-                <div>
-                    <div>
-
-                    </div>
-                </div>
+                    <canvas style="width:100%;height:55vh;" canvas id = "prodChart"></canvas>
             </div>
             <div class="contentComponent-element">
-                <div>
-                    보이스피싱 예방 안내 메시지
-                </div>
-                <div>
-                    <div>
-
-                    </div>
-                </div>
+                <canvas style="width:100%;height:55vh;" canvas id = "voiceChart"></canvas>
             </div>
             <div class="contentComponent-element">
-                <div>
-                    어플 프로모션 메시지
-                </div>
-                <div>
-                    <div>
-
-                    </div>
-                </div>
+                <canvas style="width:100%;height:55vh;" canvas id = "appChart"></canvas>
             </div>
             <div class="contentComponent-element">
-                <div>
-                    상황 관리 안내 메시지
-                </div>
-                <div>
-                    <div>
-
-                    </div>
-                </div>
+                <canvas style="width:100%;height:55vh;" canvas id = "overChart"></canvas>
             </div>
         </div>
     </section>
@@ -95,8 +70,100 @@
         crossorigin="anonymous"></script>
 <!-- 차트 -->
 <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var chart = new Chart(ctx, {
+    var prod = document.getElementById('prodChart').getContext('2d');
+    var prodDate = document.getElementsByClassName('promoDate');
+    var prodCount = document.getElementsByClassName('promoCount');
+    let prodDateArray = [];
+    let prodCountArray = [];
+    for (let i = 0; i < prodDate.length; i++) {
+
+        var date = new Date(prodDate[i].innerHTML);
+
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+
+        var outputDateString = month + '/' + day + ' ' + hour + ':' + minute ;
+        prodDateArray.push(outputDateString);
+        prodCountArray.push(prodCount[i].innerHTML);
+    }
+    console.log(prodDateArray)
+    var voice = document.getElementById("voiceChart").getContext('2d');
+    var app = document.getElementById("appChart").getContext('2d');
+    var over = document.getElementById("overChart").getContext('2d');
+    var chart = new Chart(prod, {
+        type: 'line',
+        data: {
+            labels: prodDateArray,
+            datasets: [{
+                label: '수신 상품 프로모션 페이지',
+                backgroundColor: 'transparent',
+                borderColor: '#008485',
+                data: prodCountArray
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    display: false  // X축 레이블 숨김
+                },
+                y: {
+                    min: 0,
+                    max: 100,
+                    stepSize: 100
+                }
+            },
+            plugins: {
+                tooltip: {
+                    enabled: false,  // 툴팁 비활성화
+                    mode: 'index',   // hover할 때만 툴팁 활성화
+                    intersect: false
+                }
+            },
+            hover: {
+                mode: 'index',
+                intersect: false
+            }
+        }
+    });
+
+
+    var chart = new Chart(voice, {
+        // 챠트 종류를 선택
+        type: 'line',
+
+        // 챠트를 그릴 데이타
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'transparent',
+                borderColor: 'red',
+                data: [0, 10, 5, 2, 20, 30, 45]
+            }]
+        },
+        // 옵션
+        options: {}
+    });
+    var chart = new Chart(app, {
+        // 챠트 종류를 선택
+        type: 'line',
+
+        // 챠트를 그릴 데이타
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'transparent',
+                borderColor: 'red',
+                data: [0, 10, 5, 2, 20, 30, 45]
+            }]
+        },
+        // 옵션
+        options: {}
+    });
+    var chart = new Chart(over, {
         // 챠트 종류를 선택
         type: 'line',
 
