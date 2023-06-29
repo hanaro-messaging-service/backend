@@ -15,6 +15,7 @@ public class productPromotionMessageDAO extends DBConnPool {
     public productPromotionMessageDAO() {
         super();
     }
+
     private String getAgeFromResidentNo(String residentNo) {
         int birthYear = Integer.parseInt(residentNo.substring(0, 2));
         int birthMonth = Integer.parseInt(residentNo.substring(2, 4));
@@ -93,7 +94,7 @@ public class productPromotionMessageDAO extends DBConnPool {
             e.printStackTrace();
         }
         finally{
-
+            close();
         }
 
         return totalCount;

@@ -11,6 +11,7 @@
     <title>하나로 메세지</title>
     <link rel="stylesheet" href="/pages/sendMessage/productPromotionMessage.css" >
     <script src="/pages/sendMessage/productPromotionMessage.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 
@@ -331,34 +332,30 @@
                 </div>
 
                 <%  } %>
-            <div style="display:flex">
+            <div style="display:flex; width:100%; flex-wrap:wrap;">
                 <%  if(request.getAttribute("custInfos")!=null) {
                     int custInfos = (int) request.getAttribute("custInfos");
                     int pageCount = 0;
                     int pageLength = custInfos/10+1;
 
-                    for (int i = 0; i<pageLength; i++) {
-
                 %>
-                <div onclick="sendPageValueToServlet(<%=(pageCount)*10%>,<%=10%>)">
-                    <%= pageCount+1%>
+                <input hidden="" value="<%=custInfos%>" id="totalCount"/>
+                <div class="paginationContainer">
+                    <div class="pagination">
+                        <ul> <!--pages or li are comes from javascript --> </ul>
+                    </div>
                 </div>
+
                 <%
-                            pageCount++;
-                        }
+
                     }
                 %>
             </div>
+            <input hidden="" value="<%=pageInfos.size()%>" name="counts">
                 <%
                     }
                 %>
-            <%
 
-            %>
-            <div>
-
-            </div>
-            <input hidden="" value="" name="counts">
             <input hidden="" id="getName"  name="name">
             <input hidden="" id="getApp"   name="app">
             <input hidden="" id="getAsset"  name="asset">
