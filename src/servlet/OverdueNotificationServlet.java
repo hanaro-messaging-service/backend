@@ -29,11 +29,10 @@ public class OverdueNotificationServlet extends HttpServlet {
         String selectedWomanValue = request.getParameter("selectedWomanValue");
         String selectedPrivacyYesValue = request.getParameter("selectedPrivacyYesValue");
         String selectedJobValue = request.getParameter("selectedJobValue");
-        String selectedPrivateValue = request.getParameter("selectedPrivateValue");
+        String selectedPrivateValue = request.getParameter("selectedCustGradeValue");
         String selectedAgeValue = request.getParameter("selectedAgeValue");
         String selectedPeriodValue = request.getParameter("selectedPeriodValue");
         String selectedNameValue = request.getParameter("selectedNameValue");
-//        String selectedAppValue = request.getParameter("selectedAppValue");
         String selectedAssetValue = request.getParameter("selectedAssetValue");
         String selectedLocationValue = request.getParameter("selectedLocationValue");
         String selectedBranchValue = request.getParameter("selectedBranchValue");

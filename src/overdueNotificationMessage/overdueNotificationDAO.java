@@ -70,11 +70,11 @@ public class overdueNotificationDAO extends DBConnPool {
 
         String custNm = (String) map.get("custNm");
         query = nameFilter.addNameFilterCondition(query,custNm);
-        
+
         String man = (String) map.get("man");
         String woman = (String) map.get("woman");
         query = gender.addGenderCondition(query, man, woman);
-        
+
         System.out.println(("age 삽입"));
         String age = (String) map.get("age");
         query = ageFilter.addAgeFilterCondition(query,age);
