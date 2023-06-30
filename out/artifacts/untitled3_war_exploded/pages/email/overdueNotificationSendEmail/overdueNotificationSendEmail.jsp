@@ -107,7 +107,7 @@
   map.put("counts", countValue);
 
 
-  System.out.println("counts"+counts);
+  System.out.println("custGrade"+selectedCustGradeValue);
   try {
     emailSMTP smtpServer = new emailSMTP();  // 메일 전송 클래스 생성
     smtpServer.emailSending(emailInfo,toInfo);      // 전송

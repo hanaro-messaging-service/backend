@@ -4,8 +4,8 @@
 <%@ page import="java.util.Map"%>
 <%@ page import="java.util.List" %>
 <%@ page import="email.emailSMTP"%>
-<%@ page import="messageHistory.overdueNotificationMessageHistory.messageHistoryDAO" %>
-<%@ page import="messageHistory.overdueNotificationMessageHistory.messageHistoryDTO" %>
+<%@ page import="messageHistory.allNotificationMessageHistory.messageHistoryDAO" %>
+<%@ page import="messageHistory.allNotificationMessageHistory.messageHistoryDTO" %>
 <%@ page import="java.lang.reflect.Array" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
@@ -44,7 +44,7 @@
     String htmlContent = ""; // HTML용으로 변환된 내용을 담을 변수
     try {
       // HTML 메일용 템플릿 파일 읽기
-      String templatePath = application.getRealPath("/pages/email/overdueNotificationSendEmail/overdueNotificationEmailTemplate.html");
+      String templatePath = application.getRealPath("/pages/email/allNotificationSendEmail/allNotificationEmailTemplate.html");
       BufferedReader br = new BufferedReader(new FileReader(templatePath));
 
       // 한 줄씩 읽어 htmlContent 변수에 저장
@@ -65,22 +65,15 @@
     emailInfo.put("format", "text/html;charset=UTF-8");
   }
   //  여기까지는 이메일 보내는 로직
-  // 이후가 db쌓는 로직
+  // 이후가 db쌓기 -> INSERT (all_send_message_list)
   String category = request.getParameter("category");
   String contents = request.getParameter("content");
   String title = request.getParameter("subject");
   String time =request.getParameter("date");
-  String selectedManValue = request.getParameter("man");
-  String selectedWomanValue = request.getParameter("woman");
   String selectedNameValue = request.getParameter("name");
   String selectedAgeValue = request.getParameter("age");
-  String selectedOverdueYes = request.getParameter("overdueYes");
-  String selectedOverdueNo = request.getParameter("overdueNo");
-  String selectedAssetValue = request.getParameter("asset");
   String selectedPrivacyYesValue = request.getParameter("privacyYes");
-  String selectedPeriodValue = request.getParameter("period");
-  String selectedCustGradeValue = request.getParameter("custGrade");
-  String selectedCreditRatingValue = request.getParameter("creditRating");
+  String selectedLocationValue = request.getParameter("location");
 
 
   Map<String, Object> map = new HashMap<>();
@@ -88,17 +81,10 @@
   map.put("contents",contents);
   map.put("title",title);
   map.put("time",time);
-  map.put("man", selectedManValue);
-  map.put("woman", selectedWomanValue);
   map.put("custNm", selectedNameValue);
   map.put("age", selectedAgeValue);
-  map.put("overdueYes", selectedOverdueYes);
-  map.put("overdueNo", selectedOverdueNo);
-  map.put("asset", selectedAssetValue);
   map.put("privacy", selectedPrivacyYesValue);
-  map.put("period", selectedPeriodValue);
-  map.put("custGrade", selectedCustGradeValue);
-  map.put("creditRating", selectedCreditRatingValue);
+  map.put("location", selectedLocationValue);
   String counts = request.getParameter("counts");
   int countValue = 0;
   if (counts != null) {
@@ -107,7 +93,7 @@
   map.put("counts", countValue);
 
 
-  System.out.println("custGrade"+selectedCustGradeValue);
+  System.out.println("counts"+counts);
   try {
     emailSMTP smtpServer = new emailSMTP();  // 메일 전송 클래스 생성
     smtpServer.emailSending(emailInfo,toInfo);      // 전송
@@ -116,7 +102,7 @@
     dao.selectMessage(map);
 
     out.print("<script>window.alert('이메일 전송 성공'); </script>");
-    response.sendRedirect("/pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp"); // 리다이렉트
+    response.sendRedirect("/pages/sendMessage/allNotificationMessage/allNotificationMessage.jsp"); // 리다이렉트
   }
   catch (Exception e) {
     out.print("<script>window.alert('이메일 전송 실패'); window.location.href='/pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp'</script>");

@@ -18,7 +18,7 @@
 </head>
 <body>
 <main>
-<%--  전송내역--%>
+  <%--  전송내역--%>
   <jsp:include page="/components/sidebar.jsp" />
   <section class="mainComponent">
     <div class="mainComponent-header">

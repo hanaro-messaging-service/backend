@@ -53,7 +53,7 @@
                         <div class="searchComponent-searchBar-list-key">개인정보동의여부</div>
                         <div class="searchComponent-searchBar-list-value">
                             <div class="checkbox">
-                                <input  type="checkbox" name="privacyYes" value="Y" class="flex align-center" id="privacyYes" <%= "Y".equals(request.getParameter("privacyYes")) ? "checked" : "" %>>
+                                <input  type="checkbox" name="privacyYes" value="O" class="flex align-center" id="privacyYes" <%= "O".equals(request.getParameter("privacyYes")) ? "checked" : "" %>>
                                 <div>동의</div>
                             </div>
                         </div>
