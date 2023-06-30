@@ -5,8 +5,15 @@
 <%@ page import="java.util.HashMap"%>
 <%@ page import="java.util.Map"%>
 <%@ page import="java.util.List" %>
-<%@ page import="productPromotionMessageHistory.messageHistoryDAO"%>
-<%@ page import="productPromotionMessageHistory.messageHistoryDTO"%>
+<%@ page import="productPromotionMessageHistory.prodMessageHistoryDAO"%>
+<%@ page import="productPromotionMessageHistory.prodMessageHistoryDTO"%>
+<%@ page import="appPromotionMessageHistory.appPromotionMessageHistoryDAO"%>
+<%@ page import="appPromotionMessageHistory.appPromotionMessageHistoryDTO"%>
+<%@ page import="messageHistory.voicefishingNotificationHistory.voicefishingNotificationHistoryDAO" %>
+<%@ page import="messageHistory.voicefishingNotificationHistory.voicefishingNotificationHistoryDTO" %>
+<%@ page import="messageHistory.overdueNotificationMessageHistory.messageHistoryDAO" %>
+<%@ page import="messageHistory.overdueNotificationMessageHistory.messageHistoryDTO" %>
+
 <%@ page import="java.util.Arrays" %>
 <head>
     <meta charset="UTF-8">
@@ -19,19 +26,56 @@
     <link rel="stylesheet" href="/pages/main/mainpage.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
+<body>
+<div style="display:flex; align-items: center;">
+    <image src="/pages/main/image3.png" style="width:10%;height:10%;"></image>
+    <div style="font-size:1.6rem; font-weight: bold; color:#008485;">
+        <div>HANARO</div>
+        <div>MESSAGE</div>
+    </div>
+</div>
+
 
 <main>
     <jsp:include page="/components/sidebar.jsp" />
     <%
-        messageHistoryDAO promoDao = new messageHistoryDAO();
-        List<messageHistoryDTO> promoInfos = promoDao.readMessage();
+        prodMessageHistoryDAO promoDao = new prodMessageHistoryDAO();
+        List<prodMessageHistoryDTO> promoInfos = promoDao.readMessage();
+        messageHistoryDAO overdueDao = new messageHistoryDAO();
+        List<messageHistoryDTO> overdueInfos = overdueDao.readMessage();
+        voicefishingNotificationHistoryDAO dao = new voicefishingNotificationHistoryDAO();
+        List<voicefishingNotificationHistoryDTO> voiceInfos = dao.readMessage();
+        appPromotionMessageHistoryDAO appDao = new appPromotionMessageHistoryDAO();
+        List<appPromotionMessageHistoryDTO> appInfos = appDao.readMessage();
+
     %>
     <% if (promoInfos != null) { %>
-    <% for (messageHistoryDTO promoInfo : promoInfos) { %>
+    <% for (prodMessageHistoryDTO promoInfo : promoInfos) { %>
     <div hidden="" class="promoDate"><%=promoInfo.getTime()%></div>
     <div hidden="" class="promoCount"><%=promoInfo.getCounts()%></div>
     <%
         }}
+    %>
+    <% if (overdueInfos != null) { System.out.println(overdueInfos); %>
+    <% for (messageHistoryDTO overdueInfo : overdueInfos) { %>
+    <div hidden="" class="overdueDate"><%=overdueInfo.getTime()%></div>
+    <div hidden="" class="overdueCount"><%=overdueInfo.getCounts()%></div>
+    <%
+            }}
+    %>
+    <% if (voiceInfos != null) { %>
+    <% for (voicefishingNotificationHistoryDTO voiceInfo : voiceInfos) { %>
+    <div hidden="" class="voiceDate"><%=voiceInfo.getTime()%></div>
+    <div hidden="" class="voiceCount"><%=voiceInfo.getCounts()%></div>
+    <%
+            }}
+    %>
+    <% if (appInfos != null) { %>
+    <% for (appPromotionMessageHistoryDTO appInfo : appInfos) { %>
+    <div hidden="" class="appDate"><%=appInfo.getTime()%></div>
+    <div hidden="" class="appCount"><%=appInfo.getCounts()%></div>
+    <%
+            }}
     %>
     <section class="mainComponent">
 
@@ -42,6 +86,9 @@
 
         </div>
         <div class="contentComponent">
+            <div class="contentComponent-element">
+                <canvas id="myChart1"></canvas>
+            </div>
             <div class="contentComponent-element">
                     <canvas style="width:100%;height:55vh;" canvas id = "prodChart"></canvas>
             </div>
@@ -73,6 +120,7 @@
     var prod = document.getElementById('prodChart').getContext('2d');
     var prodDate = document.getElementsByClassName('promoDate');
     var prodCount = document.getElementsByClassName('promoCount');
+
     let prodDateArray = [];
     let prodCountArray = [];
     for (let i = 0; i < prodDate.length; i++) {
@@ -90,8 +138,63 @@
     }
     console.log(prodDateArray)
     var voice = document.getElementById("voiceChart").getContext('2d');
+    var voiceDate = document.getElementsByClassName('voiceDate');
+    var voiceCount = document.getElementsByClassName('voiceCount');
+
+    let voiceDateArray = [];
+    let voiceCountArray = [];
+    for (let i = 0; i < voiceDate.length; i++) {
+
+        var date = new Date(voiceDate[i].innerHTML);
+
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+
+        var outputDateString = month + '/' + day + ' ' + hour + ':' + minute ;
+        voiceDateArray.push(outputDateString);
+        voiceCountArray.push(voiceCount[i].innerHTML);
+    }
     var app = document.getElementById("appChart").getContext('2d');
+    var appDate = document.getElementsByClassName('appDate');
+    var appCount = document.getElementsByClassName('appCount');
+
+    let appDateArray = [];
+    let appCountArray = [];
+    for (let i = 0; i < appDate.length; i++) {
+
+        var date = new Date(appDate[i].innerHTML);
+
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+
+        var outputDateString = month + '/' + day + ' ' + hour + ':' + minute ;
+        appDateArray.push(outputDateString);
+        appCountArray.push(appCount[i].innerHTML);
+    }
     var over = document.getElementById("overChart").getContext('2d');
+    var overDate = document.getElementsByClassName('overdueDate');
+    var overCount = document.getElementsByClassName('overdueCount');
+    console.log(overDate,overCount);
+    let overDateArray = [];
+    let overCountArray = [];
+    for (let i = 0; i < overDate.length; i++) {
+
+        var date = new Date(overDate[i].innerHTML);
+
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+
+        var outputDateString = month + '/' + day + ' ' + hour + ':' + minute ;
+        overDateArray.push(outputDateString);
+        overCountArray.push(overCount[i].innerHTML);
+    }
+    console.log(overDateArray,overCountArray.reduce((acc,cur)=>Number(acc)+Number(cur)))
     var chart = new Chart(prod, {
         type: 'line',
         data: {
@@ -127,7 +230,23 @@
             }
         }
     });
+    data = {
+        datasets: [{
+            backgroundColor: ['red','yellow','blue','orange','skyblue'],
+            data: [prodCountArray.reduce((acc,cur)=>Number(acc)+Number(cur)),voiceCountArray.reduce((acc,cur)=>Number(acc)+Number(cur)),appCountArray.reduce((acc,cur)=>Number(acc)+Number(cur)),overCountArray.reduce((acc,cur)=>Number(acc)+Number(cur)),50]
+        }],
+        // 라벨의 이름이 툴팁처럼 마우스가 근처에 오면 나타남
+        labels: ['수신 상품 프로모션','보이스피싱 예방 관리','어플 프로모션','상환 관리 안내','전체안내']
+    };
 
+    // 가운데 구멍이 없는 파이형 차트
+
+    var ctx1 = document.getElementById("myChart1");
+    var myPieChart = new Chart(ctx1, {
+        type: 'pie',
+        data: data,
+        options: {}
+    });
 
     var chart = new Chart(voice, {
         // 챠트 종류를 선택
@@ -135,12 +254,12 @@
 
         // 챠트를 그릴 데이타
         data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: voiceDateArray,
             datasets: [{
-                label: 'My First dataset',
+                label: '보이스피싱',
                 backgroundColor: 'transparent',
-                borderColor: 'red',
-                data: [0, 10, 5, 2, 20, 30, 45]
+                borderColor: 'green',
+                data: voiceCountArray
             }]
         },
         // 옵션
@@ -152,12 +271,12 @@
 
         // 챠트를 그릴 데이타
         data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: appDateArray,
             datasets: [{
-                label: 'My First dataset',
+                label: '앱',
                 backgroundColor: 'transparent',
                 borderColor: 'red',
-                data: [0, 10, 5, 2, 20, 30, 45]
+                data: appCountArray
             }]
         },
         // 옵션
@@ -169,12 +288,12 @@
 
         // 챠트를 그릴 데이타
         data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels:overDateArray,
             datasets: [{
-                label: 'My First dataset',
+                label: '상환관리',
                 backgroundColor: 'transparent',
                 borderColor: 'red',
-                data: [0, 10, 5, 2, 20, 30, 45]
+                data: overCountArray
             }]
         },
         // 옵션

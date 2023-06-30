@@ -2,15 +2,14 @@ package productPromotionMessageHistory;
 
 
 import common.DBConnPool;
-import productPromotionMessageHistory.messageHistoryDTO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
-public class messageHistoryDAO extends DBConnPool {
-    public messageHistoryDAO () {
+public class prodMessageHistoryDAO extends DBConnPool {
+    public prodMessageHistoryDAO() {
         super();
     }
 
@@ -65,13 +64,13 @@ public class messageHistoryDAO extends DBConnPool {
             close();
         }
     }
-    public List<productPromotionMessageHistory.messageHistoryDTO> readMessage () {
+    public List<prodMessageHistoryDTO> readMessage () {
         String selectQuery = "SELECT * FROM prod_send_message_list";
-        List<productPromotionMessageHistory.messageHistoryDTO> messageInfos = new ArrayList<>();
+        List<prodMessageHistoryDTO> messageInfos = new ArrayList<>();
         try(PreparedStatement pstmt = con.prepareStatement(selectQuery)){
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                productPromotionMessageHistory.messageHistoryDTO member = new messageHistoryDTO();
+                prodMessageHistoryDTO member = new prodMessageHistoryDTO();
                 member.setCategory(rs.getString("category"));
                 member.setContents(rs.getString("contents"));
                 member.setTitle(rs.getString("title"));

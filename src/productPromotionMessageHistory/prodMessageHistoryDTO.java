@@ -1,6 +1,6 @@
 package productPromotionMessageHistory;
 
-public class messageHistoryDTO {
+public class prodMessageHistoryDTO {
     private String category;
     private String contents;
     private String title;

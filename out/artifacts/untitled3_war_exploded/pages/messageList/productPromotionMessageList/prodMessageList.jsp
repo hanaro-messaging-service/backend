@@ -6,8 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="productPromotionMessageHistory.messageHistoryDAO" %>
-<%@ page import="productPromotionMessageHistory.messageHistoryDTO" %>
+<%@ page import="productPromotionMessageHistory.prodMessageHistoryDAO" %>
+<%@ page import="productPromotionMessageHistory.prodMessageHistoryDTO" %>
 <%@ page import="java.util.HashMap"%>
 <%@ page import="java.util.Map"%>
 <%@ page import="java.util.List" %>
@@ -34,10 +34,10 @@
 
       <%
         // DAO 객체 생성
-        messageHistoryDAO dao = new messageHistoryDAO();
+        prodMessageHistoryDAO dao = new prodMessageHistoryDAO();
 
         // DAO를 통해 메시지 목록을 읽어옴
-        List<messageHistoryDTO> messageInfos = dao.readMessage();
+        List<prodMessageHistoryDTO> messageInfos = dao.readMessage();
 
         // 읽어온 메시지 목록을 속성에 저장
         request.setAttribute("messageInfos", messageInfos);
@@ -45,7 +45,7 @@
 
       <% if (messageInfos != null && !messageInfos.isEmpty()) { %>
 
-      <% for (messageHistoryDTO message : messageInfos) { %>
+      <% for (prodMessageHistoryDTO message : messageInfos) { %>
       <div class="messageComponent-list" onclick="modifyMessage([
               '',
               '<%=message.getCustNm() %>',

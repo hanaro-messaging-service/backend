@@ -158,6 +158,8 @@
 
     </section>
     <section class="textComponent">
+        <div class="searchComponent-topBar-right">메세지 내용</div>
+        <div class="textComponent-titleInput"></div>
         <div class="searchComponent-topBar-right">메세지 제목</div>
         <input name="prodNm" class="textComponent-messageInput">
         <div class="searchComponent-topBar-right">메세지 내용</div>
