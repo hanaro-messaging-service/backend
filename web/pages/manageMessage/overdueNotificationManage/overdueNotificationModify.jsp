@@ -45,7 +45,7 @@
             <div class="searchComponent-searchBar-list-key">개인정보동의여부</div>
             <div class="searchComponent-searchBar-list-value">
               <div class="checkbox">
-                <input  type="checkbox" name="privacyYes" value="Y" class="flex align-center" id="privacyYes" <%= "O".equals(request.getParameter("privacyYes")) ? "checked" : "" %>>
+                <input  type="checkbox" name="privacyYes" value="O" class="flex align-center" id="privacyYes" <%= "O".equals(request.getParameter("privacyYes")) ? "checked" : "" %>>
                 <div>동의</div>
               </div>
             </div>
@@ -58,7 +58,7 @@
                 String ageValue = (String) request.getParameter("age");
                 System.out.println( request.getParameter("id"));
               %>
-             <% if(ageValue != null) { %>
+              <% if(ageValue != null) { %>
               <select name="age" id="age">
                 <option value="전체" <%= "전체".equals(ageValue) ? "selected" : "" %>>전체</option>
                 <option value="20대" <%= "20대".equals(ageValue) ? "selected" : "" %>>20대</option>
@@ -68,9 +68,9 @@
                 <option value="60대" <%= "60대".equals(ageValue) ? "selected" : "" %>>60대</option>
                 <option value="70대 이상" <%= "70대 이상".equals(ageValue) ? "selected" : "" %>>70대 이상</option>
               </select>
-            <%
-              }
-            %>
+              <%
+                }
+              %>
             </div>
 
             <div class="searchComponent-searchBar-list-key">연체여부</div>
@@ -131,25 +131,25 @@
               </select>
 
             </div>
-                <div class="searchComponent-searchBar-list-key">이름</div>
-                <div class="searchComponent-searchBar-list-value">
-                  <%--              이름--%>
-                  <%--              <input name="branch" value="<%= request.getParameter("branch") %>" type="text" id="branch" >--%>
-                  <input value="<%= request.getParameter("custNm") %>" type="text" id="name" name="custNm">
-                </div>
-<%--            <div class="searchComponent-searchBar-list-key">가입 기간</div>--%>
-<%--            <div class="searchComponent-searchBar-list-value">--%>
-<%--              <!-- 가입 기간 -->--%>
-<%--              <select name="period" id="period" >--%>
-<%--                <option value="전체" <%= "전체".equals(request.getParameter("period")) ? "selected" : "" %>>전체</option>--%>
-<%--                <option value="1년 미만" <%= "1년 미만".equals(request.getParameter("period")) ? "selected" : "" %>>1년 미만</option>--%>
-<%--                <option value="1년-3년" <%= "1년-3년".equals(request.getParameter("period")) ? "selected" : "" %>>1년-3년</option>--%>
-<%--                <option value="3년-5년" <%= "3년-5년".equals(request.getParameter("period")) ? "selected" : "" %>>3년-5년</option>--%>
-<%--                <option value="5년-10년" <%= "5년-10년".equals(request.getParameter("period")) ? "selected" : "" %>>5년-10년</option>--%>
-<%--                <option value="10년 이상" <%= "10년 이상".equals(request.getParameter("period")) ? "selected" : "" %>>10년 이상</option>--%>
-<%--              </select>--%>
+            <div class="searchComponent-searchBar-list-key">이름</div>
+            <div class="searchComponent-searchBar-list-value">
+              <%--              이름--%>
+              <%--              <input name="branch" value="<%= request.getParameter("branch") %>" type="text" id="branch" >--%>
+              <input value="<%= request.getParameter("custNm") %>" type="text" id="name" name="custNm">
+            </div>
+            <%--            <div class="searchComponent-searchBar-list-key">가입 기간</div>--%>
+            <%--            <div class="searchComponent-searchBar-list-value">--%>
+            <%--              <!-- 가입 기간 -->--%>
+            <%--              <select name="period" id="period" >--%>
+            <%--                <option value="전체" <%= "전체".equals(request.getParameter("period")) ? "selected" : "" %>>전체</option>--%>
+            <%--                <option value="1년 미만" <%= "1년 미만".equals(request.getParameter("period")) ? "selected" : "" %>>1년 미만</option>--%>
+            <%--                <option value="1년-3년" <%= "1년-3년".equals(request.getParameter("period")) ? "selected" : "" %>>1년-3년</option>--%>
+            <%--                <option value="3년-5년" <%= "3년-5년".equals(request.getParameter("period")) ? "selected" : "" %>>3년-5년</option>--%>
+            <%--                <option value="5년-10년" <%= "5년-10년".equals(request.getParameter("period")) ? "selected" : "" %>>5년-10년</option>--%>
+            <%--                <option value="10년 이상" <%= "10년 이상".equals(request.getParameter("period")) ? "selected" : "" %>>10년 이상</option>--%>
+            <%--              </select>--%>
 
-<%--            </div>--%>
+            <%--            </div>--%>
           </div>
         </div>
 

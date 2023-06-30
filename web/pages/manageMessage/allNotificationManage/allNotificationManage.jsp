@@ -6,29 +6,13 @@
 <head>
     <title>하나로 메세지</title>
     <link rel="stylesheet" href="./allNotificationManage.css" >
-<%--    <script src="./voicefishingNotificationManage.js"></script>--%>
+    <%--    <script src="./voicefishingNotificationManage.js"></script>--%>
 </head>
 <body>
 
 <%--메시지 관리 페이지--%>
 <main>
-    <section class="sidebar">
-        <div class="sidebar-main">
-            메시지
-        </div>
-        <div class="sidebar-submain">전송</div>
-        <div class="sidebar-content"><li><a href="/pages/sendMessage/allNotificationMessage/allNotificationMessage.jsp">전체 안내 메시지 전송</a></li></div>
-        <div class="sidebar-content"><li><a href="/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.jsp">보이스피싱 예방 안내 메시지 전송</a></li></div>
-        <div class="sidebar-content"><li><a href="/pages/sendMessage/productPromotionMessage.jsp">수신 상품 프로모션 메시지 전송</a></li></div>
-        <div class="sidebar-content"><li><a href="/pages/sendMessage/appPromotionMessage/appPromotionMessage.jsp">어플 프로모션 메시지 전송</a></li></div>
-        <div class="sidebar-content"><li><a href="/pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp">상황 관리 안내 메시지 전송</a></li></div>
-        <div class="sidebar-submain">관리</div>
-        <div class="sidebar-content"><li><a href="/pages/manageMessage/allNotificationManage/allNotificationManage.jsp">전체 안내 메시지 관리</a></li></div>
-        <div class="sidebar-content"><li><a href="/pages/manageMessage/voicefishingNotificationManage/voicefishingNotificationManage.jsp"> 보이스피싱 예방 안내 메시지 관리</a></li></div>
-        <div class="sidebar-content"><li><a href="/pages/manageMessage/productPromotionManage/productPromotionManage.jsp">수신 상품 프로모션 메시지 관리</a></li></div>
-        <div class="sidebar-content"><li><a href="/pages/manageMessage/appPromotionManage/appPromotionManage.jsp">어플 프로모션 메시지 관리</a></li></div>
-        <div class="sidebar-content"><li ><a href="/pages/manageMessage/overdueNotificationManage/overdueNotificationManage.jsp">상황 관리 안내 메시지 관리</a></li></div>
-    </section>
+    <jsp:include page="/components/sidebar.jsp" />
     <section class="mainComponent">
         <div class="mainComponent-header">
             <div class="mainComponent-header-text">전체 안내 메시지 관리</div>

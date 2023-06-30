@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet("/allNotificationServlet")
+@WebServlet("/AllNotificationServlet")
 public class AllNotificationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -20,6 +20,7 @@ public class AllNotificationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("AllNotificationServlet 시작");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String selectedPrivacyYesValue = request.getParameter("selectedPrivacyYesValue");
@@ -39,7 +40,8 @@ public class AllNotificationServlet extends HttpServlet {
         // Set the response content type and encoding
         allNoticePackageDAO dao = new allNoticePackageDAO();
         List<allNoticePackageDTO> custInfos = dao.selectMessage(map);
-        request.setAttribute("custInfos", custInfos);
+        System.out.println("AllNotificationServlet 종료");
+        request.setAttribute("pageInfos", custInfos);
         request.getRequestDispatcher("/pages/sendMessage/allNotificationMessage/allNotificationMessage.jsp").forward(request,response);
     }
 }

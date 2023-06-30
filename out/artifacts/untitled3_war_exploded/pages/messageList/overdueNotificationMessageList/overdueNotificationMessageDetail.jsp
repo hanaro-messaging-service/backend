@@ -42,7 +42,6 @@
                 </div>
 
                 <div class="searchComponent-titleBar">상환관리 메시지</div>
-
                 <div class="searchComponent-searchBar">
                     <div class="searchComponent-searchBar-list">
                         <div class="searchComponent-searchBar-list-key">성별</div>
@@ -56,16 +55,15 @@
                                 <div>여자</div>
                             </div>
                         </div>
-
-
                         <div class="searchComponent-searchBar-list-key">개인정보동의여부</div>
                         <div class="searchComponent-searchBar-list-value">
                             <div class="checkbox">
-                                <input  type="checkbox" name="privacyYes" value="Y" class="flex align-center" id="privacyYes" <%= "O".equals(request.getParameter("privacyYes")) ? "checked" : "" %>>
+                                <input  type="checkbox" name="privacyYes" value="O" class="flex align-center" id="privacyYes" <%= "O".equals(request.getParameter("privacyYes")) ? "checked" : "" %>>
                                 <div>동의</div>
                             </div>
                         </div>
-
+                    </div>
+                    <div class="searchComponent-searchBar-list">
                         <div class="searchComponent-searchBar-list-key">나이</div>
                         <div class="searchComponent-searchBar-list-value" id="ageContainer">
                             <%
@@ -86,18 +84,16 @@
                                 }
                             %>
                         </div>
-<<<<<<< HEAD:web/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageDetail.jsp
                         <div class="searchComponent-searchBar-list-key">연체여부</div>
                         <div class="searchComponent-searchBar-list-value">
                             <div class="checkbox">
-                            <input type="checkbox" name="overdueYes" value="O" class="flex align-center" id="overdueYes" <%= request.getParameter("overdue") != null && request.getParameter("overdue").length() > 1 && request.getParameter("overdue").charAt(0) == 'O' ? "checked" : "" %>>
-                            <div>연체</div>
-                        </div>
-                        <div class="checkbox">
-                            <input type="checkbox" name="overdueNo" value="X" id="overdueNo" <%= request.getParameter("overdue") != null && request.getParameter("overdue").length() > 1 && request.getParameter("overdue").charAt(1) == 'X' ? "checked" : "" %>>
-                            <div>미연체</div>
-                        </div>
-
+                                <input type="checkbox" name="overdueYes" value="O" class="flex align-center" id="overdueYes" <%= request.getParameter("overdue") != null && request.getParameter("overdue").length() > 1 && request.getParameter("overdue").charAt(0) == 'O' ? "checked" : "" %>>
+                                <div>연체</div>
+                            </div>
+                            <div class="checkbox">
+                                <input type="checkbox" name="overdueNo" value="X" id="overdueNo" <%= request.getParameter("overdue") != null && request.getParameter("overdue").length() > 1 && request.getParameter("overdue").charAt(1) == 'X' ? "checked" : "" %>>
+                                <div>미연체</div>
+                            </div>
                         </div>
                     </div>
                     <div class="searchComponent-searchBar-list">
@@ -126,14 +122,12 @@
                             </select>
 
                         </div>
-=======
->>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5:out/artifacts/untitled3_war_exploded/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageDetail.jsp
                     </div>
+
                     <div class="searchComponent-searchBar-list">
-<<<<<<< HEAD:web/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageDetail.jsp
                         <div class="searchComponent-searchBar-list-key">신용등급</div>
                         <div class="searchComponent-searchBar-list-value">
-                            <!-- 거주지 -->
+                            <!-- 신용등급 -->
                             <%
                                 System.out.println(request.getParameter("creditRating"));
                             %>
@@ -152,20 +146,10 @@
                             </select>
 
                         </div>
-=======
->>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5:out/artifacts/untitled3_war_exploded/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageDetail.jsp
                         <div class="searchComponent-searchBar-list-key">이름</div>
                         <div class="searchComponent-searchBar-list-value">
                             <input value="<%= request.getParameter("custNm") %>" type="text" id="name" name="custNm">
                         </div>
-
-<<<<<<< HEAD:web/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageDetail.jsp
-=======
-                        <div class="searchComponent-searchBar-list-key"></div>
-                        <div class="searchComponent-searchBar-list-value">
-                        </div>
-
->>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5:out/artifacts/untitled3_war_exploded/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageDetail.jsp
                     </div>
                     <div class="searchComponent-searchBar-list">
                         <div class="searchComponent-searchBar-list-key">메세지 발송수</div>
@@ -186,10 +170,9 @@
                         </div>
                     </div>
 
+                    </div>
+
                 </div>
-
-            </div>
-
         </section>
         <section class="textComponent">
             <div style="width:100%;">
@@ -201,10 +184,6 @@
                 <input name="tableId" hidden="" value="<%= request.getParameter("id") %>" >
             </div>
             <div>
-<<<<<<< HEAD:web/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageDetail.jsp
-=======
-
->>>>>>> aa96a4d3bb52f126fc0812a2c72844ec3c7f28d5:out/artifacts/untitled3_war_exploded/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageDetail.jsp
                 <!-- 부트스트랩 -->
                 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
                         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -217,6 +196,59 @@
                         crossorigin="anonymous"></script>
 
             </div>
+            <script>
+                // <input> 요소에 disabled 속성 적용
+                var inputElements = document.querySelectorAll("input");
+                for (var i = 0; i < inputElements.length; i++) {
+                    inputElements[i].disabled = true;
+                }
+
+                // <select> 요소에 disabled 속성 적용
+                var selectElements = document.querySelectorAll("select");
+                for (var i = 0; i < selectElements.length; i++) {
+                    selectElements[i].disabled = true;
+                }
+                // <textarea> 요소에 disabled 속성 적용
+                var textareaElements = document.querySelectorAll("textarea");
+                for (var i = 0; i < textareaElements.length; i++) {
+                    textareaElements[i].disabled = true;
+                }
+
+                var ctx = document.getElementById('myChart');
+                var time =document.getElementById('time').innerHTML;
+                var counts = document.getElementById('counts').innerHTML;
+                var view = document.getElementById('view').innerHTML;
+                console.log(counts)
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [`메세지`, '응답'],
+                        datasets: [{
+                            label: '메세지/응답',
+                            data: [counts, view],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+
+            </script>
             <div class="buttonList">
                 <a class="cancelButton" href="/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageList.jsp">목록</a>
             </div>

@@ -28,11 +28,8 @@ function sendPageValueToServlet(start, last) {
     sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("O") : "";
     sentence += selectedCustGradeValue !=="전체" ? "&selectedCustGradeValue=" + encodeURIComponent(selectedCustGradeValue) : "";
     sentence += selectedAgeValue !== "전체" ? "&selectedAgeValue=" + encodeURIComponent(selectedAgeValue) : "";
-    // sentence += selectedPeriodValue !== "전체"? "&selectedPeriodValue=" + encodeURIComponent(selectedPeriodValue) : "";
     sentence += selectedNameValue ? "&selectedNameValue=" + encodeURIComponent(selectedNameValue) : "";
     sentence += selectedAssetValue ? "&selectedAssetValue=" + encodeURIComponent(selectedAssetValue) : "";
-    // sentence += selectedLocationValue ? "&selectedLocationValue=" + encodeURIComponent(selectedLocationValue) : "";
-    // sentence += selectedBranchValue ? "&selectedBranchValue=" + encodeURIComponent(selectedBranchValue) : "";
     sentence += selectedCreditRatingValue !=="전체" ? "&selectedCreditRatingValue=" + encodeURIComponent(selectedCreditRatingValue) : "";
 
     sentence += selectedCheckBoxOverdueYes.checked ? "&selectedOverdueYes=" + encodeURIComponent("O") : "";
@@ -70,6 +67,8 @@ function sendPageValueToServlet(start, last) {
                 document.getElementById('getName').value = selectedNameValue;
                 document.getElementById("getMan").value =  selectedCheckBoxManValue.checked ? "M" : "N";
                 document.getElementById("getWoman").value = selectedCheckBoxWomanValue.checked ? "F" : "N";
+                document.getElementById("getOverdueYes").value = selectedCheckBoxOverdueYes ? "O" : "N";
+                document.getElementById("getOverdueNo").value = selectedCheckBoxOverdueNo ? "X" : "N";
                 document.getElementById('getPrivacyYes').value = selectedCheckBoxPrivacyYes.checked ? "O" : "X";
                 document.getElementById('getAge').value = selectedAgeValue;
                 document.getElementById('getAsset').value = selectedAssetValue ;
@@ -118,7 +117,7 @@ function sendValueToServlet() {
     var selectedCheckBoxOverdueNo = document.getElementById("overdueNo");
     var prodNmValue = document.getElementById('prodNm').value;
     var mContentsValue = document.getElementById('mContents').value;
-    console.log(prodNmValue);
+    console.log("overdue : ", selectedCheckBoxOverdueYes);
 
     let sentence = "";
     console.log(selectedNameValue);
@@ -172,6 +171,8 @@ function sendValueToServlet() {
                 document.getElementById("getMan").value =  selectedCheckBoxManValue.checked ? "M" : "N";
                 document.getElementById("getWoman").value = selectedCheckBoxWomanValue.checked ? "F" : "N";
                 document.getElementById('getPrivacyYes').value = selectedCheckBoxPrivacyYes.checked ? "O" : "X";
+                document.getElementById('getOverdueYes').value = selectedCheckBoxOverdueYes.checked ? "O" : "N";
+                document.getElementById('getOverdueNo').value = selectedCheckBoxOverdueNo.checked ? "X" : "N";
                 document.getElementById('getAge').value = selectedAgeValue;
                 document.getElementById('getAsset').value = selectedAssetValue ;
                 document.getElementById("getCustGrade").value = selectedCustGradeValue;
