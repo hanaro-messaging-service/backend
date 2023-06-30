@@ -11,7 +11,7 @@
   <script src="/pages/sendMessage/appPromotionMessage/appPromotionMessage.js"></script>
 </head>
 <body>
-
+<jsp:include page="/components/header.jsp" />
 
 <main>
   <jsp:include page="/components/sidebar.jsp" />

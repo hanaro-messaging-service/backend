@@ -37,7 +37,7 @@
       <div class="searchComponent">
         <div class="searchComponent-topBar">
           <div class="searchComponent-topBar-left">
-            어플 프로모션 발송내역
+            어플 프로모션 발송 상세내역
           </div>
 
         </div>

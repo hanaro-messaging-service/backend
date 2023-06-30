@@ -158,15 +158,13 @@
 
     </section>
     <section class="textComponent">
-        <div class="searchComponent-topBar-right">메세지 내용</div>
-        <div class="textComponent-titleInput"></div>
         <div class="searchComponent-topBar-right">메세지 제목</div>
         <input name="prodNm" class="textComponent-messageInput">
         <div class="searchComponent-topBar-right">메세지 내용</div>
         <textarea name="mContents" class="textComponent-titleInput"></textarea>
         <div class="buttonList">
             <button class="submitButton" type="submit">저장</button>
-            <a class="cancelButton" href="/">취소</a>
+            <a class="cancelButton" href="/pages/manageMessage/productPromotionManage/productPromotionManage.jsp">취소</a>
         </div>
     </section>
         </form>

@@ -36,7 +36,7 @@
             <div class="searchComponent">
                 <div class="searchComponent-topBar">
                     <div class="searchComponent-topBar-left">
-                        보이스피싱 예방 안내 발송 내역
+                        보이스피싱 예방 안내 발송 상세내역
                     </div>
 
                 </div>
@@ -82,8 +82,9 @@
                             <input value="<%= request.getParameter("custNm") %>" type="text" id="name" name="custNm">
                         </div>
 
-                        <div class="searchComponent-searchBar-list-key"></div>
+                        <div class="searchComponent-searchBar-list-key">메시지 전송시간</div>
                         <div class="searchComponent-searchBar-list-value">
+                            <%= request.getParameter("time") %>
                         </div>
 
                     </div>
@@ -93,9 +94,9 @@
                             <%= request.getParameter("counts") %>
 
                         </div>
-                        <div class="searchComponent-searchBar-list-key">메시지 전송시간</div>
+                        <div class="searchComponent-searchBar-list-key"></div>
                         <div class="searchComponent-searchBar-list-value" id="time">
-                            <%= request.getParameter("time") %>
+
                         </div>
                     </div>
 
@@ -133,6 +134,58 @@
         </section>
     </form>
 </main>
+<script>
+    // <input> 요소에 disabled 속성 적용
+    var inputElements = document.querySelectorAll("input");
+    for (var i = 0; i < inputElements.length; i++) {
+        inputElements[i].disabled = true;
+    }
 
+    // <select> 요소에 disabled 속성 적용
+    var selectElements = document.querySelectorAll("select");
+    for (var i = 0; i < selectElements.length; i++) {
+        selectElements[i].disabled = true;
+    }
+    // <textarea> 요소에 disabled 속성 적용
+    var textareaElements = document.querySelectorAll("textarea");
+    for (var i = 0; i < textareaElements.length; i++) {
+        textareaElements[i].disabled = true;
+    }
+
+    var ctx = document.getElementById('myChart');
+    var time =document.getElementById('time').innerHTML;
+    var counts = document.getElementById('counts').innerHTML;
+    var view = document.getElementById('view').innerHTML;
+    console.log(counts)
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [`메세지`, '응답'],
+            datasets: [{
+                label: '메세지/응답',
+                data: [counts, view],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+</script>
 </body>
 </html>

@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<%--메시지 관리 페이지--%>
+<jsp:include page="/components/header.jsp" />
 <main>
     <jsp:include page="/components/sidebar.jsp" />
     <section class="mainComponent">
@@ -24,26 +24,37 @@
             if (custInfos != null) {
                 for (allNoticeCustomizeDTO custInfo : custInfos)
                 { %>
-        <form  style="z-index:999999; position: relative; top: 6%; right: -40%;" method="POST" action="/allNotificationDeleteServlet">
-            <input name="tableId"  hidden="" value="<%=custInfo.getId()%>">
-            <button style="width:100px;height:30px"style="width:100px;height:20%" type="submit">삭제</button>
-        </form>
-        <div class="mainComponent-messageList" onclick="modifyMessage([
-                // 해당 값 가져옴
-                '<%=custInfo.getId() %>',
-                '<%=custInfo.getCustNm() %>',
-                '<%=custInfo.getAge() %>',
-                '<%=custInfo.getPrivacy() %>',
-                '<%=custInfo.getLocation() %>',
-                '<%=custInfo.getMContents() %>',
-                '<%=custInfo.getMTitle() %>',
-                ])">
 
-            <div class="mainComponent-messageList-title">
-                제목:<%=custInfo.getMTitle()%>
+        <div class="mainComponent-messageList" >
+
+            <div class="mainComponent-messageList-title" >
+                <div style="margin-left:2%;" onclick="modifyMessage([
+                        // 해당 값 가져옴
+                        '<%=custInfo.getId() %>',
+                        '<%=custInfo.getCustNm() %>',
+                        '<%=custInfo.getAge() %>',
+                        '<%=custInfo.getPrivacy() %>',
+                        '<%=custInfo.getLocation() %>',
+                        '<%=custInfo.getMContents() %>',
+                        '<%=custInfo.getMTitle() %>',
+                        ])">제목: <%=custInfo.getMTitle()%></div>
+                <form  style="margin-right:2%; z-index: 9999;"  method="POST" action="/allNotificationDeleteServlet">
+                    <input name="tableId"  hidden="" value="<%=custInfo.getId()%>">
+                    <button style="width:100px;height:60%; cursor:pointer;" type="submit">삭제</button>
+                </form>
+
             </div>
-            <div class="mainComponent-messageList-content">
-                내용:<%=custInfo.getMContents()%>
+            <div class="mainComponent-messageList-content" onclick="modifyMessage([
+                    // 해당 값 가져옴
+                    '<%=custInfo.getId() %>',
+                    '<%=custInfo.getCustNm() %>',
+                    '<%=custInfo.getAge() %>',
+                    '<%=custInfo.getPrivacy() %>',
+                    '<%=custInfo.getLocation() %>',
+                    '<%=custInfo.getMContents() %>',
+                    '<%=custInfo.getMTitle() %>',
+                    ])">
+                내용: <%=custInfo.getMContents()%>
             </div>
             <input hidden ="" value="<%=custInfo.getId()%>">
         </div>

@@ -17,17 +17,18 @@
   <link rel="stylesheet" href="/pages/messageList/appPromotionMessageList/appPromotionMessageList.css" >
 </head>
 <body>
+<jsp:include page="/components/header.jsp"/>
 <main>
   <jsp:include page="/components/sidebar.jsp" />
   <section class="mainComponent">
     <div class="mainComponent-header">
-      <div class="mainComponent-header-text">메세지 발송내역</div>
+      <div class="mainComponent-header-text">어플 프로모션 발송내역</div>
     </div>
     <div class="messageComponent">
       <div class="messageComponent-topbar">
         <div class="messageComponent-title">제목</div>
         <div class="messageComponent-category">카테고리</div>
-        <div class="messageComponent-date">발송 시각</div>
+        <div class="messageComponent-date font">발송 시각</div>
         <div class="messageComponent-count">갯수</div>
         <div class="messageComponent-content">내용</div>
       </div>

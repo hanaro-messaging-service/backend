@@ -26,19 +26,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 <body>
-<div style="display:flex; align-items: center; justify-content: space-between; padding:0 2vw;">
-    <div style="display:flex; align-items: center; margin-bottom: 1vh; ">
-        <image src="/pages/main/image3.png" style="width:20%;height:20%;"></image>
-        <div style="font-size:1.6rem; font-weight: bold; color:#008485;">
-            <div>HANARO</div>
-            <div>MESSAGE</div>
-        </div>
-    </div>
-    <div style="display:flex; justify-content: center; align-items: center; width:10%; height: 5vh; background: #008485; color:white; border-radius: 5px; font-size:1.2rem;">
-    로그아웃
-    </div>
-
-</div>
+<jsp:include page="/components/header.jsp" />
 
 
 <main>

@@ -36,11 +36,12 @@
             <div class="searchComponent">
                 <div class="searchComponent-topBar">
                     <div class="searchComponent-topBar-left">
+                        전체 안내 발송 상세내역
                     </div>
 
                 </div>
 
-                <div class="searchComponent-titleBar">전체안내 메시지</div>
+                <div class="searchComponent-titleBar">전체 안내 발송 상세내역</div>
 
                 <div class="searchComponent-searchBar">
                     <div class="searchComponent-searchBar-list">

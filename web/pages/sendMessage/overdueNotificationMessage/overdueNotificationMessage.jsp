@@ -11,6 +11,7 @@
     <script src="./overdueNotificationMessage.js?ver=1"></script>
 </head>
 <body>
+<jsp:include page="/components/header.jsp" />
 <main>
     <jsp:include page="/components/sidebar.jsp" />
     <section class="mainComponent">
@@ -121,6 +122,7 @@
                 </div>
 
             </div>
+        </div>
             <%--메시지 + 출력 시작--%>
             <div class="myMessage">
                 <div style="width:15%;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
