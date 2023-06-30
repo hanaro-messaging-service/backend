@@ -13,7 +13,6 @@
 <%@ page import="messageHistory.voicefishingNotificationHistory.voicefishingNotificationHistoryDTO" %>
 <%@ page import="messageHistory.overdueNotificationMessageHistory.messageHistoryDAO" %>
 <%@ page import="messageHistory.overdueNotificationMessageHistory.messageHistoryDTO" %>
-
 <%@ page import="java.util.Arrays" %>
 <head>
     <meta charset="UTF-8">
@@ -27,12 +26,18 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 <body>
-<div style="display:flex; align-items: center;">
-    <image src="/pages/main/image3.png" style="width:10%;height:10%;"></image>
-    <div style="font-size:1.6rem; font-weight: bold; color:#008485;">
-        <div>HANARO</div>
-        <div>MESSAGE</div>
+<div style="display:flex; align-items: center; justify-content: space-between; padding:0 2vw;">
+    <div style="display:flex; align-items: center; margin-bottom: 1vh; ">
+        <image src="/pages/main/image3.png" style="width:20%;height:20%;"></image>
+        <div style="font-size:1.6rem; font-weight: bold; color:#008485;">
+            <div>HANARO</div>
+            <div>MESSAGE</div>
+        </div>
     </div>
+    <div style="display:flex; justify-content: center; align-items: center; width:10%; height: 5vh; background: #008485; color:white; border-radius: 5px; font-size:1.2rem;">
+    로그아웃
+    </div>
+
 </div>
 
 
@@ -47,7 +52,6 @@
         List<voicefishingNotificationHistoryDTO> voiceInfos = dao.readMessage();
         appPromotionMessageHistoryDAO appDao = new appPromotionMessageHistoryDAO();
         List<appPromotionMessageHistoryDTO> appInfos = appDao.readMessage();
-
     %>
     <% if (promoInfos != null) { %>
     <% for (prodMessageHistoryDTO promoInfo : promoInfos) { %>
@@ -77,29 +81,44 @@
     <%
             }}
     %>
+
     <section class="mainComponent">
 
         <div class="titleComponent">메인페이지</div>
 
-        <div class="topComponent">
 
-
-        </div>
         <div class="contentComponent">
             <div class="contentComponent-element">
-                <canvas id="myChart1"></canvas>
+                <div style="display:flex;  font-size:2rem; color:#008485;">전체사용내역</div>
+                <div style="height:50vh;">
+                    <canvas style="height:50vh;" id="myChart1"></canvas>
+                </div>
+
             </div>
             <div class="contentComponent-element">
-                    <canvas style="width:100%;height:55vh;" canvas id = "prodChart"></canvas>
+                <div style="display:flex;  font-size:2rem; color:#008485;">수신 상품 프로모션 메시지</div>
+                <div style="height:50vh;">
+                    <canvas style="width:100%;height:50vh;" canvas id = "prodChart"></canvas>
+                </div>
+
             </div>
             <div class="contentComponent-element">
-                <canvas style="width:100%;height:55vh;" canvas id = "voiceChart"></canvas>
+                <div style="display:flex;  font-size:2rem; color:#008485;">보이스피싱 메시지</div>
+                <div style="height:50vh;">
+                    <canvas style="width:100%;height:50vh;" canvas id = "voiceChart"></canvas>
+                </div>
             </div>
             <div class="contentComponent-element">
-                <canvas style="width:100%;height:55vh;" canvas id = "appChart"></canvas>
+                <div style="display:flex;  font-size:2rem; color:#008485;">어플 프로모션 메시지</div>
+                <div style="height:50vh;">
+                    <canvas style="width:100%;height:50vh;" canvas id = "appChart"></canvas>
+                </div>
             </div>
             <div class="contentComponent-element">
-                <canvas style="width:100%;height:55vh;" canvas id = "overChart"></canvas>
+                <div style="display:flex;  font-size:2rem; color:#008485;">상환 관리 메시지</div>
+                <div style="height:50vh;">
+                    <canvas style="width:100%;height:50vh;" canvas id = "overChart"></canvas>
+                </div>
             </div>
         </div>
     </section>
@@ -120,7 +139,6 @@
     var prod = document.getElementById('prodChart').getContext('2d');
     var prodDate = document.getElementsByClassName('promoDate');
     var prodCount = document.getElementsByClassName('promoCount');
-
     let prodDateArray = [];
     let prodCountArray = [];
     for (let i = 0; i < prodDate.length; i++) {
@@ -195,44 +213,10 @@
         overCountArray.push(overCount[i].innerHTML);
     }
     console.log(overDateArray,overCountArray.reduce((acc,cur)=>Number(acc)+Number(cur)))
-    var chart = new Chart(prod, {
-        type: 'line',
-        data: {
-            labels: prodDateArray,
-            datasets: [{
-                label: '수신 상품 프로모션 페이지',
-                backgroundColor: 'transparent',
-                borderColor: '#008485',
-                data: prodCountArray
-            }]
-        },
-        options: {
-            scales: {
-                x: {
-                    display: false  // X축 레이블 숨김
-                },
-                y: {
-                    min: 0,
-                    max: 100,
-                    stepSize: 100
-                }
-            },
-            plugins: {
-                tooltip: {
-                    enabled: false,  // 툴팁 비활성화
-                    mode: 'index',   // hover할 때만 툴팁 활성화
-                    intersect: false
-                }
-            },
-            hover: {
-                mode: 'index',
-                intersect: false
-            }
-        }
-    });
+
     data = {
         datasets: [{
-            backgroundColor: ['red','yellow','blue','orange','skyblue'],
+            backgroundColor: ['#008485','#6878ad','#b0eaeb','#f0aaed','skyblue'],
             data: [prodCountArray.reduce((acc,cur)=>Number(acc)+Number(cur)),voiceCountArray.reduce((acc,cur)=>Number(acc)+Number(cur)),appCountArray.reduce((acc,cur)=>Number(acc)+Number(cur)),overCountArray.reduce((acc,cur)=>Number(acc)+Number(cur)),50]
         }],
         // 라벨의 이름이 툴팁처럼 마우스가 근처에 오면 나타남
@@ -247,23 +231,65 @@
         data: data,
         options: {}
     });
+    var chart = new Chart(prod, {
+        // 챠트 종류를 선택
+        type: 'line',
+        // 챠트를 그릴 데이타
+        data: {
+            labels: prodDateArray,
+            datasets: [{
+                label: '수신 상품 프로모션',
+                backgroundColor: 'transparent',
+                borderColor: '#008485',
+                data: prodCountArray
+            }]
+        },
+        // 옵션
+        options: {
+            scales: {
+                x: {
+                    grid: {
+                        display: false,
+                        beginAtZero: true
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
+    });
 
     var chart = new Chart(voice, {
         // 챠트 종류를 선택
         type: 'line',
-
         // 챠트를 그릴 데이타
         data: {
             labels: voiceDateArray,
             datasets: [{
                 label: '보이스피싱',
                 backgroundColor: 'transparent',
-                borderColor: 'green',
+                borderColor: '#6878ad',
                 data: voiceCountArray
             }]
         },
         // 옵션
-        options: {}
+        options: {
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
     });
     var chart = new Chart(app, {
         // 챠트 종류를 선택
@@ -273,14 +299,27 @@
         data: {
             labels: appDateArray,
             datasets: [{
-                label: '앱',
+                label: '어플 프로모션',
                 backgroundColor: 'transparent',
-                borderColor: 'red',
+                borderColor: '#b0eaeb',
                 data: appCountArray
             }]
         },
         // 옵션
-        options: {}
+        options: {
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
     });
     var chart = new Chart(over, {
         // 챠트 종류를 선택
@@ -292,12 +331,25 @@
             datasets: [{
                 label: '상환관리',
                 backgroundColor: 'transparent',
-                borderColor: 'red',
+                borderColor: 'skyblue',
                 data: overCountArray
             }]
         },
         // 옵션
-        options: {}
+        options: {
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
     });
 </script>
 </body>
