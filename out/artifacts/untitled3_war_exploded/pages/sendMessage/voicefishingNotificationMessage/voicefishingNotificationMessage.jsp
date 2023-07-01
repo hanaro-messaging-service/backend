@@ -14,9 +14,7 @@
 </head>
 <body>
 
-<%
-
-%>
+<jsp:include page="/components/header.jsp" />
 <main>
     <jsp:include page="/components/sidebar.jsp" />
     <section class="mainComponent">

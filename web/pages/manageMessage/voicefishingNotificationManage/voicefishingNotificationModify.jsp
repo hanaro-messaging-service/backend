@@ -37,8 +37,6 @@
                                 <div>동의</div>
                             </div>
                         </div>
-                    </div>
-                    <div class="searchComponent-searchBar-list">
                         <div class="searchComponent-searchBar-list-key">나이</div>
                         <div class="searchComponent-searchBar-list-value" id="ageContainer">
                             <%
@@ -61,14 +59,17 @@
                         </div>
 
                     </div>
-
                     <div class="searchComponent-searchBar-list">
                         <div class="searchComponent-searchBar-list-key">이름</div>
                         <div class="searchComponent-searchBar-list-value">
                             <input value="<%= request.getParameter("custNm") %>" type="text" id="name" name="custNm">
                         </div>
+                        <div class="searchComponent-searchBar-list-key"></div>
+                        <div class="searchComponent-searchBar-list-value">
 
+                        </div>
                     </div>
+
 
                 </div>
 
@@ -82,7 +83,7 @@
             <textarea name="mContents" class="textComponent-titleInput"><%= request.getParameter("mContents") %></textarea>
             <div class="buttonList">
                 <button class="submitButton" type="submit">저장</button>
-                <a class="cancelButton" href="/">취소</a>
+                <a class="cancelButton" href="/pages/manageMessage/voicefishingNotificationManage/voicefishingNotificationManage.jsp">취소</a>
             </div>
             <input name="tableId" hidden="" value="<%= request.getParameter("id") %>" >
         </section>

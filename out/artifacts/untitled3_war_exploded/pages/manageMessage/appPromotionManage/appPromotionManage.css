@@ -2,17 +2,14 @@
     margin:0;
     padding:0;
 }
-a{
-    text-decoration: none;
-
-}
 header {
     width:100%;
     height: 7vh;
 }
 main {
-    margin-top: 10vh;
+    margin-top: 2vh;
     display:flex;
+    width:100%;
     height:100vh;
 
 }
@@ -64,10 +61,11 @@ main {
     height:100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
+    margin-right:2.5%;
 }
 .mainComponent-header{
-    width:90%;
+    width:95%;
     height:4vh;
 
     display: flex;
@@ -94,18 +92,18 @@ main {
 .mainComponent-messageList {
     cursor: pointer;
     margin-top:3vh;
-    width:90%;
+    width:95%;
     height: 20vh;
     border: 1px solid #ccc; /* 기본 테두리 스타일 */
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 그림자 스타일 */
 }
 .mainComponent-messageList-title{
-    width:98%;
+    width:100%;
     font-size:1.8rem;
     height:6vh;
-    padding-left: 2%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     border-bottom: 2px solid #008485;
 }
 .mainComponent-messageList-content{

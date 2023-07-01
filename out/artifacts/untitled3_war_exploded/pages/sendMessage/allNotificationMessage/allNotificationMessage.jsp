@@ -10,6 +10,7 @@
     <script src="/pages/sendMessage/allNotificationMessage/allNotificationMessage.js?ver=1"></script>
 </head>
 <body>
+<jsp:include page="/components/header.jsp" />
 <main>
     <jsp:include page="/components/sidebar.jsp" />
     <section class="mainComponent">

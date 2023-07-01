@@ -7,12 +7,7 @@ a{
 
 }
 header {
-    width:100%;
-    height: 10vh;
-}
-main {
-    display:flex;
-    height:100vh;
+
 }
 .sidebar{
 
@@ -57,6 +52,14 @@ main {
     border-bottom: 0.5px white solid;
     list-style-type: disc;
 }
+main {
+    margin-top: 2vh;
+    display:flex;
+    width:100%;
+    height:100vh;
+
+}
+
 .mainComponent{
     width:80%;
     height:100vh;
@@ -65,16 +68,14 @@ main {
     align-items: center;
 }
 .titleComponent{
-    width:80%;
+    width:95%;
     height:5vh;
     display:flex;
-    font-size:2rem;
+    font-size:2.5rem;
+    font-weight:bold;
 }
 .topComponent{
-    width:80%;
-    height:40vh;
-    display:flex;
-    justify-content: space-between;
+
 
 }
 .topComponent-element{
@@ -83,7 +84,7 @@ main {
     height:20vh;
     display:flex;
     justify-content: center;
-    align-items: center;
+
     border :3px solid #008485;
     border-radius: 5px;
     flex-direction: column;
@@ -101,19 +102,19 @@ main {
     display:flex;
 
 
-    justify-content: space-between;
     flex-wrap:wrap;
 }
 .contentComponent-element{
-    width:100%;
-    height:60vh;
-    margin:5vh 0;
 
+    width:100%;
+    height:65vh;
+    margin:5vh 0;
     border-radius: 5px;
     display:flex;
     flex-direction: column;
-    justify-content: center;
+
     align-items: center;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 .bg-white{
     background-color: white;

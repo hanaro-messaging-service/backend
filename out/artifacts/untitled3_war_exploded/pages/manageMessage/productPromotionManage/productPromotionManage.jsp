@@ -9,7 +9,7 @@
     <script src="/pages/sendMessage/productPromotionMessage.js"></script>
 </head>
 <body>
-
+<jsp:include page="/components/header.jsp" />
 
 <main>
     <jsp:include page="/components/sidebar.jsp" />
@@ -24,35 +24,54 @@
             if (custInfos != null) {
                 for (productPromotionCustomizeDTO custInfo : custInfos)
              { %>
-        <form  style="z-index:999999; position: relative; top: 6%; right: -43%;" method="POST" action="/productPromotionDeleteServlet">
-            <input name="tableId"  hidden="" value="<%=custInfo.getId()%>">
-            <button  style=" cursor:pointer; width:100px;height:20%;font-size:20px; background-color:transparent; border:none;" type="submit">X</button>
-        </form>
-        <div class="mainComponent-messageList" style="position:relative" onclick="modifyMessage([
-                '<%=custInfo.getId() %>',
-                '<%=custInfo.getCustNm() %>',
-                '<%=custInfo.getGender() %>',
-                '<%=custInfo.getAge() %>',
-                '<%=custInfo.getJob() %>',
-                '<%=custInfo.getAddress() %>',
-                '<%=custInfo.getCustGrade() %>',
-                '<%=custInfo.getBranch() %>',
-                '<%=custInfo.getSubTerm() %>',
-                '<%=custInfo.getAsset() %>',
-                '<%=custInfo.getPrivacy() %>',
-                '<%=custInfo.getRecLoginDate() %>',
-                '<%=custInfo.getProdNm() %>',
-                '<%=custInfo.getMContents() %>',
-                '<%=custInfo.getId()%>'
-                ])">
+
+        <div class="mainComponent-messageList" style="position:relative" >
 
             <div class="mainComponent-messageList-title">
-
-                <%=
+                <div style="margin-left:2%;" onclick="modifyMessage([
+                        '<%=custInfo.getId() %>',
+                        '<%=custInfo.getCustNm() %>',
+                        '<%=custInfo.getGender() %>',
+                        '<%=custInfo.getAge() %>',
+                        '<%=custInfo.getJob() %>',
+                        '<%=custInfo.getAddress() %>',
+                        '<%=custInfo.getCustGrade() %>',
+                        '<%=custInfo.getBranch() %>',
+                        '<%=custInfo.getSubTerm() %>',
+                        '<%=custInfo.getAsset() %>',
+                        '<%=custInfo.getPrivacy() %>',
+                        '<%=custInfo.getRecLoginDate() %>',
+                        '<%=custInfo.getProdNm() %>',
+                        '<%=custInfo.getMContents() %>',
+                        '<%=custInfo.getId()%>'
+                        ])" >
+                    <%=
                     custInfo.getProdNm()
-                %>
+                    %>
+                </div>
+
+                <form  style="margin-right:2%; z-index: 9999;" method="POST" action="/productPromotionDeleteServlet">
+                    <input name="tableId"  hidden="" value="<%=custInfo.getId()%>">
+                    <button   style="width:100px;height:60%; cursor:pointer;" type="submit">삭제</button>
+                </form>
             </div>
-            <div class="mainComponent-messageList-content">
+            <div class="mainComponent-messageList-content" onclick="modifyMessage([
+                    '<%=custInfo.getId() %>',
+                    '<%=custInfo.getCustNm() %>',
+                    '<%=custInfo.getGender() %>',
+                    '<%=custInfo.getAge() %>',
+                    '<%=custInfo.getJob() %>',
+                    '<%=custInfo.getAddress() %>',
+                    '<%=custInfo.getCustGrade() %>',
+                    '<%=custInfo.getBranch() %>',
+                    '<%=custInfo.getSubTerm() %>',
+                    '<%=custInfo.getAsset() %>',
+                    '<%=custInfo.getPrivacy() %>',
+                    '<%=custInfo.getRecLoginDate() %>',
+                    '<%=custInfo.getProdNm() %>',
+                    '<%=custInfo.getMContents() %>',
+                    '<%=custInfo.getId()%>'
+                    ])">
 
                 <%=
                     custInfo.getMContents()

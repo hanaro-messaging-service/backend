@@ -24,7 +24,7 @@
       }
 
       .sidebar-content > li {
-        list-style: none;
+
       }
 
       .sidebar{
@@ -45,6 +45,7 @@
         padding-left:5%;
         font-size: 1.8rem;
         color:white;
+
       }
       .sidebar-submain {
         height:5.5vh;
@@ -55,10 +56,11 @@
         align-items: center;
         font-size:1.2rem;
         color:white;
+        list-style-type: circle;
       }
       .sidebar-content{
         cursor:pointer;
-        list-style-type: circle;
+        list-style-type: disc;
         height:4.5vh;
         padding-left:5%;
         width:90%;
@@ -68,7 +70,7 @@
         align-items: center;
         color:white;
         border-bottom: 0.5px white solid;
-        list-style-type: disc;
+
       }
     </style>
 </head>
@@ -77,7 +79,7 @@
   <div class="sidebar-main">
     <a href="/pages/main/mainpage.jsp">메시지</a>
   </div>
-  <div class="sidebar-submain"><a href="/pages/main/mainpage.jsp">메인 페이지</a></div>
+  <div class="sidebar-content"><li><a href="/pages/main/mainpage.jsp">메인 페이지</a></li></div>
   <div class="sidebar-submain">전송</div>
   <div class="sidebar-content"><li><a href="/pages/sendMessage/allNotificationMessage/allNotificationMessage.jsp">전체 안내 메시지 전송</a> </li></div>
   <div class="sidebar-content"><li><a href="/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.jsp">보이스피싱 예방 안내 메시지 전송</a></li></div>
@@ -85,12 +87,13 @@
   <div class="sidebar-content"><li><a href="/pages/sendMessage/appPromotionMessage/appPromotionMessage.jsp">어플 프로모션 메시지 전송</a></li></div>
   <div class="sidebar-content"><li><a href="/pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp">상환 관리 안내 메시지 전송</a></li></div>
   <div class="sidebar-submain">관리</div>
-  <div class="sidebar-content"><li>전체 안내 메시지 관리</li></div>
+  <div class="sidebar-content"><li><a href="/pages/manageMessage/allNotificationManage/allNotificationManage.jsp">전체 안내 메시지 관리</a></li></div>
   <div class="sidebar-content"><li><a href="/pages/manageMessage/voicefishingNotificationManage/voicefishingNotificationManage.jsp"> 보이스피싱 예방 안내 메시지 관리</a></li></div>
   <div class="sidebar-content"><li><a href="/pages/manageMessage/productPromotionManage/productPromotionManage.jsp">수신 상품 프로모션 메시지 관리</a></li></div>
   <div class="sidebar-content"><li><a href="/pages/manageMessage/appPromotionManage/appPromotionManage.jsp">어플 프로모션 메시지 관리</a></li></div>
   <div class="sidebar-content"><li ><a href="/pages/manageMessage/overdueNotificationManage/overdueNotificationManage.jsp">상환 관리 안내 메시지 관리</a></li></div>
   <div class="sidebar-submain"><a href="/pages/messageList/messageList.jsp">메시지 발송내역</a></div>
+  <div class="sidebar-content"><li><a href="/pages/messageList/allNotificationMessageList/allNotificationMessageList.jsp">전체 안내 발송내역</a> </li></div>
   <div class="sidebar-content"><li ><a href="/pages/messageList/voicefishingNotificationMessageList/voicefishingNotificationMessageList.jsp">보이스피싱 예방 안내 발송내역</a></li></div>
   <div class="sidebar-content"><li ><a href="/pages/messageList/productPromotionMessageList/prodMessageList.jsp">수신 상품 프로모션 발송내역</a></li></div>
   <div class="sidebar-content"><li ><a href="/pages/messageList/appPromotionMessageList/appPromotionMessageList.jsp">어플 프로모션 발송내역</a></li></div>

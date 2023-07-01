@@ -75,7 +75,7 @@
             <textarea name="mContents" class="textComponent-titleInput"></textarea>
             <div class="buttonList">
                 <button class="submitButton" type="submit">저장</button>
-                <a class="cancelButton" href="/">취소</a>
+                <a class="cancelButton" href="/pages/manageMessage/voicefishingNotificationManage/voicefishingNotificationManage.jsp">취소</a>
             </div>
         </section>
     </form>

@@ -13,7 +13,9 @@ header {
     width:100%;
 
 }
-
+a{
+    text-decoration-line: none;
+}
 main {
     display:flex;
     height:100vh;

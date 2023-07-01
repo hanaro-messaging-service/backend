@@ -10,7 +10,7 @@
 </head>
 <body>
 
-
+<jsp:include page="/components/header.jsp" />
 <main>
     <jsp:include page="/components/sidebar.jsp" />
     <section class="mainComponent">
@@ -24,30 +24,43 @@
             if (custInfos != null) {
                 for (voicefishingNotificationCustomizeDTO custInfo : custInfos)
                 { %>
-        <form  style="z-index:999999; position: relative; top: 6%; right: -43%;" method="POST" action="/VoicefishingNotificationDeleteServlet">
-            <input name="tableId"  hidden="" value="<%=custInfo.getId()%>">
-            <button  style=" cursor:pointer; width:100px;height:20%;font-size:20px; background-color:transparent; border:none;" type="submit">X</button>
-        </form>
-        <div class="mainComponent-messageList" style="position:relative" onclick="modifyMessage([
-                '<%=custInfo.getId() %>',
-                '<%=custInfo.getCustNm() %>',
-                '<%=custInfo.getAge() %>',
-                '<%=custInfo.getAddress() %>',
-                '<%=custInfo.getAsset() %>',
-                '<%=custInfo.getPrivacy() %>',
-                '<%=custInfo.getProdNm() %>',
-                '<%=custInfo.getMContents() %>',
-                '<%=custInfo.getId()%>'
-                ])">
+
+        <div class="mainComponent-messageList" style="position:relative" >
 
             <div class="mainComponent-messageList-title">
+               <div style="margin-left:2%;" onclick="modifyMessage([
+                       '<%=custInfo.getId() %>',
+                       '<%=custInfo.getCustNm() %>',
+                       '<%=custInfo.getAge() %>',
+                       '<%=custInfo.getAddress() %>',
+                       '<%=custInfo.getAsset() %>',
+                       '<%=custInfo.getPrivacy() %>',
+                       '<%=custInfo.getProdNm() %>',
+                       '<%=custInfo.getMContents() %>',
+                       '<%=custInfo.getId()%>'
+                       ])">
+                제목:  <%=
+               custInfo.getProdNm()
+               %>
+               </div>
 
-                <%=
-                custInfo.getProdNm()
-                %>
+                <form  style="margin-right:2%;" method="POST" action="/VoicefishingNotificationDeleteServlet">
+                    <input name="tableId"  hidden="" value="<%=custInfo.getId()%>">
+                    <button  style="width:100px;height:60%; cursor:pointer;" type="submit">삭제</button>
+                </form>
             </div>
-            <div class="mainComponent-messageList-content">
-
+            <div class="mainComponent-messageList-content" onclick="modifyMessage([
+                    '<%=custInfo.getId() %>',
+                    '<%=custInfo.getCustNm() %>',
+                    '<%=custInfo.getAge() %>',
+                    '<%=custInfo.getAddress() %>',
+                    '<%=custInfo.getAsset() %>',
+                    '<%=custInfo.getPrivacy() %>',
+                    '<%=custInfo.getProdNm() %>',
+                    '<%=custInfo.getMContents() %>',
+                    '<%=custInfo.getId()%>'
+                    ])">
+                내용:
                 <%=
                 custInfo.getMContents()
                 %>

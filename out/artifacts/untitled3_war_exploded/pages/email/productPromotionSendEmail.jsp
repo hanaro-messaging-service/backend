@@ -4,8 +4,8 @@
 <%@ page import="java.util.Map"%>
 <%@ page import="java.util.List" %>
 <%@ page import="email.emailSMTP"%>
-<%@ page import="productPromotionMessageHistory.messageHistoryDAO" %>
-<%@ page import="productPromotionMessageHistory.messageHistoryDTO" %>
+<%@ page import="productPromotionMessageHistory.prodMessageHistoryDAO" %>
+<%@ page import="productPromotionMessageHistory.prodMessageHistoryDTO" %>
 <%@ page import="java.lang.reflect.Array" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
@@ -111,7 +111,7 @@
   try {
     emailSMTP smtpServer = new emailSMTP();  // 메일 전송 클래스 생성
     smtpServer.emailSending(emailInfo,toInfo);      // 전송
-    messageHistoryDAO dao = new messageHistoryDAO();
+    prodMessageHistoryDAO dao = new prodMessageHistoryDAO();
     dao.selectMessage(map);
 
     out.print("<script>window.alert('이메일 전송 성공'); </script>");

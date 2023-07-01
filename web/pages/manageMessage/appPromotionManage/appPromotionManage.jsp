@@ -12,50 +12,66 @@
     <script src="/pages/sendMessage/appPromotionMessage/appPromotionMessage.js"></script>
 </head>
 <body>
-
+<jsp:include page="/components/header.jsp" />
 <main>
+
     <jsp:include page="/components/sidebar.jsp" />
     <section class="mainComponent">
         <div class="mainComponent-header">
-            <div class="mainComponent-header-text">앱 광고 메시지 관리</div>
+            <div class="mainComponent-header-text">어플 프로모션 메시지 관리</div>
             <div class="mainComponent-header-button"><a href="./appPromotionWrite.jsp">새로 만들기</a></div>
         </div>
         <%
-            System.out.println("g1");
             appPromotionCustomizeDAO dao = new appPromotionCustomizeDAO();
-            System.out.println("gg");
             List<appPromotionCustomizeDTO> custInfos = dao.selectMessage();
 
             if (custInfos != null) {
                 for (appPromotionCustomizeDTO custInfo : custInfos)
                 { %>
-        <form  style="z-index:999999; position: relative; top: 6%; right: -40%;" method="POST" action="/appPromotionDeleteServlet">
-            <input name="tableId"  hidden="" value="<%=custInfo.getId()%>">
-            <button style="width:100px;height:30px"style="width:100px;height:20%" type="submit">삭제</button>
-        </form>
-        <div class="mainComponent-messageList" style="position:relative" onclick="modifyMessage([
-                '<%=custInfo.getId() %>',
-                '<%=custInfo.getCustNm() %>',
-                '<%=custInfo.getGender() %>',
-                '<%=custInfo.getAge() %>',
-                '<%=custInfo.getJob() %>',
-                '<%=custInfo.getCustGrade() %>',
-                '<%=custInfo.getSubTerm() %>',
-                '<%=custInfo.getAsset() %>',
-                '<%=custInfo.getPrivacy() %>',
-                '<%=custInfo.getRecLoginDate() %>',
-                '<%=custInfo.getProdNm() %>',
-                '<%=custInfo.getMContents() %>',
-                '<%=custInfo.getId()%>'
-                ])">
+
+        <div class="mainComponent-messageList" style="position:relative" >
 
             <div class="mainComponent-messageList-title">
-                제목:
-                <%=
-                custInfo.getProdNm()
-                %>
+                <div style="margin-left:2%;" onclick="modifyMessage([
+                        '<%=custInfo.getId() %>',
+                        '<%=custInfo.getCustNm() %>',
+                        '<%=custInfo.getGender() %>',
+                        '<%=custInfo.getAge() %>',
+                        '<%=custInfo.getJob() %>',
+                        '<%=custInfo.getCustGrade() %>',
+                        '<%=custInfo.getSubTerm() %>',
+                        '<%=custInfo.getAsset() %>',
+                        '<%=custInfo.getPrivacy() %>',
+                        '<%=custInfo.getRecLoginDate() %>',
+                        '<%=custInfo.getProdNm() %>',
+                        '<%=custInfo.getMContents() %>',
+                        '<%=custInfo.getId()%>'
+                        ])">
+                    제목: <%=
+                    custInfo.getProdNm()
+                    %>
+                </div>
+
+                <form  style="margin-right:2%;" method="POST" action="/appPromotionDeleteServlet">
+                    <input name="tableId"  hidden="" value="<%=custInfo.getId()%>">
+                    <button style="width:100px;height:60%;"  type="submit">삭제</button>
+                </form>
             </div>
-            <div class="mainComponent-messageList-content">
+            <div class="mainComponent-messageList-content" onclick="modifyMessage([
+                    '<%=custInfo.getId() %>',
+                    '<%=custInfo.getCustNm() %>',
+                    '<%=custInfo.getGender() %>',
+                    '<%=custInfo.getAge() %>',
+                    '<%=custInfo.getJob() %>',
+                    '<%=custInfo.getCustGrade() %>',
+                    '<%=custInfo.getSubTerm() %>',
+                    '<%=custInfo.getAsset() %>',
+                    '<%=custInfo.getPrivacy() %>',
+                    '<%=custInfo.getRecLoginDate() %>',
+                    '<%=custInfo.getProdNm() %>',
+                    '<%=custInfo.getMContents() %>',
+                    '<%=custInfo.getId()%>'
+                    ])">
                 내용:
                 <%=
                 custInfo.getMContents()

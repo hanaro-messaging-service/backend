@@ -36,7 +36,7 @@
             <div class="searchComponent">
                 <div class="searchComponent-topBar">
                     <div class="searchComponent-topBar-left">
-                        상환관리 메시지 발송내역
+                        상환관리 메시지 발송 상세내역
                     </div>
 
                 </div>
