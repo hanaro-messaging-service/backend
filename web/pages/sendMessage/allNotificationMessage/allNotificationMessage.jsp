@@ -21,7 +21,7 @@
         %>
         <div class="searchComponent">
             <div class="searchComponent-topBar">
-                <div class="searchComponent-topBar-left">전체 안내 메세지 관리</div>
+                <div class="searchComponent-topBar-left">전체 안내 메세지 전송</div>
             </div>
             <div class="searchComponent-titleBar">전체 안내 메시지</div>
             <div class="searchComponent-searchBar">
@@ -161,7 +161,7 @@
 
                     </div>
                     <div style="display:flex; width:90%; justify-content: flex-end; margin-top:1vh;">
-                        <button style="width:15%; height:4vh; background:white; border:1px solid #cccccc;" type="submit">전송하기</button>
+                        <button style="cursor:pointer; width:15%; height:4vh; background:white; border:1px solid #cccccc;" type="submit">전송하기</button>
                     </div>
                 </table>
 
@@ -180,7 +180,7 @@
                         if (pageInfos != null) {
                             for (allNoticePackageDTO custInfo : pageInfos) {
                                 count++;
-                                if (count > 10){ break;} // 트래픽 과다 방지용(10개만)
+
                     %>
                     <div class="listComponent-listbar">
 
@@ -219,20 +219,20 @@
                             int pageCount = 0;
                             int pageLength = custInfos/10+1;
 
-                            for (int i = 0; i<pageLength; i++) {
-
                         %>
-                        <%--                        서블릿으로 전송--%>
-                        <div onclick="sendPageValueToServlet(<%=(pageCount)*10%>,<%=10%>)">
-                            <%= pageCount+1%>
+                        <input hidden="" value="<%=custInfos%>" id="totalCount"/>
+                        <div class="paginationContainer">
+                            <div class="pagination">
+                                <ul> <!--pages or li are comes from javascript --> </ul>
+                            </div>
                         </div>
+                        <input hidden="" value="<%= custInfos%>" name="counts">
                         <%
-                                    pageCount++;
-                                }
+
                             }
                         %>
                     </div>
-                    <input hidden="" value="<%= pageInfos.size()%>" name="counts">
+
                     <%
                         }
                     %>

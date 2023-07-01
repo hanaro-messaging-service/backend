@@ -13,13 +13,18 @@
   // 폼값(이메일 내용) 저장
   request.setCharacterEncoding("UTF-8");
   response.setCharacterEncoding("UTF-8");
+  if (request.getParameter("subject").equals("") || request.getParameter("content").equals("")) {
+    out.print("<script>window.alert('이메일 전송 실패! 메시지제목과 내용을 확인하세요!'); window.location.href='/pages/sendMessage/allNotificationMessage/allNotificationMessage.jsp'</script>");
+  }
+  if (request.getParameter("subject") == null || request.getParameter("content") == null || request.getParameter("subject").equals("") || request.getParameter("content").equals("")) {
+    out.print("<script>window.alert('이메일 전송 실패'); window.location.href='/pages/sendMessage/allNotificationMessage/allNotificationMessage.jsp'</script>");
+  }
   Map<String, String> emailInfo = new HashMap<String, String>();
   Map<String, String[]> toInfo = new HashMap<>();
   System.out.println("인코딩"+request.getParameter("content"));
   emailInfo.put("from", request.getParameter("from"));  // 보내는 사람
   // 받는 사람들의 이메일 배열
   String[] toEmails = request.getParameterValues("to");
-  System.out.println(toEmails[1]);
   toInfo.put("to", toEmails);
   emailInfo.put("subject", request.getParameter("subject"));  // 제목
   System.setProperty("https.protocols", "TLSv1,TLSv1.1,TLSv1.2");
@@ -116,10 +121,10 @@
     dao.selectMessage(map);
 
     out.print("<script>window.alert('이메일 전송 성공'); </script>");
-    response.sendRedirect("/pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp"); // 리다이렉트
+    response.sendRedirect("/pages/messageList/overdueNotificationMessageList/overdueNotificationMessageList.jsp"); // 리다이렉트
   }
   catch (Exception e) {
-    out.print("<script>window.alert('이메일 전송 실패'); window.location.href='/pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp'</script>");
+    out.print("<script>window.alert('이메일 전송 실패! 검색 목록, 메세지 제목, 메세지 내용 확인하세요'); window.location.href='/pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp'</script>");
     e.printStackTrace();
   }
 %>

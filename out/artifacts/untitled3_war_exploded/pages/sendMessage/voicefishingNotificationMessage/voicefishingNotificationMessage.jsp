@@ -25,7 +25,7 @@
         %>
         <div class="searchComponent">
             <div class="searchComponent-topBar">
-                <div class="searchComponent-topBar-left">메세지 전송</div>
+                <div class="searchComponent-topBar-left">보이스피싱 예방 안내 메세지 전송</div>
 
             </div>
             <div class="searchComponent-titleBar">보이스피싱 예방 안내 메시지</div>
@@ -163,7 +163,7 @@
 
                     </div>
                     <div style="display:flex; width:90%; justify-content: flex-end; margin-top:1vh;">
-                        <button style="width:15%; height:4vh; background:white; border:1px solid #cccccc;" type="submit">전송하기</button>
+                        <button style="cursor:pointer; width:15%; height:4vh; background:white; border:1px solid #cccccc;" type="submit">전송하기</button>
                     </div>
                 </table>
 
@@ -209,25 +209,26 @@
                     </div>
 
                     <%  } %>
-                    <div style="display:flex">
-                        <%  if(request.getAttribute("custInfos")!=null) {
-                            int custInfos = (int) request.getAttribute("custInfos");
-                            int pageCount = 0;
-                            int pageLength = custInfos/10+1;
+                    <div style="display:flex; width:100%; flex-wrap:wrap;">
+                    <%  if(request.getAttribute("custInfos")!=null) {
+                        int custInfos = (int) request.getAttribute("custInfos");
+                        int pageCount = 0;
+                        int pageLength = custInfos/10+1;
 
-                            for (int i = 0; i<pageLength; i++) {
-
-                        %>
-                        <div onclick="sendPageValueToServlet(<%=(pageCount)*10%>,<%=10%>)">
-                            <%= pageCount+1%>
+                    %>
+                    <input hidden="" value="<%=custInfos%>" id="totalCount"/>
+                    <div class="paginationContainer">
+                        <div class="pagination">
+                            <ul> <!--pages or li are comes from javascript --> </ul>
                         </div>
-                        <%
-                                    pageCount++;
-                                }
-                            }
-                        %>
+                        <input hidden="" value="<%=custInfos%>" name="counts">               </div>
+
+                    <%
+
+                        }
+                    %>
                     </div>
-                    <input hidden="" value="<%=pageInfos.size()%>" name="counts">
+
                     <%
                         }
                     %>

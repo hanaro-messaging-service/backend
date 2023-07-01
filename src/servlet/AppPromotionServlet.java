@@ -73,11 +73,20 @@ public class AppPromotionServlet extends HttpServlet {
         pageMap.put("last",selectedLastValue);
         // Set the response content type and encoding
         appPromotionMessageDAO dao = new appPromotionMessageDAO();
-        int custInfos = dao.selectMessage(map);
-        appPromotionMessageDAO pageDao = new appPromotionMessageDAO();
-        List<appPromotionMessageDTO> pageInfos = pageDao.selectPaginatedMessage(pageMap);
-        request.setAttribute("custInfos", custInfos);
-        request.setAttribute("pageInfos", pageInfos);
+        if(Integer.parseInt(selectedStartValue) != 0) {
+            appPromotionMessageDAO pageDao = new appPromotionMessageDAO();
+            List<appPromotionMessageDTO> pageInfos = pageDao.selectPaginatedMessage(pageMap);
+            int a = Integer.parseInt(request.getParameter("totalPages"));
+            request.setAttribute("custInfos",a);
+        }
+        else {
+            int custInfos = dao.selectMessage(map);
+            appPromotionMessageDAO pageDao = new appPromotionMessageDAO();
+            List<appPromotionMessageDTO> pageInfos = pageDao.selectPaginatedMessage(pageMap);
+            request.setAttribute("custInfos", custInfos);
+            request.setAttribute("pageInfos", pageInfos);
+        }
+
         request.getRequestDispatcher("pages/sendMessage/appPromotionMessage/appPromotionMessage.jsp").forward(request,response);
     }
 }

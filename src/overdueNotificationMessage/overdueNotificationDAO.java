@@ -46,20 +46,9 @@ public class overdueNotificationDAO extends DBConnPool {
 
         return residentNo;
     }
-    public List<overdueNotificationDTO> selectMessage(Map<String, Object> map){
-        List<overdueNotificationDTO> custInfos = new ArrayList<>();
+    public int selectMessage(Map<String, Object> map){
         String query = "SELECT " +
-                "cust_info.custNo, " +
-                "cust_info.custNm, " +
-                "cust_info.residentNo, " +
-                "cust_info.gender, " +
-                "loan_acc_info.overdue, " +
-                "cust_info.creditRating, " +
-                "cust_info.custGrade, " +
-                "com_acc_info.balance, " +
-                "cust_info.privacy, " +
-                "cust_info.phoneNo, " +
-                "cust_info.email " +
+                "count(*) AS total_count " +
                 "FROM " +
                 "cust_info " +
                 "JOIN com_acc_info ON cust_info.custNo = com_acc_info.custNo " +
@@ -109,9 +98,101 @@ public class overdueNotificationDAO extends DBConnPool {
         query = overdueFilter.addOverdueFilterCondition(query, overdueYes, overdueNo);
 
         System.out.println(query);
+        int totalCount = 0;
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
             ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                totalCount = rs.getInt("total_count");
+            }
+        } catch (Exception e) {
+            System.out.println("고객 정보 조회 중 예외 발생");
+            e.printStackTrace();
+        }
+        finally{
+            close();
+        }
+
+        return totalCount;
+    }
+
+    public List<overdueNotificationDTO> selectPaginatedMessage(Map<String, Object> map){
+        List<overdueNotificationDTO> custInfos = new ArrayList<>();
+        String query = "SELECT " +
+                "cust_info.custNo, " +
+                "cust_info.custNm, " +
+                "cust_info.residentNo, " +
+                "cust_info.gender, " +
+                "loan_acc_info.overdue, " +
+                "cust_info.creditRating, " +
+                "cust_info.custGrade, " +
+                "com_acc_info.balance, " +
+                "cust_info.privacy, " +
+                "cust_info.phoneNo, " +
+                "cust_info.email " +
+                "FROM " +
+                "cust_info " +
+                "JOIN com_acc_info ON cust_info.custNo = com_acc_info.custNo " +
+                "JOIN loan_acc_info ON com_acc_info.accNo = loan_acc_info.accNo " +
+                "WHERE " +
+                "1=1";
+
+        String custNm = (String) map.get("custNm");
+        query = nameFilter.addNameFilterCondition(query,custNm);
+
+        String man = (String) map.get("man");
+        String woman = (String) map.get("woman");
+        query = gender.addGenderCondition(query, man, woman);
+
+        System.out.println(("age 삽입"));
+        String age = (String) map.get("age");
+        query = ageFilter.addAgeFilterCondition(query,age);
+        System.out.println(("age 완료"));
+
+
+        String custGrade = (String) map.get("custGrade");
+        System.out.println(custGrade+"custGrade");
+        query = privateRate.addPrivateRateCondition(query,custGrade);
+
+        String subTerm = (String) map.get("period");
+        query = periodFilter.addPeriodFilterCondition(query,subTerm);
+
+        String asset = (String) map.get("asset");
+        System.out.println(asset);
+        query = assetFilter.addAssetFilterCondition(query,asset);
+
+        String privacy = (String) map.get("privacyYes");
+        query = privacyFilter.addPrivacyFilterCondition(query,privacy);
+
+        System.out.println("신용등급 체크");
+        String credit = (String) map.get("creditRating");
+        query = creditFilter.addCreditRateCondition(query, credit);
+
+        System.out.println("연체여부 체크");
+        String overdueYes = (String) map.get("overdueYes"); // 연체여부 추가
+        String overdueNo = (String) map.get("overdueNo");
+        System.out.println(overdueYes + overdueNo);
+        query = overdueFilter.addOverdueFilterCondition(query, overdueYes, overdueNo);
+
+        System.out.println(query);
+        query += " LIMIT ?, ?";
+        int start = 0;
+        int last = 0;
+        try {
+            start = Integer.parseInt(map.get("start").toString());
+            last = Integer.parseInt(map.get("last").toString());
+            System.out.println("STARTLLAST"+start+last);
+        } catch (NumberFormatException e) {
+            // 유효한 정수로 변환할 수 없는 경우 처리할 내용을 작성합니다.
+            e.printStackTrace();
+        }
+        System.out.println("start"+start+"last"+last);
+        try {
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setInt(1,start);
+            pstmt.setInt(2,last);
+            ResultSet rs = pstmt.executeQuery();
+            System.out.println("뭐가문제니");
             while (rs.next()) {
                 overdueNotificationDTO member = new overdueNotificationDTO();
                 member.setCustNo(rs.getString("custNo")); // 고객코드 설정
@@ -139,5 +220,4 @@ public class overdueNotificationDAO extends DBConnPool {
 
         return custInfos;
     }
-
 }

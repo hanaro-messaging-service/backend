@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import productPromotionPackage.productPromotionMessageDTO;
 import sqlCommonFunction.*;
 
 public class allNoticePackageDAO extends DBConnPool {
@@ -48,9 +49,48 @@ public class allNoticePackageDAO extends DBConnPool {
         return residentNo;
     }
 
-    public List<allNoticePackageDTO> selectMessage(Map<String, Object> map){
+    public int selectMessage(Map<String, Object> map){
         System.out.println("전체조회 DTO");
         List<allNoticePackageDTO> custInfos = new ArrayList<>();
+        String query = "SELECT " +
+                "count(*) AS total_count " +
+                "FROM " +
+                "cust_info " +
+                "WHERE 1=1";
+        String custNm = (String) map.get("custNm");
+        query = nameFilter.addNameFilterCondition(query,custNm);
+        String age = (String) map.get("age");
+        query = ageFilter.addAgeFilterCondition(query,age);
+        System.out.println("age들어가니2");
+        String privacy = (String) map.get("privacy");
+        query = privacyFilter.addPrivacyFilterCondition(query,privacy);
+        String address =(String) map.get("address");
+        query = addressFilter.addAddressFilterCondition(query,address);
+
+        System.out.println(query);
+        int totalCount = 0;
+        try {
+            PreparedStatement pstmt = con.prepareStatement(query);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                totalCount = rs.getInt("total_count");
+            }
+
+        } catch (Exception e) {
+            System.out.println("고객 정보 조회 중 예외 발생");
+            e.printStackTrace();
+        }
+        finally{
+            System.out.println("전체조회 DTO 완료");
+            close();
+        }
+        System.out.println(totalCount);
+        return totalCount;
+    }
+
+    public List<allNoticePackageDTO> selectPaginatedMessage(Map<String, Object> map) {
+        System.out.println("전체조회 DTO");
+        List<allNoticePackageDTO> paginatedData = new ArrayList<>();
         String query = "SELECT " +
                 "cust_info.custNm, " +
                 "cust_info.custNo, " +
@@ -71,11 +111,24 @@ public class allNoticePackageDAO extends DBConnPool {
         query = privacyFilter.addPrivacyFilterCondition(query,privacy);
         String address =(String) map.get("address");
         query = addressFilter.addAddressFilterCondition(query,address);
-
+        query += " LIMIT ?, ?";
         System.out.println(query);
+        int start = 0;
+        int last = 0;
+        try {
+            start = Integer.parseInt(map.get("start").toString());
+            last = Integer.parseInt(map.get("last").toString());
+            System.out.println("STARTLLAST"+start+last);
+        } catch (NumberFormatException e) {
+            // 유효한 정수로 변환할 수 없는 경우 처리할 내용을 작성합니다.
+            e.printStackTrace();
+        }
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setInt(1,start);
+            pstmt.setInt(2,last);
             ResultSet rs = pstmt.executeQuery();
+            System.out.println("뭐가문제니");
             while (rs.next()) {
                 allNoticePackageDTO member = new allNoticePackageDTO();
                 member.setCustNo(rs.getString("custNo"));
@@ -88,7 +141,7 @@ public class allNoticePackageDAO extends DBConnPool {
                 member.setPrivacy(rs.getString("privacy"));
                 member.setPhoneNo(rs.getString("phoneNo"));
                 member.setEmail(rs.getString("email"));
-                custInfos.add(member);
+                paginatedData.add(member);
             }
 
         } catch (Exception e) {
@@ -100,7 +153,7 @@ public class allNoticePackageDAO extends DBConnPool {
             close();
         }
 
-        return custInfos;
+        return paginatedData;
     }
 
 }
