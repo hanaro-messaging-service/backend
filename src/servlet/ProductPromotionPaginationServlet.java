@@ -51,8 +51,7 @@ public class ProductPromotionPaginationServlet extends HttpServlet {
         pageMap.put("address",selectedLocationValue);
         pageMap.put("start",selectedStartValue);
         pageMap.put("last",selectedLastValue);
-        System.out.println("start"+selectedStartValue);
-        System.out.println("last"+selectedLastValue);
+
         productPromotionMessageDAO pageDao = new productPromotionMessageDAO();
         List<productPromotionMessageDTO> pageInfos = pageDao.selectPaginatedMessage(pageMap);
         request.setAttribute("pageInfos", pageInfos);

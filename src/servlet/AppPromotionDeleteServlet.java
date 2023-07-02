@@ -14,7 +14,6 @@ public class AppPromotionDeleteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String selectedId = request.getParameter("tableId");
-        System.out.println(selectedId);
         Map<String,Object> map = new HashMap<>();
         map.put("tableId",selectedId);
         appPromotionDeleteDAO dao = new appPromotionDeleteDAO();

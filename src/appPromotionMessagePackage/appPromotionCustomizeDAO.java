@@ -12,8 +12,6 @@ public class appPromotionCustomizeDAO extends DBConnPool{
 
     public List<appPromotionCustomizeDTO> selectMessage(){
         String query  = "SELECT * FROM app_promo_message";
-        System.out.print("h1");
-
         List<appPromotionCustomizeDTO> custInfos = new ArrayList<>();
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
@@ -37,9 +35,9 @@ public class appPromotionCustomizeDAO extends DBConnPool{
 
             }
 
-            System.out.println(custInfos);
+
         } catch (Exception e) {
-            System.out.println("고객 정보 조회 중 예외 발생");
+
             e.printStackTrace();
         }
         finally{

@@ -28,12 +28,11 @@ public class CustomerDAO extends DBConnPool {
     }
 
     public String selectCustomerInfo(Map<String, Object> map) {
-        System.out.println(getResidentNoFromAge(20));
+
         String query = "SELECT * FROM cust_info WHERE 1=1";
-        System.out.println(1);
+
         String man = (String) map.get("man");
-        System.out.println("man"+man);
-        System.out.println(2);
+
         String woman = (String) map.get("woman");
         if (man!=null&&man.equals("M")&&woman!=null&&woman.equals("F")) {
 
@@ -48,7 +47,7 @@ public class CustomerDAO extends DBConnPool {
             }
         }
 
-        System.out.println(3);
+
         String age = (String) map.get("age");
         if (age != null && !age.isEmpty()) {
             int lowerBound;
@@ -94,12 +93,11 @@ public class CustomerDAO extends DBConnPool {
 
         }
 
-        System.out.println(4);
+
         String agePart = (String) map.get("agePart");
         String privacyYes = (String) map.get("privacyYes");
-        System.out.println(5);
 
-        System.out.println(6);
+
         String privacyNo = (String) map.get("privacyNo");
         if(privacyYes!=null&&privacyYes.equals("O")&&privacyNo!=null&&privacyNo.equals("X")) {
 
@@ -113,7 +111,7 @@ public class CustomerDAO extends DBConnPool {
             }
         }
 
-        System.out.println(7);
+
         String job = (String) map.get("job");
         if (job != null && !job.isEmpty()) {
             switch (job) {
@@ -136,7 +134,7 @@ public class CustomerDAO extends DBConnPool {
                     break;
             }
         }
-        System.out.println(8);
+
         String privateRate = (String) map.get("private");
         if (privateRate != null && !privateRate.isEmpty()) {
             switch (privateRate) {
@@ -160,19 +158,12 @@ public class CustomerDAO extends DBConnPool {
             }
         }
         String name = (String) map.get("name");
-        System.out.println("name"+name);
+
         if (name != null && !name.isEmpty()) {
             query += " AND custNm LIKE '%"+map.get("name")+"%'";
         }
-        System.out.println(9);
-        System.out.println("man"+man);
-        System.out.println("woman"+woman);
-        System.out.println("age"+age);
-        System.out.println("agePart"+agePart);
-        System.out.println("privacyYes"+privacyYes);
-        System.out.println("privacyNo"+privacyNo);
-        System.out.println("job"+job);
-        System.out.println("privateRate"+privateRate);
+
+
 
 
         return query;

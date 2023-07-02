@@ -20,12 +20,12 @@
             <div class="searchComponent">
                 <div class="searchComponent-topBar">
                     <div class="searchComponent-topBar-left">
-                         앱 광고 메시지 추가
+                        어플 프로모션 메시지 수정
                     </div>
 
                 </div>
 
-                <div class="searchComponent-titleBar">앱 광고 메시지</div>
+                <div class="searchComponent-titleBar"> 어플 프로모션 메시지</div>
 
                 <div class="searchComponent-searchBar">
                     <div class="searchComponent-searchBar-list">
@@ -123,6 +123,26 @@
                             </select>
 
                         </div>
+                        <div class="searchComponent-searchBar-list-key">이름</div>
+                        <div class="searchComponent-searchBar-list-value">
+                            <input value="<%= request.getParameter("custNm") %>" type="text" id="name" name="custNm">
+                        </div>
+                    </div>
+
+                    <div hidden=""  class="searchComponent-searchBar-list" style="display:none;">
+
+
+                        <div hidden="" class="searchComponent-searchBar-list-key">상품명</div>
+                        <div class="searchComponent-searchBar-list-value">
+                            <select name="period" id="where2"  >
+                                <option value="전체">전체</option>
+                                <option value="1년 미만">1년 미만</option>
+                                <option value="1년-3년">1년-3년</option>
+                                <option value="3년-5년">3년-5년</option>
+                                <option value="5년-10년">5년-10년</option>
+                                <option value="10년 이상">10년 이상</option>
+                            </select>
+                        </div>
                         <div class="searchComponent-searchBar-list-key">가입 기간</div>
                         <div class="searchComponent-searchBar-list-value">
                             <!-- 가입 기간 -->
@@ -135,25 +155,6 @@
                                 <option value="10년 이상" <%= "10년 이상".equals(request.getParameter("period")) ? "selected" : "" %>>10년 이상</option>
                             </select>
 
-                        </div>
-                    </div>
-
-                    <div class="searchComponent-searchBar-list">
-                        <div class="searchComponent-searchBar-list-key">이름</div>
-                        <div class="searchComponent-searchBar-list-value">
-                            <input value="<%= request.getParameter("custNm") %>" type="text" id="name" name="custNm">
-                        </div>
-
-                        <div class="searchComponent-searchBar-list-key">상품명</div>
-                        <div class="searchComponent-searchBar-list-value">
-                            <select name="period" id="where2"  >
-                                <option value="전체">전체</option>
-                                <option value="1년 미만">1년 미만</option>
-                                <option value="1년-3년">1년-3년</option>
-                                <option value="3년-5년">3년-5년</option>
-                                <option value="5년-10년">5년-10년</option>
-                                <option value="10년 이상">10년 이상</option>
-                            </select>
                         </div>
                     </div>
 

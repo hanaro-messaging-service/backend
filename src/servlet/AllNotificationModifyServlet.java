@@ -19,7 +19,7 @@ public class AllNotificationModifyServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Retrieve the data sent from the JavaScript function
-        System.out.println("allNotificationModifyServlet 시작");
+
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String tableId = request.getParameter("tableId");
@@ -27,9 +27,10 @@ public class AllNotificationModifyServlet extends HttpServlet{
         String selectedAgeValue = request.getParameter("age");
         String selectedNameValue = request.getParameter("custNm");
         String selectedLocationValue = request.getParameter("location");
+        System.out.println(selectedLocationValue);
         String mContentsValue = request.getParameter("mContents");
         String mTitleValue = request.getParameter("mTitle");
-        System.out.println(selectedPrivacyYesValue + selectedAgeValue + selectedNameValue + tableId);
+
 
         // Process the data as required
         Map<String, Object> map = new HashMap<>();
@@ -45,7 +46,7 @@ public class AllNotificationModifyServlet extends HttpServlet{
         allNoticeModifyDAO dao = new allNoticeModifyDAO();
         dao.selectMessage(map);
 
-        System.out.println("작업 완료");
+
         response.sendRedirect("/pages/manageMessage/allNotificationManage/allNotificationManage.jsp"); // 상대주소로 변경 완료
     }
 }

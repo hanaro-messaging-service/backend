@@ -23,12 +23,11 @@ public class appPromotionWriteDAO extends DBConnPool {
         String custGrade = (String) map.get("private");
         String subTerm = (String) map.get("period");
         String asset = (String) map.get("asset");
+        System.out.println(asset);
         String privacy = (String) map.get("privacy");
         String recLoginDate = (String) map.get("recLoginDate");
         String prodNm = (String)map.get("prodNm");
         String mContents = (String)map.get("mContents");
-        System.out.println(mContents);
-        System.out.print("인설트문 가나?");
         String query = "INSERT INTO app_promo_message (custNm, gender, age, job, custGrade,  subTerm, asset, privacy, recLoginDate,prodNm,mContents) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 

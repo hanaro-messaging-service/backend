@@ -14,18 +14,16 @@ public class MemberDAO extends DBConnPool {
 
     public List<MemberDTO> selectCustomer(Map<String, Object> map) {
         List<MemberDTO> custInfos = new ArrayList<>();
-        System.out.println("DAO생성전");
         CustomerDAO customerDAO = new CustomerDAO();
         AppDAO appDAO = new AppDAO();
         AccountDAO accountDAO = new AccountDAO();
         LoanAccountDAO loanAccountDAO = new LoanAccountDAO();
         String customerQuery = customerDAO.selectCustomerInfo(map);
         String appQuery = appDAO.selectAppInfo(map);
-        System.out.println("loan전");
         String accountQuery = accountDAO.selectAccountInfo(map);
         String loanAccountQuery = loanAccountDAO.selectLoanInfo(map);
         String query = customerQuery+ " INTERSECT " + appQuery + " INTERSECT " + accountQuery + " INTERSECT " + loanAccountQuery;
-        System.out.println(query);
+
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
             ResultSet rs = pstmt.executeQuery();
@@ -48,7 +46,6 @@ public class MemberDAO extends DBConnPool {
             pstmt.close();
             con.close();
         } catch (Exception e) {
-            System.out.println("고객 정보 조회 중 예외 발생");
             e.printStackTrace();
         }
 

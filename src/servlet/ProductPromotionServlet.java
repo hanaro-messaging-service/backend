@@ -19,7 +19,7 @@ import productPromotionPackage.productPromotionMessageDAO;
 public class ProductPromotionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Retrieve the data sent from the JavaScript function
-        System.out.println("hi");
+
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String selectedManValue = request.getParameter("selectedManValue");
@@ -36,7 +36,7 @@ public class ProductPromotionServlet extends HttpServlet {
         String selectedBranchValue = request.getParameter("selectedBranchValue");
         String selectedStartValue = request.getParameter("selectedStartValue");
         String selectedLastValue = request.getParameter("selectedLastValue");
-        System.out.println(selectedPrivateValue);
+
         // Process the data as required
         Map<String, Object> map = new HashMap<>();
         Map<String, Object> pageMap = new HashMap<>();
@@ -68,14 +68,13 @@ public class ProductPromotionServlet extends HttpServlet {
         pageMap.put("address",selectedLocationValue);
         pageMap.put("start",selectedStartValue);
         pageMap.put("last",selectedLastValue);
-        System.out.println("start"+selectedStartValue);
-        System.out.println("last"+selectedLastValue);
+
         // Set the response content type and encoding
         productPromotionMessageDAO dao = new productPromotionMessageDAO();
         if(!pageMap.isEmpty()){
 
         }
-        System.out.println("selectedStartValue"+selectedStartValue);
+
         if(Integer.parseInt(selectedStartValue) != 0) {
             productPromotionMessageDAO pageDao = new productPromotionMessageDAO();
             List<productPromotionMessageDTO> pageInfos = pageDao.selectPaginatedMessage(pageMap);
@@ -84,7 +83,6 @@ public class ProductPromotionServlet extends HttpServlet {
             request.setAttribute("custInfos",a);
         }
         else {
-            System.out.println("custInfos들어오니");
             productPromotionMessageDAO pageDao = new productPromotionMessageDAO();
             List<productPromotionMessageDTO> pageInfos = pageDao.selectPaginatedMessage(pageMap);
             int custInfos = dao.selectMessage(map);

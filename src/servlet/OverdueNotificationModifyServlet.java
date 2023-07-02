@@ -19,7 +19,7 @@ public class OverdueNotificationModifyServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("서블릿 호출");
+
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String tableId = request.getParameter("tableId");
@@ -36,7 +36,7 @@ public class OverdueNotificationModifyServlet extends HttpServlet {
         String selectedOverdueNoValue = request.getParameter("overdueNo");
         String mContentsValue = request.getParameter("mContents");
         String mTitleValue = request.getParameter("mTitle");
-        System.out.println("servlet"+tableId);
+
 
 //        String selectedPeriodValue = request.getParameter("period");
 //        String selectedPrivateValue = request.getParameter("private");
@@ -63,7 +63,6 @@ public class OverdueNotificationModifyServlet extends HttpServlet {
         overdueNotificationModifyDAO dao = new overdueNotificationModifyDAO();
         dao.selectMessage(map);
 
-        System.out.println("작업 완료");
         response.sendRedirect("/pages/manageMessage/overdueNotificationManage/overdueNotificationManage.jsp");
     }
 }

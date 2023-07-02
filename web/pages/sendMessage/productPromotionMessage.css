@@ -141,7 +141,7 @@ main {
     align-items: flex-end;
 }
 .searchComponent-topBar-left{
-    width:40%;
+    width:80%;
     font-size:2rem;
 }
 .searchComponent-topBar-right{

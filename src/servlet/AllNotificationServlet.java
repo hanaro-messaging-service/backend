@@ -22,7 +22,6 @@ public class AllNotificationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("AllNotificationServlet 시작");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String selectedPrivacyYesValue = request.getParameter("selectedPrivacyYesValue");
@@ -47,12 +46,11 @@ public class AllNotificationServlet extends HttpServlet {
         pageMap.put("location", selectedLocationValue);
         pageMap.put("start",selectedStartValue);
         pageMap.put("last",selectedLastValue);
-        System.out.println("start"+selectedStartValue);
-        System.out.println("last"+selectedLastValue);
+
         // Set the response content type and encoding
         allNoticePackageDAO dao = new allNoticePackageDAO();
 
-        System.out.println("selectedStartValue"+selectedStartValue);
+
         if(Integer.parseInt(selectedStartValue) != 0) {
             allNoticePackageDAO pageDao = new allNoticePackageDAO();
             List<allNoticePackageDTO> pageInfos = pageDao.selectPaginatedMessage(pageMap);
@@ -61,7 +59,7 @@ public class AllNotificationServlet extends HttpServlet {
             request.setAttribute("custInfos",a);
         }
         else {
-            System.out.println("custInfos들어오니");
+
             int custInfos = dao.selectMessage(map);
             allNoticePackageDAO pageDao = new allNoticePackageDAO();
             List<allNoticePackageDTO> pageInfos = pageDao.selectPaginatedMessage(pageMap);

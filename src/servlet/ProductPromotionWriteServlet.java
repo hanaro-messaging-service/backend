@@ -39,7 +39,6 @@ public class ProductPromotionWriteServlet extends HttpServlet {
         String prodNmValue = request.getParameter("prodNm");
         String mContentsValue = request.getParameter("mContents");
         Map<String, Object> map = new HashMap<>();
-        System.out.println(selectedNameValue);
         map.put("custNm", selectedNameValue);
         map.put("recLoginDate", selectedAppValue);
         map.put("asset", selectedAssetValue);

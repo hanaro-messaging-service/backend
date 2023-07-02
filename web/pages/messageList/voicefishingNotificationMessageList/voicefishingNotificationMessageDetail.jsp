@@ -58,7 +58,7 @@
                         <div class="searchComponent-searchBar-list-value" id="ageContainer">
                             <%
                                 String ageValue = (String) request.getParameter("age");
-                                System.out.println( request.getParameter("id"));
+
                             %>
                             <% if(ageValue != null) { %>
                             <select name="age" id="age">

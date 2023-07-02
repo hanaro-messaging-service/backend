@@ -22,7 +22,7 @@ public class OverdueNotificationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Retrieve the data sent from the JavaScript function
-        System.out.println("OverdueNotificationServlet 시작");
+
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String selectedManValue = request.getParameter("selectedManValue");
@@ -38,7 +38,7 @@ public class OverdueNotificationServlet extends HttpServlet {
         String selectedBranchValue = request.getParameter("selectedBranchValue");
         String selectedStartValue = request.getParameter("selectedStartValue");
         String selectedLastValue = request.getParameter("selectedLastValue");
-        System.out.println(selectedPrivateValue);
+
 
         String selectedCreditValue = request.getParameter("selectedCreditRatingValue");
         String selectedOverdueYesValue = request.getParameter("selectedOverdueYes");

@@ -38,7 +38,7 @@ public class AppPromotionServlet extends HttpServlet {
         String selectedBranchValue = request.getParameter("selectedBranchValue");
         String selectedStartValue = request.getParameter("selectedStartValue");
         String selectedLastValue = request.getParameter("selectedLastValue");
-        System.out.println(selectedPrivateValue);
+
         // Process the data as required
         Map<String, Object> map = new HashMap<>();
         Map<String, Object> pageMap = new HashMap<>();

@@ -66,11 +66,25 @@
               '<%=message.getCounts() %>',
               '<%=message.getContents()%>'
               ])">
-        <div class="messageComponent-title bg_white col_black bd_green"><%= message.getTitle() %></div>
+        <div class="messageComponent-title bg_white col_black bd_green">
+          <% String title2 = message.getTitle();
+            if (title2 != null && title2.length() > 30) {
+              title2 = title2.substring(0, 30)+"...";
+            }
+          %>
+          <%= title2 %>
+        </div>
         <div class="messageComponent-category bg_white col_black bd_green"><%= message.getCategory() %></div>
         <div class="messageComponent-date bg_white col_black bd_green"><%= message.getTime() %></div>
         <div class="messageComponent-count bg_white col_black bd_green"><%= message.getCounts() %></div>
-        <div class="messageComponent-content bg_white col_black bd_green"><%= message.getContents() %></div>
+        <div class="messageComponent-content bg_white col_black bd_green">
+          <% String content = message.getContents();
+            if (content != null && content.length() > 30) {
+              content = content.substring(0, 30)+"...";
+            }
+          %>
+<%= content %>
+        </div>
       </div>
       <% } %>
 

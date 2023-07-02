@@ -158,7 +158,7 @@
                     <tr  hidden="">
 
                         <td hidden="">
-                            보내는 사람 : <input type="text" name="from" value="hanaromessage@naver.com" />
+                            보내는 사람 : <input type="text" name="from" value="hanar0message2@naver.com" />
                         </td>
                     </tr>
 

@@ -50,8 +50,7 @@ public class VoiceNotificationServlet extends HttpServlet {
         pageMap.put("privacy", selectedPrivacyYesValue);
         pageMap.put("start",selectedStartValue);
         pageMap.put("last",selectedLastValue);
-        System.out.println("start"+selectedStartValue);
-        System.out.println("last"+selectedLastValue);
+
         voicefishingNotificationDAO dao = new voicefishingNotificationDAO();
         if(Integer.parseInt(selectedStartValue) != 0) {
             voicefishingNotificationDAO pageDao = new voicefishingNotificationDAO();
@@ -61,7 +60,7 @@ public class VoiceNotificationServlet extends HttpServlet {
             request.setAttribute("custInfos",a);
         }
         else {
-            System.out.println("custInfos들어오니");
+
             int custInfos = dao.selectMessage(map);
             voicefishingNotificationDAO pageDao = new voicefishingNotificationDAO();
             List<voicefishingNotificationDTO> pageInfos = pageDao.selectPaginatedMessage(pageMap);

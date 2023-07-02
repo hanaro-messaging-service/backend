@@ -23,8 +23,7 @@ public class appPromotionMessageHistoryDAO extends DBConnPool{
         String custNm = (String) map.get("custNm");
         String man = (String) map.get("man");
         String woman = (String) map.get("woman");
-        System.out.println(man+123);
-        System.out.println(woman+123);
+
         if(man==null) man = "N";
         if(woman==null) woman="N";
         String gender = man+woman;
