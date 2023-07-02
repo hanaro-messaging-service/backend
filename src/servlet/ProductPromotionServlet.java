@@ -85,9 +85,9 @@ public class ProductPromotionServlet extends HttpServlet {
         }
         else {
            System.out.println("custInfos들어오니");
-            int custInfos = dao.selectMessage(map);
             productPromotionMessageDAO pageDao = new productPromotionMessageDAO();
             List<productPromotionMessageDTO> pageInfos = pageDao.selectPaginatedMessage(pageMap);
+            int custInfos = dao.selectMessage(map);
             request.setAttribute("pageInfos", pageInfos);
             request.setAttribute("custInfos", custInfos);
         }

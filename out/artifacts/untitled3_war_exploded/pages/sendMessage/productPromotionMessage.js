@@ -6,6 +6,7 @@ function debounce(func, delay) {
     debounceTimer = setTimeout(func, delay); // 일정 시간이 지난 후에 함수를 실행
 };
 function sendPageValueToServlet(start,last,page) {
+
     var selectedNameValue = document.getElementById('name').value;
     var selectedAppValue = document.getElementById("app").value;
     var selectedAssetValue = document.getElementById("asset").value;
@@ -19,6 +20,7 @@ function sendPageValueToServlet(start,last,page) {
     var selectedBranchValue = document.getElementById('branch').value;
     var prodNmValue = document.getElementById('prodNm').value;
     var mContentsValue = document.getElementById('mContents').value;
+    var selectedPeriodValue = document.getElementById('period').value;
     let sentence = "";
     console.log(document.getElementById('totalCount').value+"totalcount");
     sentence += selectedCheckBoxManValue.checked ? "&selectedManValue=" + encodeURIComponent("M") : "";
@@ -132,8 +134,8 @@ function sendPageValueToServlet(start,last,page) {
 
                     if(page < totalPages - 1){ //if page value is less than totalPage value by -1 then show the last li or page
                         if(page < totalPages - 2){ //if page value is less than totalPage value by -2 then add this (...) before the last li or page
-                            liTag += `<li class="dots"><span>...</span></li>`;
-                            liTag += `<li class="last numb" onclick="createPagination(${totalPages}, ${totalPages})"><span>${totalPages}</span></li>`;
+                            // liTag += `<li class="dots"><span>...</span></li>`;
+                            // liTag += `<li class="last numb" onclick="createPagination(${totalPages}, ${totalPages})"><span>${totalPages}</span></li>`;
                         }
                         if(totalPages > 10) {
 
@@ -148,7 +150,7 @@ function sendPageValueToServlet(start,last,page) {
                     element.innerHTML = liTag; //add li tag inside ul tag
                     return liTag; //reurn the li tag
                 }
-
+            hideLoadingOverlay();
             }
         };
 
@@ -171,6 +173,7 @@ function sendPageValueToServlet(start,last,page) {
 
 }
 function sendValueToServlet() {
+
     var selectedNameValue = document.getElementById('name').value;
     var selectedAppValue = document.getElementById("app").value;
     var selectedAssetValue = document.getElementById("asset").value;
@@ -205,6 +208,7 @@ function sendValueToServlet() {
     // AJAX 요청을 사용하여 서블릿에 값 전달
 
     debounce(function(){
+        showLoadingOverlay();
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "/productPromotionServlet", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -215,6 +219,7 @@ function sendValueToServlet() {
                 var elementValue = responseDoc.getElementById("resultContainer").innerHTML;
                 var totalPages = Math.ceil(responseDoc.getElementById("totalCount").value/10);
                 console.log(totalPages)
+                hideLoadingOverlay();
 // 모든 <input> 요소를 활성화
                 var inputElements = document.getElementsByTagName("input");
                 for (var i = 0; i < inputElements.length; i++) {
@@ -244,7 +249,6 @@ function sendValueToServlet() {
                 document.getElementById('getLocation').value =  selectedLocationValue ;
                 document.getElementById('getBranch').value = selectedBranchValue ;
                 const element = document.querySelector(".pagination ul");
-
                 let page = 1;
                 console.log(page);
                 //calling function with passing parameters and adding inside element which is ul tag
@@ -299,8 +303,8 @@ function sendValueToServlet() {
 
                     if(page < totalPages - 1){ //if page value is less than totalPage value by -1 then show the last li or page
                         if(page < totalPages - 2){ //if page value is less than totalPage value by -2 then add this (...) before the last li or page
-                            liTag += `<li class="dots"><span>...</span></li>`;
-                            liTag += `<li class="last numb" onclick="createPagination(${totalPages}, ${totalPages})"><span>${totalPages}</span></li>`;
+                            // liTag += `<li class="dots"><span>...</span></li>`;
+                            // liTag += `<li class="last numb" onclick="createPagination(${totalPages}, ${totalPages})"><span>${totalPages}</span></li>`;
                         }
                         if(totalPages>10) {
 
@@ -316,6 +320,7 @@ function sendValueToServlet() {
                 }
 
             }
+
         };
 
         // 전송할 데이터를 조합하여 한 번에 전송
@@ -376,6 +381,8 @@ function modifyMessage(values) {
 
 function createPagination(totalPages=20, page){
     const element = document.querySelector(".pagination ul");
+    showLoadingOverlay();
+
     element.innerHTML='로딩 중입니다.';
     let liTag = '';
     let active;
@@ -435,4 +442,14 @@ function createPagination(totalPages=20, page){
     // element.innerHTML = liTag;
     sendPageValueToServlet((page-1)*10,10,page)
     // return liTag;
+}
+function showLoadingOverlay() {
+    var loadingOverlay = document.getElementById('loading-overlay');
+    loadingOverlay.style.display = 'flex';
+}
+
+// 로딩창 숨기기
+function hideLoadingOverlay() {
+    var loadingOverlay = document.getElementById('loading-overlay');
+    loadingOverlay.style.display = 'none';
 }

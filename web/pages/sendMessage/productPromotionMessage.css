@@ -34,8 +34,8 @@
 .pagination ul li.numb{
     list-style: none;
     height: 45px;
-    width: 45px;
-    margin: 0 3px;
+    min-width: 45px;
+    margin: 0 1vw;
     line-height: 45px;
     border-radius: 50%;
 }
