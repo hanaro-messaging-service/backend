@@ -129,7 +129,7 @@ function sendPageValueToServlet(start,last,page) {
                             active = "";
                         }
                         if(plength>0)
-                        liTag += `<li class="numb ${active}" onclick="createPagination(${totalPages}, ${plength})"><span>${plength}</span></li>`;
+                            liTag += `<li class="numb ${active}" onclick="createPagination(${totalPages}, ${plength})"><span>${plength}</span></li>`;
                     }
 
                     if(page < totalPages - 1){ //if page value is less than totalPage value by -1 then show the last li or page
@@ -150,7 +150,7 @@ function sendPageValueToServlet(start,last,page) {
                     element.innerHTML = liTag; //add li tag inside ul tag
                     return liTag; //reurn the li tag
                 }
-            hideLoadingOverlay();
+                hideLoadingOverlay();
             }
         };
 
@@ -298,7 +298,7 @@ function sendValueToServlet() {
                             active = "";
                         }
                         if(plength>0)
-                        liTag += `<li class="numb ${active}" onclick="createPagination(${totalPages}, ${plength})"><span>${plength}</span></li>`;
+                            liTag += `<li class="numb ${active}" onclick="createPagination(${totalPages}, ${plength})"><span>${plength}</span></li>`;
                     }
 
                     if(page < totalPages - 1){ //if page value is less than totalPage value by -1 then show the last li or page
@@ -425,7 +425,7 @@ function createPagination(totalPages=20, page){
             active = "";
         }
         if(plength>0)
-        liTag += `<li class="numb ${active}" onclick="createPagination(${totalPages}, ${plength})"><span>${plength}</span></li>`;
+            liTag += `<li class="numb ${active}" onclick="createPagination(${totalPages}, ${plength})"><span>${plength}</span></li>`;
     }
 
     if(page < totalPages - 1){ //if page value is less than totalPage value by -1 then show the last li or page
