@@ -19,7 +19,6 @@ public class AppPromotionWriteServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.print("쓰기서블렛 오나");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String selectedManValue = request.getParameter("man");
@@ -36,7 +35,6 @@ public class AppPromotionWriteServlet extends HttpServlet {
         String mContentsValue = request.getParameter("mContents");
         Map<String, Object> map = new HashMap<>();
 
-        System.out.println(selectedNameValue);
         map.put("custNm", selectedNameValue);
         map.put("recLoginDate", selectedAppValue);
         map.put("asset", selectedAssetValue);

@@ -10,7 +10,7 @@ public class AccountDAO extends DBConnPool {
 
     public String selectAccountInfo(Map<String, Object> map) {
         String query = "SELECT c.* FROM com_acc_info a JOIN cust_info c ON a.custNo = c.custNo WHERE 1=1";
-        System.out.println("들어오긴하니 Account");
+
 
         if (map.containsKey("asset")) {
             String selectedPeriodValue = (String) map.get("asset");
@@ -27,13 +27,13 @@ public class AccountDAO extends DBConnPool {
                 query += " AND c.custNo IN (SELECT custNo FROM com_acc_info WHERE balance > 30000000)";
             }
         }
-        System.out.println((String) map.get("period"));
+
         if (map.containsKey("period")) {
             String selectedOpeningDate = (String) map.get("period");
             LocalDate currentDate = LocalDate.now();
             LocalDate startDate;
             LocalDate endDate;
-            System.out.println(selectedOpeningDate);
+
             if (selectedOpeningDate == null) {
 
             }
@@ -56,7 +56,7 @@ public class AccountDAO extends DBConnPool {
                     query += " AND a.openingDate >= '" + endDate + "' AND a.openingDate <= '" + startDate + "'";
                     return query;
                 } else {
-                    System.out.println(query);
+
                     return query;
                 }
                 query += " AND a.openingDate >= '" + startDate + "' AND a.openingDate <= '" + endDate + "'";
@@ -65,7 +65,7 @@ public class AccountDAO extends DBConnPool {
 
 
         }
-        System.out.println(query+"여기 어디");
+
         return query;
     }
 }

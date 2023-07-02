@@ -118,7 +118,7 @@
                         </div>
                         <div class="searchComponent-searchBar-list-key">이름</div>
                         <div class="searchComponent-searchBar-list-value">
-                            <input value="" type="text" id="name" oninput="sendValueToServlet(event.target.value)">
+                            <input name="name" value="" type="text" id="name" oninput="sendValueToServlet(event.target.value)">
                         </div>
                     </div>
                 </div>

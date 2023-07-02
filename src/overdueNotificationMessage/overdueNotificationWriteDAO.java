@@ -56,7 +56,7 @@ public class overdueNotificationWriteDAO extends DBConnPool {
             e.printStackTrace();
         }
         finally{
-            System.out.println("작성 DAO 완료");
+
             close();
         }
     }

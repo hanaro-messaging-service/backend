@@ -33,8 +33,6 @@ public class AppDAO extends DBConnPool {
             rs.next();
             totalCount = rs.getInt(1);
         } catch (Exception e) {
-            System.out.println("게시물 카운트 중 예외 발생");
-            e.printStackTrace();
         }
 
         return totalCount;

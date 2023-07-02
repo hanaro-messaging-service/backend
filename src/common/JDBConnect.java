@@ -26,8 +26,7 @@ public class JDBConnect {
             String id = application.getInitParameter("MySQLId");
             String pwd = application.getInitParameter("MySQLPwd");
             con = DriverManager.getConnection(url, id, pwd);
-            System.out.println(con);
-            System.out.println("DB 연결 성공(인수 생성자 2)");
+
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -42,7 +41,7 @@ public class JDBConnect {
             if (psmt != null) psmt.close();
             if (con != null) con.close();
 
-            System.out.println("JDBC 자원 해제");
+
         }
         catch (Exception e) {
             e.printStackTrace();

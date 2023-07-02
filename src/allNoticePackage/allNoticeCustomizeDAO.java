@@ -10,7 +10,7 @@ import java.util.List;
 public class allNoticeCustomizeDAO extends DBConnPool {
     public allNoticeCustomizeDAO() {super();}
     public List<allNoticeCustomizeDTO> selectMessage(){
-        System.out.println("전체 공지 CustomizeDAO");
+
         String query  = "SELECT * FROM all_noti_message"; // 쿼리 가져옴
         List<allNoticeCustomizeDTO> custInfos = new ArrayList<>();
         try {
@@ -29,11 +29,9 @@ public class allNoticeCustomizeDAO extends DBConnPool {
             }
 
         } catch (Exception e) {
-            System.out.println("고객 정보 조회 중 예외 발생");
             e.printStackTrace();
         }
         finally{
-            System.out.println("전체 공지 CustomizeDAO 끝");
             close();
         }
 

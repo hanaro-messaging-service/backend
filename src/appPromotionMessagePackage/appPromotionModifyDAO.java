@@ -17,7 +17,7 @@ public class appPromotionModifyDAO extends DBConnPool {
         if(man==null) man = "N";
         if(woman==null) woman="N";
         String gender = man+woman;
-        System.out.println(gender);
+
         String age = (String) map.get("age");
         String job = (String) map.get("job");
         String custGrade = (String) map.get("private");
@@ -28,7 +28,7 @@ public class appPromotionModifyDAO extends DBConnPool {
         String prodNm = (String)map.get("prodNm");
         String mContents = (String)map.get("mContents");
         String tableId = (String)map.get("tableId");
-        System.out.println("DAO"+tableId);
+
         String query = "UPDATE app_promo_message SET custNm = ?, gender = ?, age = ?, job = ?," +
                 "custGrade = ?, subTerm = ?, asset = ?, privacy = ?, recLoginDate = ?," +
                 "prodNm = ?, mContents = ? WHERE id = ?";
@@ -46,7 +46,7 @@ public class appPromotionModifyDAO extends DBConnPool {
             pstmt.setString(10,prodNm);
             pstmt.setString(11,mContents);
             pstmt.setString(12,tableId);
-            System.out.println(pstmt);
+
             pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

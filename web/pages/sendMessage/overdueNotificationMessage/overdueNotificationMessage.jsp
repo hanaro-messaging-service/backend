@@ -210,7 +210,7 @@
                     <tr  hidden="">
 
                         <td hidden="">
-                            보내는 사람 : <input type="text" name="from" value="hanaromessage@naver.com" />
+                            보내는 사람 : <input type="text" name="from" value="hanar0message2@naver.com" />
                         </td>
                     </tr>
 
@@ -268,14 +268,14 @@
                         if (pageInfos != null) {
                             for (overdueNotificationDTO custInfo : pageInfos) {
                                 count++;
-                                if (count > 10){ break;} // 트래픽 과다 방지용(10개만)
+
                     %>
                     <div class="listComponent-listbar">
 
 
                         <input hidden="" type="text" name="to" value="<%=custInfo.getEmail()%>" />
 
-                        <div class="listComponent-topbar-element bg-white">
+                        <div class="listComponent-topbar-elementMedium bg-white">
                             <%= custInfo.getCustNo() %>
                         </div>
                         <div class="listComponent-topbar-element bg-white">
@@ -299,7 +299,7 @@
                         <div class="listComponent-topbar-elementMedium bg-white">
                             <%= custInfo.getAsset()%>
                         </div>
-                        <div class="listComponent-topbar-elementBig bg-white">
+                        <div class="listComponent-topbar-elementMedium bg-white">
                             <%= custInfo.getPrivacy()%>
                         </div>
                         <div class="listComponent-topbar-elementBig bg-white">

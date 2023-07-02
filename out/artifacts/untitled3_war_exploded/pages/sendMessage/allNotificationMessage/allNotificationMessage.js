@@ -172,7 +172,7 @@ function sendValueToServlet() {
     var selectedLocationValue = document.getElementById('location').value;
     var prodNmValue = document.getElementById('prodNm').value;
     var mContentsValue = document.getElementById('mContents').value;
-    console.log(prodNmValue);
+    console.log(selectedNameValue);
 
     let sentence = "";
     console.log(selectedNameValue);
@@ -180,6 +180,7 @@ function sendValueToServlet() {
     sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("O") : "";
     sentence += selectedAgeValue !== "전체" ? "&selectedAgeValue=" + encodeURIComponent(selectedAgeValue) : "";
     sentence += selectedLocationValue ? "&selectedLocationValue=" + encodeURIComponent(selectedLocationValue) : "";
+    sentence += selectedNameValue ? "&selectedNameValue=" + encodeURIComponent(selectedNameValue) : "";
     sentence +="&selectedStartValue="+encodeURIComponent("0");
     sentence +="&selectedLastValue=" + encodeURIComponent("10");
     // AJAX 요청을 사용하여 서블릿에 값 전달

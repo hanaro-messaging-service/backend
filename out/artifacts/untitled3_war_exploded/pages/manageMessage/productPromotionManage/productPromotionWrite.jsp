@@ -104,17 +104,11 @@
                             <option value="3개월 이상">3개월</option>
                         </select>
                     </div>
-                    <div class="searchComponent-searchBar-list-key">가입 기간</div>
+                    <div class="searchComponent-searchBar-list-key">이름</div>
                     <div class="searchComponent-searchBar-list-value">
-                        <select name="period" id="period" onchange="sendValueToServlet(this.value)" >
-                            <option value="전체">전체</option>
-                            <option value="1년 미만">1년 미만</option>
-                            <option value="1년-3년">1년-3년</option>
-                            <option value="3년-5년">3년-5년</option>
-                            <option value="5년-10년">5년-10년</option>
-                            <option value="10년 이상">10년 이상</option>
-                        </select>
+                        <input value="" type="text" name="name" id="name" oninput="sendValueToServlet(event.target.value)">
                     </div>
+
                 </div>
                 <div class="searchComponent-searchBar-list">
                     <div class="searchComponent-searchBar-list-key">거주지</div>
@@ -134,10 +128,17 @@
                         <input name="branch" value="" type="text" id="branch" oninput="sendValueToServlet(event.target.value)">
                     </div>
                 </div>
-                <div class="searchComponent-searchBar-list">
-                    <div class="searchComponent-searchBar-list-key">이름</div>
+                <div class="searchComponent-searchBar-list" style="display:none">
+                    <div class="searchComponent-searchBar-list-key">가입 기간</div>
                     <div class="searchComponent-searchBar-list-value">
-                        <input value="" type="text" name="name" id="name" oninput="sendValueToServlet(event.target.value)">
+                        <select name="period" id="period" onchange="sendValueToServlet(this.value)" >
+                            <option value="전체">전체</option>
+                            <option value="1년 미만">1년 미만</option>
+                            <option value="1년-3년">1년-3년</option>
+                            <option value="3년-5년">3년-5년</option>
+                            <option value="5년-10년">5년-10년</option>
+                            <option value="10년 이상">10년 이상</option>
+                        </select>
                     </div>
                     <div class="searchComponent-searchBar-list-key">상품명</div>
                     <div class="searchComponent-searchBar-list-value">

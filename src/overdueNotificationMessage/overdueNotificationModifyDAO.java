@@ -39,7 +39,7 @@ public class overdueNotificationModifyDAO extends DBConnPool {
 //        String job = (String) map.get("job");
 //        String address = (String) map.get("address");
 //        String recLoginDate = (String) map.get("recLoginDate");
-        System.out.println("DAO"+tableId);
+
         String query = "UPDATE overdue_noti_message SET custNm = ?, gender = ?, custGrade = ?, creditRating = ?, age = ?," +
                 "subTerm = ?, asset = ?, privacy = ?, overdue = ?," +
                 "mContents = ?, mTitle = ? WHERE id = ?";
@@ -57,13 +57,13 @@ public class overdueNotificationModifyDAO extends DBConnPool {
             pstmt.setString(10, mContents);
             pstmt.setString(11, mTitle);
             pstmt.setString(12, tableId);
-            System.out.println(pstmt);
+
             pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
         finally{
-            System.out.println("ModifyDAO 완료");
+
             close();
         }
     }

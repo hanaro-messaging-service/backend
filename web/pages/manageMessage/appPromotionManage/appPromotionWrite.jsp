@@ -104,6 +104,13 @@
                                 <option value="3개월 이상">3개월</option>
                             </select>
                         </div>
+                        <div class="searchComponent-searchBar-list-key">이름</div>
+                        <div class="searchComponent-searchBar-list-value">
+                            <input value="" type="text" name="name" id="name" oninput="sendValueToServlet(event.target.value)">
+                        </div>
+                    </div>
+                    <div class="searchComponent-searchBar-list" style="display:none;">
+
                         <div class="searchComponent-searchBar-list-key">가입 기간</div>
                         <div class="searchComponent-searchBar-list-value">
                             <select name="period" id="period" onchange="sendValueToServlet(this.value)" >
@@ -114,12 +121,6 @@
                                 <option value="5년-10년">5년-10년</option>
                                 <option value="10년 이상">10년 이상</option>
                             </select>
-                        </div>
-                    </div>
-                    <div class="searchComponent-searchBar-list">
-                        <div class="searchComponent-searchBar-list-key">이름</div>
-                        <div class="searchComponent-searchBar-list-value">
-                            <input value="" type="text" name="name" id="name" oninput="sendValueToServlet(event.target.value)">
                         </div>
                         <div class="searchComponent-searchBar-list-key">상품명</div>
                         <div class="searchComponent-searchBar-list-value">
