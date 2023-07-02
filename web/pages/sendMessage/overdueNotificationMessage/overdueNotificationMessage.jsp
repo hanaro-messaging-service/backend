@@ -191,7 +191,7 @@
             </div>
         </div>
         <div id="resultContainer" class="listComponent2">
-            <form method="post" action="/pages/email/overdueNotificationSendEmail/overdueNotificationSendEmail.jsp" style="width:100%; display:flex; flex-direction: column; justify-content: center; align-items: center;" >
+            <form method="post" action="/pages/email/overdueNotificationSendEmail/overdueNotificationSendEmail.jsp" onsubmit="return validateForm()" style="width:100%; display:flex; flex-direction: column; justify-content: center; align-items: center;" >
 
                 <%  int count = 0;
                     if(request.getAttribute("custInfos")!=null) {

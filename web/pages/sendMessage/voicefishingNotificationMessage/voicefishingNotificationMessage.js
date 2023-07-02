@@ -381,3 +381,37 @@ function hideLoadingOverlay() {
     var loadingOverlay = document.getElementById('loading-overlay');
     loadingOverlay.style.display = 'none';
 }
+function validateForm() {
+    var title = document.querySelector('input[name="prodNm"]');
+    var content = document.querySelector('textarea[name="mContents"]');
+    if (title.value.trim() === '') {
+        setTimeout(function() {
+            alert('메시지 제목을 입력해주세요.'); // 작은 알림창 표시
+            title.focus(); // 포커스를 제목 필드로 이동
+        }, 0);
+        return false; // 폼 제출을 막음
+    }
+    if (content.value.trim() === '') {
+        setTimeout(function() {
+            alert('메시지 내용을 입력해주세요.'); // 작은 알림창 표시
+            content.focus(); // 포커스를 내용 필드로 이동
+        }, 0);
+        return false; // 폼 제출을 막음
+    }
+    if (title.value.length > 10) {
+        setTimeout(function() {
+            alert('메시지 제목은 10자 이하여야 합니다.'); // 작은 알림창 표시
+            title.focus(); // 포커스를 내용 필드로 이동
+        }, 0);
+        return false; // 폼 제출을 막음
+    }
+    if (content.value.length > 700) {
+        setTimeout(function() {
+            alert('메시지 내용은 700자 이하여야 합니다.'); // 작은 알림창 표시
+            content.focus(); // 포커스를 내용 필드로 이동
+        }, 0);
+        return false; // 폼 제출을 막음
+    }
+    console.log('폼이 유효합니다. 저장 버튼 동작 수행');
+    return true; // 폼 제출을 허용
+}
