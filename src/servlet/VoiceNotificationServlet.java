@@ -52,14 +52,24 @@ public class VoiceNotificationServlet extends HttpServlet {
         pageMap.put("last",selectedLastValue);
         System.out.println("start"+selectedStartValue);
         System.out.println("last"+selectedLastValue);
-
-        // Set the response content type and encoding
         voicefishingNotificationDAO dao = new voicefishingNotificationDAO();
-        int custInfos = dao.selectMessage(map);
-        voicefishingNotificationDAO pageDao = new voicefishingNotificationDAO();
-        List<voicefishingNotificationDTO> pageInfos = pageDao.selectPaginatedMessage(pageMap);
-        request.setAttribute("custInfos", custInfos);
-        request.setAttribute("pageInfos", pageInfos);
+        if(Integer.parseInt(selectedStartValue) != 0) {
+            voicefishingNotificationDAO pageDao = new voicefishingNotificationDAO();
+            List<voicefishingNotificationDTO> pageInfos = pageDao.selectPaginatedMessage(pageMap);
+            request.setAttribute("pageInfos", pageInfos);
+            int a = Integer.parseInt(request.getParameter("totalPages"));
+            request.setAttribute("custInfos",a);
+        }
+        else {
+            System.out.println("custInfos들어오니");
+            int custInfos = dao.selectMessage(map);
+            voicefishingNotificationDAO pageDao = new voicefishingNotificationDAO();
+            List<voicefishingNotificationDTO> pageInfos = pageDao.selectPaginatedMessage(pageMap);
+            request.setAttribute("custInfos", custInfos);
+            request.setAttribute("pageInfos", pageInfos);
+        }
+        // Set the response content type and encoding
+
         request.getRequestDispatcher("/pages/sendMessage/voicefishingNotificationMessage/voicefishingNotificationMessage.jsp").forward(request,response);
     }
 }

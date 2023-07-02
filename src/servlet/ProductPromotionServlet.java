@@ -52,8 +52,7 @@ public class ProductPromotionServlet extends HttpServlet {
         map.put("period", selectedPeriodValue);
         map.put("branch",selectedBranchValue);
         map.put("address",selectedLocationValue);
-        map.put("start",selectedStartValue);
-        map.put("last",selectedLastValue);
+
 
         pageMap.put("custNm", selectedNameValue);
         pageMap.put("recLoginDate", selectedAppValue);
@@ -76,11 +75,25 @@ public class ProductPromotionServlet extends HttpServlet {
         if(!pageMap.isEmpty()){
 
         }
-        int custInfos = dao.selectMessage(map);
-        productPromotionMessageDAO pageDao = new productPromotionMessageDAO();
-        List<productPromotionMessageDTO> pageInfos = pageDao.selectPaginatedMessage(pageMap);
-        request.setAttribute("custInfos", custInfos);
-        request.setAttribute("pageInfos", pageInfos);
+        System.out.println("selectedStartValue"+selectedStartValue);
+        if(Integer.parseInt(selectedStartValue) != 0) {
+            productPromotionMessageDAO pageDao = new productPromotionMessageDAO();
+            List<productPromotionMessageDTO> pageInfos = pageDao.selectPaginatedMessage(pageMap);
+            request.setAttribute("pageInfos", pageInfos);
+            int a = Integer.parseInt(request.getParameter("totalPages"));
+            request.setAttribute("custInfos",a);
+        }
+        else {
+           System.out.println("custInfos들어오니");
+            int custInfos = dao.selectMessage(map);
+            productPromotionMessageDAO pageDao = new productPromotionMessageDAO();
+            List<productPromotionMessageDTO> pageInfos = pageDao.selectPaginatedMessage(pageMap);
+            request.setAttribute("pageInfos", pageInfos);
+            request.setAttribute("custInfos", custInfos);
+        }
+
+
+
         request.getRequestDispatcher("/pages/sendMessage/productPromotionMessage.jsp").forward(request,response);
     }
 }

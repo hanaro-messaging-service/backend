@@ -15,13 +15,12 @@ function sendPageValueToServlet(start,last,page) {
     var selectedJobValue = document.getElementById("job").value;
     var selectedPrivateValue = document.getElementById("private").value;
     var selectedAgeValue = document.getElementById("age").value;
-    var selectedPeriodValue = document.getElementById('period').value;
     var selectedLocationValue = document.getElementById('location').value;
     var selectedBranchValue = document.getElementById('branch').value;
     var prodNmValue = document.getElementById('prodNm').value;
     var mContentsValue = document.getElementById('mContents').value;
     let sentence = "";
-    console.log(selectedNameValue);
+    console.log(document.getElementById('totalCount').value+"totalcount");
     sentence += selectedCheckBoxManValue.checked ? "&selectedManValue=" + encodeURIComponent("M") : "";
     sentence += selectedCheckBoxWomanValue.checked ? "&selectedWomanValue="+ encodeURIComponent("F") : "";
     sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("O") : "";
@@ -36,6 +35,7 @@ function sendPageValueToServlet(start,last,page) {
     sentence += selectedBranchValue ? "&selectedBranchValue=" + encodeURIComponent(selectedBranchValue) : "";
     sentence +="&selectedStartValue="+encodeURIComponent(start);
     sentence +="&selectedLastValue=" + encodeURIComponent(last);
+    sentence +="&totalPages=" +  document.getElementById('totalCount').value;
 
     // AJAX 요청을 사용하여 서블릿에 값 전달
 
@@ -126,15 +126,17 @@ function sendPageValueToServlet(start,last,page) {
                         }else{ //else leave empty to the active variable
                             active = "";
                         }
+                        if(plength>0)
                         liTag += `<li class="numb ${active}" onclick="createPagination(${totalPages}, ${plength})"><span>${plength}</span></li>`;
                     }
 
                     if(page < totalPages - 1){ //if page value is less than totalPage value by -1 then show the last li or page
                         if(page < totalPages - 2){ //if page value is less than totalPage value by -2 then add this (...) before the last li or page
                             liTag += `<li class="dots"><span>...</span></li>`;
+                            liTag += `<li class="last numb" onclick="createPagination(${totalPages}, ${totalPages})"><span>${totalPages}</span></li>`;
                         }
                         if(totalPages > 10) {
-                            liTag += `<li class="last numb" onclick="createPagination(${totalPages}, ${totalPages})"><span>${totalPages}</span></li>`;
+
                         }
 
                     }
@@ -291,15 +293,17 @@ function sendValueToServlet() {
                         }else{ //else leave empty to the active variable
                             active = "";
                         }
+                        if(plength>0)
                         liTag += `<li class="numb ${active}" onclick="createPagination(${totalPages}, ${plength})"><span>${plength}</span></li>`;
                     }
 
                     if(page < totalPages - 1){ //if page value is less than totalPage value by -1 then show the last li or page
                         if(page < totalPages - 2){ //if page value is less than totalPage value by -2 then add this (...) before the last li or page
                             liTag += `<li class="dots"><span>...</span></li>`;
+                            liTag += `<li class="last numb" onclick="createPagination(${totalPages}, ${totalPages})"><span>${totalPages}</span></li>`;
                         }
                         if(totalPages>10) {
-                            liTag += `<li class="last numb" onclick="createPagination(${totalPages}, ${totalPages})"><span>${totalPages}</span></li>`;
+
                         }
 
                     }
@@ -372,6 +376,7 @@ function modifyMessage(values) {
 
 function createPagination(totalPages=20, page){
     const element = document.querySelector(".pagination ul");
+    element.innerHTML='로딩 중입니다.';
     let liTag = '';
     let active;
     let beforePage = page - 1;
@@ -412,6 +417,7 @@ function createPagination(totalPages=20, page){
         }else{ //else leave empty to the active variable
             active = "";
         }
+        if(plength>0)
         liTag += `<li class="numb ${active}" onclick="createPagination(${totalPages}, ${plength})"><span>${plength}</span></li>`;
     }
 
@@ -426,7 +432,7 @@ function createPagination(totalPages=20, page){
 
         liTag += `<li class="btn next" onclick="createPagination(totalPages, ${page + 1})"><span>Next <i class="fas fa-angle-right"></i></span></li>`;
     }
-    element.innerHTML = liTag; //add li tag inside ul tag
+    // element.innerHTML = liTag;
     sendPageValueToServlet((page-1)*10,10,page)
     // return liTag;
 }

@@ -36,6 +36,8 @@ public class OverdueNotificationServlet extends HttpServlet {
         String selectedAssetValue = request.getParameter("selectedAssetValue");
         String selectedLocationValue = request.getParameter("selectedLocationValue");
         String selectedBranchValue = request.getParameter("selectedBranchValue");
+        String selectedStartValue = request.getParameter("selectedStartValue");
+        String selectedLastValue = request.getParameter("selectedLastValue");
         System.out.println(selectedPrivateValue);
 
         String selectedCreditValue = request.getParameter("selectedCreditRatingValue");
@@ -44,6 +46,7 @@ public class OverdueNotificationServlet extends HttpServlet {
 
         // Process the data as required
         Map<String, Object> map = new HashMap<>();
+        Map<String, Object> pageMap = new HashMap<>();
         map.put("custNm", selectedNameValue);
         map.put("asset", selectedAssetValue);
         map.put("man", selectedManValue);
@@ -59,11 +62,39 @@ public class OverdueNotificationServlet extends HttpServlet {
         map.put("overdueNo", selectedOverdueNoValue);
         map.put("location", selectedLocationValue);
 
+        pageMap.put("custNm", selectedNameValue);
+        pageMap.put("asset", selectedAssetValue);
+        pageMap.put("man", selectedManValue);
+        pageMap.put("woman", selectedWomanValue);
+        pageMap.put("age", selectedAgeValue);
+        pageMap.put("privacyYes", selectedPrivacyYesValue);
+        pageMap.put("job", selectedJobValue);
+        pageMap.put("custGrade", selectedPrivateValue); // 고객등급(custGrade)
+        pageMap.put("period", selectedPeriodValue);
+        pageMap.put("branch",selectedBranchValue);
+        pageMap.put("creditRating", selectedCreditValue); // 신용등급(custRating)
+        pageMap.put("overdueYes", selectedOverdueYesValue);
+        pageMap.put("overdueNo", selectedOverdueNoValue);
+        pageMap.put("location", selectedLocationValue);
+        pageMap.put("start",selectedStartValue);
+        pageMap.put("last",selectedLastValue);
         // Set the response content type and encoding
         overdueNotificationDAO dao = new overdueNotificationDAO();
-        List<overdueNotificationDTO> custInfos = dao.selectMessage(map);
-        System.out.println("OverdueNotificationServlet 종료");
-        request.setAttribute("pageInfos", custInfos);
+        if(Integer.parseInt(selectedStartValue) != 0) {
+            overdueNotificationDAO pageDao = new overdueNotificationDAO();
+            List<overdueNotificationDTO> pageInfos = pageDao.selectPaginatedMessage(pageMap);
+            request.setAttribute("pageInfos",pageInfos);
+            int a = Integer.parseInt(request.getParameter("totalPages"));
+            request.setAttribute("custInfos",a);
+        }
+        else{
+            int custInfos = dao.selectMessage(map);
+            overdueNotificationDAO pageDao = new overdueNotificationDAO();
+            List<overdueNotificationDTO> pageInfos = pageDao.selectPaginatedMessage(pageMap);
+            request.setAttribute("pageInfos", pageInfos);
+            request.setAttribute("custInfos", custInfos);
+        }
+
         request.getRequestDispatcher("pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp").forward(request,response); // 상대주소로 변경 완료
     }
 }

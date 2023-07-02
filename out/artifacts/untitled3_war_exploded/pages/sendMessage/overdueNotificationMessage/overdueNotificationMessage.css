@@ -2,6 +2,65 @@
     margin:0;
     padding:0;
 }
+.paginationContainer{
+    width:100%;
+    display:flex;
+    justify-content: center;
+}
+.pagination{
+    margin-bottom:5vh;
+    margin-top:1vh;
+}
+.pagination ul{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background: #fff;
+    padding: 8px;
+    border-radius: 50px;
+    box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+}
+.pagination ul li{
+    color: #20B2AA;
+    list-style: none;
+    line-height: 45px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease;
+}
+.pagination ul li.numb{
+    list-style: none;
+    height: 45px;
+    width: 45px;
+    margin: 0 3px;
+    line-height: 45px;
+    border-radius: 50%;
+}
+.pagination ul li.numb.first{
+    margin: 0px 3px 0 -5px;
+}
+.pagination ul li.numb.last{
+    margin: 0px -5px 0 3px;
+}
+.pagination ul li.dots{
+    font-size: 22px;
+    cursor: default;
+}
+.pagination ul li.btn{
+    padding: 0 20px;
+    border-radius: 50px;
+}
+.pagination li.active,
+.pagination ul li.numb:hover,
+.pagination ul li:first-child:hover,
+.pagination ul li:last-child:hover{
+    color: #fff;
+    background: #20B2AA;
+}
+
 a{
     text-decoration: none;
 
@@ -11,8 +70,10 @@ header {
     height: 10vh;
 }
 main {
+    margin-top:2vh;
     display:flex;
     height:100vh;
+    margin-bottom:5vh;
 }
 .sidebar{
 
@@ -66,10 +127,11 @@ main {
 }
 .searchComponent{
     width:100%;
-    height:30vh;
+    height:auto;
     display:flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom:3vh;
 }
 .searchComponent-topBar {
     width:90%;
@@ -103,6 +165,7 @@ main {
     color:white;
     border-radius:5px;
 }
+
 .searchComponent-searchBar{
     width:90%;
     height: auto;
@@ -130,7 +193,6 @@ main {
     border: #d5c9c9 1px solid;
     border-radius:5px;
     font-size: 0.9rem;
-
 }
 .searchComponent-searchBar-list-value > select {
     width:45%;
@@ -147,22 +209,33 @@ main {
     margin-right:0.5vw;
 }
 .listComponent{
-    margin-top: 3vh;
-    /*margin-right: 10vw;*/
-    width:95%;
-    height:65vh;
+    margin-top:1vh;
+    width:90%;
+    height:auto;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-
+}
+.listComponent2{
+    margin-top:1vh;
+    width:100%;
+    height:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .listComponent-topbar {
+
+    width:100%;
     display:flex;
     height:3vh;
-    align-items: center;
 
 }
 .listComponent-listbar {
     margin-top:2px;
+    width:100%;
     display:flex;
     height:3vh;
     align-items: center;
@@ -172,7 +245,7 @@ main {
     align-items: center;
     justify-content: center;
     color:white;
-    width:6%;
+    width:5%;
     background-color: #008485;
     height:3vh;
     font-size: 0.7rem;
@@ -183,7 +256,7 @@ main {
     align-items: center;
     justify-content: center;
     color:white;
-    width:7%;
+    width:9%;
     background-color: #008485;
     height:3vh;
     font-size: 0.7rem;
@@ -194,7 +267,18 @@ main {
     align-items: center;
     justify-content: center;
     color:white;
-    width:14%;
+    width:14.5%;
+    background-color: #008485;
+    height:3vh;
+    font-size: 0.7rem;
+    border:1px solid darkgray;
+}
+.listComponent-topbar-elementVeryBig{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    width:15%;
     background-color: #008485;
     height:3vh;
     font-size: 0.7rem;
@@ -215,19 +299,19 @@ main {
     border:1px solid darkgray;
 }
 .myMessage{
-    margin-top:2vh;
     display:flex;
     width:90%;
     height:4vh;
     align-items:center;
     justify-content: space-between;
 }
-.myMessage-list{
+.myMessage-list {
     width: 80%;
     height:100%;
     display: flex;
 }
-.myMessage-list-element{
+
+.myMessage-list-element {
     display: flex;
     align-items: center;
     width: auto;
@@ -236,4 +320,26 @@ main {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+}
+
+.mainComponent-messageList-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    height:4vh;
+
+    background-color: white;
+    border: 1px solid #008485;
+    margin-right:5%;
+    border-radius: 5px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    cursor:pointer;
+}
+
+.mainComponent-messageList-title::after {
+    content: "...";
 }

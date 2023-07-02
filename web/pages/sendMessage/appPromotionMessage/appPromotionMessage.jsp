@@ -23,10 +23,10 @@
     %>
     <div class="searchComponent">
       <div class="searchComponent-topBar">
-        <div class="searchComponent-topBar-left">메세지 전송</div>
+        <div class="searchComponent-topBar-left">어플 프로모션 메시지 전송</div>
 
       </div>
-      <div class="searchComponent-titleBar">수신 상품 프로모션 메시지</div>
+      <div class="searchComponent-titleBar">어플 프로모션 메시지</div>
       <div class="searchComponent-searchBar">
         <div class="searchComponent-searchBar-list">
           <div class="searchComponent-searchBar-list-key">성별</div>
@@ -106,40 +106,23 @@
               <option value="3개월 이상">3개월</option>
             </select>
           </div>
-          <div class="searchComponent-searchBar-list-key">가입 기간</div>
-          <div class="searchComponent-searchBar-list-value">
-            <select name="period" id="period" onchange="sendValueToServlet(this.value)" >
-              <option value="전체">전체</option>
-              <option value="1년 미만">1년 미만</option>
-              <option value="1년-3년">1년-3년</option>
-              <option value="3년-5년">3년-5년</option>
-              <option value="5년-10년">5년-10년</option>
-              <option value="10년 이상">10년 이상</option>
-            </select>
-          </div>
-        </div>
-        <div class="searchComponent-searchBar-list">
           <div class="searchComponent-searchBar-list-key">이름</div>
           <div class="searchComponent-searchBar-list-value">
             <input value="" type="text" id="name" oninput="sendValueToServlet(event.target.value)">
-          </div>
-          <div class="searchComponent-searchBar-list-key">상품명</div>
-          <div class="searchComponent-searchBar-list-value">
-            <select name="period" id="where2" onchange="sendValueToServlet(this.value)" >
-              <option value="전체">전체</option>
-              <option value="1년 미만">1년 미만</option>
-              <option value="1년-3년">1년-3년</option>
-              <option value="3년-5년">3년-5년</option>
-              <option value="5년-10년">5년-10년</option>
-              <option value="10년 이상">10년 이상</option>
-            </select>
           </div>
         </div>
 
       </div>
 
     </div>
-
+    <select name="period" id="period" onchange="sendValueToServlet(this.value)" hidden="" >
+      <option value="전체">전체</option>
+      <option value="1년 미만">1년 미만</option>
+      <option value="1년-3년">1년-3년</option>
+      <option value="3년-5년">3년-5년</option>
+      <option value="5년-10년">5년-10년</option>
+      <option value="10년 이상">10년 이상</option>
+    </select>
     <div class="myMessage">
       <div style="width:15%;height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
                             align-items:center; color:white;">마이메세지</div>
@@ -237,7 +220,7 @@
 
           </div>
           <div style="display:flex; width:90%; justify-content: flex-end; margin-top:1vh;">
-            <button style="width:15%; height:4vh; background:white; border:1px solid #cccccc;" type="submit">전송하기</button>
+            <button style="cursor: pointer; width:15%; height:4vh; background:white; border:1px solid #cccccc;" type="submit">전송하기</button>
           </div>
         </table>
 
@@ -248,7 +231,7 @@
             <div class="listComponent-topbar-element">나이</div>
             <div class="listComponent-topbar-elementMedium">직업</div>
             <div class="listComponent-topbar-element">고객등급</div>
-            <div class="listComponent-topbar-elementMedium">가입기간</div>
+            <div class="listComponent-topbar-elementMedium" style="display: none;">가입기간</div>
             <div class="listComponent-topbar-elementMedium">자산</div>
             <div class="listComponent-topbar-elementMedium">개인정보동의</div>
             <div class="listComponent-topbar-elementBig">어플접속일</div>
@@ -280,7 +263,7 @@
             <div class="listComponent-topbar-element bg-white">
               <%= custInfo.getCustGrade()%>
             </div>
-            <div class="listComponent-topbar-elementMedium bg-white">
+            <div class="listComponent-topbar-elementMedium bg-white" style="display: none;">
               <%= custInfo.getSubTerm()%>
             </div>
             <div class="listComponent-topbar-elementMedium bg-white">
@@ -299,36 +282,32 @@
           </div>
 
           <%  } %>
-          <div style="display:flex">
+          <div style="display:flex; width:100%; flex-wrap:wrap;">
             <%  if(request.getAttribute("custInfos")!=null) {
               int custInfos = (int) request.getAttribute("custInfos");
               int pageCount = 0;
               int pageLength = custInfos/10+1;
 
-
-              for (int i = 0; i<pageLength; i++) {
-
             %>
-            <div onclick="sendPageValueToServlet(<%=(pageCount)*10%>,<%=10%>)">
-              <%= pageCount+1%>
+            <input hidden="" value="<%=custInfos%>" id="totalCount"/>
+            <input hidden="" value="<%=custInfos%>" name="counts">
+            <div class="paginationContainer">
+              <div class="pagination">
+                <ul> <!--pages or li are comes from javascript --> </ul>
+              </div>
             </div>
+
             <%
-                  pageCount++;
-                }
+
               }
             %>
           </div>
-          <input hidden="" value="<%=pageInfos.size()%>" name="counts">
+
           <%
             }
           %>
-          <%
-
-          %>
-          <div>
 
 
-          </div>
 
           <input hidden="" id="getName"  name="name">
           <input hidden="" id="getApp"   name="app">
@@ -347,10 +326,6 @@
     </div>
   </section>
 </main>
-
-<script>
-
-</script>
 
 
 </body>
