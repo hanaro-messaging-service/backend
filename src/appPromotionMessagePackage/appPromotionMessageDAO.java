@@ -56,7 +56,6 @@ public class appPromotionMessageDAO extends DBConnPool {
                 "FROM " +
                 "cust_info " +
                 "JOIN com_acc_info ON cust_info.custNo = com_acc_info.custNo " +
-                "JOIN app_info ON cust_info.custNo = app_info.custNo " +
                 "WHERE " +
                 "1=1";
 
@@ -110,11 +109,10 @@ public class appPromotionMessageDAO extends DBConnPool {
                 "cust_info.email, " +
                 "com_acc_info.balance, " +
                 "com_acc_info.openingDate, " +
-                "app_info.recLoginDate " +
+                "cust_info.recLoginDate " +
                 "FROM " +
                 "cust_info " +
                 "JOIN com_acc_info ON cust_info.custNo = com_acc_info.custNo " +
-                "JOIN app_info ON cust_info.custNo = app_info.custNo " +
                 "WHERE " +
                 "1=1";
         String custNm = (String) map.get("custNm");

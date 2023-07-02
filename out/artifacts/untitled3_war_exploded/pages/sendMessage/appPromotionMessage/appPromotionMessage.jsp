@@ -9,6 +9,8 @@
   <title>하나로 메세지</title>
   <link rel="stylesheet" href="/pages/sendMessage/appPromotionMessage/appPromotionMessage.css" >
   <script src="/pages/sendMessage/appPromotionMessage/appPromotionMessage.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </head>
 <body>
 <jsp:include page="/components/header.jsp" />
@@ -16,6 +18,36 @@
 <main>
   <jsp:include page="/components/sidebar.jsp" />
   <section class="mainComponent">
+    <div style="
+   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;" id="loading-overlay">
+      <div style="display:flex;">
+
+        <div class="spinner-grow " style="width:5rem;height:5rem;margin-right:5rem;" role="status">
+
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow" style="width:5rem;height:5rem; margin-right:5rem;" role="status">
+
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow" style="width:5rem;height:5rem" role="status">
+
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      <div style="font-size:3rem; font-weight: bold; color:white; margin-top:2vh;">로딩중입니다..잠시만 기다려주세요!</div>
+    </div>
     <%
       appPromotionCustomizeDAO dao = new appPromotionCustomizeDAO();
       List<appPromotionCustomizeDTO> infos = dao.selectMessage();
@@ -289,8 +321,9 @@
               int pageLength = custInfos/10+1;
 
             %>
-            <input hidden="" value="<%=custInfos%>" id="totalCount"/>
+            <input hidden="" value="<%=custInfos%>" id="totalCount"개>
             <input hidden="" value="<%=custInfos%>" name="counts">
+            <div style="display: flex;justify-content: center;font-weight: bold; align-items: center; background-color:#008485; color:white; width:15vw; height:4vh;">총 조회수: <%=custInfos%></div>
             <div class="paginationContainer">
               <div class="pagination">
                 <ul> <!--pages or li are comes from javascript --> </ul>

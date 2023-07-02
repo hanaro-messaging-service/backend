@@ -55,7 +55,6 @@ public class voicefishingNotificationDAO extends DBConnPool {
                 "FROM " +
                 "cust_info " +
                 "JOIN com_acc_info ON cust_info.custNo = com_acc_info.custNo " +
-                "JOIN app_info ON cust_info.custNo = app_info.custNo " +
                 "WHERE " +
                 "1=1";
 

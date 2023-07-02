@@ -40,6 +40,7 @@ function sendPageValueToServlet(start, last,page) {
     // AJAX 요청을 사용하여 서블릿에 값 전달
 
     debounce(function(){
+
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "/OverdueNotificationServlet", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -129,8 +130,8 @@ function sendPageValueToServlet(start, last,page) {
 
                     if(page < totalPages - 1){ //if page value is less than totalPage value by -1 then show the last li or page
                         if(page < totalPages - 2){ //if page value is less than totalPage value by -2 then add this (...) before the last li or page
-                            liTag += `<li class="dots"><span>...</span></li>`;
-                            liTag += `<li class="last numb" onclick="createPagination(${totalPages}, ${totalPages})"><span>${totalPages}</span></li>`;
+                            // liTag += `<li class="dots"><span>...</span></li>`;
+                            // liTag += `<li class="last numb" onclick="createPagination(${totalPages}, ${totalPages})"><span>${totalPages}</span></li>`;
                         }
                         if(totalPages > 10) {
 
@@ -145,7 +146,7 @@ function sendPageValueToServlet(start, last,page) {
                     element.innerHTML = liTag; //add li tag inside ul tag
                     return liTag; //reurn the li tag
                 }
-
+                hideLoadingOverlay();
                 // document.getElementById('getPeriod').value = selectedPeriodValue ;
                 // document.getElementById('getLocation').value =  selectedLocationValue ;
                 // document.getElementById('getBranch').value = selectedBranchValue ;
@@ -214,6 +215,7 @@ function sendValueToServlet() {
     // AJAX 요청을 사용하여 서블릿에 값 전달
 
     debounce(function(){
+        showLoadingOverlay();
         console.log("debounce");
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "/OverdueNotificationServlet", true);
@@ -225,6 +227,7 @@ function sendValueToServlet() {
                 var elementValue = responseDoc.getElementById("resultContainer").innerHTML;
                 var totalPages = Math.ceil(responseDoc.getElementById("totalCount").value/10);
                 console.log(totalPages)
+                hideLoadingOverlay();
 // 모든 <input> 요소를 활성화
                 var inputElements = document.getElementsByTagName("input");
                 for (var i = 0; i < inputElements.length; i++) {
@@ -308,8 +311,8 @@ function sendValueToServlet() {
 
                     if(page < totalPages - 1){ //if page value is less than totalPage value by -1 then show the last li or page
                         if(page < totalPages - 2){ //if page value is less than totalPage value by -2 then add this (...) before the last li or page
-                            liTag += `<li class="dots"><span>...</span></li>`;
-                            liTag += `<li class="last numb" onclick="createPagination(${totalPages}, ${totalPages})"><span>${totalPages}</span></li>`;
+                            // liTag += `<li class="dots"><span>...</span></li>`;
+                            // liTag += `<li class="last numb" onclick="createPagination(${totalPages}, ${totalPages})"><span>${totalPages}</span></li>`;
                         }
                         if(totalPages>10) {
 
@@ -385,6 +388,7 @@ function modifyMessage(values) {
 }
 function createPagination(totalPages=20, page){
     const element = document.querySelector(".pagination ul");
+    showLoadingOverlay();
     element.innerHTML='로딩 중입니다.';
     let liTag = '';
     let active;
@@ -444,4 +448,14 @@ function createPagination(totalPages=20, page){
     // element.innerHTML = liTag;
     sendPageValueToServlet((page-1)*10,10,page)
     // return liTag;
+}
+function showLoadingOverlay() {
+    var loadingOverlay = document.getElementById('loading-overlay');
+    loadingOverlay.style.display = 'flex';
+}
+
+// 로딩창 숨기기
+function hideLoadingOverlay() {
+    var loadingOverlay = document.getElementById('loading-overlay');
+    loadingOverlay.style.display = 'none';
 }
