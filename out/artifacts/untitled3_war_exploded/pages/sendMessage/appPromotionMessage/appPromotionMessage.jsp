@@ -321,7 +321,7 @@
               int pageLength = custInfos/10+1;
 
             %>
-            <input hidden="" value="<%=custInfos%>" id="totalCount"개>
+            <input hidden="" value="<%=custInfos%>" id="totalCount">
             <input hidden="" value="<%=custInfos%>" name="counts">
             <div style="display: flex;justify-content: center;font-weight: bold; align-items: center; background-color:#008485; color:white; width:15vw; height:4vh;">총 조회수: <%=custInfos%></div>
             <div class="paginationContainer">
