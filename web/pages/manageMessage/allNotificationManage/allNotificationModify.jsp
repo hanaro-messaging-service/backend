@@ -128,7 +128,6 @@
             }, 0);
             return false; // 폼 제출을 막음
         }
-        console.log('폼이 유효합니다. 저장 버튼 동작 수행');
         return true; // 폼 제출을 허용
     }
 </script>

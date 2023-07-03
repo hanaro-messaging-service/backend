@@ -142,7 +142,6 @@
         prodDateArray.push(outputDateString);
         prodCountArray.push(prodCount[i].innerHTML);
     }
-    console.log(prodDateArray)
     var voice = document.getElementById("voiceChart").getContext('2d');
     var voiceDate = document.getElementsByClassName('voiceDate');
     var voiceCount = document.getElementsByClassName('voiceCount');
@@ -184,7 +183,6 @@
     var over = document.getElementById("overChart").getContext('2d');
     var overDate = document.getElementsByClassName('overdueDate');
     var overCount = document.getElementsByClassName('overdueCount');
-    console.log(overDate,overCount);
     let overDateArray = [];
     let overCountArray = [];
     for (let i = 0; i < overDate.length; i++) {
@@ -200,15 +198,14 @@
         overDateArray.push(outputDateString);
         overCountArray.push(overCount[i].innerHTML);
     }
-    console.log(overDateArray,overCountArray.reduce((acc,cur)=>Number(acc)+Number(cur)))
 
     data = {
         datasets: [{
-            backgroundColor: ['#008485','#6878ad','#b0eaeb','#f0aaed','skyblue'],
+            backgroundColor: ['#008485','#6878ad','#b0eaeb','#f0aaed'],
             data: [prodCountArray.reduce((acc,cur)=>Number(acc)+Number(cur)),voiceCountArray.reduce((acc,cur)=>Number(acc)+Number(cur)),appCountArray.reduce((acc,cur)=>Number(acc)+Number(cur)),overCountArray.reduce((acc,cur)=>Number(acc)+Number(cur)),50]
         }],
         // 라벨의 이름이 툴팁처럼 마우스가 근처에 오면 나타남
-        labels: ['수신 상품 프로모션','보이스피싱 예방 관리','어플 프로모션','상환 관리 안내','전체안내']
+        labels: ['수신 상품 프로모션','보이스피싱 예방 관리','어플 프로모션','상환 관리 안내']
     };
 
     // 가운데 구멍이 없는 파이형 차트

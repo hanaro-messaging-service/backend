@@ -55,8 +55,8 @@
                     ])">
                 <div class="messageComponent-title bg_white col_black bd_green">
                     <% String title2 = message.getTitle();
-                        if (title2 != null && title2.length() > 25) {
-                            title2 = title2.substring(0, 25)+"...";
+                        if (title2 != null && title2.length() > 20) {
+                            title2 = title2.substring(0, 20)+"...";
                         }
                     %>
                     <%= title2 %>
@@ -65,8 +65,8 @@
                 <div class="messageComponent-date bg_white col_black bd_green"><%= message.getTime() %></div>
                 <div class="messageComponent-count bg_white col_black bd_green"><%= message.getCounts() %></div>
                 <div class="messageComponent-content bg_white col_black bd_green"><% String content = message.getContents();
-                    if (content != null && content.length() > 25) {
-                        content = content.substring(0, 25)+"...";
+                    if (content != null && content.length() > 20) {
+                        content = content.substring(0, 20)+"...";
                     }
                 %>
                     <%= content %></div>
@@ -88,7 +88,6 @@
         var xhr = new XMLHttpRequest();
         xhr.open('POST', '/VoicefishingNotificationModifyServlet', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        console.log(custInfo[10])
         // 전송할 데이터를 쿼리스트링 형식으로 만듭니다.
 
         xhr.onreadystatechange = function() {

@@ -226,40 +226,6 @@
             textareaElements[i].disabled = true;
           }
 
-          // var ctx = document.getElementById('myChart');
-          // var time =document.getElementById('time').innerHTML;
-          // var counts = document.getElementById('counts').innerHTML;
-          // var view = document.getElementById('view').innerHTML;
-          // console.log(counts)
-          // var myChart = new Chart(ctx, {
-          //   type: 'bar',
-          //   data: {
-          //     labels: [`메세지`, '응답'],
-          //     datasets: [{
-          //       label: '메세지/응답',
-          //       data: [counts, view],
-          //       backgroundColor: [
-          //         'rgba(255, 99, 132, 0.2)',
-          //         'rgba(54, 162, 235, 0.2)',
-          //       ],
-          //       borderColor: [
-          //         'rgba(255, 99, 132, 1)',
-          //         'rgba(54, 162, 235, 1)',
-          //       ],
-          //       borderWidth: 1
-          //     }]
-          //   },
-          //   options: {
-          //     scales: {
-          //       yAxes: [{
-          //         ticks: {
-          //           beginAtZero: true
-          //         }
-          //       }]
-          //     }
-          //   }
-          // });
-
         </script>
       </div>
       <div class="buttonList">

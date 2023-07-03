@@ -19,7 +19,6 @@ function sendPageValueToServlet(start,last,page) {
     var prodNmValue = document.getElementById('prodNm').value;
     var mContentsValue = document.getElementById('mContents').value;
     let sentence = "";
-    console.log(selectedNameValue);
     sentence += selectedCheckBoxManValue.checked ? "&selectedManValue=" + encodeURIComponent("M") : "";
     sentence += selectedCheckBoxWomanValue.checked ? "&selectedWomanValue="+ encodeURIComponent("F") : "";
     sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("O") : "";
@@ -73,7 +72,6 @@ function sendPageValueToServlet(start,last,page) {
                 document.getElementById('getPeriod').value = selectedPeriodValue ;
                 const element = document.querySelector(".pagination ul");
 
-                console.log(page);
                 //calling function with passing parameters and adding inside element which is ul tag
                 element.innerHTML = createPagination(totalPages, page);
                 function createPagination(totalPages=20, page){
@@ -177,7 +175,6 @@ function sendValueToServlet() {
     var prodNmValue = document.getElementById('prodNm').value;
     var mContentsValue = document.getElementById('mContents').value;
     let sentence = "";
-    console.log(selectedNameValue);
     sentence += selectedCheckBoxManValue.checked ? "&selectedManValue=" + encodeURIComponent("M") : "";
     sentence += selectedCheckBoxWomanValue.checked ? "&selectedWomanValue="+ encodeURIComponent("F") : "";
     sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("O") : "";
@@ -234,7 +231,6 @@ function sendValueToServlet() {
                 const element = document.querySelector(".pagination ul");
 
                 let page = 1;
-                console.log(page);
                 //calling function with passing parameters and adding inside element which is ul tag
                 element.innerHTML = createPagination(totalPages, page);
                 function createPagination(totalPages, page){
@@ -338,7 +334,6 @@ function modifyMessage(values) {
     var recLoginDate = values[9];
     var prodNm = values[10];
     var mContents = values[11];
-    console.log(values[12])
     // 각 요소에 값 설정
     document.getElementById("man").checked = gender[0] === "M";
     document.getElementById("woman").checked = gender[1] === "F";
@@ -460,6 +455,5 @@ function validateForm() {
         }, 0);
         return false; // 폼 제출을 막음
     }
-    console.log('폼이 유효합니다. 저장 버튼 동작 수행');
     return true; // 폼 제출을 허용
 }

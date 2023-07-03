@@ -21,7 +21,6 @@ function sendPageValueToServlet(start, last,page) {
     var selectedLocationValue = document.getElementById('location').value;
     var prodNmValue = document.getElementById('prodNm').value;
     var mContentsValue = document.getElementById('mContents').value;
-    console.log("전송 대기");
 
     let sentence = "";
     sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("O") : "";
@@ -63,7 +62,6 @@ function sendPageValueToServlet(start, last,page) {
                 document.getElementById('getAge').value = selectedAgeValue;
                 const element = document.querySelector(".pagination ul");
 
-                console.log(page);
                 //calling function with passing parameters and adding inside element which is ul tag
                 element.innerHTML = createPagination(totalPages, page);
                 function createPagination(totalPages=20, page){
@@ -150,7 +148,6 @@ function sendPageValueToServlet(start, last,page) {
         }
 
         xhr.send(requestData);
-        console.log("전송 완료");
     },1000);
 
 }
@@ -172,10 +169,8 @@ function sendValueToServlet() {
     var selectedLocationValue = document.getElementById('location').value;
     var prodNmValue = document.getElementById('prodNm').value;
     var mContentsValue = document.getElementById('mContents').value;
-    console.log(selectedNameValue);
 
     let sentence = "";
-    console.log(selectedNameValue);
 
     sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("O") : "";
     sentence += selectedAgeValue !== "전체" ? "&selectedAgeValue=" + encodeURIComponent(selectedAgeValue) : "";
@@ -219,7 +214,6 @@ function sendValueToServlet() {
                 const element = document.querySelector(".pagination ul");
 
                 let page = 1;
-                console.log(page);
                 //calling function with passing parameters and adding inside element which is ul tag
                 element.innerHTML = createPagination(totalPages, page);
                 function createPagination(totalPages, page){
@@ -305,14 +299,12 @@ function sendValueToServlet() {
         }
 
         xhr.send(requestData);
-        console.log("전송 완료");
     },1000);
 
 }
 // 읽어온 데이터로 페이지 형식 변환
 function modifyMessage(values) {
     // 값을 읽어와서 변수에 할당
-    console.log("modifyMessage");
     var id = values[0];
     var custNm = values[1];
     var age = values[2];
@@ -321,7 +313,6 @@ function modifyMessage(values) {
     var mContents = values[5];
     var prodNm = values[6];
     if(custNm == null || custNm =="null") custNm = null
-    console.log(values[5])
     // 각 요소에 값 설정
     document.getElementById("privacyYes").checked = privacy === "O";
     document.getElementById("age").value = age;
@@ -437,6 +428,5 @@ function validateForm() {
         }, 0);
         return false; // 폼 제출을 막음
     }
-    console.log('폼이 유효합니다. 저장 버튼 동작 수행');
     return true; // 폼 제출을 허용
 }
