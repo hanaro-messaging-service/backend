@@ -156,7 +156,6 @@
     var time =document.getElementById('time').innerHTML;
     var counts = document.getElementById('counts').innerHTML;
     var view = document.getElementById('view').innerHTML;
-    console.log(counts)
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {

@@ -66,8 +66,8 @@
               ])">
         <div class="messageComponent-title bg_white col_black bd_green">
           <% String title2 = message.getTitle();
-            if (title2 != null && title2.length() > 30) {
-              title2 = title2.substring(0, 30)+"...";
+            if (title2 != null && title2.length() > 20) {
+              title2 = title2.substring(0, 20)+"...";
             }
           %>
           <%= title2 %>
@@ -78,8 +78,8 @@
           <%= message.getCounts() %>
         </div>
         <div class="messageComponent-content bg_white col_black bd_green"><% String content = message.getContents();
-          if (content != null && content.length() > 30) {
-            content = content.substring(0, 30)+"...";
+          if (content != null && content.length() > 20) {
+            content = content.substring(0, 20)+"...";
           }
         %>
           <%= content %></div>
@@ -105,6 +105,7 @@
     // 전송할 데이터를 쿼리스트링 형식으로 만듭니다.
 
     xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
           window.location.href = "/pages/messageList/appPromotionMessageList/appPromotionMessageDetail.jsp?id=" + encodeURIComponent(custInfo[0]) +

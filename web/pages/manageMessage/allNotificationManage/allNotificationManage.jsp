@@ -76,7 +76,6 @@
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    console.log("작성 시작");
                     window.location.href = "/pages/manageMessage/allNotificationManage/allNotificationModify.jsp?id=" + encodeURIComponent(custInfo[0]) +
                         "&custNm=" + encodeURIComponent(custInfo[1]) +
                         "&age=" + encodeURIComponent(custInfo[2]) +

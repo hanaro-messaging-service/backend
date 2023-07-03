@@ -13,7 +13,7 @@
 
 
 <main>
-    <form action="/appPromotionWriteServlet" method="POST" >
+    <form action="/appPromotionWriteServlet" onsubmit="return validateForm()" method="POST" >
         <section class="mainComponent">
             <div class="searchComponent">
                 <div class="searchComponent-topBar">
@@ -41,7 +41,7 @@
                         <div class="searchComponent-searchBar-list-key">개인정보동의여부</div>
                         <div class="searchComponent-searchBar-list-value">
                             <div class="checkbox">
-                                <input  onclick="sendValueToServlet(this)" type="checkbox" name="privacyYes" value="Y" class="flex align-center" id="privacyYes">
+                                <input  onclick="sendValueToServlet(this)" type="checkbox" name="privacyYes" value="O" class="flex align-center" id="privacyYes">
                                 <div>동의</div>
                             </div>
                         </div>
@@ -152,5 +152,40 @@
         </section>
     </form>
 </main>
+<script>
+    function validateForm() {
+        var title = document.querySelector('input[name="prodNm"]');
+        var content = document.querySelector('textarea[name="mContents"]');
+        if (title.value.trim() === '') {
+            setTimeout(function() {
+                alert('메시지 제목을 입력해주세요.'); // 작은 알림창 표시
+                title.focus(); // 포커스를 제목 필드로 이동
+            }, 0);
+            return false; // 폼 제출을 막음
+        }
+        if (content.value.trim() === '') {
+            setTimeout(function() {
+                alert('메시지 내용을 입력해주세요.'); // 작은 알림창 표시
+                content.focus(); // 포커스를 내용 필드로 이동
+            }, 0);
+            return false; // 폼 제출을 막음
+        }
+        if (title.value.length > 20) {
+            setTimeout(function() {
+                alert('메시지 제목은 20자 이하여야 합니다.'); // 작은 알림창 표시
+                title.focus(); // 포커스를 내용 필드로 이동
+            }, 0);
+            return false; // 폼 제출을 막음
+        }
+        if (content.value.length > 700) {
+            setTimeout(function() {
+                alert('메시지 내용은 700자 이하여야 합니다.'); // 작은 알림창 표시
+                content.focus(); // 포커스를 내용 필드로 이동
+            }, 0);
+            return false; // 폼 제출을 막음
+        }
+        return true; // 폼 제출을 허용
+    }
+</script>
 </body>
 </html>

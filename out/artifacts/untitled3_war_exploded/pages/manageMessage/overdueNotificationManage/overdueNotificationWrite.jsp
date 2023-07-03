@@ -1,4 +1,3 @@
-
 <%@ page import="productPromotionPackage.productPromotionMessageDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
@@ -42,7 +41,7 @@
                         <div class="searchComponent-searchBar-list-key">개인정보동의여부</div>
                         <div class="searchComponent-searchBar-list-value">
                             <div class="checkbox">
-                                <input onclick="sendValueToServlet(this)" type="checkbox" name="privacyYes" value="Y" class="flex align-center" id="privacyYes">
+                                <input onclick="sendValueToServlet(this)" type="checkbox" name="privacyYes" value="O" class="flex align-center" id="privacyYes">
                                 <div>동의</div>
                             </div>
                         </div>
@@ -65,11 +64,11 @@
                         <div class="searchComponent-searchBar-list-key">연체여부</div>
                         <div class="searchComponent-searchBar-list-value">
                             <div class="checkbox">
-                                <input onchange="sendValueToServlet(this)" type="checkbox" name="overdueYes" value="Y" class="flex align-center" id="overdueYes">
+                                <input onchange="sendValueToServlet(this)" type="checkbox" name="overdueYes" value="O" class="flex align-center" id="overdueYes">
                                 <div>연체</div>
                             </div>
                             <div class="checkbox">
-                                <input onchange="sendValueToServlet(this)" type="checkbox" name="overdueNo" value="N" id="overdueNo">
+                                <input onchange="sendValueToServlet(this)" type="checkbox" name="overdueNo" value="X" id="overdueNo">
                                 <div>미연체</div>
                             </div>
                         </div>

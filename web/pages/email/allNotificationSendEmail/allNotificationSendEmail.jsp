@@ -14,12 +14,7 @@
   request.setCharacterEncoding("UTF-8");
   response.setCharacterEncoding("UTF-8");
   System.out.println("subject"+request.getParameter("subject"));
-  if (request.getParameter("subject").equals("") || request.getParameter("content").equals("")) {
-    out.print("<script>window.alert('이메일 전송 실패! 메시지제목과 내용을 확인하세요!'); window.location.href='/pages/sendMessage/allNotificationMessage/allNotificationMessage.jsp'</script>");
-  }
-  if (request.getParameter("subject") == null || request.getParameter("content") == null || request.getParameter("subject").equals("") || request.getParameter("content").equals("")) {
-    out.print("<script>window.alert('이메일 전송 실패'); window.location.href='/pages/sendMessage/allNotificationMessage/allNotificationMessage.jsp'</script>");
-  }
+
 
   Map<String, String> emailInfo = new HashMap<String, String>();
   Map<String, String[]> toInfo = new HashMap<>();
@@ -113,7 +108,7 @@
     response.sendRedirect("/pages/messageList/allNotificationMessageList/allNotificationMessageList.jsp"); // 리다이렉트
   }
   catch (Exception e) {
-    out.print("<script>window.alert('이메일 전송 실패! 검색 목록, 메세지 제목, 메세지 내용 확인하세요'); window.location.href='/pages/sendMessage/overdueNotificationMessage/overdueNotificationMessage.jsp'</script>");
+    out.print("<script>window.alert('이메일 전송 실패! 검색 목록, 메세지 제목, 메세지 내용 확인하세요'); window.location.href='/pages/sendMessage/allNotificationMessage/allNotificationMessage.jsp'</script>");
     e.printStackTrace();
   }
 %>

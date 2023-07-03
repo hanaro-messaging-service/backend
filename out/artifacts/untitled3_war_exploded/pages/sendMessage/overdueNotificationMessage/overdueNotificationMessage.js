@@ -6,7 +6,6 @@ function debounce(func, delay) {
     debounceTimer = setTimeout(func, delay); // 일정 시간이 지난 후에 함수를 실행
 };
 function sendPageValueToServlet(start, last,page) {
-    console.log("sendPageValueToServlet");
     var selectedNameValue = document.getElementById('name').value;
     var selectedAssetValue = document.getElementById("asset").value;
     var selectedCheckBoxManValue = document.getElementById("man");
@@ -19,9 +18,7 @@ function sendPageValueToServlet(start, last,page) {
     var selectedCheckBoxOverdueNo = document.getElementById("overdueNo");
     var prodNmValue = document.getElementById('prodNm').value;
     var mContentsValue = document.getElementById('mContents').value;
-    console.log(document.getElementById('totalCount').value+"totalcount");
     let sentence = "";
-    console.log(selectedNameValue);
     sentence += selectedCheckBoxManValue.checked ? "&selectedManValue=" + encodeURIComponent("M") : "";
     sentence += selectedCheckBoxWomanValue.checked ? "&selectedWomanValue="+ encodeURIComponent("F") : "";
 
@@ -78,7 +75,6 @@ function sendPageValueToServlet(start, last,page) {
                 document.getElementById('getCreditRating').value = selectedCreditRatingValue;
                 const element = document.querySelector(".pagination ul");
 
-                console.log(page);
                 //calling function with passing parameters and adding inside element which is ul tag
                 element.innerHTML = createPagination(totalPages, page);
                 function createPagination(totalPages=20, page){
@@ -190,10 +186,9 @@ function sendValueToServlet() {
     var selectedCheckBoxOverdueNo = document.getElementById("overdueNo");
     var prodNmValue = document.getElementById('prodNm').value;
     var mContentsValue = document.getElementById('mContents').value;
-    console.log("overdue : ", selectedCheckBoxOverdueYes);
 
     let sentence = "";
-    console.log(selectedNameValue);
+
     sentence += selectedCheckBoxManValue.checked ? "&selectedManValue=" + encodeURIComponent("M") : "";
     sentence += selectedCheckBoxWomanValue.checked ? "&selectedWomanValue="+ encodeURIComponent("F") : "";
 
@@ -216,7 +211,6 @@ function sendValueToServlet() {
 
     debounce(function(){
         showLoadingOverlay();
-        console.log("debounce");
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "/OverdueNotificationServlet", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -226,7 +220,6 @@ function sendValueToServlet() {
                 var responseDoc = parser.parseFromString(xhr.responseText, "text/html");
                 var elementValue = responseDoc.getElementById("resultContainer").innerHTML;
                 var totalPages = Math.ceil(responseDoc.getElementById("totalCount").value/10);
-                console.log(totalPages)
                 hideLoadingOverlay();
 // 모든 <input> 요소를 활성화
                 var inputElements = document.getElementsByTagName("input");
@@ -254,11 +247,9 @@ function sendValueToServlet() {
                 document.getElementById('getAsset').value = selectedAssetValue ;
                 document.getElementById("getCustGrade").value = selectedCustGradeValue;
                 document.getElementById('getCreditRating').value = selectedCreditRatingValue;
-                console.log("서블릿종료");
                 const element = document.querySelector(".pagination ul");
 
                 let page = 1;
-                console.log(page);
                 //calling function with passing parameters and adding inside element which is ul tag
                 element.innerHTML = createPagination(totalPages, page);
                 function createPagination(totalPages, page){
@@ -355,7 +346,6 @@ function sendValueToServlet() {
 // 읽어온 데이터로 페이지 형식 변환
 function modifyMessage(values) {
     // 값을 읽어와서 변수에 할당
-    console.log("modifyMessage");
     var id = values[0];
     var custNm = values[1];
     var gender = values[2];
@@ -368,7 +358,6 @@ function modifyMessage(values) {
     var overdue = values[9];
     var mContents = values[10];
     var prodNm = values[11];
-    console.log(values[10])
     if(custNm == null || custNm =="null") custNm = null
     // 각 요소에 값 설정
     document.getElementById("man").checked = gender[0] === "M";
@@ -458,4 +447,38 @@ function showLoadingOverlay() {
 function hideLoadingOverlay() {
     var loadingOverlay = document.getElementById('loading-overlay');
     loadingOverlay.style.display = 'none';
+}
+
+function validateForm() {
+    var title = document.querySelector('input[id="prodNm"]');
+    var content = document.querySelector('textarea[id="mContents"]');
+    if (title.value.trim() === '') {
+        setTimeout(function() {
+            alert('메시지 제목을 입력해주세요.'); // 작은 알림창 표시
+            title.focus(); // 포커스를 제목 필드로 이동
+        }, 0);
+        return false; // 폼 제출을 막음
+    }
+    if (content.value.trim() === '') {
+        setTimeout(function() {
+            alert('메시지 내용을 입력해주세요.'); // 작은 알림창 표시
+            content.focus(); // 포커스를 내용 필드로 이동
+        }, 0);
+        return false; // 폼 제출을 막음
+    }
+    if (title.value.length > 20) {
+        setTimeout(function() {
+            alert('메시지 제목은 20자 이하여야 합니다.'); // 작은 알림창 표시
+            title.focus(); // 포커스를 내용 필드로 이동
+        }, 0);
+        return false; // 폼 제출을 막음
+    }
+    if (content.value.length > 700) {
+        setTimeout(function() {
+            alert('메시지 내용은 700자 이하여야 합니다.'); // 작은 알림창 표시
+            content.focus(); // 포커스를 내용 필드로 이동
+        }, 0);
+        return false; // 폼 제출을 막음
+    }
+    return true; // 폼 제출을 허용
 }

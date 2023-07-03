@@ -62,7 +62,7 @@
             <div class="searchComponent-searchBar-list-key">개인정보동의여부</div>
             <div class="searchComponent-searchBar-list-value">
               <div class="checkbox">
-                <input  type="checkbox" name="privacyYes" value="Y" class="flex align-center" id="privacyYes" <%= "O".equals(request.getParameter("privacyYes")) ? "checked" : "" %>>
+                <input  type="checkbox" name="privacyYes" value="O" class="flex align-center" id="privacyYes" <%= "O".equals(request.getParameter("privacyYes")) ? "checked" : "" %>>
                 <div>동의</div>
               </div>
             </div>
@@ -225,40 +225,6 @@
           for (var i = 0; i < textareaElements.length; i++) {
             textareaElements[i].disabled = true;
           }
-
-          // var ctx = document.getElementById('myChart');
-          // var time =document.getElementById('time').innerHTML;
-          // var counts = document.getElementById('counts').innerHTML;
-          // var view = document.getElementById('view').innerHTML;
-          // console.log(counts)
-          // var myChart = new Chart(ctx, {
-          //   type: 'bar',
-          //   data: {
-          //     labels: [`메세지`, '응답'],
-          //     datasets: [{
-          //       label: '메세지/응답',
-          //       data: [counts, view],
-          //       backgroundColor: [
-          //         'rgba(255, 99, 132, 0.2)',
-          //         'rgba(54, 162, 235, 0.2)',
-          //       ],
-          //       borderColor: [
-          //         'rgba(255, 99, 132, 1)',
-          //         'rgba(54, 162, 235, 1)',
-          //       ],
-          //       borderWidth: 1
-          //     }]
-          //   },
-          //   options: {
-          //     scales: {
-          //       yAxes: [{
-          //         ticks: {
-          //           beginAtZero: true
-          //         }
-          //       }]
-          //     }
-          //   }
-          // });
 
         </script>
       </div>

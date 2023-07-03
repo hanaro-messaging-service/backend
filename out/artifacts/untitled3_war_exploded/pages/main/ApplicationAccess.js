@@ -20,7 +20,6 @@ function sendValueToServlet() {
     var selectedCheckBoxMoneyExpYes = document.getElementById('moneyExpYes');
     var selectedCheckBoxMoneyExpNo = document.getElementById('moneyExpNo');
     let sentence = "";
-    console.log(selectedNameValue);
     sentence += selectedCheckBoxManValue.checked ? "&selectedManValue=" + encodeURIComponent("M") : "";
     sentence += selectedCheckBoxWomanValue.checked ? "&selectedWomanValue="+ encodeURIComponent("F") : "";
     sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("O") : "";
@@ -33,7 +32,6 @@ function sendValueToServlet() {
     sentence += selectedCheckBoxMoneyExpYes.checked ? "&selectedMoneyExpYesValue=" + encodeURIComponent("O") : "";
     sentence += selectedCheckBoxMoneyExpNo.checked? "&selectedMoneyExpNoValue=" + encodeURIComponent("X") : "";
     sentence += selectedNameValue ? "&selectedNameValue=" + encodeURIComponent(selectedNameValue) : "";
-    console.log(sentence)
     if (selectedAppValue === "") {
         selectedAppValue = "전체";
     }

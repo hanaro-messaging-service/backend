@@ -191,7 +191,7 @@
             </div>
         </div>
         <div id="resultContainer" class="listComponent2">
-            <form method="post" action="/pages/email/overdueNotificationSendEmail/overdueNotificationSendEmail.jsp" style="width:100%; display:flex; flex-direction: column; justify-content: center; align-items: center;" >
+            <form method="post" action="/pages/email/overdueNotificationSendEmail/overdueNotificationSendEmail.jsp" onsubmit="return validateForm()" style="width:100%; display:flex; flex-direction: column; justify-content: center; align-items: center;" >
 
                 <%  int count = 0;
                     if(request.getAttribute("custInfos")!=null) {
@@ -210,7 +210,7 @@
                     <tr  hidden="">
 
                         <td hidden="">
-                            보내는 사람 : <input type="text" name="from" value="hanar0message2@naver.com" />
+                            보내는 사람 : <input type="text" name="from" value="qudtjr1116@naver.com" />
                         </td>
                     </tr>
 
@@ -354,6 +354,7 @@
                     <input hidden="" id="getCreditRating"  name="creditRating">
                     <%--                    <input hidden="" id="getJob"  name="job">--%>
                     <%--                    <input hidden="" id="getPrivate"  name="private">--%>
+
                 </div>
             </form>
         </div>

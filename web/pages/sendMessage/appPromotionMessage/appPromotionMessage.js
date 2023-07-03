@@ -19,7 +19,6 @@ function sendPageValueToServlet(start,last,page) {
     var prodNmValue = document.getElementById('prodNm').value;
     var mContentsValue = document.getElementById('mContents').value;
     let sentence = "";
-    console.log(selectedNameValue);
     sentence += selectedCheckBoxManValue.checked ? "&selectedManValue=" + encodeURIComponent("M") : "";
     sentence += selectedCheckBoxWomanValue.checked ? "&selectedWomanValue="+ encodeURIComponent("F") : "";
     sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("O") : "";
@@ -73,7 +72,6 @@ function sendPageValueToServlet(start,last,page) {
                 document.getElementById('getPeriod').value = selectedPeriodValue ;
                 const element = document.querySelector(".pagination ul");
 
-                console.log(page);
                 //calling function with passing parameters and adding inside element which is ul tag
                 element.innerHTML = createPagination(totalPages, page);
                 function createPagination(totalPages=20, page){
@@ -177,7 +175,6 @@ function sendValueToServlet() {
     var prodNmValue = document.getElementById('prodNm').value;
     var mContentsValue = document.getElementById('mContents').value;
     let sentence = "";
-    console.log(selectedNameValue);
     sentence += selectedCheckBoxManValue.checked ? "&selectedManValue=" + encodeURIComponent("M") : "";
     sentence += selectedCheckBoxWomanValue.checked ? "&selectedWomanValue="+ encodeURIComponent("F") : "";
     sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("O") : "";
@@ -234,7 +231,6 @@ function sendValueToServlet() {
                 const element = document.querySelector(".pagination ul");
 
                 let page = 1;
-                console.log(page);
                 //calling function with passing parameters and adding inside element which is ul tag
                 element.innerHTML = createPagination(totalPages, page);
                 function createPagination(totalPages, page){
@@ -338,7 +334,6 @@ function modifyMessage(values) {
     var recLoginDate = values[9];
     var prodNm = values[10];
     var mContents = values[11];
-    console.log(values[12])
     // 각 요소에 값 설정
     document.getElementById("man").checked = gender[0] === "M";
     document.getElementById("woman").checked = gender[1] === "F";
@@ -427,4 +422,38 @@ function showLoadingOverlay() {
 function hideLoadingOverlay() {
     var loadingOverlay = document.getElementById('loading-overlay');
     loadingOverlay.style.display = 'none';
+}
+
+function validateForm() {
+    var title = document.querySelector('input[id="prodNm"]');
+    var content = document.querySelector('textarea[id="mContents"]');
+    if (title.value.trim() === '') {
+        setTimeout(function() {
+            alert('메시지 제목을 입력해주세요.'); // 작은 알림창 표시
+            title.focus(); // 포커스를 제목 필드로 이동
+        }, 0);
+        return false; // 폼 제출을 막음
+    }
+    if (content.value.trim() === '') {
+        setTimeout(function() {
+            alert('메시지 내용을 입력해주세요.'); // 작은 알림창 표시
+            content.focus(); // 포커스를 내용 필드로 이동
+        }, 0);
+        return false; // 폼 제출을 막음
+    }
+    if (title.value.length > 20) {
+        setTimeout(function() {
+            alert('메시지 제목은 20자 이하여야 합니다.'); // 작은 알림창 표시
+            title.focus(); // 포커스를 내용 필드로 이동
+        }, 0);
+        return false; // 폼 제출을 막음
+    }
+    if (content.value.length > 700) {
+        setTimeout(function() {
+            alert('메시지 내용은 700자 이하여야 합니다.'); // 작은 알림창 표시
+            content.focus(); // 포커스를 내용 필드로 이동
+        }, 0);
+        return false; // 폼 제출을 막음
+    }
+    return true; // 폼 제출을 허용
 }
