@@ -2,7 +2,6 @@
 var debounceTimer;
 function debounce(func, delay) {
     clearTimeout(debounceTimer); // 타이머를 초기화
-
     debounceTimer = setTimeout(func, delay); // 일정 시간이 지난 후에 함수를 실행
 };
 function sendPageValueToServlet(start,last,page) {
@@ -382,8 +381,8 @@ function hideLoadingOverlay() {
     loadingOverlay.style.display = 'none';
 }
 function validateForm() {
-    var title = document.querySelector('input[name="prodNm"]');
-    var content = document.querySelector('textarea[name="mContents"]');
+    var title = document.querySelector('input[id="prodNm"]');
+    var content = document.querySelector('textarea[id="mContents"]');
     if (title.value.trim() === '') {
         setTimeout(function() {
             alert('메시지 제목을 입력해주세요.'); // 작은 알림창 표시
@@ -398,9 +397,9 @@ function validateForm() {
         }, 0);
         return false; // 폼 제출을 막음
     }
-    if (title.value.length > 10) {
+    if (title.value.length > 20) {
         setTimeout(function() {
-            alert('메시지 제목은 10자 이하여야 합니다.'); // 작은 알림창 표시
+            alert('메시지 제목은 20자 이하여야 합니다.'); // 작은 알림창 표시
             title.focus(); // 포커스를 내용 필드로 이동
         }, 0);
         return false; // 폼 제출을 막음

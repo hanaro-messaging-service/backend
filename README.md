@@ -3,17 +3,14 @@
 
 
 ## 🖥 ️Introduce
----
 - DB에 저장된 하나은행 고객 데이터를 기반으로 메시지를 송신, CRUD를 수행한 프로젝트입니다.
 - 소량의 데이터가 아닌, 하나은행 주거래 고객 수 200만명에 맞추어 프로젝트를 진행했습니다.
 
 
 ## 🕰 Period
----
 * 23.06.05 - 23.07.02
 
 ## 🧑‍🤝‍🧑 Members
----
  - 팀장  : [이병석](https://github.com/leebyeongseok) - 어플 프로모션 메시지 전송 / 관리 / 내역 구현, 서버 배포, 전송 프로모션 메시지 내용/페이지 구현
  - 팀원1 : [남송윤](https://github.com/songy00n) - ERD 제작, 보이스피싱 예방 안내 메시지 전송/관리/내역 구현, PPT 제작
  - 팀원2 : [이수창](https://github.com/eternalclash) - 메인페이지, 수신 상품 프로모션 메시지 전송/관리/내역 구현, DB 인덱싱/샤딩 처리, 발표
@@ -21,7 +18,6 @@
 
 
 ## ⚙️ Stacks
----
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white) ![Github](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white) ![JAVA](https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white) ![CSS3](https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![JAVASCRIPT](https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) ![Mysql](https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white) ![bootstrap](https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white) 
 - **IDE** : IntelliJ
 - **Database** : Mysql Workbench
@@ -29,17 +25,15 @@
 - **ERD** : Lucidchart, ERD cloud
 - **Communication** : Slack, GoogleMEET
 
-## 📺 View (이미지 수정 예정)
----
+## 📺 View 
 | 메인 페이지  |  메시지 전송 페이지   |
 | :-------------------------------------------: | :------------: |
-|  <img width="329" src="https://user-images.githubusercontent.com/50205887/208036155-a57900f7-c68a-470d-923c-ff3c296ea635.png"/> |  <img width="329" src="https://user-images.githubusercontent.com/50205887/208036645-a76cf400-85bc-4fa2-af72-86d2abf61366.png"/>|  
+|  <img width="329" src="https://github.com/hanaro-messaging-service/backend/assets/59431258/dca59dc3-aa17-46f2-8bdd-a0e3ec5886bc"/> |  <img width="329" src="https://github.com/hanaro-messaging-service/backend/assets/59431258/3d737849-5625-426f-9672-db6fffac14d4"/>|  
 | 메시지 관리 페이지   |  메시지 발송내역 페이지 |  
-| <img width="329" src="https://user-images.githubusercontent.com/50205887/208038737-2b32b7d2-25f4-4949-baf5-83b5c02915a3.png"/>   |  <img width="329" src="https://user-images.githubusercontent.com/50205887/208038965-43a6318a-7b05-44bb-97c8-b08b0495fba7.png"/>     |
+| <img width="329" src="https://github.com/hanaro-messaging-service/backend/assets/59431258/c115a75d-3615-4142-b397-c532d6eaabe7"/>   |  <img width="329" src="https://github.com/hanaro-messaging-service/backend/assets/59431258/eb86d3c7-3f50-493b-b91a-060667171912"/>     |
 
 ## 📦Features 
----
-### ⭐️ DB와 연동하여 고객 데이터 동적 출력
+### ⭐️ DB와 연동하여 고객 데이터를 동적으로 출력
 - 메시지 전송 페이지에서 고객정보 클릭할 때마다 출력 데이터 반영 후 최신화
 - DB에서 최대 10개씩만 읽어오는 방식의 페이지네이션으로 Read 속도 개선
 

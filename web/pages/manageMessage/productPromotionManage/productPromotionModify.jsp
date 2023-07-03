@@ -20,7 +20,7 @@
       <div class="searchComponent">
         <div class="searchComponent-topBar">
           <div class="searchComponent-topBar-left">
-            수신 상품 프로모션 메시지 추가
+            수신 상품 프로모션 메시지 수정
           </div>
 
         </div>
@@ -45,7 +45,7 @@
             <div class="searchComponent-searchBar-list-key">개인정보동의여부</div>
             <div class="searchComponent-searchBar-list-value">
               <div class="checkbox">
-                <input  type="checkbox" name="privacyYes" value="Y" class="flex align-center" id="privacyYes" <%= "O".equals(request.getParameter("privacyYes")) ? "checked" : "" %>>
+                <input  type="checkbox" name="privacyYes" value="O" class="flex align-center" id="privacyYes" <%= "O".equals(request.getParameter("privacyYes")) ? "checked" : "" %>>
                 <div>동의</div>
               </div>
             </div>
@@ -123,19 +123,11 @@
               </select>
 
             </div>
-            <div class="searchComponent-searchBar-list-key">가입 기간</div>
+            <div class="searchComponent-searchBar-list-key">이름</div>
             <div class="searchComponent-searchBar-list-value">
-              <!-- 가입 기간 -->
-              <select name="period" id="period" >
-                <option value="전체" <%= "전체".equals(request.getParameter("period")) ? "selected" : "" %>>전체</option>
-                <option value="1년 미만" <%= "1년 미만".equals(request.getParameter("period")) ? "selected" : "" %>>1년 미만</option>
-                <option value="1년-3년" <%= "1년-3년".equals(request.getParameter("period")) ? "selected" : "" %>>1년-3년</option>
-                <option value="3년-5년" <%= "3년-5년".equals(request.getParameter("period")) ? "selected" : "" %>>3년-5년</option>
-                <option value="5년-10년" <%= "5년-10년".equals(request.getParameter("period")) ? "selected" : "" %>>5년-10년</option>
-                <option value="10년 이상" <%= "10년 이상".equals(request.getParameter("period")) ? "selected" : "" %>>10년 이상</option>
-              </select>
-
+              <input value="<%= request.getParameter("custNm") %>" type="text" id="name" name="custNm">
             </div>
+
           </div>
           <div class="searchComponent-searchBar-list">
             <div class="searchComponent-searchBar-list-key">거주지</div>
@@ -161,12 +153,21 @@
             </div>
 
           </div>
-          <div class="searchComponent-searchBar-list">
-            <div class="searchComponent-searchBar-list-key">이름</div>
-            <div class="searchComponent-searchBar-list-value">
-              <input value="<%= request.getParameter("custNm") %>" type="text" id="name" name="custNm">
-            </div>
+          <div class="searchComponent-searchBar-list" style="display:none;">
 
+            <div class="searchComponent-searchBar-list-key">가입 기간</div>
+            <div class="searchComponent-searchBar-list-value">
+              <!-- 가입 기간 -->
+              <select name="period" id="period" >
+                <option value="전체" <%= "전체".equals(request.getParameter("period")) ? "selected" : "" %>>전체</option>
+                <option value="1년 미만" <%= "1년 미만".equals(request.getParameter("period")) ? "selected" : "" %>>1년 미만</option>
+                <option value="1년-3년" <%= "1년-3년".equals(request.getParameter("period")) ? "selected" : "" %>>1년-3년</option>
+                <option value="3년-5년" <%= "3년-5년".equals(request.getParameter("period")) ? "selected" : "" %>>3년-5년</option>
+                <option value="5년-10년" <%= "5년-10년".equals(request.getParameter("period")) ? "selected" : "" %>>5년-10년</option>
+                <option value="10년 이상" <%= "10년 이상".equals(request.getParameter("period")) ? "selected" : "" %>>10년 이상</option>
+              </select>
+
+            </div>
             <div class="searchComponent-searchBar-list-key">상품명</div>
             <div class="searchComponent-searchBar-list-value">
               <select name="period" id="where2"  >
@@ -216,9 +217,9 @@
       }, 0);
       return false; // 폼 제출을 막음
     }
-    if (title.value.length > 10) {
+    if (title.value.length > 20) {
       setTimeout(function() {
-        alert('메시지 제목은 10자 이하여야 합니다.'); // 작은 알림창 표시
+        alert('메시지 제목은 20자 이하여야 합니다.'); // 작은 알림창 표시
         title.focus(); // 포커스를 내용 필드로 이동
       }, 0);
       return false; // 폼 제출을 막음

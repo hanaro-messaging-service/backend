@@ -17,7 +17,6 @@ public class voicefishingNotificationWriteDAO extends DBConnPool {
         String privacy = (String) map.get("privacy");
         String prodNm = (String)map.get("prodNm");
         String mContents = (String)map.get("mContents");
-        System.out.println(mContents);
         String query = "INSERT INTO voice_noti_message (custNm, age, privacy, prodNm, mContents) " +
                 "VALUES (?, ?, ?, ?, ?)";
 

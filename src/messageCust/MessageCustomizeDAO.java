@@ -56,7 +56,6 @@ public class MessageCustomizeDAO extends DBConnPool {
             pstmt.close();
             con.close();
         } catch (Exception e) {
-            System.out.println("고객 정보 삽입 중 예외 발생");
             e.printStackTrace();
         }
 

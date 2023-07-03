@@ -160,7 +160,7 @@
                     <tr  hidden="">
 
                         <td hidden="">
-                            보내는 사람 : <input type="text" name="from" value="hanaromessage@naver.com" />
+                            보내는 사람 : <input type="text" name="from" value="qudtjr1116@naver.com" />
                         </td>
                     </tr>
 

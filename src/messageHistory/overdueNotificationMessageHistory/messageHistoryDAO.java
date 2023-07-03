@@ -15,7 +15,7 @@ public class messageHistoryDAO extends DBConnPool {
 
     public void  selectMessage(Map<String, Object> map) {
         // 메시지 전송내역 추가 DAO
-        System.out.println("전송내역 삽입");
+
         String category = (String) map.get("category");
         String contents = (String) map.get("contents");
         String title = (String) map.get("title");
@@ -64,8 +64,7 @@ public class messageHistoryDAO extends DBConnPool {
             pstmt.setString(13, custGrade);
             pstmt.setString(14, creditRating);
             pstmt.executeUpdate();
-            System.out.println(query);
-            System.out.println(pstmt);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

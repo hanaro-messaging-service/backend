@@ -29,7 +29,7 @@ public class productPromotionModifyDAO extends DBConnPool {
         String prodNm = (String)map.get("prodNm");
         String mContents = (String)map.get("mContents");
         String tableId = (String)map.get("tableId");
-        System.out.println("DAO"+tableId);
+
         String query = "UPDATE prod_promo_message SET custNm = ?, gender = ?, age = ?, job = ?, address = ?," +
                 "custGrade = ?, branch = ?, subTerm = ?, asset = ?, privacy = ?, recLoginDate = ?," +
                 "prodNm = ?, mContents = ? WHERE id = ?";
@@ -49,7 +49,7 @@ public class productPromotionModifyDAO extends DBConnPool {
             pstmt.setString(12,prodNm);
             pstmt.setString(13,mContents);
             pstmt.setString(14,tableId);
-            System.out.println(pstmt);
+
             pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

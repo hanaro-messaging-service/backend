@@ -98,9 +98,9 @@
             }, 0);
             return false; // 폼 제출을 막음
         }
-        if (title.value.length > 10) {
+        if (title.value.length > 20) {
             setTimeout(function() {
-                alert('메시지 제목은 10자 이하여야 합니다.'); // 작은 알림창 표시
+                alert('메시지 제목은 20자 이하여야 합니다.'); // 작은 알림창 표시
                 title.focus(); // 포커스를 내용 필드로 이동
             }, 0);
             return false; // 폼 제출을 막음

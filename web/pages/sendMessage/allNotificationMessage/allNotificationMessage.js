@@ -172,7 +172,7 @@ function sendValueToServlet() {
     var selectedLocationValue = document.getElementById('location').value;
     var prodNmValue = document.getElementById('prodNm').value;
     var mContentsValue = document.getElementById('mContents').value;
-    console.log(prodNmValue);
+    console.log(selectedNameValue);
 
     let sentence = "";
     console.log(selectedNameValue);
@@ -180,6 +180,7 @@ function sendValueToServlet() {
     sentence += selectedCheckBoxPrivacyYes.checked ? "&selectedPrivacyYesValue=" + encodeURIComponent("O") : "";
     sentence += selectedAgeValue !== "전체" ? "&selectedAgeValue=" + encodeURIComponent(selectedAgeValue) : "";
     sentence += selectedLocationValue ? "&selectedLocationValue=" + encodeURIComponent(selectedLocationValue) : "";
+    sentence += selectedNameValue ? "&selectedNameValue=" + encodeURIComponent(selectedNameValue) : "";
     sentence +="&selectedStartValue="+encodeURIComponent("0");
     sentence +="&selectedLastValue=" + encodeURIComponent("10");
     // AJAX 요청을 사용하여 서블릿에 값 전달
@@ -406,8 +407,8 @@ function hideLoadingOverlay() {
 }
 
 function validateForm() {
-    var title = document.querySelector('input[name="prodNm"]');
-    var content = document.querySelector('textarea[name="mContents"]');
+    var title = document.querySelector('input[id="prodNm"]');
+    var content = document.querySelector('textarea[id="mContents"]');
     if (title.value.trim() === '') {
         setTimeout(function() {
             alert('메시지 제목을 입력해주세요.'); // 작은 알림창 표시
@@ -422,9 +423,9 @@ function validateForm() {
         }, 0);
         return false; // 폼 제출을 막음
     }
-    if (title.value.length > 10) {
+    if (title.value.length > 20) {
         setTimeout(function() {
-            alert('메시지 제목은 10자 이하여야 합니다.'); // 작은 알림창 표시
+            alert('메시지 제목은 20자 이하여야 합니다.'); // 작은 알림창 표시
             title.focus(); // 포커스를 내용 필드로 이동
         }, 0);
         return false; // 폼 제출을 막음

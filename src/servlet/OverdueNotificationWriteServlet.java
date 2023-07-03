@@ -38,8 +38,7 @@ public class OverdueNotificationWriteServlet extends HttpServlet {
         String selectedOverdueNoValue = request.getParameter("overdueNo");
         String mContentsValue = request.getParameter("mContents");
         String mTitleValue = request.getParameter("mTitle");
-
-        System.out.println("servlet"+tableId);
+        String name = request.getParameter("name");
 
         Map<String, Object> map = new HashMap<>();
         map.put("custNm", selectedNameValue);
@@ -56,10 +55,10 @@ public class OverdueNotificationWriteServlet extends HttpServlet {
         map.put("mContents", mContentsValue);
         map.put("mTitle", mTitleValue);
         map.put("tableId", tableId);
+        map.put("custNm",name);
 
         overdueNotificationWriteDAO dao = new overdueNotificationWriteDAO();
         dao.selectMessage(map);
-        System.out.println("삽입 완료");
 
         response.sendRedirect("/pages/manageMessage/overdueNotificationManage/overdueNotificationManage.jsp");
 

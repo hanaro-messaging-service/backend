@@ -42,7 +42,7 @@ public class emailSMTP {
         auth = new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("hanaromessage", "hanaro1234!");
+                return new PasswordAuthentication("qudtjr1116", "qudtjr484541!");
             }
         };
     }

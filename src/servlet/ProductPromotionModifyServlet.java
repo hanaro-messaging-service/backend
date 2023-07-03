@@ -36,7 +36,6 @@ public class ProductPromotionModifyServlet extends HttpServlet {
         String prodNmValue = request.getParameter("prodNm");
         String mContentsValue = request.getParameter("mContents");
         String tableId = request.getParameter("tableId");
-        System.out.println("servlet"+tableId);
         Map<String, Object> map = new HashMap<>();
         map.put("custNm", selectedNameValue);
         map.put("recLoginDate", selectedAppValue);

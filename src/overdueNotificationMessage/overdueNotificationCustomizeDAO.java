@@ -13,7 +13,6 @@ public class overdueNotificationCustomizeDAO extends DBConnPool {
     }
 
     public List<overdueNotificationCustomizeDTO> selectMessage(){
-        System.out.println("상환 수정 DAO");
         String query  = "SELECT * FROM overdue_noti_message";
         List<overdueNotificationCustomizeDTO> custInfos = new ArrayList<>();
         try {
@@ -43,11 +42,11 @@ public class overdueNotificationCustomizeDAO extends DBConnPool {
             }
 
         } catch (Exception e) {
-            System.out.println("고객 정보 조회 중 예외 발생");
+        System.out.println("고객 정보 조회 중 예외 발생");
             e.printStackTrace();
         }
         finally{
-            System.out.println("CustomizeDAO 끝");
+        System.out.println("CustomizeDAO 끝");
             close();
         }
 

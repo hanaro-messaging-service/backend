@@ -37,7 +37,7 @@ public class allNotificationWriteServlet extends HttpServlet {
 //        String selectedOverdueYesValue = request.getParameter("overdueYes");
 //        String selectedOverdueNoValue = request.getParameter("overdueNo");
 
-        System.out.println("servlet"+tableId);
+
 
         Map<String, Object> map = new HashMap<>();
         map.put("custNm", selectedNameValue);
@@ -57,7 +57,7 @@ public class allNotificationWriteServlet extends HttpServlet {
 
         allNoticeWriteDAO dao = new allNoticeWriteDAO();
         dao.selectMessage(map);
-        System.out.println("삽입 완료");
+
 
         response.sendRedirect("/pages/manageMessage/allNotificationManage/allNotificationManage.jsp");
 

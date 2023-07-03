@@ -25,7 +25,6 @@ public class MessageMapping extends HttpServlet {
         custNm = URLDecoder.decode(custNm, "UTF-8");
         String message = request.getParameter("messageText");
         message = URLDecoder.decode(message, "UTF-8");
-        System.out.println(message);
         String privacyYes = request.getParameter("privacyYes");
         String privacyNo = request.getParameter("privacyNo");
         String male = request.getParameter("male");
@@ -60,7 +59,7 @@ public class MessageMapping extends HttpServlet {
         map.put("moneyExpNo", moneyExpNo);
         List < MessageCustoimizeDTO> messageInfos = messageCustomizeDAO.selectMessage(map);
 //        for (Map.Entry<String, Object> entry : map.entrySet()) {
-//            System.out.println(entry.getKey() + ": " + entry.getValue());
+//        .(entry.getKey() + ": " + entry.getValue());
 //        }
 
         response.sendRedirect("/pages/message/messagelist.jsp");

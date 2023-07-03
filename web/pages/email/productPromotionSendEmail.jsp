@@ -13,7 +13,20 @@
   // 폼값(이메일 내용) 저장
   request.setCharacterEncoding("UTF-8");
   response.setCharacterEncoding("UTF-8");
+  String isSubject = request.getParameter("subject");
+  String isContent = request.getParameter("content");
+
+  if (isSubject == null || isSubject.isEmpty() || isContent== null || isContent.isEmpty()) {
+    out.print("<script>window.alert('이메일 전송 실패! 메시지제목과 내용을 확인하세요!'); window.location.href='/pages/sendMessage/productPromotionMessage.jsp'</script>");
+  } else {
+    System.out.println("subject" + isSubject);
+    System.out.println("content" + isContent);
+  }
+
   if (request.getParameter("subject").equals("") || request.getParameter("content").equals("")) {
+    out.print("<script>window.alert('이메일 전송 실패! 메시지제목과 내용을 확인하세요!'); window.location.href='/pages/sendMessage/productPromotionMessage.jsp'</script>");
+  }
+  if (request.getParameter("subject").equals(" ") || request.getParameter("content").equals(" ")) {
     out.print("<script>window.alert('이메일 전송 실패! 메시지제목과 내용을 확인하세요!'); window.location.href='/pages/sendMessage/productPromotionMessage.jsp'</script>");
   }
   if (request.getParameter("subject") == null || request.getParameter("content") == null || request.getParameter("subject").equals("") || request.getParameter("content").equals("")) {
@@ -120,7 +133,7 @@
     dao.selectMessage(map);
 
     out.print("<script>window.alert('이메일 전송 성공'); </script>");
-    response.sendRedirect("/pages/messageList/messageList.jsp"); // 리다이렉트
+    response.sendRedirect("/pages/messageList/productPromotionMessageList/prodMessageList.jsp"); // 리다이렉트
   }
   catch (Exception e) {
     out.print("<script>window.alert(''이메일 전송 실패! 검색 목록, 메세지 제목, 메세지 내용 확인하세요''); window.location.href='/pages/sendMessage/productPromotionMessage.jsp'</script>");

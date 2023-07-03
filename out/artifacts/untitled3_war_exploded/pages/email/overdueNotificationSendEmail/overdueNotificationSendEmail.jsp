@@ -49,7 +49,7 @@
     String htmlContent = ""; // HTML용으로 변환된 내용을 담을 변수
     try {
       // HTML 메일용 템플릿 파일 읽기
-      String templatePath = application.getRealPath("/pages/email/overdueNotificationSendEmail/overdueNotificationEmailTemplate.html");
+      String templatePath = application.getRealPath("/pages/email/allNotificationSendEmail/allNotficationSendEmail.html");
       BufferedReader br = new BufferedReader(new FileReader(templatePath));
 
       // 한 줄씩 읽어 htmlContent 변수에 저장

@@ -17,7 +17,7 @@ public class voicefishingNotificationModifyDAO extends DBConnPool {
         String prodNm = (String) map.get("prodNm");
         String mContents = (String)map.get("mContents");
         String tableId = (String)map.get("tableId");
-        System.out.println("DAO"+tableId);
+
         String query = "UPDATE voice_noti_message SET custNm = ?, age = ?," +
                 "privacy = ?," +
                 "prodNm = ?, mContents = ? WHERE id = ?";
@@ -29,7 +29,7 @@ public class voicefishingNotificationModifyDAO extends DBConnPool {
             pstmt.setString(4, prodNm);
             pstmt.setString(5,mContents);
             pstmt.setString(6,tableId);
-            System.out.println(pstmt);
+
             pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

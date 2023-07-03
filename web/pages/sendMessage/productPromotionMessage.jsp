@@ -244,7 +244,7 @@
                 <tr  hidden="">
 
                     <td hidden="">
-                        보내는 사람 : <input type="text" name="from" value="hanaromessage@naver.com" />
+                        보내는 사람 : <input type="text" name="from" value="qudtjr1116@naver.com" />
                     </td>
                 </tr>
 
@@ -275,7 +275,7 @@
                         <div style=" width:15%; height:4vh;background-color:#008485; border-radius: 5px; display:flex; justify-content: center;
                             align-items:center; color:white;
                          ">메세지 내용</div>
-                        <textarea style=" width:80%; height:20vh; border: 2px solid #008485;" name="content" id="mContents" cols="60" rows="10"></textarea>
+                        <textarea style=" width:80%; height:20vh; border: 2px solid #008485;" name="content" id="mContents" cols="60" rows="10" value=""></textarea>
 
                 </div>
                 <div style="display:flex; width:90%; justify-content: flex-end; margin-top:1vh;">

@@ -8,16 +8,15 @@ public class allNoticeModifyDAO extends DBConnPool{
     public allNoticeModifyDAO(){super();}
 
     public void selectMessage(Map<String, Object> map) {
-        System.out.println("allNoticeModifyDAO 시작");
         String custNm = (String) map.get("custNm");
         String privacy = (String) map.get("privacy");
         String age = (String) map.get("age");
         String mTitle = (String)map.get("mTitle");
         String mContents = (String)map.get("mContents");
         String tableId = (String)map.get("tableId");
+        String location = (String)map.get("location");
 
-        System.out.println("DAO "+tableId);
-        String query = "UPDATE all_noti_message SET custNm = ?, privacy = ?, age = ?, mTitle = ?, mContents = ?" +
+        String query = "UPDATE all_noti_message SET custNm = ?, privacy = ?, age = ?, mTitle = ?, mContents = ?, location = ?" +
                 " WHERE id = ?";
 
         try (PreparedStatement pstmt = con.prepareStatement(query)) {
@@ -26,14 +25,13 @@ public class allNoticeModifyDAO extends DBConnPool{
             pstmt.setString(3, age);
             pstmt.setString(4, mTitle);
             pstmt.setString(5, mContents);
-            pstmt.setString(6, tableId);
-            System.out.println(pstmt);
+            pstmt.setString(6, location);
+            pstmt.setString(7, tableId);
             pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
         finally{
-            System.out.println("allNoticeModifyDAO 종료");
             close();
         }
     }

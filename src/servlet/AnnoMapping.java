@@ -35,8 +35,7 @@ public class AnnoMapping extends HttpServlet {
         String selectedPeriodValue = request.getParameter("selectedPeriodValue");
         String selectedMoneyExpYes = request.getParameter("selectedMoneyExpYesValue");
         String selectedMoneyExpNo = request.getParameter("selectedMoneyExpNoValue");
-        System.out.println(selectedMoneyExpYes);
-        System.out.println(selectedMoneyExpNo);
+
         // DAO를 사용하여 데이터 조회
         MemberDAO memberDAO = new MemberDAO();
         Map<String, Object> map = new HashMap<>();
@@ -67,6 +66,6 @@ public class AnnoMapping extends HttpServlet {
             throws ServletException, IOException {
         response.setCharacterEncoding("UTF-8"); // 응답의 인코딩 설정
 
-        System.out.println("Hello World");
+
     }
 }

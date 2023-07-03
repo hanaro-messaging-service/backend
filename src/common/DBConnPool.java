@@ -26,10 +26,10 @@ public class DBConnPool {
             // 커넥션 풀을 통해 연결 얻기
             con = source.getConnection();
 
-            System.out.println("DB 커넥션 풀 연결 성공");
+
         }
         catch (Exception e) {
-            System.out.println("DB 커넥션 풀 연결 실패");
+
             e.printStackTrace();
         }
     }
@@ -42,7 +42,7 @@ public class DBConnPool {
             if(psmt!=null)psmt.close();
             if(con!=null) con.close();  // 자동으로 커넥션 풀로 반납됨
 
-            System.out.println("DB 커넥션 풀 자원 반납");
+
         }
         catch (Exception e) {
             e.printStackTrace();
